@@ -33,23 +33,27 @@
     		android:id="@+id/seekBar1" 
     		android:layout_height="wrap_content"
     		android:layout_marginTop="20dp"
-    		android:layout_marginBottom="20dp"></SeekBar>
+    		android:layout_marginBottom="20dp"
+    		android:enabled="false"></SeekBar>
     </LinearLayout>
 	<LinearLayout android:id="@+id/linearLayout1" android:layout_marginBottom="10dp" android:layout_width="fill_parent" android:layout_height="wrap_content">
     	<Button android:id="@+id/playButton" 
     	android:layout_width="wrap_content" 
     	android:layout_height="wrap_content" 
     	android:layout_weight=".3"
-    	android:text="@string/play"></Button>
+    	android:text="@string/play"
+    	android:enabled="false"></Button>
     	<Button android:layout_height="wrap_content" 
     	android:layout_width="wrap_content" 
     	android:layout_weight=".3"
     	android:id="@+id/pauseButton" 
-    	android:text="@string/pause"></Button>
+    	android:text="@string/pause"
+    	android:enabled="false"></Button>
     	<Button android:id="@+id/stopButton" 
     	android:layout_width="wrap_content" 
     	android:layout_weight=".3"
     	android:layout_height="wrap_content" 
-    	android:text="@string/stop"></Button>
+    	android:text="@string/stop"
+    	android:enabled="false"></Button>
 	</LinearLayout>
 </LinearLayout>
