@@ -8,7 +8,9 @@ import be.baes.hanselMinutesPlayer.controllers.OnPlayClickListener;
 import be.baes.hanselMinutesPlayer.controllers.OnRefreshListClickListener;
 import be.baes.hanselMinutesPlayer.controllers.OnSeekChangeListener;
 import be.baes.hanselMinutesPlayer.controllers.OnStopClickListener;
+import be.baes.hanselMinutesPlayer.controllers.PositionUpdater;
 import be.baes.hanselMinutesPlayer.controllers.RssItemListClickListener;
+import be.baes.hanselMinutesPlayer.facade.Player;
 import roboguice.activity.RoboActivity;
 import roboguice.inject.InjectView;
 import android.os.Bundle;
@@ -29,6 +31,8 @@ public class HanselminutesPlayerActivity extends RoboActivity {
 	@Inject OnRefreshListClickListener onRefreshListClickListener;
 	@Inject RssItemListClickListener rssItemListClickListener;
 	@Inject OnSeekChangeListener onSeekChangeListener;
+	@Inject Player player;
+	@Inject PositionUpdater positionUpdater;
 	
     /** Called when the activity is first created. */
     @Override
@@ -42,6 +46,13 @@ public class HanselminutesPlayerActivity extends RoboActivity {
         pauseButton.setOnClickListener(onPauseClickListener);
         listView.setOnItemClickListener(rssItemListClickListener);
         seekbar.setOnSeekBarChangeListener(onSeekChangeListener);
+    }
+    
+    @Override
+    public void onDestroy()
+    {
+    	positionUpdater.pausePosition();
+    	player.destroy();
     }
     
     

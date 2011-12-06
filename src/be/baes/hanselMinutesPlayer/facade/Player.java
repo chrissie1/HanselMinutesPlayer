@@ -71,4 +71,13 @@ public class Player
 	public void seekTo(int progress) {
 		mediaPlayer.seekTo(progress);
 	}
+	
+	public void destroy()
+	{
+		mediaPlayer.stop();
+		mediaPlayer.reset();
+		mediaPlayer.release();
+		mediaPlayer = null;
+	}
+	
 }
