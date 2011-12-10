@@ -3,6 +3,7 @@ package be.baes.hanselMinutesPlayer.controllers;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
+import be.baes.hanselMinutesPlayer.model.PodCast;
 import roboguice.inject.InjectView;
 import android.os.Handler;
 import android.widget.SeekBar;
@@ -17,7 +18,8 @@ import com.google.inject.Singleton;
 public class PositionUpdater {
 	@InjectView(R.id.seekBar1) SeekBar seekbar;
 	@InjectView(R.id.textView1) TextView textView1;
-	@Inject Player player;
+    @InjectView(R.id.textView2) TextView textView2;
+    @Inject Player player;
 	
 	private final Handler handler = new Handler();
     
@@ -38,18 +40,21 @@ public class PositionUpdater {
     {
     	handler.removeCallbacks(updatePositionRunnable);
     	textView1.setText("Timer: " + toMinutes(0) + "/" + toMinutes(player.getDuration()));
+        textView2.setText("Stopped: " + player.getCurrentFile());
         seekbar.setProgress(0);
     }
     
     public void pausePosition()
     {
-    	handler.removeCallbacks(updatePositionRunnable);
+        textView2.setText("Pausing: " + player.getCurrentFile());
+        handler.removeCallbacks(updatePositionRunnable);
     }
     
     public void updatePosition(){
         handler.removeCallbacks(updatePositionRunnable);
         seekbar.setProgress(player.getCurrentPosition());
         textView1.setText("Timer: " + toMinutes(player.getCurrentPosition()) + "/" + toMinutes(player.getDuration()));
+        textView2.setText("Playing: " + player.getCurrentFile());
         handler.postDelayed(updatePositionRunnable, 500);
     }
     
