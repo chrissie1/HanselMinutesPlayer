@@ -1,15 +1,13 @@
 package be.baes.hanselMinutesPlayer;
 
+import android.view.ContextMenu;
+import android.view.MenuItem;
+import android.view.View;
+import be.baes.hanselMinutesPlayer.controllers.*;
+import be.baes.hanselMinutesPlayer.facade.ListViewContextMenu;
+import be.baes.hanselMinutesPlayer.facade.PodCastList;
 import com.google.inject.Inject;
 
-import be.baes.hanselMinutesPlayer.R;
-import be.baes.hanselMinutesPlayer.controllers.OnPauseClickListener;
-import be.baes.hanselMinutesPlayer.controllers.OnPlayClickListener;
-import be.baes.hanselMinutesPlayer.controllers.OnRefreshListClickListener;
-import be.baes.hanselMinutesPlayer.controllers.OnSeekChangeListener;
-import be.baes.hanselMinutesPlayer.controllers.OnStopClickListener;
-import be.baes.hanselMinutesPlayer.controllers.PositionUpdater;
-import be.baes.hanselMinutesPlayer.controllers.RssItemListClickListener;
 import be.baes.hanselMinutesPlayer.facade.Player;
 import roboguice.activity.RoboActivity;
 import roboguice.inject.InjectView;
@@ -29,11 +27,15 @@ public class HanselminutesPlayerActivity extends RoboActivity {
 	@Inject OnStopClickListener onStopClickListener;
 	@Inject OnPauseClickListener onPauseClickListener;
 	@Inject OnRefreshListClickListener onRefreshListClickListener;
-	@Inject RssItemListClickListener rssItemListClickListener;
+	@Inject
+    PodCastItemListClickListener rssItemListClickListener;
 	@Inject OnSeekChangeListener onSeekChangeListener;
 	@Inject Player player;
 	@Inject PositionUpdater positionUpdater;
-	
+    @Inject PodCastList podCastList;
+    @Inject ListViewContextMenu listViewContextMenu;
+    @Inject OnScrollPodCastListListener onScrollPodCastListListener;
+
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,7 +47,10 @@ public class HanselminutesPlayerActivity extends RoboActivity {
         stopButton.setOnClickListener(onStopClickListener);
         pauseButton.setOnClickListener(onPauseClickListener);
         listView.setOnItemClickListener(rssItemListClickListener);
+        listView.setOnScrollListener(onScrollPodCastListListener);
         seekbar.setOnSeekBarChangeListener(onSeekChangeListener);
+        registerForContextMenu(listView);
+        podCastList.load(0);
     }
     
     @Override
@@ -54,6 +59,16 @@ public class HanselminutesPlayerActivity extends RoboActivity {
     	positionUpdater.pausePosition();
     	player.destroy();
     }
-    
-    
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        listViewContextMenu.onCreate(menu, v);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        listViewContextMenu.onItemSelected(item);
+        return true;
+    }
+
 }

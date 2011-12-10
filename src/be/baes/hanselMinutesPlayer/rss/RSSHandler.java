@@ -8,15 +8,12 @@ public class RSSHandler extends DefaultHandler
 	
 	RSSFeed _feed;
 	RSSItem _item;
-	String _lastElementName = "";
-	boolean bFoundChannel = false;
 	final int RSS_TITLE = 1;
 	final int RSS_LINK = 2;
 	final int RSS_DESCRIPTION = 3;
 	final int RSS_CATEGORY = 4;
 	final int RSS_PUBDATE = 5;
-	final int RSS_MEDIA = 6;
-	
+
 	int depth = 0;
 	int currentstate = 0;
 	/*
@@ -56,12 +53,6 @@ public class RSSHandler extends DefaultHandler
 			currentstate = 0;
 			return;
 		}
-		if (localName.equals("image"))
-		{
-			// record our feed data - we temporarily stored it in the item :)
-			_feed.setTitle(_item.getTitle());
-			_feed.setPubDate(_item.getPubDate());
-		}
 		if (localName.equals("item"))
 		{
 			// create a new item
@@ -73,19 +64,9 @@ public class RSSHandler extends DefaultHandler
 			currentstate = RSS_TITLE;
 			return;
 		}
-		if (localName.equals("description"))
-		{
-			currentstate = RSS_DESCRIPTION;
-			return;
-		}
-		if (localName.equals("link"))
+		if (localName.equals("guid"))
 		{
 			currentstate = RSS_LINK;
-			return;
-		}
-		if (localName.equals("category"))
-		{
-			currentstate = RSS_CATEGORY;
 			return;
 		}
 		if (localName.equals("pubDate"))
@@ -108,7 +89,6 @@ public class RSSHandler extends DefaultHandler
 		depth--;
 		if (localName.equals("item"))
 		{
-			// add our item to the list!
 			_feed.addItem(_item);
 			return;
 		}
@@ -126,14 +106,6 @@ public class RSSHandler extends DefaultHandler
 				break;
 			case RSS_LINK:
 				_item.setLink(theString);
-				currentstate = 0;
-				break;
-			case RSS_DESCRIPTION:
-				_item.setDescription(theString);
-				currentstate = 0;
-				break;
-			case RSS_CATEGORY:
-				_item.setCategory(theString);
 				currentstate = 0;
 				break;
 			case RSS_PUBDATE:

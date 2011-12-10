@@ -1,70 +1,53 @@
 package be.baes.hanselMinutesPlayer.rss;
 
-public class RSSItem 
+public class RSSItem
 {
-	private String _title = null;
-	private String _description = null;
-	private String _link = null;
-	private String _category = null;
-	private String _pubdate = null;
-	private String _mp3Link = null;
+	private String title = null;
+	private String link = null;
+	private String pubDate = null;
+	private String mp3Link = null;
 	
 	RSSItem()
 	{
 	}
+
 	public String getMp3Link() {
-		return _mp3Link;
+		return mp3Link;
 	}
 	void setMp3Link(String _mp3Link) {
-		this._mp3Link = _mp3Link;
+		this.mp3Link = _mp3Link;
 	}
 	void setTitle(String title)
 	{
-		_title = title;
-	}
-	void setDescription(String description)
-	{
-		_description = description;
+		this.title = title;
 	}
 	void setLink(String link)
 	{
-		_link = link;
-	}
-	void setCategory(String category)
-	{
-		_category = category;
+		this.link = link;
 	}
 	void setPubDate(String pubdate)
 	{
-		_pubdate = pubdate;
+		this.pubDate = pubdate;
 	}
 	public String getTitle()
 	{
-		return _title;
+		return title;
 	}
-	String getDescription()
+	public String getLink()
 	{
-		return _description;
-	}
-	String getLink()
-	{
-		return _link;
-	}
-	String getCategory()
-	{
-		return _category;
+		return link;
 	}
 	public String getPubDate()
 	{
-		return _pubdate;
+		return pubDate;
 	}
 	public String toString()
 	{
 		// limit how much text we display
-		if (_title.length() > 42)
+		if (title.length() > 42)
 		{
-			return _title.substring(0, 42) + "...";
+			return title.substring(0, 42) + "...";
 		}
-		return _title;
+		return title;
 	}
 }

@@ -8,11 +8,13 @@
     android:layout_height="wrap_content" 
     android:textAppearance="?android:attr/textAppearanceLarge" 
     android:layout_width="wrap_content" 
-    android:id="@+id/rowTitle"></TextView>
+    android:id="@+id/rowTitle"
+    android:layout_marginLeft="5dp"></TextView>
     <TextView android:text="TextView" 
     android:layout_height="wrap_content" 
     android:layout_width="wrap_content" 
     android:id="@+id/rowPubDate" 
-    android:maxLines="2">
+    android:maxLines="2"
+    android:layout_marginLeft="5dp">
     </TextView>   
 </LinearLayout>

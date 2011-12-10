@@ -3,6 +3,7 @@ package be.baes.hanselMinutesPlayer.adapters;
 import java.util.List;
 
 import be.baes.hanselMinutesPlayer.R;
+import be.baes.hanselMinutesPlayer.model.PodCast;
 import be.baes.hanselMinutesPlayer.rss.RSSItem;
 
 import android.content.Context;
@@ -13,14 +14,14 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class RssItemAdapter extends ArrayAdapter<RSSItem> 
+public class PodCastAdapter extends ArrayAdapter<PodCast>
 {
 
 	int resource;
 	String response;
 	Context context;
 
-	public RssItemAdapter(Context context, int resource, List<RSSItem> items) 
+	public PodCastAdapter(Context context, int resource, List<PodCast> items)
 	{
 		super(context, resource, items);
 		this.resource=resource;
@@ -30,7 +31,7 @@ public class RssItemAdapter extends ArrayAdapter<RSSItem>
 	public View getView(int position, View convertView, ViewGroup parent)
 	{
 		LinearLayout rssItemView;
-		RSSItem rssItem = getItem(position);
+        PodCast podCast = getItem(position);
 
 		if(convertView==null)
 		{
@@ -47,8 +48,8 @@ public class RssItemAdapter extends ArrayAdapter<RSSItem>
 		TextView rowTitle =(TextView)rssItemView.findViewById(R.id.rowTitle);
 		TextView rowPubDate =(TextView)rssItemView.findViewById(R.id.rowPubDate);
 
-		rowTitle.setText(rssItem.getTitle());
-		rowPubDate.setText(rssItem.getPubDate());
+		rowTitle.setText(position + ". " + podCast.getTitle());
+		rowPubDate.setText(podCast.getPubDate());
 		return rssItemView;
 	}
 

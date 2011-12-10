@@ -4,8 +4,17 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
-    <LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout3" android:layout_height="wrap_content" android:orientation="vertical">
+    <LinearLayout android:layout_width="match_parent"
+                  android:id="@+id/linearLayout3"
+                  android:layout_height="wrap_content"
+                  android:orientation="horizontal">
         <Button android:text="Refresh List" android:id="@+id/refreshListButton" android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
+        <TextView android:text="Number of podcasts:"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_width="fill_parent"
+                android:id="@+id/numberofpodcasts"
+                android:layout_marginLeft="10dp"/>
     </LinearLayout>
     <ListView android:id="@+id/listView1" 
     	android:layout_width="match_parent"
@@ -16,25 +25,33 @@
     	android:id="@+id/linearLayout2" 
     	android:layout_height="wrap_content" 
     	android:orientation="vertical">
-        <TextView android:id="@+id/textView1" android:layout_width="wrap_content" android:textAppearance="?android:attr/textAppearanceLarge" android:text="Timer: 00:00 / 00:00" android:layout_height="wrap_content"></TextView>
-        <TextView android:id="@+id/textView2" 
+        <TextView android:id="@+id/textView2"
         	android:singleLine="true" 
     		android:ellipsize="marquee"
     		android:marqueeRepeatLimit ="marquee_forever"
     		android:scrollHorizontally="true"
     		android:focusable="true"
     		android:focusableInTouchMode="true"
-    		android:layout_marginLeft="10dp" 
+    		android:layout_marginLeft="5dp"
     		android:layout_width="wrap_content" 
     		android:textAppearance="?android:attr/textAppearanceLarge" 
-    		android:text="Selected podcast" 
-    		android:layout_height="wrap_content"></TextView>
-        <SeekBar android:layout_width="fill_parent" 
+    		android:text="No podcast Selected"
+    		android:layout_height="wrap_content"
+            android:textColor="@color/yellow"/>
+        <TextView android:id="@+id/textView1"
+                  android:layout_width="wrap_content"
+                  android:textAppearance="?android:attr/textAppearanceLarge"
+                  android:text="Timer: 00:00 / 00:00"
+                  android:layout_height="wrap_content"
+                  android:layout_marginLeft="5dp">
+        </TextView>
+        <SeekBar android:layout_width="fill_parent"
     		android:id="@+id/seekBar1" 
     		android:layout_height="wrap_content"
     		android:layout_marginTop="20dp"
     		android:layout_marginBottom="20dp"
-    		android:enabled="false"></SeekBar>
+    		android:enabled="false"
+            android:layout_marginLeft="5dp"></SeekBar>
     </LinearLayout>
 	<LinearLayout android:id="@+id/linearLayout1" android:layout_marginBottom="10dp" android:layout_width="fill_parent" android:layout_height="wrap_content">
     	<Button android:id="@+id/playButton" 

@@ -1,55 +1,27 @@
 package be.baes.hanselMinutesPlayer.rss;
 
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
 public class RSSFeed 
 {
-	private String _title = null;
-	private String _pubdate = null;
-	private int _itemcount = 0;
-	private List<RSSItem> _itemlist;
-	
-	
+	private int itemCount = 0;
+	private List<RSSItem> itemList;
+
 	RSSFeed()
 	{
-		_itemlist = new Vector(0); 
+		itemList = new ArrayList<RSSItem>();
 	}
 	int addItem(RSSItem item)
 	{
-		_itemlist.add(item);
-		_itemcount++;
-		return _itemcount;
-	}
-	RSSItem getItem(int location)
-	{
-		return _itemlist.get(location);
+		itemList.add(item);
+		itemCount++;
+		return itemCount;
 	}
 	public List<RSSItem> getAllItems()
 	{
-		return _itemlist;
+		return itemList;
 	}
-	int getItemCount()
-	{
-		return _itemcount;
-	}
-	void setTitle(String title)
-	{
-		_title = title;
-	}
-	void setPubDate(String pubdate)
-	{
-		_pubdate = pubdate;
-	}
-	String getTitle()
-	{
-		return _title;
-	}
-	String getPubDate()
-	{
-		return _pubdate;
-	}
-	
-	
+
 }
