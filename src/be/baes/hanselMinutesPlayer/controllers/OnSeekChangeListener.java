@@ -15,11 +15,7 @@ public class OnSeekChangeListener implements OnSeekBarChangeListener {
 	@Override
 	public void onStopTrackingTouch(SeekBar seekBar) {
 		isMoveingSeekBar = false;
-        try {
-            player.play();
-        } catch (IOException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        }
+        player.play();
     }
 
 	@Override

@@ -1,9 +1,10 @@
-package be.baes.hanselMinutesPlayer.facade;
+package be.baes.hanselMinutesPlayer.facade.task;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.util.Log;
+import be.baes.hanselMinutesPlayer.facade.PodCastList;
 import be.baes.hanselMinutesPlayer.model.PodCast;
 import be.baes.hanselMinutesPlayer.rss.HanselFeed;
 import be.baes.hanselMinutesPlayer.rss.RSSFeed;

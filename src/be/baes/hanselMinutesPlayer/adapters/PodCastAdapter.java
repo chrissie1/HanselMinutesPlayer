@@ -48,7 +48,7 @@ public class PodCastAdapter extends ArrayAdapter<PodCast>
 		TextView rowTitle =(TextView)rssItemView.findViewById(R.id.rowTitle);
 		TextView rowPubDate =(TextView)rssItemView.findViewById(R.id.rowPubDate);
 
-		rowTitle.setText(position + ". " + podCast.getTitle());
+		rowTitle.setText((position+1) + ". " + podCast.getTitle());
 		rowPubDate.setText(podCast.getPubDate());
 		return rssItemView;
 	}

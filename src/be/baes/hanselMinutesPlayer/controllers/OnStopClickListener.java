@@ -11,6 +11,6 @@ public class OnStopClickListener implements OnClickListener {
 
 	@Override
     public void onClick(View arg0) {
-            	player.stop();
+        player.stop();
   	}
 }

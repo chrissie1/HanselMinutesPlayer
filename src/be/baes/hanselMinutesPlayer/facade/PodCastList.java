@@ -1,6 +1,8 @@
 package be.baes.hanselMinutesPlayer.facade;
 
 import android.app.Activity;
+import be.baes.hanselMinutesPlayer.facade.task.FillListAsyncTask;
+import be.baes.hanselMinutesPlayer.facade.task.GetListFromRssAndUpdateDatabaseAsyncTask;
 import be.baes.hanselMinutesPlayer.model.FillListResult;
 import be.baes.hanselMinutesPlayer.rss.HanselFeed;
 import com.google.inject.Inject;

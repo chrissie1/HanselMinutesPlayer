@@ -2,6 +2,9 @@ package be.baes.hanselMinutesPlayer.facade;
 
 import java.io.IOException;
 
+import android.app.Activity;
+import be.baes.hanselMinutesPlayer.facade.task.OpeningPodCastAsyncTask;
+import be.baes.hanselMinutesPlayer.model.PodCast;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
@@ -12,43 +15,47 @@ import android.util.Log;
 public class Player 
 {
 	@Inject PositionUpdater positionUpdater;
+    @Inject Activity activity;
 	private MediaPlayer mediaPlayer;
 	private boolean isPaused;
-	private String currentFile;
+	private PodCast currentPodCast;
 	
 	public Player()
 	{
 		mediaPlayer = new MediaPlayer();
 	}
 
-	public void play() throws IllegalStateException, IOException
+	public void play()
 	{
-		if(!isPaused)
-		{
-			Log.i("cbaes", "Play started");
-			mediaPlayer.reset();
-			mediaPlayer.setDataSource(currentFile);
-			mediaPlayer.prepare();
-		}
 		isPaused = false;
         positionUpdater.updatePosition();
 		mediaPlayer.start();
 	}
 	
-	public String getCurrentFile() {
-		return currentFile;
-	}
-
-	public void setCurrentFile(String currentFile) {
-		stop();
-		this.currentFile = currentFile;
-        if(currentFile.equals(""))
-        {
-            positionUpdater.emptyFile();
+	public String getCurrentTitle() {
+        if(currentPodCast==null) {
+            return "No current podcast.";
         }
         else
         {
-            positionUpdater.startPosition();
+            return currentPodCast.getTitle();
+        }
+	}
+
+	public void setCurrentFile(PodCast currentPodCast) {
+		if(this.currentPodCast != currentPodCast)
+        {
+            stop();
+            this.currentPodCast = currentPodCast;
+            if(currentPodCast == null)
+            {
+                positionUpdater.emptyFile();
+            }
+            else
+            {
+                OpeningPodCastAsyncTask task = new OpeningPodCastAsyncTask(activity,mediaPlayer,positionUpdater,currentPodCast);
+                task.execute();
+            }
         }
 	}
 

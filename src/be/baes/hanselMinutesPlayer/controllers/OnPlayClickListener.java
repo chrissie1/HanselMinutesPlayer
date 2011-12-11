@@ -13,14 +13,6 @@ public class OnPlayClickListener implements OnClickListener {
 
 	@Override
     public void onClick(View arg0) {
-            try {
-    			player.play();
-			} catch (IllegalStateException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-    }
+        player.play();
+	}
 }

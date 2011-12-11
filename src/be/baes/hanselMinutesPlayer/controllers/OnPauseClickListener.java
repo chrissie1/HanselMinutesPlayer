@@ -11,6 +11,6 @@ public class OnPauseClickListener implements OnClickListener {
 
 	@Override
     public void onClick(View arg0) {
-            player.pause();
+        player.pause();
     }
 }
