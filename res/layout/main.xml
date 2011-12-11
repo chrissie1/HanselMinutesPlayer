@@ -8,7 +8,10 @@
                   android:id="@+id/linearLayout3"
                   android:layout_height="wrap_content"
                   android:orientation="horizontal">
-        <Button android:text="Refresh List" android:id="@+id/refreshListButton" android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
+        <Button android:text="Refresh List"
+                android:id="@+id/refreshListButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
         <TextView android:text="Number of podcasts:"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
@@ -16,7 +19,7 @@
                 android:id="@+id/numberofpodcasts"
                 android:layout_marginLeft="10dp"/>
     </LinearLayout>
-    <ListView android:id="@+id/listView1" 
+    <ListView android:id="@+id/podCastList"
     	android:layout_width="match_parent"
     	android:layout_marginBottom="10dp" android:layout_height="wrap_content"
     	android:layout_weight="1">
@@ -25,7 +28,7 @@
     	android:id="@+id/linearLayout2" 
     	android:layout_height="wrap_content" 
     	android:orientation="vertical">
-        <TextView android:id="@+id/textView2"
+        <TextView android:id="@+id/currentPodCast"
         	android:singleLine="true" 
     		android:ellipsize="marquee"
     		android:marqueeRepeatLimit ="marquee_forever"
@@ -38,7 +41,7 @@
     		android:text="No podcast Selected"
     		android:layout_height="wrap_content"
             android:textColor="@color/yellow"/>
-        <TextView android:id="@+id/textView1"
+        <TextView android:id="@+id/timer"
                   android:layout_width="wrap_content"
                   android:textAppearance="?android:attr/textAppearanceLarge"
                   android:text="Timer: 00:00 / 00:00"
@@ -46,12 +49,12 @@
                   android:layout_marginLeft="5dp">
         </TextView>
         <SeekBar android:layout_width="fill_parent"
-    		android:id="@+id/seekBar1" 
+    		android:id="@+id/seekBar"
     		android:layout_height="wrap_content"
     		android:layout_marginTop="20dp"
     		android:layout_marginBottom="20dp"
     		android:enabled="false"
-            android:layout_marginLeft="5dp"></SeekBar>
+            android:layout_marginLeft="5dp"/>
     </LinearLayout>
 	<LinearLayout android:id="@+id/linearLayout1" android:layout_marginBottom="10dp" android:layout_width="fill_parent" android:layout_height="wrap_content">
     	<Button android:id="@+id/playButton" 
@@ -59,18 +62,18 @@
     	android:layout_height="wrap_content" 
     	android:layout_weight=".3"
     	android:text="@string/play"
-    	android:enabled="false"></Button>
+    	android:enabled="false"/>
     	<Button android:layout_height="wrap_content" 
     	android:layout_width="wrap_content" 
     	android:layout_weight=".3"
     	android:id="@+id/pauseButton" 
     	android:text="@string/pause"
-    	android:enabled="false"></Button>
+    	android:enabled="false"/>
     	<Button android:id="@+id/stopButton" 
     	android:layout_width="wrap_content" 
     	android:layout_weight=".3"
     	android:layout_height="wrap_content" 
     	android:text="@string/stop"
-    	android:enabled="false"></Button>
+    	android:enabled="false"/>
 	</LinearLayout>
 </LinearLayout>

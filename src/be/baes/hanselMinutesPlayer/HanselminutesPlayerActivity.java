@@ -26,11 +26,11 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
 	@InjectView(R.id.playButton) Button playButton;
 	@InjectView(R.id.stopButton) Button stopButton;
 	@InjectView(R.id.pauseButton) Button pauseButton;
-	@InjectView(R.id.seekBar1) SeekBar seekbar;
-    @InjectView(R.id.textView1) TextView textView1;
-    @InjectView(R.id.textView2) TextView textView2;
+	@InjectView(R.id.seekBar) SeekBar seekbar;
+    @InjectView(R.id.timer) TextView timer;
+    @InjectView(R.id.currentPodCast) TextView currentPodCast;
     @InjectView(R.id.refreshListButton) Button refreshListButton;
-	@InjectView(R.id.listView1) ListView listView;
+	@InjectView(R.id.podCastList) ListView podCastListView;
     @InjectView(R.id.numberofpodcasts) TextView numberOfPodCasts;
 	@Inject OnPlayClickListener onPlayClickListener;
 	@Inject OnStopClickListener onStopClickListener;
@@ -56,10 +56,10 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
         playButton.setOnClickListener(onPlayClickListener);
         stopButton.setOnClickListener(onStopClickListener);
         pauseButton.setOnClickListener(onPauseClickListener);
-        listView.setOnItemClickListener(rssItemListClickListener);
-        listView.setOnScrollListener(onScrollPodCastListListener);
+        podCastListView.setOnItemClickListener(rssItemListClickListener);
+        podCastListView.setOnScrollListener(onScrollPodCastListListener);
         seekbar.setOnSeekBarChangeListener(onSeekChangeListener);
-        registerForContextMenu(listView);
+        registerForContextMenu(podCastListView);
         podCastList.load(0);
     }
     
@@ -91,20 +91,19 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
             seekbar.setEnabled(((Position)o).getHasPodCast());
             seekbar.setMax(((Position)o).getMaxDuration());
             seekbar.setProgress(((Position)o).getProgress());
-            textView1.setText(((Position)o).getTimer());
-            textView2.setText(((Position)o).getMessage());
+            timer.setText(((Position) o).getTimer());
+            currentPodCast.setText(((Position) o).getMessage());
         }
         if(observable.getClass().equals(PodCastList.class))
         {
             if(((FillListResult)o).getPodCasts()!=null)
             {
                 PodCastAdapter adapter = new PodCastAdapter(this, R.layout.row,((FillListResult)o).getPodCasts());
-                listView.setAdapter(adapter);
-                listView.setSelection(((FillListResult)o).getPosition());
-            }
-            else
+                podCastListView.setAdapter(adapter);
+                podCastListView.setSelection(((FillListResult) o).getPosition());
+            } else
             {
-                listView.setAdapter(null);
+                podCastListView.setAdapter(null);
             }
             numberOfPodCasts.setText(((FillListResult)o).getNumberOfPodCasts());
             

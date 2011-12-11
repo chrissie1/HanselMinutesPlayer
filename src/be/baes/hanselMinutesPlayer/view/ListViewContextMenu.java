@@ -14,7 +14,7 @@ import roboguice.inject.InjectView;
 public class ListViewContextMenu {
     @Inject OnRefreshListClickListener onRefreshListClickListener;
     @Inject OnDeleteAllClickListener onDeleteAllClickListener;
-    @InjectView(R.id.listView1) ListView listView;
+    @InjectView(R.id.podCastList) ListView listView;
     private static final String DELETE_ALL = "Delete All";
     private static final String REFRESH_LIST = "Refresh List";
     private static final int DELETE_ALL_OPTION = 0;
@@ -22,7 +22,7 @@ public class ListViewContextMenu {
     
     public void onCreate(ContextMenu menu, View v)
     {
-        if (v.getId()== R.id.listView1) {
+        if (v.getId()== R.id.podCastList) {
             menu.add(Menu.NONE, DELETE_ALL_OPTION, DELETE_ALL_OPTION, DELETE_ALL);
             menu.add(Menu.NONE, REFRESH_LIST_OPTION, REFRESH_LIST_OPTION, REFRESH_LIST);
         }
