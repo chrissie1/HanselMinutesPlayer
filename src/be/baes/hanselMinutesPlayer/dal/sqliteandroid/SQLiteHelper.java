@@ -1,4 +1,4 @@
-package be.baes.hanselMinutesPlayer.dal;
+package be.baes.hanselMinutesPlayer.dal.sqliteandroid;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

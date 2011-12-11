@@ -1,44 +1,35 @@
 package be.baes.hanselMinutesPlayer.facade.task;
 
-import android.app.Activity;
-import android.app.ProgressDialog;
 import android.os.AsyncTask;
-import be.baes.hanselMinutesPlayer.R;
-import be.baes.hanselMinutesPlayer.adapters.PodCastAdapter;
 import be.baes.hanselMinutesPlayer.facade.PodCastList;
 import be.baes.hanselMinutesPlayer.model.FillListResult;
 import be.baes.hanselMinutesPlayer.model.PodCast;
+import be.baes.hanselMinutesPlayer.view.ProgressReport;
 
 import java.util.List;
 
 public class FillListAsyncTask extends AsyncTask<Integer,Void,FillListResult>{
     private final static Integer PAGE_SIZE = 30;
-    private Activity activity;
     private be.baes.hanselMinutesPlayer.dal.PodCastAdapter podCastAdapter;
-    private ProgressDialog dialog;
+    private ProgressReport progressReport;
     private PodCastList podCastList;
 
-    public FillListAsyncTask(Activity activity,be.baes.hanselMinutesPlayer.dal.PodCastAdapter podCastAdapter,PodCastList podCastList) {
-        this.activity = activity;
+    public FillListAsyncTask(be.baes.hanselMinutesPlayer.dal.PodCastAdapter podCastAdapter,PodCastList podCastList, ProgressReport progressReport) {
         this.podCastAdapter = podCastAdapter;
+        this.progressReport = progressReport;
         this.podCastList = podCastList;
     }
 
     @Override
     protected void onPreExecute()
     {
-        dialog = new ProgressDialog(activity);
-        dialog.setMessage("Loading...");
-        dialog.setIndeterminate(true);
-        dialog.setCancelable(false);
-        dialog.setCanceledOnTouchOutside(false);
-        dialog.show();
+        progressReport.startProgress("Loading...");
     }
 
     @Override
     protected void onPostExecute(FillListResult result)
     {
-        dialog.dismiss();
+        progressReport.endProgress();
         podCastList.updateList(result);
     }
 
@@ -49,12 +40,11 @@ public class FillListAsyncTask extends AsyncTask<Integer,Void,FillListResult>{
         if(podCasts.size() > 0)
         {
             fillListResult.setNumberOfPodCasts("Total: " + podCastAdapter.numberOfPodcasts() + " Loaded: " + podCasts.size());
-            PodCastAdapter adapter = new PodCastAdapter(activity, R.layout.row,podCasts);
-            fillListResult.setPodCastAdapter(adapter);
+            fillListResult.setPodCasts(podCasts);
         }
         else
         {
-            fillListResult.setPodCastAdapter(null);
+            fillListResult.setPodCasts(null);
             fillListResult.setNumberOfPodCasts("No podcasts, click refreshlist to download the list");
         }
         return fillListResult;

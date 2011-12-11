@@ -1,15 +1,15 @@
 package be.baes.hanselMinutesPlayer.model;
 
-import be.baes.hanselMinutesPlayer.adapters.PodCastAdapter;
+import java.util.List;
 
 public class FillListResult
 {
-    private PodCastAdapter podCastAdapter;
+    private List<PodCast> podCasts;
     private String numberOfPodCasts;
     private int position;
 
-    public FillListResult(PodCastAdapter podCastAdapter, String numberOfPodCasts, int position) {
-        this.podCastAdapter = podCastAdapter;
+    public FillListResult(List<PodCast> podCasts, String numberOfPodCasts, int position) {
+        this.podCasts = podCasts;
         this.numberOfPodCasts = numberOfPodCasts;
         this.position = position;
     }
@@ -18,12 +18,12 @@ public class FillListResult
         return position;
     }
 
-    public PodCastAdapter getPodCastAdapter() {
-        return podCastAdapter;
+    public List<PodCast> getPodCasts() {
+        return podCasts;
     }
 
-    public void setPodCastAdapter(PodCastAdapter podCastAdapter) {
-        this.podCastAdapter = podCastAdapter;
+    public void setPodCasts(List<PodCast> podCasts) {
+        this.podCasts = podCasts;
     }
 
     public String getNumberOfPodCasts() {

@@ -1,4 +1,4 @@
-package be.baes.hanselMinutesPlayer.facade;
+package be.baes.hanselMinutesPlayer.view;
 
 import android.view.ContextMenu;
 import android.view.Menu;

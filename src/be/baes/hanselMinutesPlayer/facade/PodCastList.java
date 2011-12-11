@@ -5,6 +5,7 @@ import be.baes.hanselMinutesPlayer.facade.task.FillListAsyncTask;
 import be.baes.hanselMinutesPlayer.facade.task.GetListFromRssAndUpdateDatabaseAsyncTask;
 import be.baes.hanselMinutesPlayer.model.FillListResult;
 import be.baes.hanselMinutesPlayer.rss.HanselFeed;
+import be.baes.hanselMinutesPlayer.view.ProgressReport;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
@@ -15,18 +16,19 @@ public class PodCastList extends Observable {
     @Inject Activity activity;
     @Inject be.baes.hanselMinutesPlayer.dal.PodCastAdapter podCastAdapter;
     @Inject HanselFeed hanselFeed;
+    @Inject ProgressReport progressReport;
     GetListFromRssAndUpdateDatabaseAsyncTask task;
     FillListAsyncTask fillListAsyncTask;
 
     public void load(int page)
     {
-        fillListAsyncTask = new FillListAsyncTask(activity,podCastAdapter,this);
+        fillListAsyncTask = new FillListAsyncTask(podCastAdapter,this, progressReport);
         fillListAsyncTask.execute(page);
     }
 
     public void getListFromRssAndUpdateDatabase()
     {
-        task = new GetListFromRssAndUpdateDatabaseAsyncTask(activity,podCastAdapter,hanselFeed);
+        task = new GetListFromRssAndUpdateDatabaseAsyncTask(podCastAdapter,hanselFeed, progressReport);
         task.execute(this);
     }
 

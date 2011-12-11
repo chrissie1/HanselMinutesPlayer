@@ -1,4 +1,4 @@
-package be.baes.hanselMinutesPlayer.adapters;
+package be.baes.hanselMinutesPlayer.view.adapters;
 
 import java.util.List;
 

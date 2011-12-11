@@ -1,4 +1,4 @@
-package be.baes.hanselMinutesPlayer.dal;
+package be.baes.hanselMinutesPlayer.dal.sqliteandroid;
 
 import android.app.Application;
 import android.content.ContentValues;
@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import be.baes.hanselMinutesPlayer.dal.PodCastAdapter;
 import be.baes.hanselMinutesPlayer.model.PodCast;
 import com.google.inject.Inject;
 

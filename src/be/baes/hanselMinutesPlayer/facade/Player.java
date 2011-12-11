@@ -3,6 +3,7 @@ package be.baes.hanselMinutesPlayer.facade;
 import android.app.Activity;
 import be.baes.hanselMinutesPlayer.facade.task.OpeningPodCastAsyncTask;
 import be.baes.hanselMinutesPlayer.model.PodCast;
+import be.baes.hanselMinutesPlayer.view.ProgressReport;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
@@ -13,6 +14,7 @@ public class Player
 {
 	@Inject PositionUpdater positionUpdater;
     @Inject Activity activity;
+    @Inject ProgressReport progressReport;
 	private MediaPlayer mediaPlayer;
 	private PodCast currentPodCast;
 	
@@ -48,7 +50,7 @@ public class Player
             }
             else
             {
-                OpeningPodCastAsyncTask task = new OpeningPodCastAsyncTask(activity,mediaPlayer,positionUpdater,currentPodCast);
+                OpeningPodCastAsyncTask task = new OpeningPodCastAsyncTask(activity,mediaPlayer,positionUpdater,currentPodCast,progressReport);
                 task.execute();
             }
         }

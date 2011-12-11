@@ -1,7 +1,5 @@
 package be.baes.hanselMinutesPlayer.facade.task;
 
-import android.app.Activity;
-import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.util.Log;
 import be.baes.hanselMinutesPlayer.facade.PodCastList;
@@ -9,36 +7,31 @@ import be.baes.hanselMinutesPlayer.model.PodCast;
 import be.baes.hanselMinutesPlayer.rss.HanselFeed;
 import be.baes.hanselMinutesPlayer.rss.RSSFeed;
 import be.baes.hanselMinutesPlayer.rss.RSSItem;
+import be.baes.hanselMinutesPlayer.view.ProgressReport;
 
 import java.util.List;
 
 public class GetListFromRssAndUpdateDatabaseAsyncTask extends AsyncTask<PodCastList,PodCastList,PodCastList> {
-    private Activity activity;
     private be.baes.hanselMinutesPlayer.dal.PodCastAdapter podCastAdapter;
     private HanselFeed hanselFeed;
-    private ProgressDialog dialog;
+    private ProgressReport progressReport;
 
-    public GetListFromRssAndUpdateDatabaseAsyncTask(Activity activity,be.baes.hanselMinutesPlayer.dal.PodCastAdapter podCastAdapter,HanselFeed hanselFeed) {
-        this.activity = activity;
+    public GetListFromRssAndUpdateDatabaseAsyncTask(be.baes.hanselMinutesPlayer.dal.PodCastAdapter podCastAdapter,HanselFeed hanselFeed, ProgressReport progressReport) {
         this.hanselFeed = hanselFeed;
+        this.progressReport = progressReport;
         this.podCastAdapter = podCastAdapter;
     }
 
     @Override
     protected void onPreExecute()
     {
-        dialog = new ProgressDialog(activity);
-        dialog.setMessage("Downloading...");
-        dialog.setIndeterminate(true);
-        dialog.setCancelable(false);
-        dialog.setCanceledOnTouchOutside(false);
-        dialog.show();
+        progressReport.startProgress("Downloading...");
     }
 
     @Override
     protected void onPostExecute(PodCastList result)
     {
-        dialog.dismiss();
+        progressReport.endProgress();
         result.load(0);
     }
 
