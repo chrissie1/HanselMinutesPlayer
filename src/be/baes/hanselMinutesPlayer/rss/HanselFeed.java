@@ -1,8 +1,6 @@
 package be.baes.hanselMinutesPlayer.rss;
 
-import android.app.Activity;
 import android.os.StrictMode;
-import android.widget.Toast;
 import com.google.inject.Inject;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -13,7 +11,6 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.BufferedInputStream;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 public class HanselFeed {
