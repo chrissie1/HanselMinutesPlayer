@@ -41,8 +41,7 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
 	@Inject Player player;
 	@Inject PositionUpdater positionUpdater;
     @Inject PodCastList podCastList;
-    @Inject
-    ListViewContextMenu listViewContextMenu;
+    @Inject ListViewContextMenu listViewContextMenu;
     @Inject OnScrollPodCastListListener onScrollPodCastListListener;
 
     /** Called when the activity is first created. */
@@ -97,9 +96,16 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
         }
         if(observable.getClass().equals(PodCastList.class))
         {
-            PodCastAdapter adapter = new PodCastAdapter(this, R.layout.row,((FillListResult)o).getPodCasts());
-            listView.setAdapter(adapter);
-            listView.setSelection(((FillListResult)o).getPosition());
+            if(((FillListResult)o).getPodCasts()!=null)
+            {
+                PodCastAdapter adapter = new PodCastAdapter(this, R.layout.row,((FillListResult)o).getPodCasts());
+                listView.setAdapter(adapter);
+                listView.setSelection(((FillListResult)o).getPosition());
+            }
+            else
+            {
+                listView.setAdapter(null);
+            }
             numberOfPodCasts.setText(((FillListResult)o).getNumberOfPodCasts());
             
         }
