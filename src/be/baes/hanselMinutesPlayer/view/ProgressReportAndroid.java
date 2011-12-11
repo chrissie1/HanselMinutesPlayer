@@ -4,13 +4,6 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import com.google.inject.Inject;
 
-/**
- * Created by IntelliJ IDEA.
- * User: christiaan
- * Date: 11/12/11
- * Time: 15:56
- * To change this template use File | Settings | File Templates.
- */
 public class ProgressReportAndroid implements ProgressReport {
     @Inject Activity activity;
     ProgressDialog progressDialog;
