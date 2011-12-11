@@ -11,13 +11,6 @@ import be.baes.hanselMinutesPlayer.controllers.OnRefreshListClickListener;
 import com.google.inject.Inject;
 import roboguice.inject.InjectView;
 
-/**
- * Created by IntelliJ IDEA.
- * User: christiaan
- * Date: 9/12/11
- * Time: 14:19
- * To change this template use File | Settings | File Templates.
- */
 public class ListViewContextMenu {
     @Inject OnRefreshListClickListener onRefreshListClickListener;
     @Inject OnDeleteAllClickListener onDeleteAllClickListener;

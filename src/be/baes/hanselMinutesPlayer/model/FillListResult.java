@@ -18,10 +18,6 @@ public class FillListResult
         return position;
     }
 
-    public void setPosition(int position) {
-        this.position = position;
-    }
-
     public PodCastAdapter getPodCastAdapter() {
         return podCastAdapter;
     }

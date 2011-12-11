@@ -6,13 +6,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import com.google.inject.Inject;
 
-/**
- * Created by IntelliJ IDEA.
- * User: christiaan
- * Date: 9/12/11
- * Time: 10:31
- * To change this template use File | Settings | File Templates.
- */
 public class SQLiteHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "HanselMinutesPlayer";
     private static final int DATABASE_VERSION = 1;
@@ -28,10 +21,6 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     @Inject
     public SQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-    }
-
-    public SQLiteHelper(Context context, String databasename) {
-        super(context, databasename, null, DATABASE_VERSION);
     }
 
     /* (non-Javadoc)

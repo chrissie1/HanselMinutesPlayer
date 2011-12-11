@@ -9,17 +9,9 @@ import be.baes.hanselMinutesPlayer.model.PodCast;
 import be.baes.hanselMinutesPlayer.rss.HanselFeed;
 import be.baes.hanselMinutesPlayer.rss.RSSFeed;
 import be.baes.hanselMinutesPlayer.rss.RSSItem;
-import com.google.inject.Inject;
 
 import java.util.List;
 
-/**
-* Created by IntelliJ IDEA.
-* User: christiaan
-* Date: 10/12/11
-* Time: 9:03
-* To change this template use File | Settings | File Templates.
-*/
 public class GetListFromRssAndUpdateDatabaseAsyncTask extends AsyncTask<PodCastList,PodCastList,PodCastList> {
     private Activity activity;
     private be.baes.hanselMinutesPlayer.dal.PodCastAdapter podCastAdapter;

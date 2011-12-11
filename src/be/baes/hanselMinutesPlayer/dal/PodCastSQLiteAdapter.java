@@ -32,7 +32,6 @@ public class PodCastSQLiteAdapter implements PodCastAdapter {
     {
         if(context == null) Log.i("cbaes", "activity is still null");
         this.dbHelper = new SQLiteHelper(context);
-        if(this.dbHelper == null) Log.i("cbaes", "dbHelper is still null");
         Log.i("cbaes", "getWritableDatabase");
         try
         {
@@ -95,7 +94,7 @@ public class PodCastSQLiteAdapter implements PodCastAdapter {
 
     @Override
     public int numberOfPodcasts() {
-        int result = 0;
+        int result;
         Log.i("cbaes", "Count all podcasts");
         open();
         Cursor c = db.rawQuery("Select count(*) from " + DATABASE_TABLE, null);

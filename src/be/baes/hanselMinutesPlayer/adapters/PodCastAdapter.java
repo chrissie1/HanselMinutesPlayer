@@ -4,7 +4,6 @@ import java.util.List;
 
 import be.baes.hanselMinutesPlayer.R;
 import be.baes.hanselMinutesPlayer.model.PodCast;
-import be.baes.hanselMinutesPlayer.rss.RSSItem;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -16,10 +15,7 @@ import android.widget.TextView;
 
 public class PodCastAdapter extends ArrayAdapter<PodCast>
 {
-
-	int resource;
-	String response;
-	Context context;
+    private	int resource;
 
 	public PodCastAdapter(Context context, int resource, List<PodCast> items)
 	{

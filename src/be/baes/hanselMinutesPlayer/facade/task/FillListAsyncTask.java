@@ -11,13 +11,6 @@ import be.baes.hanselMinutesPlayer.model.PodCast;
 
 import java.util.List;
 
-/**
- * Created by IntelliJ IDEA.
- * User: christiaan
- * Date: 10/12/11
- * Time: 10:52
- * To change this template use File | Settings | File Templates.
- */
 public class FillListAsyncTask extends AsyncTask<Integer,Void,FillListResult>{
     private final static Integer PAGE_SIZE = 30;
     private Activity activity;

@@ -1,12 +1,5 @@
 package be.baes.hanselMinutesPlayer.model;
 
-/**
- * Created by IntelliJ IDEA.
- * User: christiaan
- * Date: 11/12/11
- * Time: 10:53
- * To change this template use File | Settings | File Templates.
- */
 public class Position {
     private String timer;
     private String message;

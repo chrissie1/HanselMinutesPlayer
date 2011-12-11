@@ -10,8 +10,6 @@ public class RSSHandler extends DefaultHandler
 	RSSItem _item;
 	final int RSS_TITLE = 1;
 	final int RSS_LINK = 2;
-	final int RSS_DESCRIPTION = 3;
-	final int RSS_CATEGORY = 4;
 	final int RSS_PUBDATE = 5;
 
 	int depth = 0;
@@ -90,7 +88,6 @@ public class RSSHandler extends DefaultHandler
 		if (localName.equals("item"))
 		{
 			_feed.addItem(_item);
-			return;
 		}
 	}
 	 
@@ -112,8 +109,6 @@ public class RSSHandler extends DefaultHandler
 				_item.setPubDate(theString);
 				currentstate = 0;
 				break;
-			default:
-				return;
 		}
 		
 	}

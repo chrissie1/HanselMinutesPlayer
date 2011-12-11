@@ -6,8 +6,6 @@ import be.baes.hanselMinutesPlayer.facade.Player;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 
-import java.io.IOException;
-
 public class OnSeekChangeListener implements OnSeekBarChangeListener {
 	@Inject Player player;
 	private boolean isMoveingSeekBar;

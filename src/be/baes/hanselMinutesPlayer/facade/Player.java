@@ -1,7 +1,5 @@
 package be.baes.hanselMinutesPlayer.facade;
 
-import java.io.IOException;
-
 import android.app.Activity;
 import be.baes.hanselMinutesPlayer.facade.task.OpeningPodCastAsyncTask;
 import be.baes.hanselMinutesPlayer.model.PodCast;
@@ -9,7 +7,6 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
 import android.media.MediaPlayer;
-import android.util.Log;
 
 @Singleton
 public class Player 
@@ -17,7 +14,6 @@ public class Player
 	@Inject PositionUpdater positionUpdater;
     @Inject Activity activity;
 	private MediaPlayer mediaPlayer;
-	private boolean isPaused;
 	private PodCast currentPodCast;
 	
 	public Player()
@@ -27,8 +23,7 @@ public class Player
 
 	public void play()
 	{
-		isPaused = false;
-        positionUpdater.updatePosition();
+	    positionUpdater.updatePosition();
 		mediaPlayer.start();
 	}
 	
@@ -61,15 +56,13 @@ public class Player
 
 	public void stop()
 	{
-        isPaused = false;
         positionUpdater.stopPosition();
 		mediaPlayer.stop();
 	}
 	
 	public void pause()
 	{
-		isPaused = true;
-        positionUpdater.pausePosition();
+	    positionUpdater.pausePosition();
 		mediaPlayer.pause();
 	}
 	

@@ -4,14 +4,8 @@ import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.Observable;
 
-import be.baes.hanselMinutesPlayer.model.PodCast;
 import be.baes.hanselMinutesPlayer.model.Position;
-import roboguice.inject.InjectView;
 import android.os.Handler;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import be.baes.hanselMinutesPlayer.R;
-import be.baes.hanselMinutesPlayer.facade.Player;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -89,8 +83,8 @@ public class PositionUpdater extends Observable {
     	double durationInMin = ((double)milliSeconds/1000.0)/60.0;
         durationInMin = new BigDecimal(Double.toString(durationInMin)).setScale(2, BigDecimal.ROUND_UP).doubleValue();
         DecimalFormat myFormat = new DecimalFormat("00");
-        String minutes = myFormat.format(new Integer((int)durationInMin));
-        String seconds = myFormat.format(new Integer((int)((durationInMin - (double)((int)durationInMin))*60)));
+        String minutes = myFormat.format((int)durationInMin);
+        String seconds = myFormat.format((int)((durationInMin - (double)((int)durationInMin))*60));
         return minutes + ":" + seconds;
        
     }

@@ -78,16 +78,17 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
         return true;
     }
 
+    @SuppressWarnings("ConstantConditions")
     @Override
     public void update(Observable observable, Object o) {
         if(observable.getClass().equals(PositionUpdater.class))
         {
-            playButton.setEnabled(((Position) o).getHasPodCast());
+            playButton.setEnabled(((Position)o).getHasPodCast());
             stopButton.setEnabled(((Position)o).getHasPodCast());
             pauseButton.setEnabled(((Position)o).getHasPodCast());
-            seekbar.setEnabled(((Position) o).getHasPodCast());
-            seekbar.setMax(((Position) o).getMaxDuration());
-            seekbar.setProgress(((Position) o).getProgress());
+            seekbar.setEnabled(((Position)o).getHasPodCast());
+            seekbar.setMax(((Position)o).getMaxDuration());
+            seekbar.setProgress(((Position)o).getProgress());
             textView1.setText(((Position)o).getTimer());
             textView2.setText(((Position)o).getMessage());
         }

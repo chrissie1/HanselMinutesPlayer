@@ -6,18 +6,10 @@ import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.widget.Toast;
 import be.baes.hanselMinutesPlayer.facade.PositionUpdater;
-import be.baes.hanselMinutesPlayer.model.FillListResult;
 import be.baes.hanselMinutesPlayer.model.PodCast;
 
 import java.io.IOException;
 
-/**
- * Created by IntelliJ IDEA.
- * User: christiaan
- * Date: 11/12/11
- * Time: 14:40
- * To change this template use File | Settings | File Templates.
- */
 public class OpeningPodCastAsyncTask extends AsyncTask<Void,Void,Void>{
     private ProgressDialog dialog;
     private Activity activity;

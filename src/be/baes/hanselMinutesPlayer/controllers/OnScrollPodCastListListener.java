@@ -1,17 +1,9 @@
 package be.baes.hanselMinutesPlayer.controllers;
 
-import android.util.Log;
 import android.widget.AbsListView;
 import be.baes.hanselMinutesPlayer.facade.PodCastList;
 import com.google.inject.Inject;
 
-/**
- * Created by IntelliJ IDEA.
- * User: christiaan
- * Date: 10/12/11
- * Time: 10:44
- * To change this template use File | Settings | File Templates.
- */
 public class OnScrollPodCastListListener implements AbsListView.OnScrollListener {
     @Inject PodCastList podCastList;
     private int visibleThreshold = 0;
@@ -21,6 +13,7 @@ public class OnScrollPodCastListListener implements AbsListView.OnScrollListener
 
     public OnScrollPodCastListListener() {
     }
+
     public OnScrollPodCastListListener(int visibleThreshold) {
         this.visibleThreshold = visibleThreshold;
     }

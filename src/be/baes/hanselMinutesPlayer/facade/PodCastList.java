@@ -10,13 +10,6 @@ import com.google.inject.Singleton;
 
 import java.util.Observable;
 
-/**
- * Created by IntelliJ IDEA.
- * User: christiaan
- * Date: 9/12/11
- * Time: 9:36
- * To change this template use File | Settings | File Templates.
- */
 @Singleton
 public class PodCastList extends Observable {
     @Inject Activity activity;

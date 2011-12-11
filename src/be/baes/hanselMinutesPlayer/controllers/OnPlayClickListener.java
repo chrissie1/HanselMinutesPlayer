@@ -1,7 +1,5 @@
 package be.baes.hanselMinutesPlayer.controllers;
 
-import java.io.IOException;
-
 import com.google.inject.Inject;
 
 import be.baes.hanselMinutesPlayer.facade.Player;

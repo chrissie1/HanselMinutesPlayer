@@ -12,17 +12,9 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.BufferedInputStream;
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.net.URL;
 
-/**
- * Created by IntelliJ IDEA.
- * User: christiaan
- * Date: 9/12/11
- * Time: 9:21
- * To change this template use File | Settings | File Templates.
- */
 public class HanselFeed {
     @Inject Activity activity;
     private static final String urlToRssFeed = "http://feeds.feedburner.com/HanselminutesCompleteMP3?format=xml";
