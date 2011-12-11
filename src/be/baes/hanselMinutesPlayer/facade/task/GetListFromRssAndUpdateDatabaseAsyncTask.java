@@ -8,10 +8,13 @@ import be.baes.hanselMinutesPlayer.rss.HanselFeed;
 import be.baes.hanselMinutesPlayer.rss.RSSFeed;
 import be.baes.hanselMinutesPlayer.rss.RSSItem;
 import be.baes.hanselMinutesPlayer.view.ProgressReport;
+import org.xml.sax.SAXException;
 
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.IOException;
 import java.util.List;
 
-public class GetListFromRssAndUpdateDatabaseAsyncTask extends AsyncTask<PodCastList,PodCastList,PodCastList> {
+public class GetListFromRssAndUpdateDatabaseAsyncTask extends AsyncTask<PodCastList,String,PodCastList> {
     private be.baes.hanselMinutesPlayer.dal.PodCastAdapter podCastAdapter;
     private HanselFeed hanselFeed;
     private ProgressReport progressReport;
@@ -36,8 +39,31 @@ public class GetListFromRssAndUpdateDatabaseAsyncTask extends AsyncTask<PodCastL
     }
 
     @Override
-    protected PodCastList doInBackground(PodCastList... voids) {
-        RSSFeed feed = hanselFeed.getFeed();
+    protected void onProgressUpdate(String... messages)
+    {
+        progressReport.updateProgess(messages[0]);
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected PodCastList doInBackground(PodCastList... podCastLists) {
+        RSSFeed feed = null;
+        try {
+            feed = hanselFeed.getFeed();
+        } catch (IOException e) {
+            publishProgress("Error: " + e.getMessage());
+            e.printStackTrace();
+        } catch (SAXException e) {
+            publishProgress("Error: " + e.getMessage());
+            e.printStackTrace();
+        } catch (ParserConfigurationException e) {
+            publishProgress("Error: " + e.getMessage());
+            e.printStackTrace();
+        }
         if (feed == null)
         {
             Log.i("cbaes", "Feed is null");
@@ -60,6 +86,6 @@ public class GetListFromRssAndUpdateDatabaseAsyncTask extends AsyncTask<PodCastL
                 }
             }
         }
-        return voids[0];
+        return podCastLists[0];
     }
 }

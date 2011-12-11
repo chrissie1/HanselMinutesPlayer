@@ -1,6 +1,5 @@
 package be.baes.hanselMinutesPlayer.facade;
 
-import android.app.Activity;
 import be.baes.hanselMinutesPlayer.facade.task.OpeningPodCastAsyncTask;
 import be.baes.hanselMinutesPlayer.model.PodCast;
 import be.baes.hanselMinutesPlayer.view.ProgressReport;
@@ -13,7 +12,6 @@ import android.media.MediaPlayer;
 public class Player 
 {
 	@Inject PositionUpdater positionUpdater;
-    @Inject Activity activity;
     @Inject ProgressReport progressReport;
 	private MediaPlayer mediaPlayer;
 	private PodCast currentPodCast;
@@ -50,8 +48,8 @@ public class Player
             }
             else
             {
-                OpeningPodCastAsyncTask task = new OpeningPodCastAsyncTask(activity,mediaPlayer,positionUpdater,currentPodCast,progressReport);
-                task.execute();
+                OpeningPodCastAsyncTask task = new OpeningPodCastAsyncTask(mediaPlayer,positionUpdater,currentPodCast,progressReport);
+                task.execute(null,null,null);
             }
         }
 	}

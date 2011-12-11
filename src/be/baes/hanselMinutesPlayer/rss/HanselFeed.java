@@ -13,41 +13,23 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.BufferedInputStream;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 public class HanselFeed {
-    @Inject Activity activity;
     private static final String urlToRssFeed = "http://feeds.feedburner.com/HanselminutesCompleteMP3?format=xml";
     
-    public RSSFeed getFeed()
-    {
+    public RSSFeed getFeed() throws IOException, SAXException, ParserConfigurationException {
         StrictMode.ThreadPolicy tp = StrictMode.ThreadPolicy.LAX;
         StrictMode.setThreadPolicy(tp);
-        try
-        {
-            URL url = new URL(urlToRssFeed);
-            SAXParserFactory factory = SAXParserFactory.newInstance();
-            SAXParser parser = factory.newSAXParser();
-            XMLReader xmlreader = parser.getXMLReader();
-            RSSHandler theRssHandler = new RSSHandler();
-            xmlreader.setContentHandler(theRssHandler);
-            InputSource is = new InputSource(new BufferedInputStream(url.openStream()));
-            xmlreader.parse(is);
-            return theRssHandler.getFeed();
-        }
-        catch (IOException ee)
-        {
-            ee.printStackTrace();
-            Toast.makeText(activity, "Error: " + ee.getMessage(), Toast.LENGTH_LONG).show();
-            return null;
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-            Toast.makeText(activity, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
-            return null;
-        } catch (SAXException e) {
-            e.printStackTrace();
-            Toast.makeText(activity, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
-            return null;
-        }
+        URL url = new URL(urlToRssFeed);
+        SAXParserFactory factory = SAXParserFactory.newInstance();
+        SAXParser parser = factory.newSAXParser();
+        XMLReader xmlreader = parser.getXMLReader();
+        RSSHandler theRssHandler = new RSSHandler();
+        xmlreader.setContentHandler(theRssHandler);
+        InputSource is = new InputSource(new BufferedInputStream(url.openStream()));
+        xmlreader.parse(is);
+        return theRssHandler.getFeed();
     }
 }

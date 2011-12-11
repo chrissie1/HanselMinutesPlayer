@@ -1,6 +1,5 @@
 package be.baes.hanselMinutesPlayer.facade;
 
-import android.app.Activity;
 import be.baes.hanselMinutesPlayer.facade.task.FillListAsyncTask;
 import be.baes.hanselMinutesPlayer.facade.task.GetListFromRssAndUpdateDatabaseAsyncTask;
 import be.baes.hanselMinutesPlayer.model.FillListResult;
@@ -13,7 +12,6 @@ import java.util.Observable;
 
 @Singleton
 public class PodCastList extends Observable {
-    @Inject Activity activity;
     @Inject be.baes.hanselMinutesPlayer.dal.PodCastAdapter podCastAdapter;
     @Inject HanselFeed hanselFeed;
     @Inject ProgressReport progressReport;

@@ -31,4 +31,9 @@ public class ProgressReportAndroid implements ProgressReport {
     {
         progressDialog.dismiss();
     }
+
+    @Override
+    public void updateProgess(String message) {
+        progressDialog.setMessage(message);
+    }
 }

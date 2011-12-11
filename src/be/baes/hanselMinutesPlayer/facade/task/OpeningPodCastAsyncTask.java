@@ -1,26 +1,22 @@
 package be.baes.hanselMinutesPlayer.facade.task;
 
-import android.app.Activity;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
-import android.widget.Toast;
 import be.baes.hanselMinutesPlayer.facade.PositionUpdater;
 import be.baes.hanselMinutesPlayer.model.PodCast;
 import be.baes.hanselMinutesPlayer.view.ProgressReport;
 
 import java.io.IOException;
 
-public class OpeningPodCastAsyncTask extends AsyncTask<Void,Void,Void>{
+public class OpeningPodCastAsyncTask extends AsyncTask<Void,String,Void>{
     private ProgressReport progressReport;
-    private Activity activity;
     private MediaPlayer mediaPlayer;
     private PositionUpdater positionUpdater;
     private PodCast currentPodCast;
 
-    public OpeningPodCastAsyncTask(Activity activity,MediaPlayer mediaPlayer,PositionUpdater positionUpdater, PodCast currentPodCast,ProgressReport progressReport)
+    public OpeningPodCastAsyncTask(MediaPlayer mediaPlayer,PositionUpdater positionUpdater, PodCast currentPodCast,ProgressReport progressReport)
     {
         this.progressReport = progressReport;
-        this.activity = activity;
         this.positionUpdater = positionUpdater;
         this.mediaPlayer = mediaPlayer;
         this.currentPodCast = currentPodCast;
@@ -40,13 +36,24 @@ public class OpeningPodCastAsyncTask extends AsyncTask<Void,Void,Void>{
     }
 
     @Override
+    protected void onProgressUpdate(String... messages)
+    {
+        progressReport.updateProgess(messages[0]);
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     protected Void doInBackground(Void... voids) {
         mediaPlayer.reset();
         try {
             mediaPlayer.setDataSource(currentPodCast.getMP3Link());
             mediaPlayer.prepare();
         } catch (IOException e) {
-            Toast.makeText(activity, "Error: " + e.getMessage(), Toast.LENGTH_SHORT);
+            publishProgress("Error: " + e.getMessage());
             e.printStackTrace();
         }
         return null;
