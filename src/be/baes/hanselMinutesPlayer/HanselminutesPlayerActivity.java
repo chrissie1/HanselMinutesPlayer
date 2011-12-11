@@ -3,12 +3,13 @@ package be.baes.hanselMinutesPlayer;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import be.baes.hanselMinutesPlayer.controllers.*;
-import be.baes.hanselMinutesPlayer.facade.ListViewContextMenu;
-import be.baes.hanselMinutesPlayer.facade.PodCastList;
+import be.baes.hanselMinutesPlayer.facade.*;
+import be.baes.hanselMinutesPlayer.model.FillListResult;
+import be.baes.hanselMinutesPlayer.model.Position;
 import com.google.inject.Inject;
 
-import be.baes.hanselMinutesPlayer.facade.Player;
 import roboguice.activity.RoboActivity;
 import roboguice.inject.InjectView;
 import android.os.Bundle;
@@ -16,19 +17,24 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SeekBar;
 
-public class HanselminutesPlayerActivity extends RoboActivity {
+import java.util.Observable;
+import java.util.Observer;
+
+public class HanselminutesPlayerActivity extends RoboActivity implements Observer{
 	@InjectView(R.id.playButton) Button playButton;
 	@InjectView(R.id.stopButton) Button stopButton;
 	@InjectView(R.id.pauseButton) Button pauseButton;
 	@InjectView(R.id.seekBar1) SeekBar seekbar;
-	@InjectView(R.id.refreshListButton) Button refreshListButton;
+    @InjectView(R.id.textView1) TextView textView1;
+    @InjectView(R.id.textView2) TextView textView2;
+    @InjectView(R.id.refreshListButton) Button refreshListButton;
 	@InjectView(R.id.listView1) ListView listView;
+    @InjectView(R.id.numberofpodcasts) TextView numberOfPodCasts;
 	@Inject OnPlayClickListener onPlayClickListener;
 	@Inject OnStopClickListener onStopClickListener;
 	@Inject OnPauseClickListener onPauseClickListener;
 	@Inject OnRefreshListClickListener onRefreshListClickListener;
-	@Inject
-    PodCastItemListClickListener rssItemListClickListener;
+	@Inject PodCastItemListClickListener rssItemListClickListener;
 	@Inject OnSeekChangeListener onSeekChangeListener;
 	@Inject Player player;
 	@Inject PositionUpdater positionUpdater;
@@ -42,6 +48,8 @@ public class HanselminutesPlayerActivity extends RoboActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         
+        positionUpdater.addObserver(this);
+        podCastList.addObserver(this);
         refreshListButton.setOnClickListener(onRefreshListClickListener);
         playButton.setOnClickListener(onPlayClickListener);
         stopButton.setOnClickListener(onStopClickListener);
@@ -56,7 +64,6 @@ public class HanselminutesPlayerActivity extends RoboActivity {
     @Override
     public void onDestroy()
     {
-    	positionUpdater.pausePosition();
     	player.destroy();
     }
 
@@ -71,4 +78,25 @@ public class HanselminutesPlayerActivity extends RoboActivity {
         return true;
     }
 
+    @Override
+    public void update(Observable observable, Object o) {
+        if(observable.getClass().equals(PositionUpdater.class))
+        {
+            playButton.setEnabled(((Position) o).getHasPodCast());
+            stopButton.setEnabled(((Position)o).getHasPodCast());
+            pauseButton.setEnabled(((Position)o).getHasPodCast());
+            seekbar.setEnabled(((Position) o).getHasPodCast());
+            seekbar.setMax(((Position) o).getMaxDuration());
+            seekbar.setProgress(((Position) o).getProgress());
+            textView1.setText(((Position)o).getTimer());
+            textView2.setText(((Position)o).getMessage());
+        }
+        if(observable.getClass().equals(PodCastList.class))
+        {
+            listView.setAdapter(((FillListResult)o).getPodCastAdapter());
+            listView.setSelection(((FillListResult)o).getPosition());
+            numberOfPodCasts.setText(((FillListResult)o).getNumberOfPodCasts());
+            
+        }
+    }
 }

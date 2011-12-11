@@ -3,12 +3,10 @@ package be.baes.hanselMinutesPlayer.facade;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
-import android.widget.ListView;
-import android.widget.TextView;
 import be.baes.hanselMinutesPlayer.R;
 import be.baes.hanselMinutesPlayer.adapters.PodCastAdapter;
+import be.baes.hanselMinutesPlayer.model.FillListResult;
 import be.baes.hanselMinutesPlayer.model.PodCast;
-import be.baes.hanselMinutesPlayer.rss.HanselFeed;
 
 import java.util.List;
 
@@ -24,14 +22,12 @@ public class FillListAsyncTask extends AsyncTask<Integer,Void,FillListResult>{
     private Activity activity;
     private be.baes.hanselMinutesPlayer.dal.PodCastAdapter podCastAdapter;
     private ProgressDialog dialog;
-    private TextView numberOfPodCasts;
-    private ListView listView;
+    private PodCastList podCastList;
 
-    public FillListAsyncTask(Activity activity,be.baes.hanselMinutesPlayer.dal.PodCastAdapter podCastAdapter,TextView numberOfPodCasts, ListView listView) {
+    public FillListAsyncTask(Activity activity,be.baes.hanselMinutesPlayer.dal.PodCastAdapter podCastAdapter,PodCastList podCastList) {
         this.activity = activity;
         this.podCastAdapter = podCastAdapter;
-        this.listView = listView;
-        this.numberOfPodCasts = numberOfPodCasts;
+        this.podCastList = podCastList;
     }
 
     @Override
@@ -49,14 +45,12 @@ public class FillListAsyncTask extends AsyncTask<Integer,Void,FillListResult>{
     protected void onPostExecute(FillListResult result)
     {
         dialog.dismiss();
-        numberOfPodCasts.setText(result.getNumberOfPodCasts());
-        listView.setAdapter(result.getPodCastAdapter());
-        listView.setSelection(result.getPage()*PAGE_SIZE - 1);
+        podCastList.updateList(result);
     }
 
     @Override
     protected FillListResult doInBackground(Integer... integers) {
-        FillListResult fillListResult = new FillListResult(null,"", integers[0]);
+        FillListResult fillListResult = new FillListResult(null,"", integers[0]*PAGE_SIZE - 1);
         List<PodCast> podCasts = podCastAdapter.getAllItems(0,PAGE_SIZE*(integers[0]+1));
         if(podCasts.size() > 0)
         {

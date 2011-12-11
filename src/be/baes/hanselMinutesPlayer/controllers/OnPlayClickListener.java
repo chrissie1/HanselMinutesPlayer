@@ -10,14 +10,11 @@ import android.view.View.OnClickListener;
 
 public class OnPlayClickListener implements OnClickListener {
 	@Inject Player player;
-	@Inject PositionUpdater positionUpdater;
-	
+
 	@Override
     public void onClick(View arg0) {
             try {
-            	positionUpdater.startPosition();
-				player.play();
-				positionUpdater.updatePosition();
+    			player.play();
 			} catch (IllegalStateException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

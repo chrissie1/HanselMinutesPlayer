@@ -5,14 +5,13 @@ import java.io.IOException;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
-import android.app.Activity;
 import android.media.MediaPlayer;
 import android.util.Log;
 
 @Singleton
 public class Player 
 {
-	@Inject Activity activity;
+	@Inject PositionUpdater positionUpdater;
 	private MediaPlayer mediaPlayer;
 	private boolean isPaused;
 	private String currentFile;
@@ -24,7 +23,6 @@ public class Player
 
 	public void play() throws IllegalStateException, IOException
 	{
-		
 		if(!isPaused)
 		{
 			Log.i("cbaes", "Play started");
@@ -33,6 +31,7 @@ public class Player
 			mediaPlayer.prepare();
 		}
 		isPaused = false;
+        positionUpdater.updatePosition();
 		mediaPlayer.start();
 	}
 	
@@ -41,18 +40,29 @@ public class Player
 	}
 
 	public void setCurrentFile(String currentFile) {
-		isPaused = false;
+		stop();
 		this.currentFile = currentFile;
+        if(currentFile.equals(""))
+        {
+            positionUpdater.emptyFile();
+        }
+        else
+        {
+            positionUpdater.startPosition();
+        }
 	}
 
 	public void stop()
 	{
+        isPaused = false;
+        positionUpdater.stopPosition();
 		mediaPlayer.stop();
 	}
 	
 	public void pause()
 	{
 		isPaused = true;
+        positionUpdater.pausePosition();
 		mediaPlayer.pause();
 	}
 	
@@ -74,6 +84,7 @@ public class Player
 	
 	public void destroy()
 	{
+        positionUpdater.pausePosition();
 		mediaPlayer.stop();
 		mediaPlayer.reset();
 		mediaPlayer.release();

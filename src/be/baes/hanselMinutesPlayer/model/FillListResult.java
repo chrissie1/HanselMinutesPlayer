@@ -1,4 +1,4 @@
-package be.baes.hanselMinutesPlayer.facade;
+package be.baes.hanselMinutesPlayer.model;
 
 import be.baes.hanselMinutesPlayer.adapters.PodCastAdapter;
 
@@ -6,20 +6,20 @@ public class FillListResult
 {
     private PodCastAdapter podCastAdapter;
     private String numberOfPodCasts;
-    private int page;
+    private int position;
 
-    public FillListResult(PodCastAdapter podCastAdapter, String numberOfPodCasts, int page) {
+    public FillListResult(PodCastAdapter podCastAdapter, String numberOfPodCasts, int position) {
         this.podCastAdapter = podCastAdapter;
         this.numberOfPodCasts = numberOfPodCasts;
-        this.page = page;
+        this.position = position;
     }
 
-    public int getPage() {
-        return page;
+    public int getPosition() {
+        return position;
     }
 
-    public void setPage(int page) {
-        this.page = page;
+    public void setPosition(int position) {
+        this.position = position;
     }
 
     public PodCastAdapter getPodCastAdapter() {

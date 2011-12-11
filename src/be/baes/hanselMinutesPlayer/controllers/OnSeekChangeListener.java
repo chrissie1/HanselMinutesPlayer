@@ -6,21 +6,26 @@ import be.baes.hanselMinutesPlayer.facade.Player;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 
+import java.io.IOException;
+
 public class OnSeekChangeListener implements OnSeekBarChangeListener {
 	@Inject Player player;
-	@Inject PositionUpdater positionUpdater;
-	
 	private boolean isMoveingSeekBar;
 
 	@Override
 	public void onStopTrackingTouch(SeekBar seekBar) {
 		isMoveingSeekBar = false;
-	}
+        try {
+            player.play();
+        } catch (IOException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+    }
 
 	@Override
 	public void onStartTrackingTouch(SeekBar seekBar) {
 		isMoveingSeekBar = true;
-		positionUpdater.pausePosition();
+		player.pause();
 	}
 
 	@Override
@@ -28,7 +33,6 @@ public class OnSeekChangeListener implements OnSeekBarChangeListener {
 		if(isMoveingSeekBar)
 		{
 			player.seekTo(progress);
-			positionUpdater.updatePosition();
 		}
 	}
 }

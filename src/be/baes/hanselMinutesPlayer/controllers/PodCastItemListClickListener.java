@@ -15,19 +15,10 @@ import be.baes.hanselMinutesPlayer.facade.Player;
 import be.baes.hanselMinutesPlayer.rss.RSSItem;
 
 public class PodCastItemListClickListener implements OnItemClickListener {
-	@InjectView(R.id.textView2) TextView textView;
-	@InjectView(R.id.playButton) Button playButton;
-	@InjectView(R.id.pauseButton) Button pauseButton;
-	@InjectView(R.id.stopButton) Button stopButton;
-	@InjectView(R.id.seekBar1) SeekBar seekBar;
 	@Inject Player player;
 	
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 		player.setCurrentFile(((PodCast)arg0.getAdapter().getItem(arg2)).getMP3Link());
-		playButton.setEnabled(true);
-		stopButton.setEnabled(true);
-		pauseButton.setEnabled(true);
-		seekBar.setEnabled(true);
 	}
 }
