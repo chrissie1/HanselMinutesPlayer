@@ -32,6 +32,37 @@
     <orderEntry type="jdk" jdkName="Android 3.2 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="HanselMinutesPlayer" scope="PROVIDED" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$APPLICATION_HOME_DIR$/lib/junit-4.10.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../lib/android-support-v4.jar!/" />
+          <root url="jar://$MODULE_DIR$/../lib/guice-3.0-no_aop.jar!/" />
+          <root url="jar://$MODULE_DIR$/../lib/javax.inject.jar!/" />
+          <root url="jar://$MODULE_DIR$/../lib/roboguice-2.0b2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/libs" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$MODULE_DIR$/libs" recursive="false" />
+      </library>
+    </orderEntry>
   </component>
 </module>
 
