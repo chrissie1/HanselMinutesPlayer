@@ -7,7 +7,6 @@ import junit.framework.TestCase;
  * User: christiaan
  * Date: 11/12/11
  * Time: 20:00
- * To change this template use File | Settings | File Templates.
  */
 public class PodCastTest extends TestCase {
 
@@ -35,5 +34,24 @@ public class PodCastTest extends TestCase {
         assertEquals("title",podCast.getTitle());
     }
 
+    public void testWhenLinkIsTheSameTwoPodCastsAreTheSame()
+    {
+        PodCast podCast1 = new PodCast("","", "link","");
+        PodCast podCast2 = new PodCast("","", "link","");
+        assertTrue(podCast1.equals(podCast2));
+    }
+
+    public void testWhenLinkIsTheNotTheSameTwoPodCastsAreNotEqual()
+    {
+        PodCast podCast1 = new PodCast("","", "link1","");
+        PodCast podCast2 = new PodCast("","", "link2","");
+        assertFalse(podCast1.equals(podCast2));
+    }
+
+    public void testToStringShouldReturnTitleAndPubDate()
+    {
+        PodCast podCast = new PodCast("title", "pubdate", "link", "mp3link");
+        assertEquals("PodCast{title='title', pubDate=pubdate}",podCast.toString());
+    }
 
 }
