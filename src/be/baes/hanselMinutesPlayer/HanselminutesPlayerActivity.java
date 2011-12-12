@@ -38,7 +38,8 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
 	@Inject OnRefreshListClickListener onRefreshListClickListener;
 	@Inject PodCastItemListClickListener rssItemListClickListener;
 	@Inject OnSeekChangeListener onSeekChangeListener;
-	@Inject Player player;
+	@Inject
+    Player player;
 	@Inject PositionUpdater positionUpdater;
     @Inject PodCastList podCastList;
     @Inject ListViewContextMenu listViewContextMenu;

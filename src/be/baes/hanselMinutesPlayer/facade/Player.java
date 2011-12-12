@@ -1,94 +1,30 @@
 package be.baes.hanselMinutesPlayer.facade;
 
-import be.baes.hanselMinutesPlayer.facade.task.OpeningPodCastAsyncTask;
 import be.baes.hanselMinutesPlayer.model.PodCast;
-import be.baes.hanselMinutesPlayer.view.ProgressReport;
-import com.google.inject.Inject;
-import com.google.inject.Singleton;
 
-import android.media.MediaPlayer;
+/**
+ * Created by IntelliJ IDEA.
+ * User: christiaan
+ * Date: 12/12/11
+ * Time: 10:42
+ * To change this template use File | Settings | File Templates.
+ */
+public interface Player {
+    void play();
 
-@Singleton
-public class Player 
-{
-	@Inject PositionUpdater positionUpdater;
-    @Inject ProgressReport progressReport;
-	private MediaPlayer mediaPlayer;
-	private PodCast currentPodCast;
-	
-	public Player()
-	{
-		mediaPlayer = new MediaPlayer();
-	}
+    String getCurrentTitle();
 
-	public void play()
-	{
-	    positionUpdater.updatePosition();
-		mediaPlayer.start();
-	}
-	
-	public String getCurrentTitle() {
-        if(currentPodCast==null) {
-            return "No current podcast.";
-        }
-        else
-        {
-            return currentPodCast.getTitle();
-        }
-	}
+    void setCurrentFile(PodCast currentPodCast);
 
-	public void setCurrentFile(PodCast currentPodCast) {
-		if(this.currentPodCast != currentPodCast)
-        {
-            stop();
-            this.currentPodCast = currentPodCast;
-            if(currentPodCast == null)
-            {
-                positionUpdater.emptyFile();
-            }
-            else
-            {
-                OpeningPodCastAsyncTask task = new OpeningPodCastAsyncTask(mediaPlayer,positionUpdater,currentPodCast,progressReport);
-                task.execute(null,null,null);
-            }
-        }
-	}
+    void stop();
 
-	public void stop()
-	{
-        positionUpdater.stopPosition();
-		mediaPlayer.stop();
-	}
-	
-	public void pause()
-	{
-	    positionUpdater.pausePosition();
-		mediaPlayer.pause();
-	}
-	
-	public int getCurrentPosition()
-	{
-		if(mediaPlayer==null) return 0;
-		return mediaPlayer.getCurrentPosition();
-	}
-	
-	public int getDuration()
-	{
-		if(mediaPlayer==null) return 0;
-		return mediaPlayer.getDuration();
-	}
+    void pause();
 
-	public void seekTo(int progress) {
-		mediaPlayer.seekTo(progress);
-	}
-	
-	public void destroy()
-	{
-        positionUpdater.pausePosition();
-		mediaPlayer.stop();
-		mediaPlayer.reset();
-		mediaPlayer.release();
-		mediaPlayer = null;
-	}
-	
+    int getCurrentPosition();
+
+    int getDuration();
+
+    void seekTo(int progress);
+
+    void destroy();
 }

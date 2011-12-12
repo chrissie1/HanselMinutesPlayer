@@ -2,10 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="62e10799-af9e-4d0a-b795-79f634801e8b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/model/FillListResultTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/model/PositionTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/facade/PositionUpdaterTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/model/PodCastTest.java" afterPath="$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/model/PodCastTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/HanselminutesPlayerActivity.java" afterPath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/HanselminutesPlayerActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/OnDeleteAllClickListener.java" afterPath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/OnDeleteAllClickListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/OnPauseClickListener.java" afterPath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/OnPauseClickListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/OnPlayClickListener.java" afterPath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/OnPlayClickListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/OnSeekChangeListener.java" afterPath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/OnSeekChangeListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/OnStopClickListener.java" afterPath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/OnStopClickListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/PodCastItemListClickListener.java" afterPath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/PodCastItemListClickListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/Player.java" afterPath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/Player.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/PositionUpdater.java" afterPath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/PositionUpdater.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/ioc/HanselMinutesPlayerModule.java" afterPath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/ioc/HanselMinutesPlayerModule.java" />
+      <change type="MOVED" beforePath="F:\MyDocuments\Eclipse\eclipse-jee-indigo-win32\workspace\HanselMinutesPlayer\src\be\baes\hanselMinutesPlayer\facade\Player.java" afterPath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/PlayerImpl.java" />
     </list>
     <ignored path="HanselMinutesPlayer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -63,59 +72,48 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="PodCastTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/model/PodCastTest.java">
+      <file leaf-file-name="PositionUpdater.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/PositionUpdater.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="61" selection-start="1665" selection-end="1665" vertical-scroll-proportion="0.0">
+            <state line="84" column="8" selection-start="2830" selection-end="2830" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Position.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/model/Position.java">
+      <file leaf-file-name="PositionUpdaterTest.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/facade/PositionUpdaterTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="29" selection-start="944" selection-end="944" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PositionTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/model/PositionTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="21" selection-start="1021" selection-end="1021" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FillListResult.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/model/FillListResult.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="13" selection-start="81" selection-end="81" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FillListResultTest.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/model/FillListResultTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="43" selection-start="1657" selection-end="1657" vertical-scroll-proportion="1.2177777">
+            <state line="259" column="8" selection-start="8954" selection-end="8954" vertical-scroll-proportion="1.028889">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#604#613#0" expanded="true" />
-                <element signature="e#1444#1453#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PodCast.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/model/PodCast.java">
+      <file leaf-file-name="PlayerImpl.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/PlayerImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="14" selection-start="555" selection-end="555" vertical-scroll-proportion="0.0">
+            <state line="11" column="19" selection-start="358" selection-end="358" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Player.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/Player.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="9" selection-start="294" selection-end="294" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HanselMinutesPlayerModule.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/ioc/HanselMinutesPlayerModule.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="48" selection-start="738" selection-end="738" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -145,6 +143,10 @@
         <option value="$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/model/PositionTest.java" />
         <option value="$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/model/FillListResult.java" />
         <option value="$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/model/FillListResultTest.java" />
+        <option value="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/PlayerImpl.java" />
+        <option value="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/ioc/HanselMinutesPlayerModule.java" />
+        <option value="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/PositionUpdater.java" />
+        <option value="$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/facade/PositionUpdaterTest.java" />
       </list>
     </option>
   </component>
@@ -200,7 +202,25 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="be.baes.hanselMinutesPlayer.model" />
+              <option name="myItemId" value="be.baes.hanselMinutesPlayer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HanselMinutesPlayer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HanselMinutesPlayerTest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="be.baes.hanselMinutesPlayer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="facade" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -242,7 +262,25 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
+              <option name="myItemId" value="ioc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HanselMinutesPlayer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HanselMinutesPlayer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="be.baes.hanselMinutesPlayer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="facade" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -256,6 +294,42 @@
               <option name="myItemId" value="HanselMinutesPlayer" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HanselMinutesPlayer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="junit-4.10.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HanselMinutesPlayer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="junit-4.10.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="org" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -264,6 +338,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="HanselMinutesPlayer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HanselMinutesPlayer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HanselMinutesPlayer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -310,6 +398,7 @@
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="project.structure.last.edited" value="Modules" />
+    <property name="OverrideImplement.combined" value="true" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="MemberChooser.sorted" value="false" />
@@ -326,8 +415,11 @@
       <recent name="F:\MyDocuments\Eclipse\eclipse-jee-indigo-win32\workspace\HanselMinutesPlayer\Test\src" />
       <recent name="F:\MyDocuments\Eclipse\eclipse-jee-indigo-win32\workspace\HanselMinutesPlayer\HanselMinutesPlayerTest\libs" />
     </key>
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="be.baes.hanselMinutesPlayer.facade" />
+    </key>
   </component>
-  <component name="RunManager" selected="Android Tests.modelTests">
+  <component name="RunManager" selected="Android Tests.facadeTests">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
@@ -504,13 +596,13 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="Unnamed" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+    <configuration default="false" name="facadeTests" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
       <module name="HanselMinutesPlayerTest" />
-      <option name="TESTING_TYPE" value="0" />
+      <option name="TESTING_TYPE" value="1" />
       <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
       <option name="METHOD_NAME" value="" />
       <option name="CLASS_NAME" value="" />
-      <option name="PACKAGE_NAME" value="" />
+      <option name="PACKAGE_NAME" value="be.baes.hanselMinutesPlayer.facade" />
       <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
       <option name="PREFERRED_AVD" value="android32acer7inch" />
       <option name="COMMAND_LINE" value="" />
@@ -531,7 +623,7 @@
       <option name="CLASS_NAME" value="be.baes.hanselMinutesPlayer.model.PodCastTest" />
       <option name="PACKAGE_NAME" value="be.baes.hanselMinutesPlayer.model" />
       <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
-      <option name="PREFERRED_AVD" value="" />
+      <option name="PREFERRED_AVD" value="android32acer7inch" />
       <option name="COMMAND_LINE" value="" />
       <option name="WIPE_USER_DATA" value="false" />
       <option name="DISABLE_BOOT_ANIMATION" value="false" />
@@ -544,7 +636,7 @@
     </configuration>
     <list size="3">
       <item index="0" class="java.lang.String" itemvalue="Android Application.HanselMinutesPlayer" />
-      <item index="1" class="java.lang.String" itemvalue="Android Tests.Unnamed" />
+      <item index="1" class="java.lang.String" itemvalue="Android Tests.facadeTests" />
       <item index="2" class="java.lang.String" itemvalue="Android Tests.modelTests" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
@@ -640,7 +732,7 @@
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="test for all model classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="tests for PositionUpdater class" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -657,6 +749,7 @@
     <MESSAGE value="Added testproject" />
     <MESSAGE value="first tests for model PodCast. More to follow ;-)" />
     <MESSAGE value="test for all model classes" />
+    <MESSAGE value="tests for PositionUpdater class" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -666,16 +759,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/HanselminutesPlayerActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="13" selection-start="1170" selection-end="1170" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="31" selection-start="597" selection-end="597" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/local.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
@@ -733,11 +816,55 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/model/FillListResultTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="43" selection-start="1657" selection-end="1657" vertical-scroll-proportion="1.2177777">
+        <state line="47" column="43" selection-start="1657" selection-end="1657" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#604#613#0" expanded="true" />
             <element signature="e#1444#1453#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/PlayerImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="19" selection-start="358" selection-end="358" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/ioc/HanselMinutesPlayerModule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="48" selection-start="738" selection-end="738" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="9" selection-start="294" selection-end="294" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/HanselMinutesPlayerTest/libs/easymock-3.1.jar!/org/easymock/IExpectationSetters.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="40" selection-start="226" selection-end="226" vertical-scroll-proportion="0.24">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/PositionUpdater.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="84" column="8" selection-start="2830" selection-end="2830" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/facade/PositionUpdaterTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="259" column="8" selection-start="8954" selection-end="8954" vertical-scroll-proportion="1.028889">
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
