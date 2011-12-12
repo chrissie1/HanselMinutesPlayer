@@ -13,11 +13,11 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class PodCastAdapter extends ArrayAdapter<PodCast>
+public class PodCastAdapterImpl extends ArrayAdapter<PodCast>
 {
     private	int resource;
 
-	public PodCastAdapter(Context context, int resource, List<PodCast> items)
+	public PodCastAdapterImpl(Context context, int resource, List<PodCast> items)
 	{
 		super(context, resource, items);
 		this.resource=resource;

@@ -8,9 +8,9 @@ import com.google.inject.Inject;
 
 public class OnDeleteAllClickListener implements View.OnClickListener {
     @Inject PodCastAdapter podCastAdapter;
-    @Inject PodCastList podCastList;
     @Inject
-    Player player;
+    PodCastList podCastList;
+    @Inject Player player;
 
     @Override
     public void onClick(View view) {

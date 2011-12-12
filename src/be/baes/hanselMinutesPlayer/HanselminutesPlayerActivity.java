@@ -4,7 +4,7 @@ import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import be.baes.hanselMinutesPlayer.view.adapters.PodCastAdapter;
+import be.baes.hanselMinutesPlayer.view.adapters.PodCastAdapterImpl;
 import be.baes.hanselMinutesPlayer.controllers.*;
 import be.baes.hanselMinutesPlayer.facade.*;
 import be.baes.hanselMinutesPlayer.model.FillListResult;
@@ -41,7 +41,8 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
 	@Inject
     Player player;
 	@Inject PositionUpdater positionUpdater;
-    @Inject PodCastList podCastList;
+    @Inject
+    PodCastListImpl podCastList;
     @Inject ListViewContextMenu listViewContextMenu;
     @Inject OnScrollPodCastListListener onScrollPodCastListListener;
 
@@ -95,11 +96,11 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
             timer.setText(((Position) o).getTimer());
             currentPodCast.setText(((Position) o).getMessage());
         }
-        if(observable.getClass().equals(PodCastList.class))
+        if(observable.getClass().equals(PodCastListImpl.class))
         {
             if(((FillListResult)o).getPodCasts()!=null)
             {
-                PodCastAdapter adapter = new PodCastAdapter(this, R.layout.row,((FillListResult)o).getPodCasts());
+                PodCastAdapterImpl adapter = new PodCastAdapterImpl(this, R.layout.row,((FillListResult)o).getPodCasts());
                 podCastListView.setAdapter(adapter);
                 podCastListView.setSelection(((FillListResult) o).getPosition());
             } else

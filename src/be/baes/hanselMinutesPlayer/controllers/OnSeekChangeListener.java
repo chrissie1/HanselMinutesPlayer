@@ -7,8 +7,7 @@ import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 
 public class OnSeekChangeListener implements OnSeekBarChangeListener {
-	@Inject
-    Player player;
+	@Inject Player player;
 	private boolean isMoveingSeekBar;
 
 	@Override
