@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PodCastSQLiteAdapter implements PodCastAdapter {
-    @Inject SQLiteHelper dbHelper;
+    SQLiteHelper dbHelper;
     @Inject Application context;
     private SQLiteDatabase db;
     public static final String KEY_LINK= "link";

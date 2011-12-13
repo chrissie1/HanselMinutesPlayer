@@ -5,12 +5,29 @@ public class PodCast {
     private String pubDate;
     private String link;
     private String mP3Link;
-    
+    private Byte[] podCast;
+   
     public PodCast(String title, String pubDate, String link, String mP3Link) {
         this.title = title;
         this.pubDate = pubDate;
         this.link = link;
         this.mP3Link = mP3Link;
+    }
+    
+    public Byte[] getPodCast()
+    {
+        return podCast;
+    }
+    
+    public void setPodCast(Byte[] podCast)
+    {
+        this.podCast = podCast;
+    }
+    
+    public boolean hasPodCast()
+    {
+        if(podCast==null) return false;
+        return true;
     }
 
     public String getMP3Link() {

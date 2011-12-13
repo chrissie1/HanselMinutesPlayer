@@ -1,6 +1,10 @@
 package be.baes.hanselMinutesPlayer.facade;
 
 import be.baes.hanselMinutesPlayer.model.FillListResult;
+import roboguice.inject.ContextScoped;
+
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  * Created by IntelliJ IDEA.
@@ -10,6 +14,8 @@ import be.baes.hanselMinutesPlayer.model.FillListResult;
  * To change this template use File | Settings | File Templates.
  */
 public interface PodCastList {
+    void addObserver(Observer observer);
+
     void load(int page);
 
     void getListFromRssAndUpdateDatabase();

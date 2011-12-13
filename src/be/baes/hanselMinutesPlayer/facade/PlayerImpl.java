@@ -11,7 +11,8 @@ import android.media.MediaPlayer;
 @Singleton
 public class PlayerImpl implements Player {
 	@Inject PositionUpdater positionUpdater;
-    @Inject ProgressReport progressReport;
+    @Inject
+    ProgressReport progressReport;
 	private MediaPlayer mediaPlayer;
 	private PodCast currentPodCast;
 	

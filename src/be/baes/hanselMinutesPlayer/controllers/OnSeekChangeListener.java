@@ -1,13 +1,15 @@
 package be.baes.hanselMinutesPlayer.controllers;
 
 import be.baes.hanselMinutesPlayer.facade.Player;
+import be.baes.hanselMinutesPlayer.facade.PlayerImpl;
 import com.google.inject.Inject;
 
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 
 public class OnSeekChangeListener implements OnSeekBarChangeListener {
-	@Inject Player player;
+	@Inject
+    Player player;
 	private boolean isMoveingSeekBar;
 
 	@Override

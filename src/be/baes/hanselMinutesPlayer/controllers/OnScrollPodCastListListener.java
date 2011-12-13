@@ -2,10 +2,12 @@ package be.baes.hanselMinutesPlayer.controllers;
 
 import android.widget.AbsListView;
 import be.baes.hanselMinutesPlayer.facade.PodCastList;
+import be.baes.hanselMinutesPlayer.facade.PodCastListImpl;
 import com.google.inject.Inject;
 
 public class OnScrollPodCastListListener implements AbsListView.OnScrollListener {
-    @Inject PodCastList podCastList;
+    @Inject
+    PodCastList podCastList;
     private int visibleThreshold = 0;
     private int currentPage = 0;
     private int previousTotal = 0;

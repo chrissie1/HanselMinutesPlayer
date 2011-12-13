@@ -4,6 +4,7 @@ import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import be.baes.hanselMinutesPlayer.view.ProgressReport;
 import be.baes.hanselMinutesPlayer.view.adapters.PodCastAdapterImpl;
 import be.baes.hanselMinutesPlayer.controllers.*;
 import be.baes.hanselMinutesPlayer.facade.*;
@@ -32,17 +33,16 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
     @InjectView(R.id.refreshListButton) Button refreshListButton;
 	@InjectView(R.id.podCastList) ListView podCastListView;
     @InjectView(R.id.numberofpodcasts) TextView numberOfPodCasts;
+    @Inject ProgressReport progressReport;
 	@Inject OnPlayClickListener onPlayClickListener;
 	@Inject OnStopClickListener onStopClickListener;
 	@Inject OnPauseClickListener onPauseClickListener;
 	@Inject OnRefreshListClickListener onRefreshListClickListener;
 	@Inject PodCastItemListClickListener rssItemListClickListener;
 	@Inject OnSeekChangeListener onSeekChangeListener;
-	@Inject
-    Player player;
+	@Inject Player player;
 	@Inject PositionUpdater positionUpdater;
-    @Inject
-    PodCastListImpl podCastList;
+    @Inject PodCastList podCastList;
     @Inject ListViewContextMenu listViewContextMenu;
     @Inject OnScrollPodCastListListener onScrollPodCastListListener;
 
@@ -51,7 +51,8 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        
+
+        progressReport.setActivity(this);
         positionUpdater.addObserver(this);
         podCastList.addObserver(this);
         refreshListButton.setOnClickListener(onRefreshListClickListener);

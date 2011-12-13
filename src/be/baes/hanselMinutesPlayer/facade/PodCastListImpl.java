@@ -7,6 +7,7 @@ import be.baes.hanselMinutesPlayer.rss.HanselFeed;
 import be.baes.hanselMinutesPlayer.view.ProgressReport;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import roboguice.inject.ContextScoped;
 
 import java.util.Observable;
 

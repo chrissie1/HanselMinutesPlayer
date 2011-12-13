@@ -3,13 +3,14 @@ package be.baes.hanselMinutesPlayer.controllers;
 import android.view.View;
 import be.baes.hanselMinutesPlayer.dal.PodCastAdapter;
 import be.baes.hanselMinutesPlayer.facade.Player;
+import be.baes.hanselMinutesPlayer.facade.PlayerImpl;
 import be.baes.hanselMinutesPlayer.facade.PodCastList;
+import be.baes.hanselMinutesPlayer.facade.PodCastListImpl;
 import com.google.inject.Inject;
 
 public class OnDeleteAllClickListener implements View.OnClickListener {
     @Inject PodCastAdapter podCastAdapter;
-    @Inject
-    PodCastList podCastList;
+    @Inject PodCastList podCastList;
     @Inject Player player;
 
     @Override
