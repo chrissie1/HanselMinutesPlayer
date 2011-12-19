@@ -1,12 +1,13 @@
 package be.baes.hanselMinutesPlayer.model;
 
-public class PodCast {
+import java.io.Serializable;
+
+public class PodCast implements Serializable{
     private String title;
     private String pubDate;
     private String link;
     private String mP3Link;
-    private Byte[] podCast;
-   
+
     public PodCast(String title, String pubDate, String link, String mP3Link) {
         this.title = title;
         this.pubDate = pubDate;
@@ -14,22 +15,11 @@ public class PodCast {
         this.mP3Link = mP3Link;
     }
     
-    public Byte[] getPodCast()
+    public String getPodCastName()
     {
-        return podCast;
+        return mP3Link.substring(mP3Link.length()-22);
     }
     
-    public void setPodCast(Byte[] podCast)
-    {
-        this.podCast = podCast;
-    }
-    
-    public boolean hasPodCast()
-    {
-        if(podCast==null) return false;
-        return true;
-    }
-
     public String getMP3Link() {
         return mP3Link;
     }
@@ -64,9 +54,6 @@ public class PodCast {
 
     @Override
     public String toString() {
-        return "PodCast{" +
-                "title='" + title + '\'' +
-                ", pubDate=" + pubDate +
-                '}';
+        return String.format("PodCast{title='%s', pubDate=%s}", title, pubDate);
     }
 }

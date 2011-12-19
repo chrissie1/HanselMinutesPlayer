@@ -1,5 +1,6 @@
 package be.baes.hanselMinutesPlayer.view.adapters;
 
+import java.io.File;
 import java.util.List;
 
 import be.baes.hanselMinutesPlayer.R;
@@ -44,8 +45,16 @@ public class PodCastAdapterImpl extends ArrayAdapter<PodCast>
 		TextView rowTitle =(TextView)rssItemView.findViewById(R.id.rowTitle);
 		TextView rowPubDate =(TextView)rssItemView.findViewById(R.id.rowPubDate);
 
-		rowTitle.setText((position+1) + ". " + podCast.getTitle());
-		rowPubDate.setText(podCast.getPubDate());
+        File downloadedFile = new File(getContext().getExternalCacheDir() , podCast.getPodCastName());
+        if (downloadedFile.exists()) {
+            rowTitle.setTextColor(getContext().getResources().getColor(R.color.green));
+        }
+        else
+        {
+            rowTitle.setTextColor(getContext().getResources().getColor(R.color.white));
+        }
+        rowTitle.setText(String.format("%d. %s", position + 1, podCast.getTitle()));
+        rowPubDate.setText(podCast.getPubDate());
 		return rssItemView;
 	}
 

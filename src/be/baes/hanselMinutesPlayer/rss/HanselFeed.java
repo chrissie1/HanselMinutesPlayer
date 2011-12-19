@@ -1,7 +1,7 @@
 package be.baes.hanselMinutesPlayer.rss;
 
 import android.os.StrictMode;
-import com.google.inject.Inject;
+import be.baes.hanselMinutesPlayer.Constants;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
@@ -14,12 +14,11 @@ import java.io.IOException;
 import java.net.URL;
 
 public class HanselFeed {
-    private static final String urlToRssFeed = "http://feeds.feedburner.com/HanselminutesCompleteMP3?format=xml";
-    
+
     public RSSFeed getFeed() throws IOException, SAXException, ParserConfigurationException {
         StrictMode.ThreadPolicy tp = StrictMode.ThreadPolicy.LAX;
         StrictMode.setThreadPolicy(tp);
-        URL url = new URL(urlToRssFeed);
+        URL url = new URL(Constants.urlToRssFeed);
         SAXParserFactory factory = SAXParserFactory.newInstance();
         SAXParser parser = factory.newSAXParser();
         XMLReader xmlreader = parser.getXMLReader();

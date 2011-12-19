@@ -1,6 +1,8 @@
 package be.baes.hanselMinutesPlayer.model;
 
-public class Position {
+import java.io.Serializable;
+
+public class Position implements Serializable {
     private String timer;
     private String message;
     private int progress;

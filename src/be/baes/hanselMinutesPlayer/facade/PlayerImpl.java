@@ -1,5 +1,7 @@
 package be.baes.hanselMinutesPlayer.facade;
 
+import android.util.Log;
+import be.baes.hanselMinutesPlayer.Constants;
 import be.baes.hanselMinutesPlayer.facade.task.OpeningPodCastAsyncTask;
 import be.baes.hanselMinutesPlayer.model.PodCast;
 import be.baes.hanselMinutesPlayer.view.ProgressReport;
@@ -8,20 +10,22 @@ import com.google.inject.Singleton;
 
 import android.media.MediaPlayer;
 
+import java.io.File;
+import java.io.IOException;
+
 @Singleton
 public class PlayerImpl implements Player {
 	@Inject PositionUpdater positionUpdater;
-    @Inject
-    ProgressReport progressReport;
+    @Inject ProgressReport progressReport;
 	private MediaPlayer mediaPlayer;
 	private PodCast currentPodCast;
 	
 	public PlayerImpl()
 	{
-		mediaPlayer = new MediaPlayer();
+        mediaPlayer = new MediaPlayer();
 	}
 
-	@Override
+   	@Override
     public void play()
 	{
 	    positionUpdater.updatePosition();
@@ -39,21 +43,44 @@ public class PlayerImpl implements Player {
         }
 	}
 
-	@Override
-    public void setCurrentFile(PodCast currentPodCast) {
+    @Override
+    public PodCast getCurrentPodCast()
+    {
+        return currentPodCast;
+    }
+
+    @Override
+    public void setDataSource(String path) {
+        try {
+            mediaPlayer = new MediaPlayer();
+            mediaPlayer.setDataSource(path);
+            mediaPlayer.prepare();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void setCurrentFile(PodCast currentPodCast, File cacheDir) {
 		if(this.currentPodCast != currentPodCast)
         {
             stop();
             this.currentPodCast = currentPodCast;
             if(currentPodCast == null)
             {
+                Log.i(Constants.LOG_ID, "currentPodCast is null");
                 positionUpdater.emptyFile();
             }
             else
             {
-                OpeningPodCastAsyncTask task = new OpeningPodCastAsyncTask(mediaPlayer,positionUpdater,currentPodCast,progressReport);
-                task.execute(null,null,null);
+                Log.i(Constants.LOG_ID, "currentPodCast is filled");
+                OpeningPodCastAsyncTask task = new OpeningPodCastAsyncTask(this,currentPodCast,progressReport, positionUpdater);
+                task.execute(cacheDir,null,null);
             }
+        }
+        else
+        {
+            Log.i(Constants.LOG_ID, "currentPodCast will not be updated because it did not change.");
         }
 	}
 
@@ -61,7 +88,11 @@ public class PlayerImpl implements Player {
     public void stop()
 	{
         positionUpdater.stopPosition();
-		mediaPlayer.stop();
+        if(mediaPlayer!=null)
+        {
+		    mediaPlayer.pause();
+            mediaPlayer.seekTo(0);
+        }
 	}
 	
 	@Override
@@ -94,10 +125,13 @@ public class PlayerImpl implements Player {
     public void destroy()
 	{
         positionUpdater.pausePosition();
-		mediaPlayer.stop();
-		mediaPlayer.reset();
-		mediaPlayer.release();
-		mediaPlayer = null;
+        if(mediaPlayer!=null)
+        {
+		    mediaPlayer.stop();
+		    mediaPlayer.reset();
+		    mediaPlayer.release();
+		    mediaPlayer = null;
+        }
 	}
 	
 }

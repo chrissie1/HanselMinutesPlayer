@@ -12,8 +12,7 @@ import com.google.inject.Singleton;
 
 @Singleton
 public class PositionUpdater extends Observable {
-	@Inject
-    Player player;
+	@Inject Player player;
 	
 	private final Handler handler = new Handler();
     private Position position;
@@ -44,8 +43,8 @@ public class PositionUpdater extends Observable {
     {
     	position.setProgress(0);
         position.setMaxDuration(player.getDuration());
-        position.setTimer("Timer: " + toMinutes(0) + "/" + toMinutes(player.getDuration()));
-        position.setMessage("Selected: " + player.getCurrentTitle());
+        position.setTimer(String.format("Timer: %s/%s", toMinutes(0), toMinutes(player.getDuration())));
+        position.setMessage(String.format("Selected: %s", player.getCurrentTitle()));
         position.setHasPodCast(true);
         setChanged();
         notifyObservers(position);
@@ -54,8 +53,8 @@ public class PositionUpdater extends Observable {
     public void stopPosition()
     {
     	handler.removeCallbacks(updatePositionRunnable);
-        position.setTimer("Timer: " + toMinutes(0) + "/" + toMinutes(player.getDuration()));
-        position.setMessage("Stopped: " + player.getCurrentTitle());
+        position.setTimer(String.format("Timer: %s/%s", toMinutes(0), toMinutes(player.getDuration())));
+        position.setMessage(String.format("Stopped: %s", player.getCurrentTitle()));
         position.setMaxDuration(player.getDuration());
         position.setHasPodCast(true);
         position.setProgress(0);
@@ -66,8 +65,8 @@ public class PositionUpdater extends Observable {
     public void pausePosition()
     {
         position.setProgress(player.getCurrentPosition());
-        position.setTimer("Timer: " + toMinutes(player.getCurrentPosition()) + "/" + toMinutes(player.getDuration()));
-        position.setMessage("Pausing: " + player.getCurrentTitle());
+        position.setTimer(String.format("Timer: %s/%s", toMinutes(player.getCurrentPosition()), toMinutes(player.getDuration())));
+        position.setMessage(String.format("Pausing: %s", player.getCurrentTitle()));
         position.setMaxDuration(player.getDuration());
         position.setHasPodCast(true);
         handler.removeCallbacks(updatePositionRunnable);
@@ -78,8 +77,8 @@ public class PositionUpdater extends Observable {
     public void updatePosition(){
         handler.removeCallbacks(updatePositionRunnable);
         position.setProgress(player.getCurrentPosition());
-        position.setTimer("Timer: " + toMinutes(player.getCurrentPosition()) + "/" + toMinutes(player.getDuration()));
-        position.setMessage("Playing: " + player.getCurrentTitle());
+        position.setTimer(String.format("Timer: %s/%s", toMinutes(player.getCurrentPosition()), toMinutes(player.getDuration())));
+        position.setMessage(String.format("Playing: %s", player.getCurrentTitle()));
         position.setMaxDuration(player.getDuration());
         position.setHasPodCast(true);
         handler.postDelayed(updatePositionRunnable, 500);

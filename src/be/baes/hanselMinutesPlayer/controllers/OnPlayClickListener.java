@@ -1,7 +1,8 @@
 package be.baes.hanselMinutesPlayer.controllers;
 
+import android.util.Log;
+import be.baes.hanselMinutesPlayer.Constants;
 import be.baes.hanselMinutesPlayer.facade.Player;
-import be.baes.hanselMinutesPlayer.facade.PlayerImpl;
 import com.google.inject.Inject;
 
 import android.view.View;
@@ -12,6 +13,7 @@ public class OnPlayClickListener implements OnClickListener {
 
 	@Override
     public void onClick(View arg0) {
+        Log.i(Constants.LOG_ID, "Clicked play");
         player.play();
 	}
 }

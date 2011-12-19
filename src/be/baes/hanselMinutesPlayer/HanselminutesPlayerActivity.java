@@ -1,5 +1,6 @@
 package be.baes.hanselMinutesPlayer;
 
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,7 +25,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class HanselminutesPlayerActivity extends RoboActivity implements Observer{
-	@InjectView(R.id.playButton) Button playButton;
+    @InjectView(R.id.playButton) Button playButton;
 	@InjectView(R.id.stopButton) Button stopButton;
 	@InjectView(R.id.pauseButton) Button pauseButton;
 	@InjectView(R.id.seekBar) SeekBar seekbar;
@@ -45,7 +46,8 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
     @Inject PodCastList podCastList;
     @Inject ListViewContextMenu listViewContextMenu;
     @Inject OnScrollPodCastListListener onScrollPodCastListListener;
-
+    Position position;
+    
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -63,13 +65,28 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
         podCastListView.setOnScrollListener(onScrollPodCastListListener);
         seekbar.setOnSeekBarChangeListener(onSeekChangeListener);
         registerForContextMenu(podCastListView);
-        podCastList.load(0);
+        if(savedInstanceState==null)
+        {
+            Log.i(Constants.LOG_ID, "OnCreate no saved instance state");
+            podCastList.load(0);
+        }
+        else
+        {
+            Log.i(Constants.LOG_ID, "OnCreate with saved instance state");
+            Log.i(Constants.LOG_ID, String.format("CurrentPage: %d", savedInstanceState.getInt(Constants.CURRENT_PAGE)));
+            Log.i(Constants.LOG_ID, String.format("Previous item visible was: %d", savedInstanceState.getInt(Constants.LIST_VIEW_POSITION)));
+            podCastList.load(savedInstanceState.getInt(Constants.CURRENT_PAGE), savedInstanceState.getInt(Constants.LIST_VIEW_POSITION));
+            setPosition((Position) savedInstanceState.getSerializable(Constants.POSITION));
+        }
     }
-    
+
     @Override
     public void onDestroy()
     {
-    	player.destroy();
+        Log.i(Constants.LOG_ID, "Destroying activity");
+        super.onDestroy();
+        positionUpdater.deleteObserver(this);
+        podCastList.deleteObserver(this);
     }
 
     @Override
@@ -83,33 +100,51 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
         return true;
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle bundle)
+    {
+        Log.i(Constants.LOG_ID, "Saving instance state");
+        bundle.putInt(Constants.CURRENT_PAGE, podCastList.getCurrentPage());
+        bundle.putInt(Constants.LIST_VIEW_POSITION, podCastListView.getFirstVisiblePosition());
+        bundle.putSerializable(Constants.POSITION, position);
+        super.onSaveInstanceState(bundle);
+    }
+
     @SuppressWarnings("ConstantConditions")
     @Override
     public void update(Observable observable, Object o) {
         if(observable.getClass().equals(PositionUpdater.class))
         {
-            playButton.setEnabled(((Position)o).getHasPodCast());
-            stopButton.setEnabled(((Position)o).getHasPodCast());
-            pauseButton.setEnabled(((Position)o).getHasPodCast());
-            seekbar.setEnabled(((Position)o).getHasPodCast());
-            seekbar.setMax(((Position)o).getMaxDuration());
-            seekbar.setProgress(((Position)o).getProgress());
-            timer.setText(((Position) o).getTimer());
-            currentPodCast.setText(((Position) o).getMessage());
+            setPosition((Position) o);
         }
         if(observable.getClass().equals(PodCastListImpl.class))
         {
-            if(((FillListResult)o).getPodCasts()!=null)
-            {
-                PodCastAdapterImpl adapter = new PodCastAdapterImpl(this, R.layout.row,((FillListResult)o).getPodCasts());
-                podCastListView.setAdapter(adapter);
-                podCastListView.setSelection(((FillListResult) o).getPosition());
-            } else
-            {
-                podCastListView.setAdapter(null);
-            }
-            numberOfPodCasts.setText(((FillListResult)o).getNumberOfPodCasts());
-            
+            setList((FillListResult) o);
         }
+    }
+
+    private void setList(FillListResult fillListResult) {
+        if(fillListResult.getPodCasts()!=null)
+        {
+            PodCastAdapterImpl adapter = new PodCastAdapterImpl(this, R.layout.row, fillListResult.getPodCasts());
+            podCastListView.setAdapter(adapter);
+            podCastListView.setSelection(fillListResult.getPosition());
+        } else
+        {
+            podCastListView.setAdapter(null);
+        }
+        numberOfPodCasts.setText(fillListResult.getNumberOfPodCasts());
+    }
+
+    private void setPosition(Position position) {
+        playButton.setEnabled(position.getHasPodCast());
+        stopButton.setEnabled(position.getHasPodCast());
+        pauseButton.setEnabled(position.getHasPodCast());
+        seekbar.setEnabled(position.getHasPodCast());
+        seekbar.setMax(position.getMaxDuration());
+        seekbar.setProgress(position.getProgress());
+        timer.setText(position.getTimer());
+        currentPodCast.setText(position.getMessage());
+        this.position = position;
     }
 }

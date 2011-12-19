@@ -1,14 +1,8 @@
 package be.baes.hanselMinutesPlayer.view;
 
 import android.app.Activity;
-import android.app.Application;
 import android.app.ProgressDialog;
-import android.content.Context;
-import com.google.inject.Inject;
-import com.google.inject.Provider;
 import com.google.inject.Singleton;
-import roboguice.inject.ContextScoped;
-import roboguice.inject.ContextScopedProvider;
 
 @Singleton
 public class ProgressReportAndroid implements ProgressReport {

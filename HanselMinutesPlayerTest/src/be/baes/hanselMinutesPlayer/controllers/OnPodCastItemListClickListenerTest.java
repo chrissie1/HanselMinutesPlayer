@@ -38,7 +38,7 @@ public class OnPodCastItemListClickListenerTest extends InstrumentationTestCase{
         PodCast podCast = new PodCast("","","","");
         List<PodCast> podCasts = new ArrayList<PodCast>();
         podCasts.add(podCast);
-        player.setCurrentFile(podCast);
+        player.setCurrentFile(podCast, null);
         replay(player);
         ListView adapterView = new ListView(new MockContext2());
         PodCastAdapterImpl podCastAdapter = new PodCastAdapterImpl(new MockContext2(), R.layout.row,podCasts);

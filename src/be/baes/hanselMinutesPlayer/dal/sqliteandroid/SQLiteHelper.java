@@ -4,23 +4,12 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-import com.google.inject.Inject;
+import be.baes.hanselMinutesPlayer.Constants;
 
 public class SQLiteHelper extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME = "HanselMinutesPlayer";
-    private static final int DATABASE_VERSION = 1;
 
-    //DatabaseSQLStatement
-    private static final String DATABASE_CREATE =
-            "Create table podcasts(" +
-                    "link text primary key, " +
-                    "title text not null, " +
-                    "pubdate text not null, " +
-                    "mp3link text not null)";
-
-    @Inject
     public SQLiteHelper(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        super(context, Constants.DATABASE_NAME, null, Constants.DATABASE_VERSION);
     }
 
     /* (non-Javadoc)
@@ -28,8 +17,8 @@ public class SQLiteHelper extends SQLiteOpenHelper {
       */
     @Override
     public void onCreate(SQLiteDatabase db) {
-        Log.i("cbaes", "Creating database");
-        db.execSQL(DATABASE_CREATE);
+        Log.i(Constants.LOG_ID, "Creating database");
+        db.execSQL(Constants.DATABASE_CREATE);
     }
 
     /* (non-Javadoc)
@@ -37,18 +26,20 @@ public class SQLiteHelper extends SQLiteOpenHelper {
       */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        Log.i("cbaes","upgrading database database");
-        db.execSQL("DROP TABLE IF EXISTS podcasts");
+        Log.i(Constants.LOG_ID,"upgrading database");
+        db.execSQL(Constants.DROP_TABLE);
         onCreate(db);
     }
 
     public SQLiteDatabase getWritableDatabase()
     {
+        Log.i(Constants.LOG_ID, "getWritableDatabase");
         return super.getWritableDatabase();
     }
 
     public void close()
     {
+        Log.i(Constants.LOG_ID, "close");
         super.close();
     }
 }

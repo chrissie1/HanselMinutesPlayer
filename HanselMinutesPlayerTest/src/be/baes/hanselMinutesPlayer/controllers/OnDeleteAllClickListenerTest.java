@@ -48,7 +48,7 @@ public class OnDeleteAllClickListenerTest extends TestCase {
 
     public void testIfPlayerSetCurrentFileIsCalledOnClick()
     {
-        player.setCurrentFile(null);
+        player.setCurrentFile(null,null);
         replay(player);
         listener.onClick(null);
         verify(player);

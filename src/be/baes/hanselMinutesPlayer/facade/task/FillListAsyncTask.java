@@ -35,11 +35,19 @@ public class FillListAsyncTask extends AsyncTask<Integer,Void,FillListResult>{
 
     @Override
     protected FillListResult doInBackground(Integer... integers) {
-        FillListResult fillListResult = new FillListResult(null,"", integers[0]*PAGE_SIZE - 1);
+        FillListResult fillListResult;
+        if(integers.length == 1)
+        {
+            fillListResult = new FillListResult(null,"", integers[0]*PAGE_SIZE - 1);
+        }
+        else
+        {
+            fillListResult = new FillListResult(null,"", integers[1]);
+        }
         List<PodCast> podCasts = podCastAdapter.getAllItems(0,PAGE_SIZE*(integers[0]+1));
         if(podCasts.size() > 0)
         {
-            fillListResult.setNumberOfPodCasts("Total: " + podCastAdapter.numberOfPodcasts() + " Loaded: " + podCasts.size());
+            fillListResult.setNumberOfPodCasts(String.format("Total: %d Loaded: %d", podCastAdapter.numberOfPodcasts(), podCasts.size()));
             fillListResult.setPodCasts(podCasts);
         }
         else

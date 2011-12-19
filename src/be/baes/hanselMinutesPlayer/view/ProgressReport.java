@@ -7,7 +7,6 @@ import android.app.Activity;
  * User: christiaan
  * Date: 12/12/11
  * Time: 19:43
- * To change this template use File | Settings | File Templates.
  */
 public interface ProgressReport {
     void setActivity(Activity activity);

@@ -7,7 +7,6 @@ import be.baes.hanselMinutesPlayer.rss.HanselFeed;
 import be.baes.hanselMinutesPlayer.view.ProgressReport;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import roboguice.inject.ContextScoped;
 
 import java.util.Observable;
 
@@ -18,6 +17,7 @@ public class PodCastListImpl extends Observable implements PodCastList {
     @Inject ProgressReport progressReport;
     GetListFromRssAndUpdateDatabaseAsyncTask task;
     FillListAsyncTask fillListAsyncTask;
+    private int currentPage;
 
     public PodCastListImpl()
     {
@@ -27,8 +27,18 @@ public class PodCastListImpl extends Observable implements PodCastList {
     @Override
     public void load(int page)
     {
+        currentPage = page;
         fillListAsyncTask = new FillListAsyncTask(podCastAdapter,this, progressReport);
         fillListAsyncTask.execute(page);
+    }
+    
+    @Override
+    public void load(int page, int position)
+    {
+        currentPage = page;
+        fillListAsyncTask = new FillListAsyncTask(podCastAdapter,this, progressReport);
+        Integer ints[] = {page, position};
+        fillListAsyncTask.execute(ints);
     }
 
     @Override
@@ -43,6 +53,11 @@ public class PodCastListImpl extends Observable implements PodCastList {
     {
         setChanged();
         notifyObservers(result);
+    }
+
+    @Override
+    public int getCurrentPage() {
+        return currentPage;
     }
 
 }

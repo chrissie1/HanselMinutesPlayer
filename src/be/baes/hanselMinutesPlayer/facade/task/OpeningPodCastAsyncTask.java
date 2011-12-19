@@ -1,24 +1,26 @@
 package be.baes.hanselMinutesPlayer.facade.task;
 
-import android.media.MediaPlayer;
 import android.os.AsyncTask;
+import android.util.Log;
+import be.baes.hanselMinutesPlayer.Constants;
+import be.baes.hanselMinutesPlayer.facade.Player;
 import be.baes.hanselMinutesPlayer.facade.PositionUpdater;
 import be.baes.hanselMinutesPlayer.model.PodCast;
 import be.baes.hanselMinutesPlayer.view.ProgressReport;
 
-import java.io.IOException;
+import java.io.File;
 
-public class OpeningPodCastAsyncTask extends AsyncTask<Void,String,Void>{
+public class OpeningPodCastAsyncTask extends AsyncTask<File,String,Void>{
     private ProgressReport progressReport;
-    private MediaPlayer mediaPlayer;
-    private PositionUpdater positionUpdater;
+    private Player player;
     private PodCast currentPodCast;
+    private PositionUpdater positionUpdater;
 
-    public OpeningPodCastAsyncTask(MediaPlayer mediaPlayer,PositionUpdater positionUpdater, PodCast currentPodCast,ProgressReport progressReport)
+    public OpeningPodCastAsyncTask(Player player, PodCast currentPodCast,ProgressReport progressReport, PositionUpdater positionUpdater)
     {
-        this.progressReport = progressReport;
         this.positionUpdater = positionUpdater;
-        this.mediaPlayer = mediaPlayer;
+        this.progressReport = progressReport;
+        this.player = player;
         this.currentPodCast = currentPodCast;
     }
 
@@ -47,14 +49,23 @@ public class OpeningPodCastAsyncTask extends AsyncTask<Void,String,Void>{
     }
 
     @Override
-    protected Void doInBackground(Void... voids) {
-        mediaPlayer.reset();
+    protected Void doInBackground(File... voids) {
         try {
-            mediaPlayer.setDataSource(currentPodCast.getMP3Link());
-            mediaPlayer.prepare();
-        } catch (IOException e) {
-            publishProgress("Error: " + e.getMessage());
+            File downloadedFile = new File(voids[0] , currentPodCast.getPodCastName());
+            if (downloadedFile.exists()) {
+                Log.i(Constants.LOG_ID, String.format("Playing local file: %s", downloadedFile.getPath()));
+                Log.i(Constants.LOG_ID, String.format("mp3 size: %d", downloadedFile.getTotalSpace()));
+                player.setDataSource(downloadedFile.getPath());
+            }
+            else
+            {
+                Log.i(Constants.LOG_ID, String.format("Playing remote file: %s", currentPodCast.getMP3Link()));
+                player.setDataSource(currentPodCast.getMP3Link());
+            }
+        } catch (Exception e) {
+            Log.e(Constants.LOG_ID, String.format("Error: %s", e.getMessage()),e);
             e.printStackTrace();
+            publishProgress("Error: " + e.getMessage());
         }
         return null;
     }

@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import be.baes.hanselMinutesPlayer.Constants;
 import be.baes.hanselMinutesPlayer.dal.PodCastAdapter;
 import be.baes.hanselMinutesPlayer.model.PodCast;
 import com.google.inject.Inject;
@@ -17,40 +18,36 @@ public class PodCastSQLiteAdapter implements PodCastAdapter {
     SQLiteHelper dbHelper;
     @Inject Application context;
     private SQLiteDatabase db;
-    public static final String KEY_LINK= "link";
-    public static final String KEY_TITLE = "title";
-    public static final String KEY_PUBDATE = "pubdate";
-    public static final String KEY_MP3LINK = "mp3link";
-    public static final String DATABASE_TABLE = "podcasts";
 
     public PodCastSQLiteAdapter()
     {
-        Log.i("cbaes", "New instance of PodCastSQLiteAdapter");
+        Log.i(Constants.LOG_ID, "New instance of PodCastSQLiteAdapter");
         open();
     }
 
     private void open() throws SQLException
     {
-        if(context == null) Log.i("cbaes", "activity is still null");
+        if(context == null) Log.i(Constants.LOG_ID, "activity is still null");
         this.dbHelper = new SQLiteHelper(context);
-        Log.i("cbaes", "getWritableDatabase");
         try
         {
+            Log.i(Constants.LOG_ID, "getWritableDatabase");
             db = dbHelper.getWritableDatabase();
         }
         catch (Exception ex)
         {
-            Log.i("cbaes", "getWritableDatabase error: " + ex.getMessage());
+            Log.e(Constants.LOG_ID, String.format("Error: %s", ex.getMessage()),ex);
+            ex.printStackTrace();
         }
     }
 
     @Override
     protected void finalize() throws Throwable
     {
-        Log.i("cbaes", "finalizing PodCastSQLiteAdapter");
+        Log.i(Constants.LOG_ID, "finalizing PodCastSQLiteAdapter");
         try
         {
-            dbHelper.close();        // close open files
+            dbHelper.close();
         }
         finally
         {
@@ -60,35 +57,36 @@ public class PodCastSQLiteAdapter implements PodCastAdapter {
 
    @Override
     public List<PodCast> getAllItems() {
-        return getAllItems(null,null);
+       Log.i(Constants.LOG_ID, "Getting all items.");
+       return getAllItems(null,null);
     }
 
     @Override
     public boolean updatePodCast(PodCast podCast) {
-        Log.i("cbaes","Updating podcast");
+        Log.i(Constants.LOG_ID,"Updating podcast");
         open();
         ContentValues updateValues = createContentValues(podCast);
         String[] whereArgs = {podCast.getLink()};
-        boolean result = db.update(DATABASE_TABLE, updateValues, KEY_LINK + "=?",whereArgs )>0;
+        boolean result = db.update(Constants.TABLE_PODCASTS, updateValues, Constants.PODCASTS_COLUMN_LINK + "=?",whereArgs )>0;
         dbHelper.close();
         return result;
     }
 
     @Override
     public long insertPodCast(PodCast podCast) {
-        Log.i("cbaes","Creating podcast");
+        Log.i(Constants.LOG_ID,"Creating podcast");
         open();
         ContentValues initValues = createContentValues(podCast);
-        long result = db.insert(DATABASE_TABLE, null, initValues);
+        long result = db.insert(Constants.TABLE_PODCASTS, null, initValues);
         dbHelper.close();
         return result;
     }
 
     @Override
     public boolean deleteAll() {
-        Log.i("cbaes","Delete all podcasts");
+        Log.i(Constants.LOG_ID,"Delete all podcasts");
         open();
-        boolean result = db.delete(DATABASE_TABLE, null, null)>0;
+        boolean result = db.delete(Constants.TABLE_PODCASTS, null, null)>0;
         dbHelper.close();
         return result;
     }
@@ -96,30 +94,31 @@ public class PodCastSQLiteAdapter implements PodCastAdapter {
     @Override
     public int numberOfPodcasts() {
         int result;
-        Log.i("cbaes", "Count all podcasts");
+        Log.i(Constants.LOG_ID, "Count all podcasts");
         open();
-        Cursor c = db.rawQuery("Select count(*) from " + DATABASE_TABLE, null);
+        Cursor c = db.rawQuery(String.format("Select count(*) from %s", Constants.TABLE_PODCASTS), null);
         c.moveToFirst();
         result = c.getInt(0);
         dbHelper.close();
-        return result;  //To change body of implemented methods use File | Settings | File Templates.
+        return result;
     }
 
     @Override
     public List<PodCast> getAllItems(Integer pageFrom, Integer pageTo) {
         List<PodCast> result = null;
-        Log.i("cbaes","Fetching all podcasts");
+        Log.i(Constants.LOG_ID,"Fetching all podcasts");
         open();
         String limit = "";
         if(pageFrom!=null && pageTo!=null) 
             limit = pageFrom.toString() + ", " + pageTo.toString();
-        Cursor cursor = db.query(DATABASE_TABLE, new String[]{KEY_TITLE, KEY_PUBDATE, KEY_LINK, KEY_MP3LINK}, null, null, null, null, "cast(substr(" + KEY_LINK + ",49) as integer)" + " DESC",limit);
+        Cursor cursor = db.query(Constants.TABLE_PODCASTS, new String[]{Constants.PODCASTS_COLUMN_TITLE, Constants.PODCASTS_COLUMN_PUBDATE, Constants.PODCASTS_COLUMN_LINK, Constants.PODCASTS_COLUMN_MP3LINK}, null, null, null, null, "cast(substr(" + Constants.PODCASTS_COLUMN_LINK + ",49) as integer)" + " DESC",limit);
         if(cursor != null)
         {
             result = new ArrayList<PodCast>();
             while (cursor.moveToNext())
             {
-                result.add(new PodCast(cursor.getString(0),cursor.getString(1),cursor.getString(2), cursor.getString(3)));
+                PodCast podCast = new PodCast(cursor.getString(0),cursor.getString(1),cursor.getString(2), cursor.getString(3));
+                result.add(podCast);
             }
             cursor.close();
         }
@@ -129,10 +128,10 @@ public class PodCastSQLiteAdapter implements PodCastAdapter {
 
     private ContentValues createContentValues(PodCast podCast) {
         ContentValues values = new ContentValues();
-        values.put(KEY_TITLE, podCast.getTitle());
-        values.put(KEY_LINK, podCast.getLink());
-        values.put(KEY_MP3LINK, podCast.getMP3Link());
-        values.put(KEY_PUBDATE, podCast.getPubDate());
+        values.put(Constants.PODCASTS_COLUMN_TITLE, podCast.getTitle());
+        values.put(Constants.PODCASTS_COLUMN_LINK, podCast.getLink());
+        values.put(Constants.PODCASTS_COLUMN_MP3LINK, podCast.getMP3Link());
+        values.put(Constants.PODCASTS_COLUMN_PUBDATE, podCast.getPubDate());
         return values;
     }
 }

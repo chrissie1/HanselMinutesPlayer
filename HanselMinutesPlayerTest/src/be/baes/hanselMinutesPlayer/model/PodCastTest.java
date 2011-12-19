@@ -57,7 +57,7 @@ public class PodCastTest extends TestCase {
     public void testCanSetPodCast()
     {
         PodCast podCast = new PodCast("title", "pubdate", "link", "mp3link");
-        Byte[] mp3 = new Byte[0];
+        byte[] mp3 = new byte[0];
         podCast.setPodCast(mp3);
         assertEquals(mp3,podCast.getPodCast());
     }
@@ -65,7 +65,7 @@ public class PodCastTest extends TestCase {
     public void testIfHasPodCastIsTrueWhenPodCastIsNotNull()
     {
         PodCast podCast = new PodCast("title", "pubdate", "link", "mp3link");
-        Byte[] mp3 = new Byte[0];
+        byte[] mp3 = new byte[0];
         podCast.setPodCast(mp3);
         assertTrue(podCast.hasPodCast());
     }
@@ -73,7 +73,7 @@ public class PodCastTest extends TestCase {
     public void testIfHasPodCastIsFalseWhenPodCastIsNull()
     {
         PodCast podCast = new PodCast("title", "pubdate", "link", "mp3link");
-        Byte[] mp3 = null;
+        byte[] mp3 = null;
         podCast.setPodCast(mp3);
         assertFalse(podCast.hasPodCast());
     }
