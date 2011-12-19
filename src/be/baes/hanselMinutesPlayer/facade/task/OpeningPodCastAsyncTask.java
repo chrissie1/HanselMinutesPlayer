@@ -38,7 +38,7 @@ public class OpeningPodCastAsyncTask extends AsyncTask<File,String,Void>{
     protected void onPostExecute(Void result)
     {
         progressReport.endProgress();
-        positionUpdater.startPosition();
+        positionUpdater.startPosition(resources);
     }
 
     @Override

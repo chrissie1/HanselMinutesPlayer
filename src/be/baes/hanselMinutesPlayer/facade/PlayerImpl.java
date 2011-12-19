@@ -20,8 +20,9 @@ public class PlayerImpl implements Player {
     @Inject ProgressReport progressReport;
 	private MediaPlayer mediaPlayer;
 	private PodCast currentPodCast;
-	
-	public PlayerImpl()
+    private Resources resources;
+
+    public PlayerImpl()
 	{
         mediaPlayer = new MediaPlayer();
 	}
@@ -29,7 +30,7 @@ public class PlayerImpl implements Player {
    	@Override
     public void play()
 	{
-	    positionUpdater.updatePosition();
+	    positionUpdater.updatePosition(resources);
 		mediaPlayer.start();
 	}
 	
@@ -63,14 +64,15 @@ public class PlayerImpl implements Player {
 
     @Override
     public void setCurrentFile(PodCast currentPodCast, File cacheDir, Resources resources) {
-		if(this.currentPodCast != currentPodCast)
+        this.resources = resources;
+        if(this.currentPodCast != currentPodCast)
         {
             stop();
             this.currentPodCast = currentPodCast;
             if(currentPodCast == null)
             {
                 Log.i(Constants.LOG_ID, "currentPodCast is null");
-                positionUpdater.emptyFile();
+                positionUpdater.emptyFile(resources);
             }
             else
             {
@@ -88,7 +90,7 @@ public class PlayerImpl implements Player {
 	@Override
     public void stop()
 	{
-        positionUpdater.stopPosition();
+        positionUpdater.stopPosition(resources);
         if(mediaPlayer!=null)
         {
 		    mediaPlayer.pause();
@@ -99,7 +101,7 @@ public class PlayerImpl implements Player {
 	@Override
     public void pause()
 	{
-	    positionUpdater.pausePosition();
+	    positionUpdater.pausePosition(resources);
 		mediaPlayer.pause();
 	}
 	
@@ -125,7 +127,7 @@ public class PlayerImpl implements Player {
 	@Override
     public void destroy()
 	{
-        positionUpdater.pausePosition();
+        positionUpdater.pausePosition(resources);
         if(mediaPlayer!=null)
         {
 		    mediaPlayer.stop();

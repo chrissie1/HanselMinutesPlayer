@@ -14,24 +14,9 @@
   <component name="ChangeListManager">
     <list default="true" id="3d1909c7-17d6-46f5-8426-ed1ebc68a21b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/main.xml" afterPath="$PROJECT_DIR$/res/layout/main.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/strings.xml" afterPath="$PROJECT_DIR$/res/values/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/HanselminutesPlayerActivity.java" afterPath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/HanselminutesPlayerActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/OnDeleteAllClickListener.java" afterPath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/OnDeleteAllClickListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/OnDownloadPodCastClickListener.java" afterPath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/OnDownloadPodCastClickListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/OnRefreshListClickListener.java" afterPath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/OnRefreshListClickListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/OnScrollPodCastListListener.java" afterPath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/OnScrollPodCastListListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/PodCastItemListClickListener.java" afterPath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/PodCastItemListClickListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/Player.java" afterPath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/Player.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/PlayerImpl.java" afterPath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/PlayerImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/PodCastList.java" afterPath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/PodCastList.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/PodCastListImpl.java" afterPath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/PodCastListImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/PositionUpdater.java" afterPath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/PositionUpdater.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/task/DownloadMp3AsyncTask.java" afterPath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/task/DownloadMp3AsyncTask.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/task/FillListAsyncTask.java" afterPath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/task/FillListAsyncTask.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/task/GetListFromRssAndUpdateDatabaseAsyncTask.java" afterPath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/task/GetListFromRssAndUpdateDatabaseAsyncTask.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/task/OpeningPodCastAsyncTask.java" afterPath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/task/OpeningPodCastAsyncTask.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/view/adapters/PodCastAdapterImpl.java" afterPath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/view/adapters/PodCastAdapterImpl.java" />
     </list>
     <ignored path="HanselMinutesPlayer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -92,7 +77,25 @@
       <file leaf-file-name="strings.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="44" selection-start="1136" selection-end="1136" vertical-scroll-proportion="0.7289294">
+            <state line="13" column="63" selection-start="747" selection-end="747" vertical-scroll-proportion="0.50341684">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PlayerImpl.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/PlayerImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="103" column="47" selection-start="2713" selection-end="2713" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OpeningPodCastAsyncTask.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/task/OpeningPodCastAsyncTask.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="40" column="47" selection-start="1389" selection-end="1389" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -134,15 +137,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PodCastListImpl.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/PodCastListImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="4" selection-start="1463" selection-end="1463" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="OnRefreshListClickListener.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/OnRefreshListClickListener.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -156,15 +150,6 @@
         <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/view/adapters/PodCastAdapterImpl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="56" column="103" selection-start="1840" selection-end="1840" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PodCastList.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/PodCastList.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="62" selection-start="503" selection-end="503" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -195,10 +180,8 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/task/GetListFromRssAndUpdateDatabaseAsyncTask.java" />
-        <option value="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/task/OpeningPodCastAsyncTask.java" />
         <option value="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/HanselminutesPlayerActivity.java" />
         <option value="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/view/adapters/PodCastAdapterImpl.java" />
-        <option value="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/PlayerImpl.java" />
         <option value="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/Player.java" />
         <option value="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/task/FillListAsyncTask.java" />
         <option value="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/PodCastItemListClickListener.java" />
@@ -208,8 +191,10 @@
         <option value="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/PodCastList.java" />
         <option value="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/OnRefreshListClickListener.java" />
         <option value="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/PositionUpdater.java" />
-        <option value="$PROJECT_DIR$/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/res/layout/main.xml" />
+        <option value="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/PlayerImpl.java" />
+        <option value="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/task/OpeningPodCastAsyncTask.java" />
+        <option value="$PROJECT_DIR$/res/values/strings.xml" />
       </list>
     </option>
   </component>
@@ -1123,7 +1108,7 @@
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Orientation can now change without errors.&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Put every string in a resourcefile&#10;" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1137,6 +1122,7 @@
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
     <MESSAGE value="Orientation can now change without errors.&#10;" />
+    <MESSAGE value="Put every string in a resourcefile&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1146,20 +1132,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/view/ListViewContextMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="13" selection-start="634" selection-end="634" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/PlayerImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="137" selection-start="2117" selection-end="2117" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/Player.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="25" selection-start="423" selection-end="423" vertical-scroll-proportion="0.0">
@@ -1251,9 +1223,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/PlayerImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="103" column="47" selection-start="2713" selection-end="2713" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/task/OpeningPodCastAsyncTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="47" selection-start="1389" selection-end="1389" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="44" selection-start="1136" selection-end="1136" vertical-scroll-proportion="0.7289294">
+        <state line="13" column="63" selection-start="747" selection-end="747" vertical-scroll-proportion="0.50341684">
           <folding />
         </state>
       </provider>
