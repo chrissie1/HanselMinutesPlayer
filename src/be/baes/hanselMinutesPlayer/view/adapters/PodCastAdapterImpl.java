@@ -53,7 +53,7 @@ public class PodCastAdapterImpl extends ArrayAdapter<PodCast>
         {
             rowTitle.setTextColor(getContext().getResources().getColor(R.color.white));
         }
-        rowTitle.setText(String.format("%d. %s", position + 1, podCast.getTitle()));
+        rowTitle.setText(String.format(getContext().getResources().getString(R.string.ListViewTitleText), position + 1, podCast.getTitle()));
         rowPubDate.setText(podCast.getPubDate());
 		return rssItemView;
 	}

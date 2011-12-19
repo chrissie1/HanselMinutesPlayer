@@ -1,8 +1,10 @@
 package be.baes.hanselMinutesPlayer.facade.task;
 
+import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.util.Log;
 import be.baes.hanselMinutesPlayer.Constants;
+import be.baes.hanselMinutesPlayer.R;
 import be.baes.hanselMinutesPlayer.facade.Player;
 import be.baes.hanselMinutesPlayer.facade.PositionUpdater;
 import be.baes.hanselMinutesPlayer.model.PodCast;
@@ -14,20 +16,22 @@ public class OpeningPodCastAsyncTask extends AsyncTask<File,String,Void>{
     private ProgressReport progressReport;
     private Player player;
     private PodCast currentPodCast;
+    private Resources resources;
     private PositionUpdater positionUpdater;
 
-    public OpeningPodCastAsyncTask(Player player, PodCast currentPodCast,ProgressReport progressReport, PositionUpdater positionUpdater)
+    public OpeningPodCastAsyncTask(Player player, PodCast currentPodCast,ProgressReport progressReport, PositionUpdater positionUpdater, Resources resources)
     {
         this.positionUpdater = positionUpdater;
         this.progressReport = progressReport;
         this.player = player;
         this.currentPodCast = currentPodCast;
+        this.resources = resources;
     }
 
     @Override
     protected void onPreExecute()
     {
-        progressReport.startProgress("Loading...");
+        progressReport.startProgress(resources.getString(R.string.Loading));
     }
 
     @Override

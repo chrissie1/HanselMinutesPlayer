@@ -14,6 +14,6 @@ public class OnRefreshListClickListener implements OnClickListener {
 	@Override
     public void onClick(View arg0) {
         Log.i(Constants.LOG_ID, "Clicked refresh list");
-		podCastList.getListFromRssAndUpdateDatabase();
+		podCastList.getListFromRssAndUpdateDatabase(arg0.getResources());
     }
 }

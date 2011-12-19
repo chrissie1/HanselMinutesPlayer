@@ -17,6 +17,6 @@ public class PodCastItemListClickListener implements OnItemClickListener {
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
         Log.i(Constants.LOG_ID, "PodCast item selected");
         Log.i(Constants.LOG_ID, String.format("Selected file: %s", ((PodCast) arg0.getAdapter().getItem(arg2)).getTitle()));
-        player.setCurrentFile(((PodCast) arg0.getAdapter().getItem(arg2)), arg0.getContext().getExternalCacheDir());
+        player.setCurrentFile(((PodCast) arg0.getAdapter().getItem(arg2)), arg0.getContext().getExternalCacheDir(), arg1.getResources());
     }
 }

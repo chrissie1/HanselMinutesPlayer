@@ -1,5 +1,6 @@
 package be.baes.hanselMinutesPlayer.facade;
 
+import android.content.res.Resources;
 import android.util.Log;
 import be.baes.hanselMinutesPlayer.Constants;
 import be.baes.hanselMinutesPlayer.facade.task.OpeningPodCastAsyncTask;
@@ -61,7 +62,7 @@ public class PlayerImpl implements Player {
     }
 
     @Override
-    public void setCurrentFile(PodCast currentPodCast, File cacheDir) {
+    public void setCurrentFile(PodCast currentPodCast, File cacheDir, Resources resources) {
 		if(this.currentPodCast != currentPodCast)
         {
             stop();
@@ -74,7 +75,7 @@ public class PlayerImpl implements Player {
             else
             {
                 Log.i(Constants.LOG_ID, "currentPodCast is filled");
-                OpeningPodCastAsyncTask task = new OpeningPodCastAsyncTask(this,currentPodCast,progressReport, positionUpdater);
+                OpeningPodCastAsyncTask task = new OpeningPodCastAsyncTask(this,currentPodCast,progressReport, positionUpdater, resources);
                 task.execute(cacheDir,null,null);
             }
         }

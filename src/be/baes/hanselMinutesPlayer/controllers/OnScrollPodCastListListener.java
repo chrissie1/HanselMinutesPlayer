@@ -33,7 +33,7 @@ public class OnScrollPodCastListListener implements AbsListView.OnScrollListener
         if (!loading && (totalItemCount - visibleItemCount) <= (firstVisibleItem))
         {
             Log.i(Constants.LOG_ID, "Loading podcasts on scroll");
-            podCastList.load(currentPage);
+            podCastList.load(currentPage, view.getResources());
             loading = true;
         }
     }

@@ -17,7 +17,7 @@ public class OnDeleteAllClickListener implements View.OnClickListener {
     public void onClick(View view) {
         Log.i(Constants.LOG_ID, "Clicked delete all");
         podCastAdapter.deleteAll();
-        podCastList.load(0);
-        player.setCurrentFile(null, view.getContext().getCacheDir());
+        podCastList.load(0, view.getResources());
+        player.setCurrentFile(null, view.getContext().getCacheDir(), view.getResources());
     }
 }

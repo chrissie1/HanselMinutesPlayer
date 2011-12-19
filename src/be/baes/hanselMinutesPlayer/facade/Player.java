@@ -1,5 +1,6 @@
 package be.baes.hanselMinutesPlayer.facade;
 
+import android.content.res.Resources;
 import be.baes.hanselMinutesPlayer.model.PodCast;
 
 import java.io.File;
@@ -15,7 +16,7 @@ public interface Player {
 
     String getCurrentTitle();
 
-    void setCurrentFile(PodCast currentPodCast, File cacheDir);
+    void setCurrentFile(PodCast currentPodCast, File cacheDir, Resources resources);
 
     void stop();
 

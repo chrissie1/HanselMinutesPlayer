@@ -1,6 +1,9 @@
 package be.baes.hanselMinutesPlayer.facade.task;
 
+import android.content.res.Resources;
 import android.os.AsyncTask;
+import be.baes.hanselMinutesPlayer.R;
+import be.baes.hanselMinutesPlayer.dal.PodCastAdapter;
 import be.baes.hanselMinutesPlayer.facade.PodCastList;
 import be.baes.hanselMinutesPlayer.model.FillListResult;
 import be.baes.hanselMinutesPlayer.model.PodCast;
@@ -13,17 +16,19 @@ public class FillListAsyncTask extends AsyncTask<Integer,Void,FillListResult>{
     private be.baes.hanselMinutesPlayer.dal.PodCastAdapter podCastAdapter;
     private ProgressReport progressReport;
     private PodCastList podCastList;
+    private Resources resources;
 
-    public FillListAsyncTask(be.baes.hanselMinutesPlayer.dal.PodCastAdapter podCastAdapter,PodCastList podCastList, ProgressReport progressReport) {
+    public FillListAsyncTask(PodCastAdapter podCastAdapter, PodCastList podCastList, ProgressReport progressReport, Resources resources) {
         this.podCastAdapter = podCastAdapter;
         this.progressReport = progressReport;
         this.podCastList = podCastList;
+        this.resources = resources;
     }
 
     @Override
     protected void onPreExecute()
     {
-        progressReport.startProgress("Loading...");
+        progressReport.startProgress(resources.getString(R.string.Loading));
     }
 
     @Override
@@ -47,13 +52,13 @@ public class FillListAsyncTask extends AsyncTask<Integer,Void,FillListResult>{
         List<PodCast> podCasts = podCastAdapter.getAllItems(0,PAGE_SIZE*(integers[0]+1));
         if(podCasts.size() > 0)
         {
-            fillListResult.setNumberOfPodCasts(String.format("Total: %d Loaded: %d", podCastAdapter.numberOfPodcasts(), podCasts.size()));
+            fillListResult.setNumberOfPodCasts(String.format(resources.getString(R.string.TotalLoaded), podCastAdapter.numberOfPodcasts(), podCasts.size()));
             fillListResult.setPodCasts(podCasts);
         }
         else
         {
             fillListResult.setPodCasts(null);
-            fillListResult.setNumberOfPodCasts("No podcasts, click refreshlist to download the list");
+            fillListResult.setNumberOfPodCasts(resources.getString(R.string.NoPodCasts));
         }
         return fillListResult;
     }

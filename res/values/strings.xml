@@ -5,4 +5,17 @@
     <string name="stop">Stop</string>
     <string name="pause">Pause</string>
     <string name="timer">Timer: </string>
+    <string name="Downloading">Downloading...</string>
+    <string name="ProgressPercentage">Progress: %d%%</string>
+    <string name="Loading">Loading...</string>
+    <string name="ListViewTitleText" formatted="false">%d. %s</string>
+    <string name="TotalLoaded" formatted="false">Total: %d Loaded: %d</string>
+    <string name="NoPodCasts">No podcasts, click refreshlist to download the list</string>
+    <string name="TimerWithTime" formatted="false">Timer: %s/%s</string>
+    <string name="NoFileSelected">No file selected.</string>
+    <string name="Playing" formatted="false">Playing: %s</string>
+    <string name="Pausing" formatted="false">Pausing: %s</string>
+    <string name="Stopped" formatted="false">Stopped: %s</string>
+    <string name="Selected" formatted="false">Selected: %s</string>
+    <string name="RefreshList">Refresh list</string>
 </resources>

@@ -41,7 +41,6 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
 	@Inject OnRefreshListClickListener onRefreshListClickListener;
 	@Inject PodCastItemListClickListener rssItemListClickListener;
 	@Inject OnSeekChangeListener onSeekChangeListener;
-	@Inject Player player;
 	@Inject PositionUpdater positionUpdater;
     @Inject PodCastList podCastList;
     @Inject ListViewContextMenu listViewContextMenu;
@@ -68,14 +67,14 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
         if(savedInstanceState==null)
         {
             Log.i(Constants.LOG_ID, "OnCreate no saved instance state");
-            podCastList.load(0);
+            podCastList.load(0, getResources());
         }
         else
         {
             Log.i(Constants.LOG_ID, "OnCreate with saved instance state");
             Log.i(Constants.LOG_ID, String.format("CurrentPage: %d", savedInstanceState.getInt(Constants.CURRENT_PAGE)));
             Log.i(Constants.LOG_ID, String.format("Previous item visible was: %d", savedInstanceState.getInt(Constants.LIST_VIEW_POSITION)));
-            podCastList.load(savedInstanceState.getInt(Constants.CURRENT_PAGE), savedInstanceState.getInt(Constants.LIST_VIEW_POSITION));
+            podCastList.load(savedInstanceState.getInt(Constants.CURRENT_PAGE), savedInstanceState.getInt(Constants.LIST_VIEW_POSITION), getResources());
             setPosition((Position) savedInstanceState.getSerializable(Constants.POSITION));
         }
     }

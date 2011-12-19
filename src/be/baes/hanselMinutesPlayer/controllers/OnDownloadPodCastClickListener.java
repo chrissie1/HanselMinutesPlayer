@@ -25,7 +25,7 @@ public class OnDownloadPodCastClickListener implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         Log.i(Constants.LOG_ID, "Clicked download podcast");
-        DownloadMp3AsyncTask downloadMp3AsyncTask = new DownloadMp3AsyncTask(progressReport, player, podCastList, view.getContext().getExternalCacheDir());
+        DownloadMp3AsyncTask downloadMp3AsyncTask = new DownloadMp3AsyncTask(progressReport, player, podCastList, view.getContext().getExternalCacheDir(), view.getContext().getResources());
         downloadMp3AsyncTask.execute(null,null,null);
     }
 }

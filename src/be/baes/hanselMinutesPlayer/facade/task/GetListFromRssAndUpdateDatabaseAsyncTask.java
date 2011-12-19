@@ -1,8 +1,10 @@
 package be.baes.hanselMinutesPlayer.facade.task;
 
+import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.util.Log;
 import be.baes.hanselMinutesPlayer.Constants;
+import be.baes.hanselMinutesPlayer.R;
 import be.baes.hanselMinutesPlayer.facade.PodCastList;
 import be.baes.hanselMinutesPlayer.model.PodCast;
 import be.baes.hanselMinutesPlayer.rss.HanselFeed;
@@ -17,26 +19,28 @@ import java.util.List;
 
 public class GetListFromRssAndUpdateDatabaseAsyncTask extends AsyncTask<PodCastList,String,PodCastList> {
     private be.baes.hanselMinutesPlayer.dal.PodCastAdapter podCastAdapter;
+    private Resources resources;
     private HanselFeed hanselFeed;
     private ProgressReport progressReport;
 
-    public GetListFromRssAndUpdateDatabaseAsyncTask(be.baes.hanselMinutesPlayer.dal.PodCastAdapter podCastAdapter,HanselFeed hanselFeed, ProgressReport progressReport) {
+    public GetListFromRssAndUpdateDatabaseAsyncTask(be.baes.hanselMinutesPlayer.dal.PodCastAdapter podCastAdapter,HanselFeed hanselFeed, ProgressReport progressReport, Resources resources) {
         this.hanselFeed = hanselFeed;
         this.progressReport = progressReport;
         this.podCastAdapter = podCastAdapter;
+        this.resources = resources;
     }
 
     @Override
     protected void onPreExecute()
     {
-        progressReport.startProgress("Downloading...");
+        progressReport.startProgress(resources.getString(R.string.Downloading));
     }
 
     @Override
     protected void onPostExecute(PodCastList result)
     {
         progressReport.endProgress();
-        result.load(0);
+        result.load(0, resources);
     }
 
     @Override

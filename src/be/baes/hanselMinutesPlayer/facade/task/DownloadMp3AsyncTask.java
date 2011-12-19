@@ -1,8 +1,10 @@
 package be.baes.hanselMinutesPlayer.facade.task;
 
+import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.util.Log;
 import be.baes.hanselMinutesPlayer.Constants;
+import be.baes.hanselMinutesPlayer.R;
 import be.baes.hanselMinutesPlayer.facade.Player;
 import be.baes.hanselMinutesPlayer.facade.PodCastList;
 import be.baes.hanselMinutesPlayer.view.ProgressReport;
@@ -20,28 +22,30 @@ import java.net.URLConnection;
 public class DownloadMp3AsyncTask extends AsyncTask<Void,String,Void> {
     private Player player;
     private PodCastList podCastList;
+    private Resources resources;
     private ProgressReport progressReport;
     private File tempFile;
 
-    public DownloadMp3AsyncTask(ProgressReport progressReport,Player player, PodCastList podCastList, File tempFile)
+    public DownloadMp3AsyncTask(ProgressReport progressReport, Player player, PodCastList podCastList, File tempFile, Resources resources)
     {
         this.tempFile = tempFile;
         this.progressReport = progressReport;
         this.player = player;
         this.podCastList = podCastList;
+        this.resources = resources;
     }
 
     @Override
     protected void onPreExecute()
     {
-        progressReport.startProgress("Downloading...");
+        progressReport.startProgress(resources.getString(R.string.Downloading));
     }
 
     @Override
     protected void onPostExecute(Void result)
     {
         progressReport.endProgress();
-        podCastList.load(0);
+        podCastList.load(0, resources);
     }
 
     @Override
@@ -55,19 +59,19 @@ public class DownloadMp3AsyncTask extends AsyncTask<Void,String,Void> {
         int count;
         try {
             URL url = new URL(player.getCurrentPodCast().getMP3Link());
-            URLConnection ucon  = url.openConnection();
+            URLConnection urlConnection  = url.openConnection();
             File tempMp3 = new File(tempFile, player.getCurrentPodCast().getPodCastName());
             Log.i(Constants.LOG_ID, String.format("cachingdirectory:%s", tempFile.getPath()));
             Log.i(Constants.LOG_ID, String.format("Mp3:%s", tempMp3.getPath()));
-            ucon.connect();
-            int lenghtOfFile = ucon.getContentLength();
+            urlConnection.connect();
+            int lenghtOfFile = urlConnection.getContentLength();
             InputStream input = new BufferedInputStream(url.openStream());
             OutputStream output = new FileOutputStream(tempMp3);
             byte data[] = new byte[1024];
             long total = 0;
             while ((count = input.read(data)) != -1) {
                 total += count;
-                publishProgress(String.format("Progress: %d%%", total * 100 / lenghtOfFile));
+                publishProgress(String.format(resources.getString(R.string.ProgressPercentage), total * 100 / lenghtOfFile));
                 output.write(data, 0, count);
             }
             output.flush();

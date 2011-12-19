@@ -1,5 +1,6 @@
 package be.baes.hanselMinutesPlayer.facade;
 
+import android.content.res.Resources;
 import be.baes.hanselMinutesPlayer.model.FillListResult;
 
 import java.util.Observer;
@@ -13,11 +14,11 @@ import java.util.Observer;
 public interface PodCastList {
     void addObserver(Observer observer);
 
-    void load(int page);
+    void load(int page, Resources resources);
 
-    void load(int page, int position);
+    void load(int page, int position, Resources resources);
 
-    void getListFromRssAndUpdateDatabase();
+    void getListFromRssAndUpdateDatabase(Resources resources);
 
     void updateList(FillListResult result);
     
