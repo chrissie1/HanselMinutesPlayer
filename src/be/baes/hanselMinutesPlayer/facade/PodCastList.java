@@ -14,14 +14,14 @@ import java.util.Observer;
 public interface PodCastList {
     void addObserver(Observer observer);
 
-    void load(int page, Resources resources);
+    void load(int page);
 
-    void load(int page, int position, Resources resources);
+    void load(int page, int position);
 
-    void getListFromRssAndUpdateDatabase(Resources resources);
+    void getListFromRssAndUpdateDatabase();
 
     void updateList(FillListResult result);
-    
+
     int getCurrentPage();
 
     void deleteObserver(Observer observer);

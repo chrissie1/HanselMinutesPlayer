@@ -16,7 +16,7 @@ public interface Player {
 
     String getCurrentTitle();
 
-    void setCurrentFile(PodCast currentPodCast, File cacheDir, Resources resources);
+    void setCurrentFile(PodCast currentPodCast);
 
     void stop();
 
@@ -33,4 +33,6 @@ public interface Player {
     PodCast getCurrentPodCast();
 
     void setDataSource(String path);
+
+    void downloadMp3();
 }

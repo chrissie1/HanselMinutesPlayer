@@ -1,12 +1,12 @@
 package be.baes.hanselMinutesPlayer.facade.task;
 
-import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.util.Log;
 import be.baes.hanselMinutesPlayer.Constants;
-import be.baes.hanselMinutesPlayer.R;
 import be.baes.hanselMinutesPlayer.facade.Player;
 import be.baes.hanselMinutesPlayer.facade.PodCastList;
+import be.baes.hanselMinutesPlayer.facade.Settings;
+import be.baes.hanselMinutesPlayer.model.PodCast;
 import be.baes.hanselMinutesPlayer.view.ProgressReport;
 
 import java.io.*;
@@ -20,32 +20,30 @@ import java.net.URLConnection;
  * Time: 14:29
  */
 public class DownloadMp3AsyncTask extends AsyncTask<Void,String,Void> {
-    private Player player;
+    private PodCast currentPodCast;
     private PodCastList podCastList;
-    private Resources resources;
     private ProgressReport progressReport;
-    private File tempFile;
+    private Settings settings;
 
-    public DownloadMp3AsyncTask(ProgressReport progressReport, Player player, PodCastList podCastList, File tempFile, Resources resources)
+    public DownloadMp3AsyncTask(ProgressReport progressReport, PodCast currentPodCast, PodCastList podCastList, Settings settings)
     {
-        this.tempFile = tempFile;
+        this.settings = settings;
         this.progressReport = progressReport;
-        this.player = player;
+        this.currentPodCast = currentPodCast;
         this.podCastList = podCastList;
-        this.resources = resources;
     }
 
     @Override
     protected void onPreExecute()
     {
-        progressReport.startProgress(resources.getString(R.string.Downloading));
+        progressReport.startProgress(settings.getDownloading());
     }
 
     @Override
     protected void onPostExecute(Void result)
     {
         progressReport.endProgress();
-        podCastList.load(0, resources);
+        podCastList.load(0);
     }
 
     @Override
@@ -58,10 +56,10 @@ public class DownloadMp3AsyncTask extends AsyncTask<Void,String,Void> {
     protected Void doInBackground(Void... voids) {
         int count;
         try {
-            URL url = new URL(player.getCurrentPodCast().getMP3Link());
+            URL url = new URL(currentPodCast.getMP3Link());
             URLConnection urlConnection  = url.openConnection();
-            File tempMp3 = new File(tempFile, player.getCurrentPodCast().getPodCastName());
-            Log.i(Constants.LOG_ID, String.format("cachingdirectory:%s", tempFile.getPath()));
+            File tempMp3 = new File(settings.getCacheDirectory(), currentPodCast.getPodCastName());
+            Log.i(Constants.LOG_ID, String.format("cachingdirectory:%s", settings.getCacheDirectory().getPath()));
             Log.i(Constants.LOG_ID, String.format("Mp3:%s", tempMp3.getPath()));
             urlConnection.connect();
             int lenghtOfFile = urlConnection.getContentLength();
@@ -71,13 +69,13 @@ public class DownloadMp3AsyncTask extends AsyncTask<Void,String,Void> {
             long total = 0;
             while ((count = input.read(data)) != -1) {
                 total += count;
-                publishProgress(String.format(resources.getString(R.string.ProgressPercentage), total * 100 / lenghtOfFile));
+                publishProgress(String.format(settings.getProgressPercentage(), total * 100 / lenghtOfFile));
                 output.write(data, 0, count);
             }
             output.flush();
             output.close();
             input.close();
-            Log.i(Constants.LOG_ID, String.format("temp file size:%d", tempFile.getTotalSpace()));
+            Log.i(Constants.LOG_ID, String.format("temp file size:%d", settings.getCacheDirectory().getTotalSpace()));
         } catch (Exception e) {
             Log.e(Constants.LOG_ID, String.format("Error: %s", e.getMessage()),e);
             e.printStackTrace();

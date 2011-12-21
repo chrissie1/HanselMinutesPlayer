@@ -1,16 +1,17 @@
 package be.baes.hanselMinutesPlayer.controllers;
 
-import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.content.res.Resources;
 import android.test.InstrumentationTestCase;
-import android.test.mock.MockContext;
 import android.widget.ListView;
+import be.baes.hanselMinutesPlayer.MockContext2;
 import be.baes.hanselMinutesPlayer.R;
 import be.baes.hanselMinutesPlayer.facade.Player;
+import be.baes.hanselMinutesPlayer.facade.Settings;
+import be.baes.hanselMinutesPlayer.helpers.Network;
+import be.baes.hanselMinutesPlayer.helpers.NetworkImpl;
 import be.baes.hanselMinutesPlayer.model.PodCast;
 import be.baes.hanselMinutesPlayer.view.adapters.PodCastAdapterImpl;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,53 +26,38 @@ import static org.easymock.EasyMock.*;
 public class OnPodCastItemListClickListenerTest extends InstrumentationTestCase{
     private Player player;
     private PodCastItemListClickListener listener;
+    private Settings settings;
+    private Network network;
 
     public void setUp()
     {
         player = createMock(Player.class);
+        settings = createMock(Settings.class);
+        network = createMock(Network.class);
         listener = new PodCastItemListClickListener();
         listener.player = player;
+        listener.settings = settings;
+        listener.network = network;
     }
 
     public void testIfPlayerSetCurrentFileIsCalledOnClick()
     {
-        PodCast podCast = new PodCast("","","","");
+        MockContext2 context2 = new MockContext2(this);
+        PodCast podCast = new PodCast("","","","aaaaaaaaaaaaaaaaaaaaaaaaa");
         List<PodCast> podCasts = new ArrayList<PodCast>();
         podCasts.add(podCast);
-        player.setCurrentFile(podCast, null);
+        expect(network.haveInternet(context2)).andReturn(true);
+        replay(network);
+        expect(settings.getCacheDirectory()).andStubReturn(new File("",""));
+        expect(settings.NoInternetConnection()).andStubReturn("No internet connection.");
+        replay(settings);
+        player.setCurrentFile(podCast);
         replay(player);
-        ListView adapterView = new ListView(new MockContext2());
-        PodCastAdapterImpl podCastAdapter = new PodCastAdapterImpl(new MockContext2(), R.layout.row,podCasts);
+        ListView adapterView = new ListView(context2);
+        PodCastAdapterImpl podCastAdapter = new PodCastAdapterImpl(context2, R.layout.row, podCasts, settings);
         adapterView.setAdapter(podCastAdapter);
         listener.onItemClick(adapterView, null, 0, 0);
         verify(player);
-    }
-
-    private class MockContext2 extends MockContext {
-
-        @Override
-        public Resources getResources() {
-            return getInstrumentation().getTargetContext().getResources();
-        }
-
-        @Override
-        public Resources.Theme getTheme() {
-            return getInstrumentation().getTargetContext().getTheme();
-        }
-
-        @Override
-        public Object getSystemService(String name) {
-            if (Context.LAYOUT_INFLATER_SERVICE.equals(name)) {
-                return getInstrumentation().getTargetContext().getSystemService(name);
-            }
-            return super.getSystemService(name);
-        }
-
-        @Override
-        public ApplicationInfo getApplicationInfo()
-        {
-            return new ApplicationInfo();
-        }
     }
 
 }

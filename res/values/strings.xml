@@ -18,4 +18,10 @@
     <string name="Stopped" formatted="false">Stopped: %s</string>
     <string name="Selected" formatted="false">Selected: %s</string>
     <string name="RefreshList">Refresh list</string>
+    <string name="DeleteAll">Delete All</string>
+    <string name="totalInDatabase">Total in database: </string>
+    <string name="Close">Close</string>
+    <string name="totalDownloadedFiles">Number of downloaded files: </string>
+    <string name="NoInternetConnection">Can not get feed because no internetconnection can be found.</string>
+    <string name="NoFileToDelete">No file to delete</string>
 </resources>

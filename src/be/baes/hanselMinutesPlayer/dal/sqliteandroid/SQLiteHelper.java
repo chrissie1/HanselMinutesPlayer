@@ -34,7 +34,14 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     public SQLiteDatabase getWritableDatabase()
     {
         Log.i(Constants.LOG_ID, "getWritableDatabase");
-        return super.getWritableDatabase();
+        try
+        {
+            return super.getWritableDatabase();
+        }
+        catch (Exception e)
+        {
+            return null;
+        }
     }
 
     public void close()

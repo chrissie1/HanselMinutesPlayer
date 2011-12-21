@@ -2,12 +2,12 @@ package be.baes.hanselMinutesPlayer.controllers;
 
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 import be.baes.hanselMinutesPlayer.Constants;
-import be.baes.hanselMinutesPlayer.dal.PodCastAdapter;
 import be.baes.hanselMinutesPlayer.facade.Player;
-import be.baes.hanselMinutesPlayer.facade.PodCastList;
-import be.baes.hanselMinutesPlayer.facade.task.DownloadMp3AsyncTask;
-import be.baes.hanselMinutesPlayer.view.ProgressReport;
+import be.baes.hanselMinutesPlayer.facade.Settings;
+import be.baes.hanselMinutesPlayer.helpers.Network;
+import be.baes.hanselMinutesPlayer.view.YesNoAlertDialog;
 import com.google.inject.Inject;
 
 /**
@@ -17,15 +17,23 @@ import com.google.inject.Inject;
  * Time: 9:31
  */
 public class OnDownloadPodCastClickListener implements View.OnClickListener {
-    @Inject PodCastAdapter podCastAdapter;
     @Inject Player player;
-    @Inject PodCastList podCastList;
-    @Inject ProgressReport progressReport;
+    @Inject Settings settings;
+    @Inject Network network;
+    @Inject YesNoAlertDialog yesNoAlertDialog;
 
     @Override
     public void onClick(View view) {
         Log.i(Constants.LOG_ID, "Clicked download podcast");
-        DownloadMp3AsyncTask downloadMp3AsyncTask = new DownloadMp3AsyncTask(progressReport, player, podCastList, view.getContext().getExternalCacheDir(), view.getContext().getResources());
-        downloadMp3AsyncTask.execute(null,null,null);
+        if(!yesNoAlertDialog.show(view, "Download podcast?", "Are you sure you want to download the podcast?")) return;
+        if(network.haveInternet(view.getContext()))
+        {
+            player.downloadMp3();
+        }
+        else
+        {
+            Log.i(Constants.LOG_ID, "No internet connection");
+            Toast.makeText(view.getContext(), settings.NoInternetConnection(), Toast.LENGTH_LONG).show();
+        }
     }
 }

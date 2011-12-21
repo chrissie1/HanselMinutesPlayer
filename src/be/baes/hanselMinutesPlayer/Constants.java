@@ -5,7 +5,6 @@ package be.baes.hanselMinutesPlayer;
  * User: christiaan
  * Date: 19/12/11
  * Time: 14:02
- * To change this template use File | Settings | File Templates.
  */
 public class Constants {
     public static final String LOG_ID = "cbaes";
@@ -23,10 +22,6 @@ public class Constants {
     public static final String DROP_TABLE = String.format("DROP TABLE IF EXISTS %s", TABLE_PODCASTS);
     public static final String PREFIX = "http://www.hanselminutes.com/default.aspx?ShowID=";
     public static final String urlToRssFeed = "http://feeds.feedburner.com/HanselminutesCompleteMP3?format=xml";
-    public static final String DELETE_ALL = "Delete All";
-    public static final String REFRESH_LIST = "Refresh List";
-    public static final String DOWNLOAD_PODCAST = "Download podcast";
-    public static final int DELETE_ALL_OPTION = 0;
-    public static final int REFRESH_LIST_OPTION = 1;
-    public static final int DOWNLOAD_PODCAST_OPTION = 2;
+    public static final int DOWNLOAD_PODCAST_OPTION = 0;
+    public static final int DELETE_DOWNLOADED_PODCAST_OPTION = 1;
 }

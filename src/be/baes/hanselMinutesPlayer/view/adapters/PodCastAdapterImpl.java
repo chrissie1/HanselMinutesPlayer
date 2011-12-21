@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.List;
 
 import be.baes.hanselMinutesPlayer.R;
+import be.baes.hanselMinutesPlayer.facade.Settings;
 import be.baes.hanselMinutesPlayer.model.PodCast;
 
 import android.content.Context;
@@ -17,10 +18,12 @@ import android.widget.TextView;
 public class PodCastAdapterImpl extends ArrayAdapter<PodCast>
 {
     private	int resource;
+    private Settings settings;
 
-	public PodCastAdapterImpl(Context context, int resource, List<PodCast> items)
+	public PodCastAdapterImpl(Context context, int resource, List<PodCast> items, Settings settings)
 	{
-		super(context, resource, items);
+        super(context, resource, items);
+        this.settings = settings;
 		this.resource=resource;
 	}
 
@@ -45,15 +48,15 @@ public class PodCastAdapterImpl extends ArrayAdapter<PodCast>
 		TextView rowTitle =(TextView)rssItemView.findViewById(R.id.rowTitle);
 		TextView rowPubDate =(TextView)rssItemView.findViewById(R.id.rowPubDate);
 
-        File downloadedFile = new File(getContext().getExternalCacheDir() , podCast.getPodCastName());
+        File downloadedFile = new File(settings.getCacheDirectory(), podCast.getPodCastName());
         if (downloadedFile.exists()) {
-            rowTitle.setTextColor(getContext().getResources().getColor(R.color.green));
+            rowTitle.setTextColor(settings.getColorGreen());
         }
         else
         {
-            rowTitle.setTextColor(getContext().getResources().getColor(R.color.white));
+            rowTitle.setTextColor(settings.getColorWhite());
         }
-        rowTitle.setText(String.format(getContext().getResources().getString(R.string.ListViewTitleText), position + 1, podCast.getTitle()));
+        rowTitle.setText(String.format(settings.getListViewTitleText(), position + 1, podCast.getTitle()));
         rowPubDate.setText(podCast.getPubDate());
 		return rssItemView;
 	}

@@ -53,28 +53,4 @@ public class PodCastTest extends TestCase {
         PodCast podCast = new PodCast("title", "pubdate", "link", "mp3link");
         assertEquals("PodCast{title='title', pubDate=pubdate}",podCast.toString());
     }
-    
-    public void testCanSetPodCast()
-    {
-        PodCast podCast = new PodCast("title", "pubdate", "link", "mp3link");
-        byte[] mp3 = new byte[0];
-        podCast.setPodCast(mp3);
-        assertEquals(mp3,podCast.getPodCast());
-    }
-
-    public void testIfHasPodCastIsTrueWhenPodCastIsNotNull()
-    {
-        PodCast podCast = new PodCast("title", "pubdate", "link", "mp3link");
-        byte[] mp3 = new byte[0];
-        podCast.setPodCast(mp3);
-        assertTrue(podCast.hasPodCast());
-    }
-
-    public void testIfHasPodCastIsFalseWhenPodCastIsNull()
-    {
-        PodCast podCast = new PodCast("title", "pubdate", "link", "mp3link");
-        byte[] mp3 = null;
-        podCast.setPodCast(mp3);
-        assertFalse(podCast.hasPodCast());
-    }
 }

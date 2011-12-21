@@ -1,8 +1,8 @@
 package be.baes.hanselMinutesPlayer.facade;
 
-import android.content.res.Resources;
 import android.util.Log;
 import be.baes.hanselMinutesPlayer.Constants;
+import be.baes.hanselMinutesPlayer.facade.task.DownloadMp3AsyncTask;
 import be.baes.hanselMinutesPlayer.facade.task.OpeningPodCastAsyncTask;
 import be.baes.hanselMinutesPlayer.model.PodCast;
 import be.baes.hanselMinutesPlayer.view.ProgressReport;
@@ -11,16 +11,16 @@ import com.google.inject.Singleton;
 
 import android.media.MediaPlayer;
 
-import java.io.File;
 import java.io.IOException;
 
 @Singleton
 public class PlayerImpl implements Player {
 	@Inject PositionUpdater positionUpdater;
     @Inject ProgressReport progressReport;
+    @Inject Settings settings;
 	private MediaPlayer mediaPlayer;
 	private PodCast currentPodCast;
-    private Resources resources;
+    @Inject PodCastList podCastList;
 
     public PlayerImpl()
 	{
@@ -30,7 +30,7 @@ public class PlayerImpl implements Player {
    	@Override
     public void play()
 	{
-	    positionUpdater.updatePosition(resources);
+	    positionUpdater.updatePosition();
 		mediaPlayer.start();
 	}
 	
@@ -63,8 +63,7 @@ public class PlayerImpl implements Player {
     }
 
     @Override
-    public void setCurrentFile(PodCast currentPodCast, File cacheDir, Resources resources) {
-        this.resources = resources;
+    public void setCurrentFile(PodCast currentPodCast) {
         if(this.currentPodCast != currentPodCast)
         {
             stop();
@@ -72,13 +71,13 @@ public class PlayerImpl implements Player {
             if(currentPodCast == null)
             {
                 Log.i(Constants.LOG_ID, "currentPodCast is null");
-                positionUpdater.emptyFile(resources);
+                positionUpdater.emptyFile();
             }
             else
             {
                 Log.i(Constants.LOG_ID, "currentPodCast is filled");
-                OpeningPodCastAsyncTask task = new OpeningPodCastAsyncTask(this,currentPodCast,progressReport, positionUpdater, resources);
-                task.execute(cacheDir,null,null);
+                OpeningPodCastAsyncTask task = new OpeningPodCastAsyncTask(this,currentPodCast, progressReport, positionUpdater, settings);
+                task.execute(settings.getCacheDirectory(),null,null);
             }
         }
         else
@@ -90,7 +89,7 @@ public class PlayerImpl implements Player {
 	@Override
     public void stop()
 	{
-        positionUpdater.stopPosition(resources);
+        positionUpdater.stopPosition();
         if(mediaPlayer!=null)
         {
 		    mediaPlayer.pause();
@@ -101,7 +100,7 @@ public class PlayerImpl implements Player {
 	@Override
     public void pause()
 	{
-	    positionUpdater.pausePosition(resources);
+	    positionUpdater.pausePosition();
 		mediaPlayer.pause();
 	}
 	
@@ -127,7 +126,7 @@ public class PlayerImpl implements Player {
 	@Override
     public void destroy()
 	{
-        positionUpdater.pausePosition(resources);
+        positionUpdater.pausePosition();
         if(mediaPlayer!=null)
         {
 		    mediaPlayer.stop();
@@ -136,5 +135,13 @@ public class PlayerImpl implements Player {
 		    mediaPlayer = null;
         }
 	}
-	
+
+    @Override
+    public void downloadMp3() {
+        DownloadMp3AsyncTask downloadMp3AsyncTask = new DownloadMp3AsyncTask(progressReport, currentPodCast, podCastList, settings);
+        downloadMp3AsyncTask.execute(null,null,null);
+    }
+
+
+
 }

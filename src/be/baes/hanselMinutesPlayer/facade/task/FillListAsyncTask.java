@@ -1,10 +1,9 @@
 package be.baes.hanselMinutesPlayer.facade.task;
 
-import android.content.res.Resources;
 import android.os.AsyncTask;
-import be.baes.hanselMinutesPlayer.R;
 import be.baes.hanselMinutesPlayer.dal.PodCastAdapter;
 import be.baes.hanselMinutesPlayer.facade.PodCastList;
+import be.baes.hanselMinutesPlayer.facade.Settings;
 import be.baes.hanselMinutesPlayer.model.FillListResult;
 import be.baes.hanselMinutesPlayer.model.PodCast;
 import be.baes.hanselMinutesPlayer.view.ProgressReport;
@@ -16,19 +15,19 @@ public class FillListAsyncTask extends AsyncTask<Integer,Void,FillListResult>{
     private be.baes.hanselMinutesPlayer.dal.PodCastAdapter podCastAdapter;
     private ProgressReport progressReport;
     private PodCastList podCastList;
-    private Resources resources;
+    private Settings settings;
 
-    public FillListAsyncTask(PodCastAdapter podCastAdapter, PodCastList podCastList, ProgressReport progressReport, Resources resources) {
+    public FillListAsyncTask(PodCastAdapter podCastAdapter, PodCastList podCastList, ProgressReport progressReport, Settings settings) {
         this.podCastAdapter = podCastAdapter;
         this.progressReport = progressReport;
         this.podCastList = podCastList;
-        this.resources = resources;
+        this.settings = settings;
     }
 
     @Override
     protected void onPreExecute()
     {
-        progressReport.startProgress(resources.getString(R.string.Loading));
+        progressReport.startProgress(settings.getLoading());
     }
 
     @Override
@@ -52,13 +51,13 @@ public class FillListAsyncTask extends AsyncTask<Integer,Void,FillListResult>{
         List<PodCast> podCasts = podCastAdapter.getAllItems(0,PAGE_SIZE*(integers[0]+1));
         if(podCasts.size() > 0)
         {
-            fillListResult.setNumberOfPodCasts(String.format(resources.getString(R.string.TotalLoaded), podCastAdapter.numberOfPodcasts(), podCasts.size()));
+            fillListResult.setNumberOfPodCasts(String.format(settings.getTotalLoaded(), podCastAdapter.numberOfPodcasts(), podCasts.size()));
             fillListResult.setPodCasts(podCasts);
         }
         else
         {
             fillListResult.setPodCasts(null);
-            fillListResult.setNumberOfPodCasts(resources.getString(R.string.NoPodCasts));
+            fillListResult.setNumberOfPodCasts(settings.getNoPodCasts());
         }
         return fillListResult;
     }

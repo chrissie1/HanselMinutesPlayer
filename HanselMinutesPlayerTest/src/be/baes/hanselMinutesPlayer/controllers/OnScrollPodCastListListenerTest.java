@@ -6,6 +6,8 @@ import android.content.res.Resources;
 import android.test.InstrumentationTestCase;
 import android.test.mock.MockContext;
 import android.widget.ListView;
+import be.baes.hanselMinutesPlayer.MockContext2;
+import be.baes.hanselMinutesPlayer.dal.PodCastAdapter;
 import be.baes.hanselMinutesPlayer.facade.PodCastList;
 import org.easymock.EasyMock;
 
@@ -21,48 +23,29 @@ import static org.easymock.EasyMock.*;
 public class OnScrollPodCastListListenerTest extends InstrumentationTestCase {
     private PodCastList podCastList;
     private OnScrollPodCastListListener listener;
+    private PodCastAdapter podCastAdapter;
 
     public void setUp()
     {
         podCastList = createMock(PodCastList.class);
+        podCastAdapter = createMock(PodCastAdapter.class);
         listener = new OnScrollPodCastListListener();
         listener.podCastList = podCastList;
+        listener.podCastAdapter = podCastAdapter;
     }
 
     public void testIfPodCastListLoadIsCalledWhenScrollPassesLastLoadedElement()
     {
+        expect(podCastAdapter.numberOfPodcasts()).andStubReturn(200);
+        replay(podCastAdapter);
         podCastList.load(1);
+        expect(podCastList.getCurrentPage()).andStubReturn(0);
+        expect(podCastList.getCurrentPage()).andStubReturn(1);
         replay(podCastList);
-        ListView listView = new ListView(new MockContext2());
+        ListView listView = new ListView(new MockContext2(this));
         listener.onScroll(listView, 0, 6, 10);
-        listener.onScroll(listView,5,6,10);
+        listener.onScroll(listView,5,5,10);
         verify(podCastList);
     }
 
-    private class MockContext2 extends MockContext {
-
-        @Override
-        public Resources getResources() {
-            return getInstrumentation().getTargetContext().getResources();
-        }
-
-        @Override
-        public Resources.Theme getTheme() {
-            return getInstrumentation().getTargetContext().getTheme();
-        }
-
-        @Override
-        public Object getSystemService(String name) {
-            if (Context.LAYOUT_INFLATER_SERVICE.equals(name)) {
-                return getInstrumentation().getTargetContext().getSystemService(name);
-            }
-            return super.getSystemService(name);
-        }
-
-        @Override
-        public ApplicationInfo getApplicationInfo()
-        {
-            return new ApplicationInfo();
-        }
-    }
 }

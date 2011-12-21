@@ -4,7 +4,7 @@ import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.*;
 import be.baes.hanselMinutesPlayer.view.ProgressReport;
 import be.baes.hanselMinutesPlayer.view.adapters.PodCastAdapterImpl;
 import be.baes.hanselMinutesPlayer.controllers.*;
@@ -17,28 +17,27 @@ import com.google.inject.Inject;
 import roboguice.activity.RoboActivity;
 import roboguice.inject.InjectView;
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.SeekBar;
 
 import java.util.Observable;
 import java.util.Observer;
 
 public class HanselminutesPlayerActivity extends RoboActivity implements Observer{
+    @Inject
+    Settings settings;
     @InjectView(R.id.playButton) Button playButton;
 	@InjectView(R.id.stopButton) Button stopButton;
 	@InjectView(R.id.pauseButton) Button pauseButton;
 	@InjectView(R.id.seekBar) SeekBar seekbar;
     @InjectView(R.id.timer) TextView timer;
     @InjectView(R.id.currentPodCast) TextView currentPodCast;
-    @InjectView(R.id.refreshListButton) Button refreshListButton;
+    @InjectView(R.id.settingsButton) ImageButton settingsButton;
 	@InjectView(R.id.podCastList) ListView podCastListView;
     @InjectView(R.id.numberofpodcasts) TextView numberOfPodCasts;
     @Inject ProgressReport progressReport;
 	@Inject OnPlayClickListener onPlayClickListener;
 	@Inject OnStopClickListener onStopClickListener;
 	@Inject OnPauseClickListener onPauseClickListener;
-	@Inject OnRefreshListClickListener onRefreshListClickListener;
+	@Inject OnSettingsClickListener onSettingsClickListener;
 	@Inject PodCastItemListClickListener rssItemListClickListener;
 	@Inject OnSeekChangeListener onSeekChangeListener;
 	@Inject PositionUpdater positionUpdater;
@@ -54,9 +53,10 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
         setContentView(R.layout.main);
 
         progressReport.setActivity(this);
+        settings.initialize(getResources(), getExternalCacheDir());
         positionUpdater.addObserver(this);
         podCastList.addObserver(this);
-        refreshListButton.setOnClickListener(onRefreshListClickListener);
+        settingsButton.setOnClickListener(onSettingsClickListener);
         playButton.setOnClickListener(onPlayClickListener);
         stopButton.setOnClickListener(onStopClickListener);
         pauseButton.setOnClickListener(onPauseClickListener);
@@ -67,16 +67,26 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
         if(savedInstanceState==null)
         {
             Log.i(Constants.LOG_ID, "OnCreate no saved instance state");
-            podCastList.load(0, getResources());
+            podCastList.load(0);
         }
         else
         {
             Log.i(Constants.LOG_ID, "OnCreate with saved instance state");
             Log.i(Constants.LOG_ID, String.format("CurrentPage: %d", savedInstanceState.getInt(Constants.CURRENT_PAGE)));
             Log.i(Constants.LOG_ID, String.format("Previous item visible was: %d", savedInstanceState.getInt(Constants.LIST_VIEW_POSITION)));
-            podCastList.load(savedInstanceState.getInt(Constants.CURRENT_PAGE), savedInstanceState.getInt(Constants.LIST_VIEW_POSITION), getResources());
-            setPosition((Position) savedInstanceState.getSerializable(Constants.POSITION));
+            podCastList.load(savedInstanceState.getInt(Constants.CURRENT_PAGE), savedInstanceState.getInt(Constants.LIST_VIEW_POSITION));
+            if(savedInstanceState.getSerializable(Constants.POSITION)!= null)
+            {
+                setPosition((Position) savedInstanceState.getSerializable(Constants.POSITION));
+            }
         }
+    }
+
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+        progressReport.setActivity(this);
     }
 
     @Override
@@ -108,7 +118,7 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
         bundle.putSerializable(Constants.POSITION, position);
         super.onSaveInstanceState(bundle);
     }
-
+    
     @SuppressWarnings("ConstantConditions")
     @Override
     public void update(Observable observable, Object o) {
@@ -125,13 +135,14 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
     private void setList(FillListResult fillListResult) {
         if(fillListResult.getPodCasts()!=null)
         {
-            PodCastAdapterImpl adapter = new PodCastAdapterImpl(this, R.layout.row, fillListResult.getPodCasts());
+            PodCastAdapterImpl adapter = new PodCastAdapterImpl(this, R.layout.row, fillListResult.getPodCasts(), settings);
             podCastListView.setAdapter(adapter);
             podCastListView.setSelection(fillListResult.getPosition());
         } else
         {
             podCastListView.setAdapter(null);
         }
+        podCastListView.setEnabled(true);
         numberOfPodCasts.setText(fillListResult.getNumberOfPodCasts());
     }
 
