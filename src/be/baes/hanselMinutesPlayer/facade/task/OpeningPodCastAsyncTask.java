@@ -30,7 +30,7 @@ public class OpeningPodCastAsyncTask extends AsyncTask<File,String,Void>{
     @Override
     protected void onPreExecute()
     {
-        progressReport.startProgress(settings.getLoading());
+        progressReport.startProgress(settings.getLoading() + "PodCast");
     }
 
     @Override

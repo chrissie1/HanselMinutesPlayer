@@ -22,7 +22,6 @@ public class PodCastSQLiteAdapter implements PodCastAdapter {
     public PodCastSQLiteAdapter()
     {
         Log.i(Constants.LOG_ID, "New instance of PodCastSQLiteAdapter");
-        open();
     }
 
     private void open() throws SQLException
@@ -56,13 +55,13 @@ public class PodCastSQLiteAdapter implements PodCastAdapter {
     }
 
    @Override
-    public List<PodCast> getAllItems() {
+    public synchronized List<PodCast> getAllItems() {
        Log.i(Constants.LOG_ID, "Getting all items.");
        return getAllItems(null,null);
     }
 
     @Override
-    public boolean updatePodCast(PodCast podCast) {
+    public synchronized boolean updatePodCast(PodCast podCast) {
         Log.i(Constants.LOG_ID,"Updating podcast");
         open();
         ContentValues updateValues = createContentValues(podCast);
@@ -73,7 +72,7 @@ public class PodCastSQLiteAdapter implements PodCastAdapter {
     }
 
     @Override
-    public long insertPodCast(PodCast podCast) {
+    public synchronized long insertPodCast(PodCast podCast) {
         Log.i(Constants.LOG_ID,"Creating podcast");
         open();
         ContentValues initValues = createContentValues(podCast);
@@ -83,7 +82,7 @@ public class PodCastSQLiteAdapter implements PodCastAdapter {
     }
 
     @Override
-    public boolean deleteAll() {
+    public synchronized boolean deleteAll() {
         Log.i(Constants.LOG_ID,"Delete all podcasts");
         open();
         boolean result = db.delete(Constants.TABLE_PODCASTS, null, null)>0;
@@ -92,7 +91,7 @@ public class PodCastSQLiteAdapter implements PodCastAdapter {
     }
 
     @Override
-    public int numberOfPodcasts() {
+    public synchronized int numberOfPodcasts() {
         int result;
         Log.i(Constants.LOG_ID, "Count all podcasts");
         open();
@@ -104,7 +103,7 @@ public class PodCastSQLiteAdapter implements PodCastAdapter {
     }
 
     @Override
-    public List<PodCast> getAllItems(Integer pageFrom, Integer pageTo) {
+    public synchronized List<PodCast> getAllItems(Integer pageFrom, Integer pageTo) {
         List<PodCast> result = null;
         Log.i(Constants.LOG_ID,"Fetching all podcasts");
         open();

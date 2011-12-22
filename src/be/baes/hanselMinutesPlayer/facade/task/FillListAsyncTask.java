@@ -9,6 +9,8 @@ import be.baes.hanselMinutesPlayer.model.PodCast;
 import be.baes.hanselMinutesPlayer.view.ProgressReport;
 
 import java.util.List;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class FillListAsyncTask extends AsyncTask<Integer,Void,FillListResult>{
     private final static Integer PAGE_SIZE = 30;
@@ -27,7 +29,7 @@ public class FillListAsyncTask extends AsyncTask<Integer,Void,FillListResult>{
     @Override
     protected void onPreExecute()
     {
-        progressReport.startProgress(settings.getLoading());
+        progressReport.startProgress(settings.getLoading() + "List");
     }
 
     @Override
@@ -48,7 +50,8 @@ public class FillListAsyncTask extends AsyncTask<Integer,Void,FillListResult>{
         {
             fillListResult = new FillListResult(null,"", integers[1]);
         }
-        List<PodCast> podCasts = podCastAdapter.getAllItems(0,PAGE_SIZE*(integers[0]+1));
+        List<PodCast> podCasts;
+        podCasts = podCastAdapter.getAllItems(0,PAGE_SIZE*(integers[0]+1));
         if(podCasts.size() > 0)
         {
             fillListResult.setNumberOfPodCasts(String.format(settings.getTotalLoaded(), podCastAdapter.numberOfPodcasts(), podCasts.size()));

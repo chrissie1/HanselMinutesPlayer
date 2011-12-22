@@ -1,5 +1,6 @@
 package be.baes.hanselMinutesPlayer;
 
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuItem;
@@ -44,14 +45,17 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
     @Inject PodCastList podCastList;
     @Inject ListViewContextMenu listViewContextMenu;
     @Inject OnScrollPodCastListListener onScrollPodCastListListener;
+    @Inject Player player;
     Position position;
-    
+    SharedPreferences sharedPreferences;
+
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
+        sharedPreferences = getPreferences(MODE_PRIVATE);
         progressReport.setActivity(this);
         settings.initialize(getResources(), getExternalCacheDir());
         positionUpdater.addObserver(this);
@@ -64,12 +68,18 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
         podCastListView.setOnScrollListener(onScrollPodCastListListener);
         seekbar.setOnSeekBarChangeListener(onSeekChangeListener);
         registerForContextMenu(podCastListView);
-        if(savedInstanceState==null)
+        if(savedInstanceState==null && player.getCurrentPodCast()==null)
         {
             Log.i(Constants.LOG_ID, "OnCreate no saved instance state");
             podCastList.load(0);
         }
-        else
+        else if(player.getCurrentPodCast()!=null && sharedPreferences.getAll().size()>0 && savedInstanceState==null)
+        {
+            Log.i(Constants.LOG_ID, "OnResume with saved instance state");
+            podCastList.load(sharedPreferences.getInt(Constants.CURRENT_PAGE, 0), sharedPreferences.getInt(Constants.LIST_VIEW_POSITION, 0));
+            setPosition(new Position(sharedPreferences.getString(Constants.TIMER,""),sharedPreferences.getString(Constants.MESSAGE,""),sharedPreferences.getInt(Constants.PROGRESS,0),sharedPreferences.getInt(Constants.MAX_DURATION,0),sharedPreferences.getBoolean(Constants.HASPODCAST,false)));
+        }
+        else if(savedInstanceState!=null)
         {
             Log.i(Constants.LOG_ID, "OnCreate with saved instance state");
             Log.i(Constants.LOG_ID, String.format("CurrentPage: %d", savedInstanceState.getInt(Constants.CURRENT_PAGE)));
@@ -87,6 +97,33 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
     {
         super.onResume();
         progressReport.setActivity(this);
+    }
+
+    @Override
+    public void onPause()
+    {
+        super.onPause();
+        Log.i(Constants.LOG_ID, "OnPause called.");
+        if(position!=null)
+        {
+            Log.i(Constants.LOG_ID, "Saving state");
+            SharedPreferences.Editor ed = sharedPreferences.edit();
+            ed.putBoolean(Constants.HASPODCAST, position.getHasPodCast());
+            ed.putInt(Constants.MAX_DURATION, position.getMaxDuration());
+            ed.putInt(Constants.PROGRESS, position.getProgress());
+            ed.putString(Constants.MESSAGE, position.getMessage());
+            ed.putString(Constants.TIMER, position.getTimer());
+            ed.putInt(Constants.CURRENT_PAGE, podCastList.getCurrentPage());
+            ed.putInt(Constants.LIST_VIEW_POSITION, podCastListView.getFirstVisiblePosition());
+            ed.commit();
+        }
+        else
+        {
+            Log.i(Constants.LOG_ID, "Clearing state");
+            SharedPreferences.Editor ed = sharedPreferences.edit();
+            ed.clear();
+            ed.commit();
+        }
     }
 
     @Override

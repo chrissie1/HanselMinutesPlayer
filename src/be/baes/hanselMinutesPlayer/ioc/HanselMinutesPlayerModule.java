@@ -7,6 +7,8 @@ import be.baes.hanselMinutesPlayer.helpers.Network;
 import be.baes.hanselMinutesPlayer.helpers.NetworkImpl;
 import be.baes.hanselMinutesPlayer.view.ProgressReport;
 import be.baes.hanselMinutesPlayer.view.ProgressReportAndroid;
+import be.baes.hanselMinutesPlayer.view.YesNoAlertDialog;
+import be.baes.hanselMinutesPlayer.view.YesNoAlertDialogImpl;
 import com.google.inject.AbstractModule;
 
 public class HanselMinutesPlayerModule extends AbstractModule {
@@ -19,5 +21,6 @@ public class HanselMinutesPlayerModule extends AbstractModule {
         bind(PodCastList.class).to(PodCastListImpl.class);
         bind(Settings.class).to(SettingsImpl.class);
         bind(Network.class).to(NetworkImpl.class);
+        bind(YesNoAlertDialog.class).to(YesNoAlertDialogImpl.class);
     }
 }

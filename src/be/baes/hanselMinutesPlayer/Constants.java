@@ -24,4 +24,9 @@ public class Constants {
     public static final String urlToRssFeed = "http://feeds.feedburner.com/HanselminutesCompleteMP3?format=xml";
     public static final int DOWNLOAD_PODCAST_OPTION = 0;
     public static final int DELETE_DOWNLOADED_PODCAST_OPTION = 1;
+    public static final String HASPODCAST = "HasPodCast";
+    public static final String MAX_DURATION = "MaxDuration";
+    public static final String PROGRESS = "Progress";
+    public static final String MESSAGE = "Message";
+    public static final String TIMER = "Timer";
 }

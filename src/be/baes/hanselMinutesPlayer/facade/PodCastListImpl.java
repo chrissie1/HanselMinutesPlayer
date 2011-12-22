@@ -39,6 +39,7 @@ public class PodCastListImpl extends Observable implements PodCastList {
     public void load(int page, int position)
     {
         currentPage = page;
+
         fillListAsyncTask = new FillListAsyncTask(podCastAdapter,this, progressReport, settings);
         Integer ints[] = {page, position};
         fillListAsyncTask.execute(ints);
