@@ -5,7 +5,6 @@ import be.baes.hanselMinutesPlayer.R;
 import com.google.inject.Singleton;
 
 import java.io.File;
-import java.util.Locale;
 
 /**
  * Created by IntelliJ IDEA.
@@ -110,5 +109,45 @@ public class SettingsImpl implements Settings {
     @Override
     public String NoFileToDelete() {
         return resources.getString(R.string.NoFileToDelete);
+    }
+
+    @Override
+    public String getDeleteAllTitle() {
+        return resources.getString(R.string.DeleteAllTitle);
+    }
+
+    @Override
+    public String getDeleteAllMessage() {
+        return resources.getString(R.string.DeleteAllMessage);
+    }
+
+    @Override
+    public String getDeleteDownloadMessage() {
+        return resources.getString(R.string.DeleteDownloadMessage);
+    }
+
+    @Override
+    public String getDeleteDownloadTitle() {
+        return resources.getString(R.string.DeleteDownloadTitle);
+    }
+
+    @Override
+    public String getDownloadPodcastMessage() {
+        return resources.getString(R.string.DownloadPodcastMessage);
+    }
+
+    @Override
+    public String getDownloadPodCastTitle() {
+        return resources.getString(R.string.DownloadPodCastTitle);
+    }
+
+    @Override
+    public String getRefreshListTitle() {
+        return resources.getString(R.string.RefreshListTitle);
+    }
+
+    @Override
+    public String getRefreshListMessage() {
+        return resources.getString(R.string.RefreshListMessage);
     }
 }

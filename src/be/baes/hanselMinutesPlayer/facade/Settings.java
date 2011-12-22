@@ -47,4 +47,20 @@ public interface Settings {
     String NoInternetConnection();
 
     String NoFileToDelete();
+
+    String getDeleteAllTitle();
+
+    String getDeleteAllMessage();
+
+    String getDeleteDownloadMessage();
+
+    String getDeleteDownloadTitle();
+
+    String getDownloadPodcastMessage();
+
+    String getDownloadPodCastTitle();
+
+    String getRefreshListTitle();
+
+    String getRefreshListMessage();
 }

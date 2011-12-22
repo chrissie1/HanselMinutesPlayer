@@ -10,26 +10,26 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 
 public class OnSeekChangeListener implements OnSeekBarChangeListener {
 	@Inject Player player;
-	private boolean isMoveingSeekBar;
+	private boolean isMovingSeekBar;
 
 	@Override
 	public void onStopTrackingTouch(SeekBar seekBar) {
         Log.i(Constants.LOG_ID, "Stop tracking");
-		isMoveingSeekBar = false;
+		isMovingSeekBar = false;
         player.play();
     }
 
 	@Override
 	public void onStartTrackingTouch(SeekBar seekBar) {
         Log.i(Constants.LOG_ID, "start tracking");
-		isMoveingSeekBar = true;
+		isMovingSeekBar = true;
 		player.pause();
 	}
 
 	@Override
 	public void onProgressChanged(SeekBar seekBar, int progress,boolean fromUser) {
         Log.i(Constants.LOG_ID, "Progress changed");
-		if(isMoveingSeekBar)
+		if(isMovingSeekBar)
 		{
 			player.seekTo(progress);
 		}

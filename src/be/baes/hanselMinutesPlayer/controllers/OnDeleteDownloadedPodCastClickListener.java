@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.SearchView;
 import android.widget.Toast;
 import be.baes.hanselMinutesPlayer.Constants;
+import be.baes.hanselMinutesPlayer.R;
 import be.baes.hanselMinutesPlayer.facade.Player;
 import be.baes.hanselMinutesPlayer.facade.Settings;
 import be.baes.hanselMinutesPlayer.view.YesNoAlertDialog;
@@ -26,7 +27,7 @@ public class OnDeleteDownloadedPodCastClickListener implements SearchView.OnClic
     @Override
     public void onClick(View view) {
         Log.i(Constants.LOG_ID, "PodCast item selected");
-        if(!yesNoAlertDialog.show(view, "Delete download?", "Are you sure you want to delete the downloaded podcast?")) return;
+        if(!yesNoAlertDialog.show(view, settings.getDeleteDownloadTitle(), settings.getDeleteDownloadMessage())) return;
         File file = new File(settings.getCacheDirectory(),player.getCurrentPodCast().getPodCastName());
         if(!file.exists())
         {

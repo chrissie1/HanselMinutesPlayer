@@ -36,12 +36,15 @@ public class OnDownloadPodCastClickListenerTest extends AndroidTestCase {
         listener.settings = settings;
         listener.yesNoAlertDialog = yesNoAlertDialog;
         listener.player = player;
+        expect(settings.getDownloadPodCastTitle()).andReturn("testTitle").atLeastOnce();
+        expect(settings.getDownloadPodcastMessage()).andReturn("testMessage").atLeastOnce();
     }
 
     public void testIfPlayerDownloadMp3IsCalledOnClickWhenInternet()
     {
         Button button = new Button(context);
-        expect(yesNoAlertDialog.show(button,"Download podcast?", "Are you sure you want to download the podcast?")).andStubReturn(true);
+        replay(settings);
+        expect(yesNoAlertDialog.show(button,settings.getDownloadPodCastTitle(), settings.getDownloadPodcastMessage())).andStubReturn(true);
         replay(yesNoAlertDialog);
         expect(network.haveInternet(context)).andReturn(true);
         replay(network);
@@ -54,10 +57,10 @@ public class OnDownloadPodCastClickListenerTest extends AndroidTestCase {
     public void testIfSettingsNoInternetConnectionIsCalledWhenNoInternet()
     {
         Button button = new Button(context);
-        expect(yesNoAlertDialog.show(button,"Download podcast?", "Are you sure you want to download the podcast?")).andStubReturn(true);
-        replay(yesNoAlertDialog);
         expect(settings.NoInternetConnection()).andReturn("No internet connection");
         replay(settings);
+        expect(yesNoAlertDialog.show(button,settings.getDownloadPodCastTitle(), settings.getDownloadPodcastMessage())).andStubReturn(true);
+        replay(yesNoAlertDialog);
         expect(network.haveInternet(context)).andStubReturn(false);
         replay(network);
         listener.onClick(button);
@@ -67,7 +70,8 @@ public class OnDownloadPodCastClickListenerTest extends AndroidTestCase {
     public void testIfYesNoAlertDialogGetsCalled()
     {
         Button button = new Button(context);
-        expect(yesNoAlertDialog.show(button,"Download podcast?", "Are you sure you want to download the podcast?")).andStubReturn(false);
+        replay(settings);
+        expect(yesNoAlertDialog.show(button,settings.getDownloadPodCastTitle(), settings.getDownloadPodcastMessage())).andStubReturn(false);
         replay(yesNoAlertDialog);
         listener.onClick(button);
         verify(yesNoAlertDialog);

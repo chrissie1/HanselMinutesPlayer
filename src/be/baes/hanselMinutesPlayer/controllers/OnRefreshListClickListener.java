@@ -3,6 +3,7 @@ package be.baes.hanselMinutesPlayer.controllers;
 import android.util.Log;
 import android.widget.Toast;
 import be.baes.hanselMinutesPlayer.Constants;
+import be.baes.hanselMinutesPlayer.R;
 import be.baes.hanselMinutesPlayer.facade.PodCastList;
 import be.baes.hanselMinutesPlayer.facade.Settings;
 import be.baes.hanselMinutesPlayer.helpers.Network;
@@ -20,7 +21,7 @@ public class OnRefreshListClickListener implements OnClickListener {
     @Override
     public void onClick(View arg0) {
         Log.i(Constants.LOG_ID, "Clicked refresh list");
-        if(!yesNoAlertDialog.show(arg0, "Refresh list", "Are you sure you want to refresh the list? This could take a while.")) return;
+        if(!yesNoAlertDialog.show(arg0, settings.getRefreshListTitle(), settings.getRefreshListMessage())) return;
         if(network.haveInternet(arg0.getContext()))
         {
 		    podCastList.getListFromRssAndUpdateDatabase();

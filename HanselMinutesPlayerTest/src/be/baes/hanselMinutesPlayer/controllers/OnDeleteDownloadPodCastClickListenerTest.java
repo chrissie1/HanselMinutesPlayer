@@ -2,9 +2,7 @@ package be.baes.hanselMinutesPlayer.controllers;
 
 import android.test.AndroidTestCase;
 import android.widget.Button;
-import be.baes.hanselMinutesPlayer.dal.PodCastAdapter;
 import be.baes.hanselMinutesPlayer.facade.Player;
-import be.baes.hanselMinutesPlayer.facade.PodCastList;
 import be.baes.hanselMinutesPlayer.facade.Settings;
 import be.baes.hanselMinutesPlayer.model.PodCast;
 import be.baes.hanselMinutesPlayer.view.YesNoAlertDialog;
@@ -18,7 +16,6 @@ import static org.easymock.EasyMock.*;
  * User: christiaan
  * Date: 21/12/11
  * Time: 19:08
- * To change this template use File | Settings | File Templates.
  */
 public class OnDeleteDownloadPodCastClickListenerTest extends AndroidTestCase
 {
@@ -43,10 +40,12 @@ public class OnDeleteDownloadPodCastClickListenerTest extends AndroidTestCase
         Button button = new Button(getContext());
         expect(settings.getCacheDirectory()).andReturn(new File("",""));
         expect(settings.NoFileToDelete()).andReturn("No file to delete.");
+        expect(settings.getDeleteDownloadTitle()).andReturn("testTitle").atLeastOnce();
+        expect(settings.getDeleteDownloadMessage()).andReturn("testMessage").atLeastOnce();
         replay(settings);
         expect(player.getCurrentPodCast()).andReturn(new PodCast("","","","aaaaaaaaaaaaaaaaaaaaaaaa"));
         replay(player);
-        expect(yesNoAlertDialog.show(button, "Delete download?", "Are you sure you want to delete the downloaded podcast?")).andStubReturn(true);
+        expect(yesNoAlertDialog.show(button, settings.getDeleteDownloadTitle(), settings.getDeleteDownloadMessage())).andStubReturn(true);
         replay(yesNoAlertDialog);
         listener.onClick(button);
         verify(yesNoAlertDialog);

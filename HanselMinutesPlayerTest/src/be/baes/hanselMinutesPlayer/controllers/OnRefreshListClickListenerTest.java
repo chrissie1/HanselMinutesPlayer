@@ -40,12 +40,15 @@ public class OnRefreshListClickListenerTest extends AndroidTestCase {
         listener.network = network;
         listener.settings = settings;
         listener.yesNoAlertDialog = yesNoAlertDialog;
+        expect(settings.getRefreshListTitle()).andReturn("testTitle").atLeastOnce();
+        expect(settings.getRefreshListMessage()).andReturn("testMessage").atLeastOnce();
     }
 
     public void testIfPodCastListgetListFromRssAndUpdateDatabaseIsCalledOnClickWhenInternet()
     {
         Button button = new Button(context);
-        expect(yesNoAlertDialog.show(button,"Refresh list", "Are you sure you want to refresh the list? This could take a while.")).andStubReturn(true);
+        replay(settings);
+        expect(yesNoAlertDialog.show(button,settings.getRefreshListTitle(), settings.getRefreshListMessage())).andStubReturn(true);
         replay(yesNoAlertDialog);
         expect(network.haveInternet(context)).andReturn(true);
         replay(network);
@@ -58,10 +61,10 @@ public class OnRefreshListClickListenerTest extends AndroidTestCase {
     public void testIfSettingsNoInternetConnectionIsCalledWhenNoInternet()
     {
         Button button = new Button(context);
-        expect(yesNoAlertDialog.show(button,"Refresh list", "Are you sure you want to refresh the list? This could take a while.")).andStubReturn(true);
-        replay(yesNoAlertDialog);
         expect(settings.NoInternetConnection()).andReturn("No internet connection");
         replay(settings);
+        expect(yesNoAlertDialog.show(button,settings.getRefreshListTitle(), settings.getRefreshListMessage())).andStubReturn(true);
+        replay(yesNoAlertDialog);
         expect(network.haveInternet(context)).andStubReturn(false);
         replay(network);
         listener.onClick(button);
@@ -71,7 +74,8 @@ public class OnRefreshListClickListenerTest extends AndroidTestCase {
     public void testIfYesNoAlertDialogGetsCalled()
     {
         Button button = new Button(context);
-        expect(yesNoAlertDialog.show(button,"Refresh list", "Are you sure you want to refresh the list? This could take a while.")).andStubReturn(false);
+        replay(settings);
+        expect(yesNoAlertDialog.show(button,settings.getRefreshListTitle(), settings.getRefreshListMessage())).andStubReturn(false);
         replay(yesNoAlertDialog);
         listener.onClick(button);
         verify(yesNoAlertDialog);

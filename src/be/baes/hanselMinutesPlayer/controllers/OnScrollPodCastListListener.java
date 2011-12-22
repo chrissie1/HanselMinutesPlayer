@@ -18,7 +18,7 @@ public class OnScrollPodCastListListener implements AbsListView.OnScrollListener
     @Override
     public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
         currentPage = podCastList.getCurrentPage();
-        Log.d(Constants.LOG_ID, String.format("totalitemcount: %d", totalItemCount));
+        Log.d(Constants.LOG_ID, String.format("totalItemCount: %d", totalItemCount));
         Log.d(Constants.LOG_ID, String.format("currentPage: %s", currentPage));
         Log.d(Constants.LOG_ID, String.format("visibleItemCount: %d", visibleItemCount));
         Log.d(Constants.LOG_ID, String.format("firstVisibleItem: %d", firstVisibleItem));

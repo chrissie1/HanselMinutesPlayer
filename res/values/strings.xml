@@ -24,4 +24,12 @@
     <string name="totalDownloadedFiles">Number of downloaded files: </string>
     <string name="NoInternetConnection">Can not get feed because no internetconnection can be found.</string>
     <string name="NoFileToDelete">No file to delete</string>
+    <string name="DeleteAllTitle">Delete all?</string>
+    <string name="DeleteAllMessage">Are you sure you want to delete everything in the cache?</string>
+    <string name="DeleteDownloadTitle">Delete download?</string>
+    <string name="DeleteDownloadMessage">Are you sure you want to delete the downloaded podcast?</string>
+    <string name="DownloadPodCastTitle">Download podcast?</string>
+    <string name="DownloadPodcastMessage">Are you sure you want to download the podcast?</string>
+    <string name="RefreshListTitle">Refresh list</string>
+    <string name="RefreshListMessage">Are you sure you want to refresh the list? This could take a while.</string>
 </resources>

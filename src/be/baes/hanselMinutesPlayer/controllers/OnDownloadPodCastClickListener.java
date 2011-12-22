@@ -4,6 +4,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 import be.baes.hanselMinutesPlayer.Constants;
+import be.baes.hanselMinutesPlayer.R;
 import be.baes.hanselMinutesPlayer.facade.Player;
 import be.baes.hanselMinutesPlayer.facade.Settings;
 import be.baes.hanselMinutesPlayer.helpers.Network;
@@ -25,7 +26,7 @@ public class OnDownloadPodCastClickListener implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         Log.i(Constants.LOG_ID, "Clicked download podcast");
-        if(!yesNoAlertDialog.show(view, "Download podcast?", "Are you sure you want to download the podcast?")) return;
+        if(!yesNoAlertDialog.show(view, settings.getDownloadPodCastTitle(), settings.getDownloadPodcastMessage())) return;
         if(network.haveInternet(view.getContext()))
         {
             player.downloadMp3();

@@ -3,7 +3,6 @@ package be.baes.hanselMinutesPlayer.facade.task;
 import android.os.AsyncTask;
 import android.util.Log;
 import be.baes.hanselMinutesPlayer.Constants;
-import be.baes.hanselMinutesPlayer.facade.Player;
 import be.baes.hanselMinutesPlayer.facade.PodCastList;
 import be.baes.hanselMinutesPlayer.facade.Settings;
 import be.baes.hanselMinutesPlayer.model.PodCast;
