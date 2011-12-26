@@ -2,12 +2,11 @@ package be.baes.hanselMinutesPlayer.controllers;
 
 import android.content.Context;
 import android.test.AndroidTestCase;
-import android.widget.Button;
 import be.baes.hanselMinutesPlayer.Constants;
 import be.baes.hanselMinutesPlayer.facade.PodCastList;
 import be.baes.hanselMinutesPlayer.facade.Settings;
 import be.baes.hanselMinutesPlayer.helpers.Network;
-import be.baes.hanselMinutesPlayer.view.YesNoAlertDialog;
+import be.baes.hanselMinutesPlayer.resources.StringResources;
 
 import static org.easymock.EasyMock.*;
 
@@ -22,24 +21,24 @@ public class OnRefreshListClickListenerTest extends AndroidTestCase {
     private OnRefreshListClickListener listener;
     private Network network;
     private Context context;
-    private Settings settings;
+    private StringResources stringResources;
 
     public void setUp()
     {
         context = getContext();
         podCastList = createMock(PodCastList.class);
-        settings = createMock(Settings.class);
+        stringResources = createMock(StringResources.class);
         network = createMock(Network.class);
         listener = new OnRefreshListClickListener();
         listener.podCastList = podCastList;
         listener.network = network;
-        listener.settings = settings;
+        listener.stringResources = stringResources;
         listener.context = context;
     }
 
     public void testIfPodCastListgetListFromRssAndUpdateDatabaseIsCalledOnClickWhenInternet()
     {
-        replay(settings);
+        replay(stringResources);
         expect(network.haveInternet(context)).andReturn(true);
         replay(network);
         podCastList.getListFromRssAndUpdateDatabase(Constants.urlToRssFeedAll);
@@ -50,11 +49,11 @@ public class OnRefreshListClickListenerTest extends AndroidTestCase {
 
     public void testIfSettingsNoInternetConnectionIsCalledWhenNoInternet()
     {
-        expect(settings.NoInternetConnection()).andReturn("No internet connection");
-        replay(settings);
+        expect(stringResources.NoInternetConnection()).andReturn("No internet connection");
+        replay(stringResources);
         expect(network.haveInternet(context)).andStubReturn(false);
         replay(network);
         listener.onClick(null,0);
-        verify(settings);
+        verify(stringResources);
     }
 }

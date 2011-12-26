@@ -4,8 +4,8 @@ import android.content.Context;
 import android.test.AndroidTestCase;
 import be.baes.hanselMinutesPlayer.Constants;
 import be.baes.hanselMinutesPlayer.facade.PodCastList;
-import be.baes.hanselMinutesPlayer.facade.Settings;
 import be.baes.hanselMinutesPlayer.helpers.Network;
+import be.baes.hanselMinutesPlayer.resources.StringResources;
 
 import static org.easymock.EasyMock.*;
 
@@ -20,24 +20,24 @@ public class OnRefreshListLatesteClickListenerTest extends AndroidTestCase {
     private OnRefreshListLatestClickListener listener;
     private Network network;
     private Context context;
-    private Settings settings;
+    private StringResources stringResources;
 
     public void setUp()
     {
         context = getContext();
         podCastList = createMock(PodCastList.class);
-        settings = createMock(Settings.class);
+        stringResources = createMock(StringResources.class);
         network = createMock(Network.class);
         listener = new OnRefreshListLatestClickListener();
         listener.podCastList = podCastList;
         listener.network = network;
-        listener.settings = settings;
+        listener.stringResources = stringResources;
         listener.context = context;
     }
 
     public void testIfPodCastListgetListFromRssAndUpdateDatabaseIsCalledOnClickWhenInternet()
     {
-        replay(settings);
+        replay(stringResources);
         expect(network.haveInternet(context)).andReturn(true);
         replay(network);
         podCastList.getListFromRssAndUpdateDatabase(Constants.urlToRssFeedLatest);
@@ -48,11 +48,11 @@ public class OnRefreshListLatesteClickListenerTest extends AndroidTestCase {
 
     public void testIfSettingsNoInternetConnectionIsCalledWhenNoInternet()
     {
-        expect(settings.NoInternetConnection()).andReturn("No internet connection");
-        replay(settings);
+        expect(stringResources.NoInternetConnection()).andReturn("No internet connection");
+        replay(stringResources);
         expect(network.haveInternet(context)).andStubReturn(false);
         replay(network);
         listener.onClick(null,0);
-        verify(settings);
+        verify(stringResources);
     }
 }

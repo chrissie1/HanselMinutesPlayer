@@ -3,6 +3,7 @@ package be.baes.hanselMinutesPlayer.facade;
 import be.baes.hanselMinutesPlayer.facade.task.FillListAsyncTask;
 import be.baes.hanselMinutesPlayer.facade.task.GetListFromRssAndUpdateDatabaseAsyncTask;
 import be.baes.hanselMinutesPlayer.model.FillListResult;
+import be.baes.hanselMinutesPlayer.resources.StringResources;
 import be.baes.hanselMinutesPlayer.rss.HanselFeed;
 import be.baes.hanselMinutesPlayer.view.ProgressReport;
 import com.google.inject.Inject;
@@ -16,8 +17,8 @@ public class PodCastListImpl extends Observable implements PodCastList {
     @Inject be.baes.hanselMinutesPlayer.dal.PodCastAdapter podCastAdapter;
     @Inject HanselFeed hanselFeed;
     @Inject ProgressReport progressReport;
-    @Inject
-    Settings settings;
+    @Inject StringResources stringResources;
+    @Inject Settings settings;
     GetListFromRssAndUpdateDatabaseAsyncTask task;
     FillListAsyncTask fillListAsyncTask;
     private int currentPage;
@@ -31,7 +32,7 @@ public class PodCastListImpl extends Observable implements PodCastList {
     public void load(int page)
     {
         currentPage = page;
-        fillListAsyncTask = new FillListAsyncTask(podCastAdapter,this, progressReport, settings);
+        fillListAsyncTask = new FillListAsyncTask(podCastAdapter,this, progressReport, stringResources);
         fillListAsyncTask.execute(page);
     }
     
@@ -40,7 +41,7 @@ public class PodCastListImpl extends Observable implements PodCastList {
     {
         currentPage = page;
 
-        fillListAsyncTask = new FillListAsyncTask(podCastAdapter,this, progressReport, settings);
+        fillListAsyncTask = new FillListAsyncTask(podCastAdapter,this, progressReport, stringResources);
         Integer ints[] = {page, position};
         fillListAsyncTask.execute(ints);
     }
@@ -48,7 +49,7 @@ public class PodCastListImpl extends Observable implements PodCastList {
     @Override
     public void getListFromRssAndUpdateDatabase(String feed)
     {
-        task = new GetListFromRssAndUpdateDatabaseAsyncTask(podCastAdapter,hanselFeed, progressReport, settings,this);
+        task = new GetListFromRssAndUpdateDatabaseAsyncTask(podCastAdapter,hanselFeed, progressReport, stringResources,this);
         task.execute(feed);
     }
 

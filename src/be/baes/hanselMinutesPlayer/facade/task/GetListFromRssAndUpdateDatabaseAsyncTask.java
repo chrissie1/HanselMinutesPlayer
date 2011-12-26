@@ -7,6 +7,7 @@ import be.baes.hanselMinutesPlayer.dal.PodCastAdapter;
 import be.baes.hanselMinutesPlayer.facade.PodCastList;
 import be.baes.hanselMinutesPlayer.facade.Settings;
 import be.baes.hanselMinutesPlayer.model.PodCast;
+import be.baes.hanselMinutesPlayer.resources.StringResources;
 import be.baes.hanselMinutesPlayer.rss.HanselFeed;
 import be.baes.hanselMinutesPlayer.rss.RSSFeed;
 import be.baes.hanselMinutesPlayer.rss.RSSItem;
@@ -19,23 +20,23 @@ import java.util.List;
 
 public class GetListFromRssAndUpdateDatabaseAsyncTask extends AsyncTask<String,String,Void> {
     private be.baes.hanselMinutesPlayer.dal.PodCastAdapter podCastAdapter;
-    private Settings settings;
+    private StringResources stringResources;
     private HanselFeed hanselFeed;
     private ProgressReport progressReport;
     private PodCastList podCastList;
 
-    public GetListFromRssAndUpdateDatabaseAsyncTask(PodCastAdapter podCastAdapter,HanselFeed hanselFeed, ProgressReport progressReport, Settings settings, PodCastList podCastList) {
+    public GetListFromRssAndUpdateDatabaseAsyncTask(PodCastAdapter podCastAdapter,HanselFeed hanselFeed, ProgressReport progressReport, StringResources settings, PodCastList podCastList) {
         this.hanselFeed = hanselFeed;
         this.progressReport = progressReport;
         this.podCastAdapter = podCastAdapter;
-        this.settings =  settings;
+        this.stringResources =  settings;
         this.podCastList = podCastList;
     }
 
     @Override
     protected void onPreExecute()
     {
-        progressReport.startProgress(settings.getDownloading());
+        progressReport.startProgress(stringResources.getDownloading());
     }
 
     @Override

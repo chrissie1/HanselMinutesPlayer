@@ -12,57 +12,7 @@ import java.io.File;
  * To change this template use File | Settings | File Templates.
  */
 public interface Settings {
-    void initialize(Resources resources, File cacheDirectory);
-
-    String getTimerWithTime();
+    void initialize(File cacheDirectory);
 
     File getCacheDirectory();
-
-    String getPlaying();
-
-    String getPausing();
-
-    String getStopped();
-
-    String getSelected();
-
-    String getNoFileSelected();
-
-    String getProgressPercentage();
-
-    String getDownloading();
-
-    String getLoading();
-
-    String getListViewTitleText();
-
-    int getColorGreen();
-
-    int getColorWhite();
-
-    String getNoPodCasts();
-
-    String getTotalLoaded();
-
-    String NoInternetConnection();
-
-    String NoFileToDelete();
-
-    String getDeleteAllTitle();
-
-    String getDeleteAllMessage();
-
-    String getDeleteDownloadMessage();
-
-    String getDeleteDownloadTitle();
-
-    String getDownloadPodcastMessage();
-
-    String getDownloadPodCastTitle();
-
-    String getRefreshListTitle();
-
-    String getRefreshListMessage();
-
-    String getTotalDownloadedFiles();
 }

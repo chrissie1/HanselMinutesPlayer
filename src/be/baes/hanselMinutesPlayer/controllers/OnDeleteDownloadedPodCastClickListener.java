@@ -6,10 +6,8 @@ import android.util.Log;
 import android.widget.Toast;
 import be.baes.hanselMinutesPlayer.Constants;
 import be.baes.hanselMinutesPlayer.facade.Player;
-import be.baes.hanselMinutesPlayer.facade.Settings;
+import be.baes.hanselMinutesPlayer.resources.StringResources;
 import com.google.inject.Inject;
-
-import java.io.File;
 
 /**
 * Created by IntelliJ IDEA.
@@ -20,7 +18,7 @@ import java.io.File;
 */
 class OnDeleteDownloadedPodCastClickListener implements DialogInterface.OnClickListener {
     @Inject Context context;
-    @Inject Settings settings;
+    @Inject StringResources stringResources;
     @Inject Player player;
 
     @Override
@@ -28,7 +26,7 @@ class OnDeleteDownloadedPodCastClickListener implements DialogInterface.OnClickL
         if(!player.hasCurrentPodCastDownloadedMp3())
         {
             Log.i(Constants.LOG_ID, "No file to delete");
-            Toast.makeText(context, settings.NoFileToDelete(), Toast.LENGTH_LONG).show();
+            Toast.makeText(context, stringResources.NoFileToDelete(), Toast.LENGTH_LONG).show();
         }
         else
         {

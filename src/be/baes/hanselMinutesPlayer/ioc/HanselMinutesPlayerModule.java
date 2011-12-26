@@ -5,6 +5,10 @@ import be.baes.hanselMinutesPlayer.dal.sqliteandroid.PodCastSQLiteAdapter;
 import be.baes.hanselMinutesPlayer.facade.*;
 import be.baes.hanselMinutesPlayer.helpers.Network;
 import be.baes.hanselMinutesPlayer.helpers.NetworkImpl;
+import be.baes.hanselMinutesPlayer.resources.ColorResources;
+import be.baes.hanselMinutesPlayer.resources.ColorResourcesImpl;
+import be.baes.hanselMinutesPlayer.resources.StringResources;
+import be.baes.hanselMinutesPlayer.resources.StringResourcesImpl;
 import be.baes.hanselMinutesPlayer.view.ProgressReport;
 import be.baes.hanselMinutesPlayer.view.ProgressReportAndroid;
 import be.baes.hanselMinutesPlayer.view.YesNoAlertDialog;
@@ -22,5 +26,7 @@ public class HanselMinutesPlayerModule extends AbstractModule {
         bind(Settings.class).to(SettingsImpl.class);
         bind(Network.class).to(NetworkImpl.class);
         bind(YesNoAlertDialog.class).to(YesNoAlertDialogImpl.class);
+        bind(StringResources.class).to(StringResourcesImpl.class);
+        bind(ColorResources.class).to(ColorResourcesImpl.class);
     }
 }

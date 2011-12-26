@@ -2,10 +2,7 @@ package be.baes.hanselMinutesPlayer.controllers;
 
 import android.test.AndroidTestCase;
 import android.widget.Button;
-import be.baes.hanselMinutesPlayer.dal.PodCastAdapter;
-import be.baes.hanselMinutesPlayer.facade.Player;
-import be.baes.hanselMinutesPlayer.facade.PodCastList;
-import be.baes.hanselMinutesPlayer.facade.Settings;
+import be.baes.hanselMinutesPlayer.resources.StringResources;
 import be.baes.hanselMinutesPlayer.view.YesNoAlertDialog;
 
 import static org.easymock.EasyMock.*;
@@ -19,25 +16,25 @@ import static org.easymock.EasyMock.*;
 public class OnDeleteAllWithAlertDialogClickListenerTest extends AndroidTestCase {
 
     private YesNoAlertDialog yesNoAlertDialog;
-    private Settings settings;
+    private StringResources stringResources;
     private OnDeleteAllWithAlertDialogClickListener listener;
 
     public void setUp()
     {
         yesNoAlertDialog = createMock(YesNoAlertDialog.class);
-        settings = createMock(Settings.class);
+        stringResources = createMock(StringResources.class);
         listener = new OnDeleteAllWithAlertDialogClickListener();
-        listener.settings = settings;
+        listener.stringResources = stringResources;
         listener.yesNoAlertDialog = yesNoAlertDialog;
    }
 
     public void testIfYesNoAlertDialogIsCalledOnClick()
     {
         Button button = new Button(getContext());
-        expect(settings.getDeleteAllMessage()).andReturn("message").atLeastOnce();
-        expect(settings.getDeleteAllTitle()).andReturn("title").atLeastOnce();
-        replay(settings);
-        yesNoAlertDialog.show(button,settings.getDeleteAllTitle(), settings.getDeleteAllMessage(),null,null);
+        expect(stringResources.getDeleteAllMessage()).andReturn("message").atLeastOnce();
+        expect(stringResources.getDeleteAllTitle()).andReturn("title").atLeastOnce();
+        replay(stringResources);
+        yesNoAlertDialog.show(button, stringResources.getDeleteAllTitle(), stringResources.getDeleteAllMessage(), null, null);
         replay(yesNoAlertDialog);
         listener.onClick(button);
         verify(yesNoAlertDialog);
@@ -46,13 +43,13 @@ public class OnDeleteAllWithAlertDialogClickListenerTest extends AndroidTestCase
     public void testIfSettingsAreCalledOnClick()
     {
         Button button = new Button(getContext());
-        expect(settings.getDeleteAllMessage()).andReturn("message").atLeastOnce();
-        expect(settings.getDeleteAllTitle()).andReturn("title").atLeastOnce();
-        replay(settings);
-        yesNoAlertDialog.show(button,settings.getDeleteAllTitle(), settings.getDeleteAllMessage(),null,null);
+        expect(stringResources.getDeleteAllMessage()).andReturn("message").atLeastOnce();
+        expect(stringResources.getDeleteAllTitle()).andReturn("title").atLeastOnce();
+        replay(stringResources);
+        yesNoAlertDialog.show(button, stringResources.getDeleteAllTitle(), stringResources.getDeleteAllMessage(), null, null);
         replay(yesNoAlertDialog);
         listener.onClick(button);
-        verify(settings);
+        verify(stringResources);
     }
 
 }

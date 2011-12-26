@@ -6,6 +6,7 @@ import be.baes.hanselMinutesPlayer.Constants;
 import be.baes.hanselMinutesPlayer.facade.PodCastList;
 import be.baes.hanselMinutesPlayer.facade.Settings;
 import be.baes.hanselMinutesPlayer.model.PodCast;
+import be.baes.hanselMinutesPlayer.resources.StringResources;
 import be.baes.hanselMinutesPlayer.view.ProgressReport;
 
 import java.io.*;
@@ -22,20 +23,22 @@ public class DownloadMp3AsyncTask extends AsyncTask<Void,String,Void> {
     private PodCast currentPodCast;
     private PodCastList podCastList;
     private ProgressReport progressReport;
+    private StringResources stringResources;
     private Settings settings;
-
-    public DownloadMp3AsyncTask(ProgressReport progressReport, PodCast currentPodCast, PodCastList podCastList, Settings settings)
+    
+    public DownloadMp3AsyncTask(ProgressReport progressReport, PodCast currentPodCast, PodCastList podCastList, StringResources stringResources1, Settings settings1)
     {
-        this.settings = settings;
+        this.stringResources = stringResources1;
         this.progressReport = progressReport;
         this.currentPodCast = currentPodCast;
         this.podCastList = podCastList;
+        this.settings = settings1;
     }
 
     @Override
     protected void onPreExecute()
     {
-        progressReport.startProgress(settings.getDownloading());
+        progressReport.startProgress(stringResources.getDownloading());
     }
 
     @Override
@@ -68,7 +71,7 @@ public class DownloadMp3AsyncTask extends AsyncTask<Void,String,Void> {
             long total = 0;
             while ((count = input.read(data)) != -1) {
                 total += count;
-                publishProgress(String.format(settings.getProgressPercentage(), total * 100 / lenghtOfFile));
+                publishProgress(String.format(stringResources.getProgressPercentage(), total * 100 / lenghtOfFile));
                 output.write(data, 0, count);
             }
             output.flush();

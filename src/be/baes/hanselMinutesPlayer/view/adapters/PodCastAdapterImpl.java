@@ -14,15 +14,21 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import be.baes.hanselMinutesPlayer.resources.ColorResources;
+import be.baes.hanselMinutesPlayer.resources.StringResources;
 
 public class PodCastAdapterImpl extends ArrayAdapter<PodCast>
 {
     private	int resource;
+    private StringResources stringResources;
+    private ColorResources colorResources;
     private Settings settings;
 
-	public PodCastAdapterImpl(Context context, int resource, List<PodCast> items, Settings settings)
+	public PodCastAdapterImpl(Context context, int resource, List<PodCast> items, Settings settings, StringResources stringResources1, ColorResources colorResources1)
 	{
         super(context, resource, items);
+        this.stringResources = stringResources1;
+        this.colorResources = colorResources1;
         this.settings = settings;
 		this.resource=resource;
 	}
@@ -50,13 +56,13 @@ public class PodCastAdapterImpl extends ArrayAdapter<PodCast>
 
         File downloadedFile = new File(settings.getCacheDirectory(), podCast.getPodCastName());
         if (downloadedFile.exists()) {
-            rowTitle.setTextColor(settings.getColorGreen());
+            rowTitle.setTextColor(colorResources.getColorGreen());
         }
         else
         {
-            rowTitle.setTextColor(settings.getColorWhite());
+            rowTitle.setTextColor(colorResources.getColorWhite());
         }
-        rowTitle.setText(String.format(settings.getListViewTitleText(), position + 1, podCast.getTitle()));
+        rowTitle.setText(String.format(stringResources.getListViewTitleText(), position + 1, podCast.getTitle()));
         rowPubDate.setText(podCast.getPubDate());
 		return rssItemView;
 	}

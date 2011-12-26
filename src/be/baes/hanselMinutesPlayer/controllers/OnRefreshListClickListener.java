@@ -8,6 +8,7 @@ import be.baes.hanselMinutesPlayer.Constants;
 import be.baes.hanselMinutesPlayer.facade.PodCastList;
 import be.baes.hanselMinutesPlayer.facade.Settings;
 import be.baes.hanselMinutesPlayer.helpers.Network;
+import be.baes.hanselMinutesPlayer.resources.StringResources;
 import com.google.inject.Inject;
 
 /**
@@ -20,7 +21,7 @@ import com.google.inject.Inject;
 class OnRefreshListClickListener implements DialogInterface.OnClickListener {
     @Inject Context context;
     @Inject PodCastList podCastList;
-    @Inject Settings settings;
+    @Inject StringResources stringResources;
     @Inject Network network;
 
     @Override
@@ -32,7 +33,7 @@ class OnRefreshListClickListener implements DialogInterface.OnClickListener {
         else
         {
             Log.i(Constants.LOG_ID, "No internet connection");
-            Toast.makeText(context, settings.NoInternetConnection(), Toast.LENGTH_LONG).show();
+            Toast.makeText(context, stringResources.NoInternetConnection(), Toast.LENGTH_LONG).show();
         }
     }
 }

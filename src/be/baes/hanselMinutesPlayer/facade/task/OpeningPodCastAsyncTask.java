@@ -7,6 +7,7 @@ import be.baes.hanselMinutesPlayer.facade.Player;
 import be.baes.hanselMinutesPlayer.facade.PositionUpdater;
 import be.baes.hanselMinutesPlayer.facade.Settings;
 import be.baes.hanselMinutesPlayer.model.PodCast;
+import be.baes.hanselMinutesPlayer.resources.StringResources;
 import be.baes.hanselMinutesPlayer.view.ProgressReport;
 
 import java.io.File;
@@ -15,22 +16,22 @@ public class OpeningPodCastAsyncTask extends AsyncTask<File,String,Void>{
     private ProgressReport progressReport;
     private Player player;
     private PodCast currentPodCast;
-    private Settings settings;
+    private StringResources stringResources;
     private PositionUpdater positionUpdater;
 
-    public OpeningPodCastAsyncTask(Player player, PodCast currentPodCast,ProgressReport progressReport, PositionUpdater positionUpdater, Settings settings)
+    public OpeningPodCastAsyncTask(Player player, PodCast currentPodCast,ProgressReport progressReport, PositionUpdater positionUpdater, StringResources stringResources1)
     {
         this.positionUpdater = positionUpdater;
         this.progressReport = progressReport;
         this.player = player;
         this.currentPodCast = currentPodCast;
-        this.settings = settings;
+        this.stringResources = stringResources1;
     }
 
     @Override
     protected void onPreExecute()
     {
-        progressReport.startProgress(settings.getLoading() + "PodCast");
+        progressReport.startProgress(stringResources.getLoading() + "PodCast");
     }
 
     @Override

@@ -6,8 +6,8 @@ import android.util.Log;
 import android.widget.Toast;
 import be.baes.hanselMinutesPlayer.Constants;
 import be.baes.hanselMinutesPlayer.facade.Player;
-import be.baes.hanselMinutesPlayer.facade.Settings;
 import be.baes.hanselMinutesPlayer.helpers.Network;
+import be.baes.hanselMinutesPlayer.resources.StringResources;
 import com.google.inject.Inject;
 
 /**
@@ -20,7 +20,7 @@ import com.google.inject.Inject;
 class OnDownloadPodCastClickListener implements DialogInterface.OnClickListener {
     @Inject Context context;
     @Inject Player player;
-    @Inject Settings settings;
+    @Inject StringResources stringResources;
     @Inject Network network;
 
     @Override
@@ -32,7 +32,7 @@ class OnDownloadPodCastClickListener implements DialogInterface.OnClickListener 
         else
         {
             Log.i(Constants.LOG_ID, "No internet connection");
-            Toast.makeText(context, settings.NoInternetConnection(), Toast.LENGTH_LONG).show();
+            Toast.makeText(context, stringResources.NoInternetConnection(), Toast.LENGTH_LONG).show();
         }
     }
 }

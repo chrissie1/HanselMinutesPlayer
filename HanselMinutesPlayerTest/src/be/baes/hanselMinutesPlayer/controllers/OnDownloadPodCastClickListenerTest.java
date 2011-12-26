@@ -3,8 +3,8 @@ package be.baes.hanselMinutesPlayer.controllers;
 import android.content.Context;
 import android.test.AndroidTestCase;
 import be.baes.hanselMinutesPlayer.facade.Player;
-import be.baes.hanselMinutesPlayer.facade.Settings;
 import be.baes.hanselMinutesPlayer.helpers.Network;
+import be.baes.hanselMinutesPlayer.resources.StringResources;
 
 import static org.easymock.EasyMock.*;
 
@@ -18,25 +18,25 @@ public class OnDownloadPodCastClickListenerTest extends AndroidTestCase {
     private OnDownloadPodCastClickListener listener;
     private Network network;
     private Context context;
-    private Settings settings;
+    private StringResources stringResources;
     private Player player;
     
     public void setUp()
     {
         context = getContext();
         player = createMock(Player.class);
-        settings = createMock(Settings.class);
+        stringResources = createMock(StringResources.class);
         network = createMock(Network.class);
         listener = new OnDownloadPodCastClickListener();
         listener.network = network;
-        listener.settings = settings;
+        listener.stringResources = stringResources;
         listener.player = player;
         listener.context = context;
     }
 
     public void testIfPlayerDownloadMp3IsCalledOnClickWhenInternet()
     {
-        replay(settings);
+        replay(stringResources);
         expect(network.haveInternet(context)).andReturn(true);
         replay(network);
         player.downloadMp3();
@@ -47,12 +47,12 @@ public class OnDownloadPodCastClickListenerTest extends AndroidTestCase {
 
     public void testIfSettingsNoInternetConnectionIsCalledWhenNoInternet()
     {
-        expect(settings.NoInternetConnection()).andReturn("No internet connection");
-        replay(settings);
+        expect(stringResources.NoInternetConnection()).andReturn("No internet connection");
+        replay(stringResources);
         expect(network.haveInternet(context)).andStubReturn(false);
         replay(network);
         listener.onClick(null,0);
-        verify(settings);
+        verify(stringResources);
     }
 
 }

@@ -8,8 +8,8 @@ import be.baes.hanselMinutesPlayer.controllers.OnPlayerClickListener;
 import be.baes.hanselMinutesPlayer.controllers.OnRefreshListWithAlertDialogClickListener;
 import be.baes.hanselMinutesPlayer.controllers.OnRefreshListLatestWithAlertDialogClickListener;
 import be.baes.hanselMinutesPlayer.facade.PodCastList;
-import be.baes.hanselMinutesPlayer.facade.Settings;
 import be.baes.hanselMinutesPlayer.model.FillListResult;
+import be.baes.hanselMinutesPlayer.resources.StringResources;
 import be.baes.hanselMinutesPlayer.view.ProgressReport;
 import com.google.inject.Inject;
 import roboguice.activity.RoboActivity;
@@ -23,7 +23,6 @@ import java.util.Observer;
  * User: christiaan
  * Date: 20/12/11
  * Time: 10:01
- * To change this template use File | Settings | File Templates.
  */
 public class SettingsActivity extends RoboActivity implements Observer{
     @InjectView(R.id.refreshListButton) Button refreshListButton;
@@ -32,16 +31,13 @@ public class SettingsActivity extends RoboActivity implements Observer{
     @InjectView(R.id.totalDowloadedFiles) TextView totalDownloadedFiles;
     @InjectView(R.id.closeButton) Button closeButton;
     @InjectView(R.id.refreshListLatestButton) Button refreshListLatestButton;
-    @Inject
-    OnRefreshListLatestWithAlertDialogClickListener onRefreshListLatestClickListener;
-    @Inject
-    OnRefreshListWithAlertDialogClickListener onRefreshListClickListener;
-    @Inject
-    OnDeleteAllWithAlertDialogClickListener onDeleteAllClickListener;
+    @Inject OnRefreshListLatestWithAlertDialogClickListener onRefreshListLatestClickListener;
+    @Inject OnRefreshListWithAlertDialogClickListener onRefreshListClickListener;
+    @Inject OnDeleteAllWithAlertDialogClickListener onDeleteAllClickListener;
     @Inject OnPlayerClickListener onPlayerClickListener;
     @Inject PodCastList podCastList;
     @Inject ProgressReport progressReport;
-    @Inject Settings settings;
+    @Inject StringResources stringResources;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +62,6 @@ public class SettingsActivity extends RoboActivity implements Observer{
     @Override
     public void update(Observable observable, Object o) {
         totalInDatabase.setText(((FillListResult)o).getNumberOfPodCasts());
-        totalDownloadedFiles.setText(settings.getTotalDownloadedFiles() + " " + ((FillListResult) o).getNumberOfDownloadedPodCasts());
+        totalDownloadedFiles.setText(stringResources.getTotalDownloadedFiles() + " " + ((FillListResult) o).getNumberOfDownloadedPodCasts());
     }
 }

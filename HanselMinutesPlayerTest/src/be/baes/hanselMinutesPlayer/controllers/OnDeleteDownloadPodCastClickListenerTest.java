@@ -3,6 +3,7 @@ package be.baes.hanselMinutesPlayer.controllers;
 import android.test.AndroidTestCase;
 import be.baes.hanselMinutesPlayer.facade.Player;
 import be.baes.hanselMinutesPlayer.facade.Settings;
+import be.baes.hanselMinutesPlayer.resources.StringResources;
 
 import static org.easymock.EasyMock.*;
 
@@ -16,15 +17,15 @@ public class OnDeleteDownloadPodCastClickListenerTest extends AndroidTestCase
 {
     private Player player;
     private OnDeleteDownloadedPodCastClickListener listener;
-    private Settings settings;
+    private StringResources stringResources;
 
     public void setUp()
     {
         player = createMock(Player.class);
-        settings = createMock(Settings.class);
+        stringResources = createMock(StringResources.class);
         listener = new OnDeleteDownloadedPodCastClickListener();
         listener.player = player;
-        listener.settings = settings;
+        listener.stringResources = stringResources;
         listener.context = getContext();
     }
 
@@ -39,11 +40,11 @@ public class OnDeleteDownloadPodCastClickListenerTest extends AndroidTestCase
 
     public void testIfToastIsShownWhenDownloadedMp3DoesNotExists()
     {
-        expect(settings.NoFileToDelete()).andReturn("No file to delete.");
-        replay(settings);
+        expect(stringResources.NoFileToDelete()).andReturn("No file to delete.");
+        replay(stringResources);
         expect(player.hasCurrentPodCastDownloadedMp3()).andReturn(false);
         replay(player);
         listener.onClick(null,0);
-        verify(settings);
+        verify(stringResources);
     }
 }

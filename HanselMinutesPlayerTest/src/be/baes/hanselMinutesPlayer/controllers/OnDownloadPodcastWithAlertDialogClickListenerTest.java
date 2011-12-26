@@ -2,7 +2,7 @@ package be.baes.hanselMinutesPlayer.controllers;
 
 import android.test.AndroidTestCase;
 import android.widget.Button;
-import be.baes.hanselMinutesPlayer.facade.Settings;
+import be.baes.hanselMinutesPlayer.resources.StringResources;
 import be.baes.hanselMinutesPlayer.view.YesNoAlertDialog;
 
 import static org.easymock.EasyMock.*;
@@ -16,25 +16,25 @@ import static org.easymock.EasyMock.*;
 public class OnDownloadPodcastWithAlertDialogClickListenerTest extends AndroidTestCase {
 
     private YesNoAlertDialog yesNoAlertDialog;
-    private Settings settings;
+    private StringResources stringResources;
     private OnDownloadPodCastWithAlertDialogClickListener listener;
 
     public void setUp()
     {
         yesNoAlertDialog = createMock(YesNoAlertDialog.class);
-        settings = createMock(Settings.class);
+        stringResources = createMock(StringResources.class);
         listener = new OnDownloadPodCastWithAlertDialogClickListener();
-        listener.settings = settings;
+        listener.stringResources = stringResources;
         listener.yesNoAlertDialog = yesNoAlertDialog;
    }
 
     public void testIfYesNoAlertDialogIsCalledOnClick()
     {
         Button button = new Button(getContext());
-        expect(settings.getDownloadPodcastMessage()).andReturn("message").atLeastOnce();
-        expect(settings.getDownloadPodCastTitle()).andReturn("title").atLeastOnce();
-        replay(settings);
-        yesNoAlertDialog.show(button,settings.getDownloadPodCastTitle(), settings.getDownloadPodcastMessage(),null,null);
+        expect(stringResources.getDownloadPodcastMessage()).andReturn("message").atLeastOnce();
+        expect(stringResources.getDownloadPodCastTitle()).andReturn("title").atLeastOnce();
+        replay(stringResources);
+        yesNoAlertDialog.show(button, stringResources.getDownloadPodCastTitle(), stringResources.getDownloadPodcastMessage(), null, null);
         replay(yesNoAlertDialog);
         listener.onClick(button);
         verify(yesNoAlertDialog);
@@ -43,13 +43,13 @@ public class OnDownloadPodcastWithAlertDialogClickListenerTest extends AndroidTe
     public void testIfSettingsAreCalledOnClick()
     {
         Button button = new Button(getContext());
-        expect(settings.getDownloadPodcastMessage()).andReturn("message").atLeastOnce();
-        expect(settings.getDownloadPodCastTitle()).andReturn("title").atLeastOnce();
-        replay(settings);
-        yesNoAlertDialog.show(button,settings.getDownloadPodCastTitle(), settings.getDownloadPodcastMessage(),null,null);
+        expect(stringResources.getDownloadPodcastMessage()).andReturn("message").atLeastOnce();
+        expect(stringResources.getDownloadPodCastTitle()).andReturn("title").atLeastOnce();
+        replay(stringResources);
+        yesNoAlertDialog.show(button, stringResources.getDownloadPodCastTitle(), stringResources.getDownloadPodcastMessage(), null, null);
         replay(yesNoAlertDialog);
         listener.onClick(button);
-        verify(settings);
+        verify(stringResources);
     }
 
 }

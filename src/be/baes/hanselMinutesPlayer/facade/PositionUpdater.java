@@ -7,14 +7,14 @@ import java.util.Observable;
 import be.baes.hanselMinutesPlayer.model.Position;
 import android.os.Handler;
 
+import be.baes.hanselMinutesPlayer.resources.StringResources;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
 @Singleton
 public class PositionUpdater extends Observable {
 	@Inject Player player;
-	@Inject
-    Settings settings;
+	@Inject StringResources stringResources;
 
 	private final Handler handler = new Handler();
     private Position position;
@@ -34,8 +34,8 @@ public class PositionUpdater extends Observable {
     {
         position.setProgress(0);
         position.setMaxDuration(0);
-        position.setTimer(String.format(settings.getTimerWithTime(), toMinutes(0), toMinutes(0)));
-        position.setMessage(settings.getNoFileSelected());
+        position.setTimer(String.format(stringResources.getTimerWithTime(), toMinutes(0), toMinutes(0)));
+        position.setMessage(stringResources.getNoFileSelected());
         position.setHasPodCast(false);
         setChanged();
         notifyObservers(position);
@@ -45,8 +45,8 @@ public class PositionUpdater extends Observable {
     {
         position.setProgress(0);
         position.setMaxDuration(player.getDuration());
-        position.setTimer(String.format(settings.getTimerWithTime(), toMinutes(0), toMinutes(player.getDuration())));
-        position.setMessage(String.format(settings.getSelected(), player.getCurrentTitle()));
+        position.setTimer(String.format(stringResources.getTimerWithTime(), toMinutes(0), toMinutes(player.getDuration())));
+        position.setMessage(String.format(stringResources.getSelected(), player.getCurrentTitle()));
         position.setHasPodCast(true);
         setChanged();
         notifyObservers(position);
@@ -55,8 +55,8 @@ public class PositionUpdater extends Observable {
     public void stopPosition()
     {
         handler.removeCallbacks(updatePositionRunnable);
-        position.setTimer(String.format(settings.getTimerWithTime(), toMinutes(0), toMinutes(player.getDuration())));
-        position.setMessage(String.format(settings.getStopped(), player.getCurrentTitle()));
+        position.setTimer(String.format(stringResources.getTimerWithTime(), toMinutes(0), toMinutes(player.getDuration())));
+        position.setMessage(String.format(stringResources.getStopped(), player.getCurrentTitle()));
         position.setMaxDuration(player.getDuration());
         position.setHasPodCast(true);
         position.setProgress(0);
@@ -67,8 +67,8 @@ public class PositionUpdater extends Observable {
     public void pausePosition()
     {
         position.setProgress(player.getCurrentPosition());
-        position.setTimer(String.format(settings.getTimerWithTime(), toMinutes(player.getCurrentPosition()), toMinutes(player.getDuration())));
-        position.setMessage(String.format(settings.getPausing(), player.getCurrentTitle()));
+        position.setTimer(String.format(stringResources.getTimerWithTime(), toMinutes(player.getCurrentPosition()), toMinutes(player.getDuration())));
+        position.setMessage(String.format(stringResources.getPausing(), player.getCurrentTitle()));
         position.setMaxDuration(player.getDuration());
         position.setHasPodCast(true);
         handler.removeCallbacks(updatePositionRunnable);
@@ -79,8 +79,8 @@ public class PositionUpdater extends Observable {
     public void updatePosition(){
         handler.removeCallbacks(updatePositionRunnable);
         position.setProgress(player.getCurrentPosition());
-        position.setTimer(String.format(settings.getTimerWithTime(), toMinutes(player.getCurrentPosition()), toMinutes(player.getDuration())));
-        position.setMessage(String.format(settings.getPlaying(), player.getCurrentTitle()));
+        position.setTimer(String.format(stringResources.getTimerWithTime(), toMinutes(player.getCurrentPosition()), toMinutes(player.getDuration())));
+        position.setMessage(String.format(stringResources.getPlaying(), player.getCurrentTitle()));
         position.setMaxDuration(player.getDuration());
         position.setHasPodCast(true);
         handler.postDelayed(updatePositionRunnable, 500);

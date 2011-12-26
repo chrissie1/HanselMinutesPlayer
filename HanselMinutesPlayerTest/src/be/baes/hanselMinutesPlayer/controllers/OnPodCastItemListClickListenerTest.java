@@ -2,18 +2,16 @@ package be.baes.hanselMinutesPlayer.controllers;
 
 import android.content.Context;
 import android.test.AndroidTestCase;
-import android.test.InstrumentationTestCase;
 import android.widget.ListView;
-import be.baes.hanselMinutesPlayer.MockContext2;
 import be.baes.hanselMinutesPlayer.R;
 import be.baes.hanselMinutesPlayer.facade.Player;
 import be.baes.hanselMinutesPlayer.facade.Settings;
 import be.baes.hanselMinutesPlayer.helpers.Network;
-import be.baes.hanselMinutesPlayer.helpers.NetworkImpl;
 import be.baes.hanselMinutesPlayer.model.PodCast;
+import be.baes.hanselMinutesPlayer.resources.ColorResources;
+import be.baes.hanselMinutesPlayer.resources.StringResources;
 import be.baes.hanselMinutesPlayer.view.adapters.PodCastAdapterImpl;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,19 +26,23 @@ import static org.easymock.EasyMock.*;
 public class OnPodCastItemListClickListenerTest extends AndroidTestCase {
     private Player player;
     private PodCastItemListClickListener listener;
-    private Settings settings;
+    private StringResources stringResources;
     private Network network;
     private Context context;
+    private Settings settings;
+    private ColorResources colorResources;
 
     public void setUp()
     {
         context = getContext();
-        player = createMock(Player.class);
         settings = createMock(Settings.class);
+        player = createMock(Player.class);
+        colorResources = createMock(ColorResources.class);
+        stringResources = createMock(StringResources.class);
         network = createMock(Network.class);
         listener = new PodCastItemListClickListener();
         listener.player = player;
-        listener.settings = settings;
+        listener.stringResources = stringResources;
         listener.network = network;
     }
 
@@ -55,7 +57,7 @@ public class OnPodCastItemListClickListenerTest extends AndroidTestCase {
         expect(player.hasCurrentPodCastDownloadedMp3()).andReturn(true);
         replay(player);
         ListView adapterView = new ListView(context);
-        PodCastAdapterImpl podCastAdapter = new PodCastAdapterImpl(context, R.layout.row, podCasts, settings);
+        PodCastAdapterImpl podCastAdapter = new PodCastAdapterImpl(context, R.layout.row, podCasts, settings, stringResources, colorResources);
         adapterView.setAdapter(podCastAdapter);
         listener.onItemClick(adapterView, null, 0, 0);
         verify(player);
@@ -72,7 +74,7 @@ public class OnPodCastItemListClickListenerTest extends AndroidTestCase {
         expect(player.hasCurrentPodCastDownloadedMp3()).andReturn(true);
         replay(player);
         ListView adapterView = new ListView(context);
-        PodCastAdapterImpl podCastAdapter = new PodCastAdapterImpl(context, R.layout.row, podCasts, settings);
+        PodCastAdapterImpl podCastAdapter = new PodCastAdapterImpl(context, R.layout.row, podCasts, settings, stringResources, colorResources);
         adapterView.setAdapter(podCastAdapter);
         listener.onItemClick(adapterView, null, 0, 0);
         verify(player);
@@ -87,13 +89,13 @@ public class OnPodCastItemListClickListenerTest extends AndroidTestCase {
         replay(network);
         expect(player.hasCurrentPodCastDownloadedMp3()).andReturn(false);
         replay(player);
-        expect(settings.NoInternetConnection()).andStubReturn("No internet connection.");
-        replay(settings);
+        expect(stringResources.NoInternetConnection()).andStubReturn("No internet connection.");
+        replay(stringResources);
         ListView adapterView = new ListView(context);
-        PodCastAdapterImpl podCastAdapter = new PodCastAdapterImpl(context, R.layout.row, podCasts, settings);
+        PodCastAdapterImpl podCastAdapter = new PodCastAdapterImpl(context, R.layout.row, podCasts, settings, stringResources, colorResources);
         adapterView.setAdapter(podCastAdapter);
         listener.onItemClick(adapterView, null, 0, 0);
-        verify(settings);
+        verify(stringResources);
     }
 
 }

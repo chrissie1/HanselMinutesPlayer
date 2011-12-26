@@ -6,8 +6,8 @@ import android.util.Log;
 import android.widget.Toast;
 import be.baes.hanselMinutesPlayer.Constants;
 import be.baes.hanselMinutesPlayer.facade.PodCastList;
-import be.baes.hanselMinutesPlayer.facade.Settings;
 import be.baes.hanselMinutesPlayer.helpers.Network;
+import be.baes.hanselMinutesPlayer.resources.StringResources;
 import com.google.inject.Inject;
 
 /**
@@ -21,7 +21,7 @@ class OnRefreshListLatestClickListener implements DialogInterface.OnClickListene
     @Inject Context context;
     @Inject Network network;
     @Inject PodCastList podCastList;         
-    @Inject Settings settings;
+    @Inject StringResources stringResources;
 
     @Override
     public void onClick(DialogInterface dialogInterface, int i) {
@@ -32,7 +32,7 @@ class OnRefreshListLatestClickListener implements DialogInterface.OnClickListene
         else
         {
             Log.i(Constants.LOG_ID, "No internet connection");
-            Toast.makeText(context, settings.NoInternetConnection(), Toast.LENGTH_LONG).show();
+            Toast.makeText(context, stringResources.NoInternetConnection(), Toast.LENGTH_LONG).show();
         }
     }
 }

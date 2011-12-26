@@ -1,6 +1,7 @@
 package be.baes.hanselMinutesPlayer.facade;
 
 import be.baes.hanselMinutesPlayer.model.Position;
+import be.baes.hanselMinutesPlayer.resources.StringResources;
 import com.google.inject.Singleton;
 import junit.framework.TestCase;
 import static org.easymock.EasyMock.*;
@@ -18,15 +19,15 @@ public class PositionUpdaterTest extends TestCase {
     private Position position;
     private PositionUpdater positionUpdater;
     private Player player;
-    private Settings settings;
+    private StringResources stringResources;
     
     public void setUp()
     {
         positionUpdater = new PositionUpdater();
         player = createMock(Player.class);
-        settings = createMock(Settings.class);
+        stringResources = createMock(StringResources.class);
         positionUpdater.player = player;
-        positionUpdater.settings = settings;
+        positionUpdater.stringResources = stringResources;
         TestObserver testObserver = new TestObserver();
         positionUpdater.addObserver(testObserver);
     }
@@ -45,54 +46,54 @@ public class PositionUpdaterTest extends TestCase {
 
     public void testIfEmptyFileHasCorrectMessageInPosition()
     {
-        expect(settings.getTimerWithTime()).andStubReturn("Timer: %s / %s");
-        expect(settings.getNoFileSelected()).andStubReturn("No file selected.");
-        replay(settings);
+        expect(stringResources.getTimerWithTime()).andStubReturn("Timer: %s / %s");
+        expect(stringResources.getNoFileSelected()).andStubReturn("No file selected.");
+        replay(stringResources);
         positionUpdater.emptyFile();
         assertEquals("No file selected.", position.getMessage());
     }
 
     public void testIfEmptyFileHasCorrectProgressInPosition()
     {
-        expect(settings.getTimerWithTime()).andStubReturn("Timer: %s / %s");
-        expect(settings.getNoFileSelected()).andStubReturn("No file selected.");
-        replay(settings);
+        expect(stringResources.getTimerWithTime()).andStubReturn("Timer: %s / %s");
+        expect(stringResources.getNoFileSelected()).andStubReturn("No file selected.");
+        replay(stringResources);
         positionUpdater.emptyFile();
         assertEquals(0, position.getProgress());
     }
 
     public void testIfEmptyFileHasCorrectMaxDurationInPosition()
     {
-        expect(settings.getTimerWithTime()).andStubReturn("Timer: %s / %s");
-        expect(settings.getNoFileSelected()).andStubReturn("No file selected.");
-        replay(settings);
+        expect(stringResources.getTimerWithTime()).andStubReturn("Timer: %s / %s");
+        expect(stringResources.getNoFileSelected()).andStubReturn("No file selected.");
+        replay(stringResources);
         positionUpdater.emptyFile();
         assertEquals(0, position.getMaxDuration());
     }
 
     public void testIfEmptyFileHasCorrectTimerInPosition()
     {
-        expect(settings.getTimerWithTime()).andStubReturn("Timer: %s / %s");
-        expect(settings.getNoFileSelected()).andStubReturn("No file selected.");
-        replay(settings);
+        expect(stringResources.getTimerWithTime()).andStubReturn("Timer: %s / %s");
+        expect(stringResources.getNoFileSelected()).andStubReturn("No file selected.");
+        replay(stringResources);
         positionUpdater.emptyFile();
         assertEquals("Timer: 00:00 / 00:00", position.getTimer());
     }
 
     public void testIfEmptyFileHasCorrectHasPodCastInPosition()
     {
-        expect(settings.getTimerWithTime()).andStubReturn("Timer: %s / %s");
-        expect(settings.getNoFileSelected()).andStubReturn("No file selected.");
-        replay(settings);
+        expect(stringResources.getTimerWithTime()).andStubReturn("Timer: %s / %s");
+        expect(stringResources.getNoFileSelected()).andStubReturn("No file selected.");
+        replay(stringResources);
         positionUpdater.emptyFile();
         assertFalse(position.getHasPodCast());
     }
 
     public void testIfStopPositionHasCorrectTimerInPosition()
     {
-        expect(settings.getTimerWithTime()).andStubReturn("Timer: %s / %s");
-        expect(settings.getStopped()).andStubReturn("Stopped: %s");
-        replay(settings);
+        expect(stringResources.getTimerWithTime()).andStubReturn("Timer: %s / %s");
+        expect(stringResources.getStopped()).andStubReturn("Stopped: %s");
+        replay(stringResources);
         expect(player.getDuration()).andStubReturn(10000);
         expect(player.getCurrentTitle()).andStubReturn("");
         replay(player);
@@ -102,9 +103,9 @@ public class PositionUpdaterTest extends TestCase {
 
     public void testIfStopPositionHasCorrectMessageInPosition()
     {
-        expect(settings.getTimerWithTime()).andStubReturn("Timer: %s / %s");
-        expect(settings.getStopped()).andStubReturn("Stopped: %s");
-        replay(settings);
+        expect(stringResources.getTimerWithTime()).andStubReturn("Timer: %s / %s");
+        expect(stringResources.getStopped()).andStubReturn("Stopped: %s");
+        replay(stringResources);
         expect(player.getDuration()).andStubReturn(10);
         expect(player.getCurrentTitle()).andStubReturn("file");
         replay(player);
@@ -114,9 +115,9 @@ public class PositionUpdaterTest extends TestCase {
 
     public void testIfStopPositionHasCorrectMaxDurationInPosition()
     {
-        expect(settings.getTimerWithTime()).andStubReturn("Timer: %s / %s");
-        expect(settings.getStopped()).andStubReturn("Stopped: %s");
-        replay(settings);
+        expect(stringResources.getTimerWithTime()).andStubReturn("Timer: %s / %s");
+        expect(stringResources.getStopped()).andStubReturn("Stopped: %s");
+        replay(stringResources);
         expect(player.getDuration()).andStubReturn(10);
         expect(player.getCurrentTitle()).andStubReturn("");
         replay(player);
@@ -126,9 +127,9 @@ public class PositionUpdaterTest extends TestCase {
 
     public void testIfStopPositionHasCorrectProgressInPosition()
     {
-        expect(settings.getTimerWithTime()).andStubReturn("Timer: %s / %s");
-        expect(settings.getStopped()).andStubReturn("Stopped: %s");
-        replay(settings);
+        expect(stringResources.getTimerWithTime()).andStubReturn("Timer: %s / %s");
+        expect(stringResources.getStopped()).andStubReturn("Stopped: %s");
+        replay(stringResources);
         expect(player.getDuration()).andStubReturn(0);
         expect(player.getCurrentTitle()).andStubReturn("");
         replay(player);
@@ -138,9 +139,9 @@ public class PositionUpdaterTest extends TestCase {
 
     public void testIfStopPositionHasCorrectHasPodCastInPosition()
     {
-        expect(settings.getTimerWithTime()).andStubReturn("Timer: %s / %s");
-        expect(settings.getStopped()).andStubReturn("Stopped: %s");
-        replay(settings);
+        expect(stringResources.getTimerWithTime()).andStubReturn("Timer: %s / %s");
+        expect(stringResources.getStopped()).andStubReturn("Stopped: %s");
+        replay(stringResources);
         expect(player.getDuration()).andStubReturn(0);
         expect(player.getCurrentTitle()).andStubReturn("");
         replay(player);
@@ -150,9 +151,9 @@ public class PositionUpdaterTest extends TestCase {
 
     public void testIfPausePositionHasCorrectTimerInPosition()
     {
-        expect(settings.getTimerWithTime()).andStubReturn("Timer: %s / %s");
-        expect(settings.getPausing()).andStubReturn("Pausing: %s");
-        replay(settings);
+        expect(stringResources.getTimerWithTime()).andStubReturn("Timer: %s / %s");
+        expect(stringResources.getPausing()).andStubReturn("Pausing: %s");
+        replay(stringResources);
         expect(player.getDuration()).andStubReturn(10000);
         expect(player.getCurrentTitle()).andStubReturn("");
         expect(player.getCurrentPosition()).andStubReturn(1000);
@@ -163,9 +164,9 @@ public class PositionUpdaterTest extends TestCase {
 
     public void testIfPausePositionHasCorrectMessageInPosition()
     {
-        expect(settings.getTimerWithTime()).andStubReturn("Timer: %s / %s");
-        expect(settings.getPausing()).andStubReturn("Pausing: %s");
-        replay(settings);
+        expect(stringResources.getTimerWithTime()).andStubReturn("Timer: %s / %s");
+        expect(stringResources.getPausing()).andStubReturn("Pausing: %s");
+        replay(stringResources);
         expect(player.getDuration()).andStubReturn(10);
         expect(player.getCurrentTitle()).andStubReturn("file");
         expect(player.getCurrentPosition()).andStubReturn(1000);
@@ -176,9 +177,9 @@ public class PositionUpdaterTest extends TestCase {
 
     public void testIfPausePositionHasCorrectMaxDurationInPosition()
     {
-        expect(settings.getTimerWithTime()).andStubReturn("Timer: %s / %s");
-        expect(settings.getPausing()).andStubReturn("Pausing: %s");
-        replay(settings);
+        expect(stringResources.getTimerWithTime()).andStubReturn("Timer: %s / %s");
+        expect(stringResources.getPausing()).andStubReturn("Pausing: %s");
+        replay(stringResources);
         expect(player.getDuration()).andStubReturn(10);
         expect(player.getCurrentTitle()).andStubReturn("");
         expect(player.getCurrentPosition()).andStubReturn(1000);
@@ -189,9 +190,9 @@ public class PositionUpdaterTest extends TestCase {
 
     public void testIfPausePositionHasCorrectProgressInPosition()
     {
-        expect(settings.getTimerWithTime()).andStubReturn("Timer: %s / %s");
-        expect(settings.getPausing()).andStubReturn("Pausing: %s");
-        replay(settings);
+        expect(stringResources.getTimerWithTime()).andStubReturn("Timer: %s / %s");
+        expect(stringResources.getPausing()).andStubReturn("Pausing: %s");
+        replay(stringResources);
         expect(player.getDuration()).andStubReturn(0);
         expect(player.getCurrentTitle()).andStubReturn("");
         expect(player.getCurrentPosition()).andStubReturn(1000);
@@ -202,9 +203,9 @@ public class PositionUpdaterTest extends TestCase {
 
     public void testIfPausePositionHasCorrectHasPodCastInPosition()
     {
-        expect(settings.getTimerWithTime()).andStubReturn("Timer: %s / %s");
-        expect(settings.getPausing()).andStubReturn("Pausing: %s");
-        replay(settings);
+        expect(stringResources.getTimerWithTime()).andStubReturn("Timer: %s / %s");
+        expect(stringResources.getPausing()).andStubReturn("Pausing: %s");
+        replay(stringResources);
         expect(player.getDuration()).andStubReturn(0);
         expect(player.getCurrentTitle()).andStubReturn("");
         expect(player.getCurrentPosition()).andStubReturn(1000);
@@ -215,9 +216,9 @@ public class PositionUpdaterTest extends TestCase {
 
     public void testIfStartPositionHasCorrectTimerInPosition()
     {
-        expect(settings.getTimerWithTime()).andStubReturn("Timer: %s / %s");
-        expect(settings.getSelected()).andStubReturn("Selected: %s");
-        replay(settings);
+        expect(stringResources.getTimerWithTime()).andStubReturn("Timer: %s / %s");
+        expect(stringResources.getSelected()).andStubReturn("Selected: %s");
+        replay(stringResources);
         expect(player.getDuration()).andStubReturn(10000);
         expect(player.getCurrentTitle()).andStubReturn("");
         expect(player.getCurrentPosition()).andStubReturn(1000);
@@ -228,9 +229,9 @@ public class PositionUpdaterTest extends TestCase {
 
     public void testIfStartPositionHasCorrectMessageInPosition()
     {
-        expect(settings.getTimerWithTime()).andStubReturn("Timer: %s / %s");
-        expect(settings.getSelected()).andStubReturn("Selected: %s");
-        replay(settings);
+        expect(stringResources.getTimerWithTime()).andStubReturn("Timer: %s / %s");
+        expect(stringResources.getSelected()).andStubReturn("Selected: %s");
+        replay(stringResources);
         expect(player.getDuration()).andStubReturn(10);
         expect(player.getCurrentTitle()).andStubReturn("file");
         expect(player.getCurrentPosition()).andStubReturn(1000);
@@ -241,9 +242,9 @@ public class PositionUpdaterTest extends TestCase {
 
     public void testIfStartPositionHasCorrectMaxDurationInPosition()
     {
-        expect(settings.getTimerWithTime()).andStubReturn("Timer: %s / %s");
-        expect(settings.getSelected()).andStubReturn("Selected: %s");
-        replay(settings);
+        expect(stringResources.getTimerWithTime()).andStubReturn("Timer: %s / %s");
+        expect(stringResources.getSelected()).andStubReturn("Selected: %s");
+        replay(stringResources);
         expect(player.getDuration()).andStubReturn(10);
         expect(player.getCurrentTitle()).andStubReturn("");
         expect(player.getCurrentPosition()).andStubReturn(1000);
@@ -254,9 +255,9 @@ public class PositionUpdaterTest extends TestCase {
 
     public void testIfStartPositionHasCorrectProgressInPosition()
     {
-        expect(settings.getTimerWithTime()).andStubReturn("Timer: %s / %s");
-        expect(settings.getSelected()).andStubReturn("Selected: %s");
-        replay(settings);
+        expect(stringResources.getTimerWithTime()).andStubReturn("Timer: %s / %s");
+        expect(stringResources.getSelected()).andStubReturn("Selected: %s");
+        replay(stringResources);
         expect(player.getDuration()).andStubReturn(0);
         expect(player.getCurrentTitle()).andStubReturn("");
         expect(player.getCurrentPosition()).andStubReturn(1000);
@@ -267,9 +268,9 @@ public class PositionUpdaterTest extends TestCase {
 
     public void testIfStartPositionHasCorrectHasPodCastInPosition()
     {
-        expect(settings.getTimerWithTime()).andStubReturn("Timer: %s / %s");
-        expect(settings.getSelected()).andStubReturn("Selected: %s");
-        replay(settings);
+        expect(stringResources.getTimerWithTime()).andStubReturn("Timer: %s / %s");
+        expect(stringResources.getSelected()).andStubReturn("Selected: %s");
+        replay(stringResources);
         expect(player.getDuration()).andStubReturn(0);
         expect(player.getCurrentTitle()).andStubReturn("");
         replay(player);
@@ -279,9 +280,9 @@ public class PositionUpdaterTest extends TestCase {
 
     public void testIfUpdatePositionHasCorrectTimerInPosition()
     {
-        expect(settings.getTimerWithTime()).andStubReturn("Timer: %s / %s");
-        expect(settings.getPlaying()).andStubReturn("Playing: %s");
-        replay(settings);
+        expect(stringResources.getTimerWithTime()).andStubReturn("Timer: %s / %s");
+        expect(stringResources.getPlaying()).andStubReturn("Playing: %s");
+        replay(stringResources);
         expect(player.getDuration()).andStubReturn(10000);
         expect(player.getCurrentTitle()).andStubReturn("");
         expect(player.getCurrentPosition()).andStubReturn(1000);
@@ -292,9 +293,9 @@ public class PositionUpdaterTest extends TestCase {
 
     public void testIfUpdatePositionHasCorrectMessageInPosition()
     {
-        expect(settings.getTimerWithTime()).andStubReturn("Timer: %s / %s");
-        expect(settings.getPlaying()).andStubReturn("Playing: %s");
-        replay(settings);
+        expect(stringResources.getTimerWithTime()).andStubReturn("Timer: %s / %s");
+        expect(stringResources.getPlaying()).andStubReturn("Playing: %s");
+        replay(stringResources);
         expect(player.getDuration()).andStubReturn(10);
         expect(player.getCurrentTitle()).andStubReturn("file");
         expect(player.getCurrentPosition()).andStubReturn(1000);
@@ -305,9 +306,9 @@ public class PositionUpdaterTest extends TestCase {
 
     public void testIfUpdatePositionHasCorrectMaxDurationInPosition()
     {
-        expect(settings.getTimerWithTime()).andStubReturn("Timer: %s / %s");
-        expect(settings.getPlaying()).andStubReturn("Playing: %s");
-        replay(settings);
+        expect(stringResources.getTimerWithTime()).andStubReturn("Timer: %s / %s");
+        expect(stringResources.getPlaying()).andStubReturn("Playing: %s");
+        replay(stringResources);
         expect(player.getDuration()).andStubReturn(10);
         expect(player.getCurrentTitle()).andStubReturn("");
         expect(player.getCurrentPosition()).andStubReturn(1000);
@@ -318,9 +319,9 @@ public class PositionUpdaterTest extends TestCase {
 
     public void testIfUpdatePositionHasCorrectProgressInPosition()
     {
-        expect(settings.getTimerWithTime()).andStubReturn("Timer: %s / %s");
-        expect(settings.getPlaying()).andStubReturn("Playing: %s");
-        replay(settings);
+        expect(stringResources.getTimerWithTime()).andStubReturn("Timer: %s / %s");
+        expect(stringResources.getPlaying()).andStubReturn("Playing: %s");
+        replay(stringResources);
         expect(player.getDuration()).andStubReturn(0);
         expect(player.getCurrentTitle()).andStubReturn("");
         expect(player.getCurrentPosition()).andStubReturn(1000);
@@ -331,9 +332,9 @@ public class PositionUpdaterTest extends TestCase {
 
     public void testIfUpdatePositionHasCorrectHasPodCastInPosition()
     {
-        expect(settings.getTimerWithTime()).andStubReturn("Timer: %s / %s");
-        expect(settings.getPlaying()).andStubReturn("Playing: %s");
-        replay(settings);
+        expect(stringResources.getTimerWithTime()).andStubReturn("Timer: %s / %s");
+        expect(stringResources.getPlaying()).andStubReturn("Playing: %s");
+        replay(stringResources);
         expect(player.getDuration()).andStubReturn(0);
         expect(player.getCurrentTitle()).andStubReturn("");
         expect(player.getCurrentPosition()).andStubReturn(1000);

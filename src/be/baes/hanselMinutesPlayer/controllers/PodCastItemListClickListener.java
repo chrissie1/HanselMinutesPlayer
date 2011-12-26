@@ -4,19 +4,17 @@ import android.util.Log;
 import android.widget.*;
 import be.baes.hanselMinutesPlayer.Constants;
 import be.baes.hanselMinutesPlayer.facade.Player;
-import be.baes.hanselMinutesPlayer.facade.Settings;
 import be.baes.hanselMinutesPlayer.helpers.Network;
 import be.baes.hanselMinutesPlayer.model.PodCast;
+import be.baes.hanselMinutesPlayer.resources.StringResources;
 import com.google.inject.Inject;
 
 import android.view.View;
 import android.widget.AdapterView.OnItemClickListener;
 
-import java.io.File;
-
 public class PodCastItemListClickListener implements OnItemClickListener {
 	@Inject Player player;
-    @Inject Settings settings;
+    @Inject StringResources stringResources;
     @Inject Network network;
 
 	@Override
@@ -26,7 +24,7 @@ public class PodCastItemListClickListener implements OnItemClickListener {
         if(!player.hasCurrentPodCastDownloadedMp3() && !network.haveInternet(arg0.getContext()))
         {
             Log.i(Constants.LOG_ID, "No internet connection");
-            Toast.makeText(arg0.getContext(),settings.NoInternetConnection(), Toast.LENGTH_LONG).show();
+            Toast.makeText(arg0.getContext(), stringResources.NoInternetConnection(), Toast.LENGTH_LONG).show();
         }
         else
         {

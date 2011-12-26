@@ -6,6 +6,8 @@ import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
+import be.baes.hanselMinutesPlayer.resources.ColorResources;
+import be.baes.hanselMinutesPlayer.resources.StringResources;
 import be.baes.hanselMinutesPlayer.view.ProgressReport;
 import be.baes.hanselMinutesPlayer.view.adapters.PodCastAdapterImpl;
 import be.baes.hanselMinutesPlayer.controllers.*;
@@ -46,6 +48,8 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
     @Inject ListViewContextMenu listViewContextMenu;
     @Inject OnScrollPodCastListListener onScrollPodCastListListener;
     @Inject Player player;
+    @Inject StringResources stringResources;
+    @Inject ColorResources colorResources;
     Position position;
     SharedPreferences sharedPreferences;
 
@@ -57,7 +61,9 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
 
         sharedPreferences = getPreferences(MODE_PRIVATE);
         progressReport.setActivity(this);
-        settings.initialize(getResources(), getExternalCacheDir());
+        settings.initialize(getExternalCacheDir());
+        colorResources.initialize(getResources());
+        stringResources.initialize(getResources());
         positionUpdater.addObserver(this);
         podCastList.addObserver(this);
         settingsButton.setOnClickListener(onSettingsClickListener);
@@ -172,7 +178,7 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
     private void setList(FillListResult fillListResult) {
         if(fillListResult.getPodCasts()!=null)
         {
-            PodCastAdapterImpl adapter = new PodCastAdapterImpl(this, R.layout.row, fillListResult.getPodCasts(), settings);
+            PodCastAdapterImpl adapter = new PodCastAdapterImpl(this, R.layout.row, fillListResult.getPodCasts(), settings, stringResources, colorResources);
             podCastListView.setAdapter(adapter);
             podCastListView.setSelection(fillListResult.getPosition());
         } else

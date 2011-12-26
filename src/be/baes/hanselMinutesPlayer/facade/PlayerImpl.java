@@ -5,6 +5,7 @@ import be.baes.hanselMinutesPlayer.Constants;
 import be.baes.hanselMinutesPlayer.facade.task.DownloadMp3AsyncTask;
 import be.baes.hanselMinutesPlayer.facade.task.OpeningPodCastAsyncTask;
 import be.baes.hanselMinutesPlayer.model.PodCast;
+import be.baes.hanselMinutesPlayer.resources.StringResources;
 import be.baes.hanselMinutesPlayer.view.ProgressReport;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -18,6 +19,7 @@ import java.io.IOException;
 public class PlayerImpl implements Player {
 	@Inject PositionUpdater positionUpdater;
     @Inject ProgressReport progressReport;
+    @Inject StringResources stringResources;
     @Inject Settings settings;
 	private MediaPlayer mediaPlayer;
 	private PodCast currentPodCast;
@@ -77,7 +79,7 @@ public class PlayerImpl implements Player {
             else
             {
                 Log.i(Constants.LOG_ID, "currentPodCast is filled");
-                OpeningPodCastAsyncTask task = new OpeningPodCastAsyncTask(this,currentPodCast, progressReport, positionUpdater, settings);
+                OpeningPodCastAsyncTask task = new OpeningPodCastAsyncTask(this,currentPodCast, progressReport, positionUpdater, stringResources);
                 task.execute(settings.getCacheDirectory(),null,null);
             }
         }
@@ -140,7 +142,7 @@ public class PlayerImpl implements Player {
     @Override
     public void downloadMp3() {
         if(currentPodCast==null) return;
-        DownloadMp3AsyncTask downloadMp3AsyncTask = new DownloadMp3AsyncTask(progressReport, currentPodCast, podCastList, settings);
+        DownloadMp3AsyncTask downloadMp3AsyncTask = new DownloadMp3AsyncTask(progressReport, currentPodCast, podCastList, stringResources, settings);
         downloadMp3AsyncTask.execute(null,null,null);
     }
 
