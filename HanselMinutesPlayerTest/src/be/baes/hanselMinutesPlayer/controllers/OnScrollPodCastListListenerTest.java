@@ -1,15 +1,10 @@
 package be.baes.hanselMinutesPlayer.controllers;
 
-import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.content.res.Resources;
 import android.test.InstrumentationTestCase;
-import android.test.mock.MockContext;
 import android.widget.ListView;
 import be.baes.hanselMinutesPlayer.MockContext2;
 import be.baes.hanselMinutesPlayer.dal.PodCastAdapter;
 import be.baes.hanselMinutesPlayer.facade.PodCastList;
-import org.easymock.EasyMock;
 
 import static org.easymock.EasyMock.*;
 
@@ -18,7 +13,6 @@ import static org.easymock.EasyMock.*;
  * User: christiaan
  * Date: 12/12/11
  * Time: 22:46
- * To change this template use File | Settings | File Templates.
  */
 public class OnScrollPodCastListListenerTest extends InstrumentationTestCase {
     private PodCastList podCastList;

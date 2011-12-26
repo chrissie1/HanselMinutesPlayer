@@ -4,7 +4,6 @@ import android.content.Context;
 import android.test.AndroidTestCase;
 import be.baes.hanselMinutesPlayer.Constants;
 import be.baes.hanselMinutesPlayer.facade.PodCastList;
-import be.baes.hanselMinutesPlayer.facade.Settings;
 import be.baes.hanselMinutesPlayer.helpers.Network;
 import be.baes.hanselMinutesPlayer.resources.StringResources;
 

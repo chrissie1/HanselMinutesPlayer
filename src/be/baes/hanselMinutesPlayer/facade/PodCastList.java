@@ -1,6 +1,5 @@
 package be.baes.hanselMinutesPlayer.facade;
 
-import android.content.res.Resources;
 import be.baes.hanselMinutesPlayer.model.FillListResult;
 
 import java.util.Observer;

@@ -1,9 +1,7 @@
 package be.baes.hanselMinutesPlayer.controllers;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.view.View;
-import be.baes.hanselMinutesPlayer.HanselminutesPlayerActivity;
 import com.google.inject.Inject;
 
 /**

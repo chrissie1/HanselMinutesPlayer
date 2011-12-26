@@ -1,7 +1,5 @@
 package be.baes.hanselMinutesPlayer.facade;
 
-import android.content.res.Resources;
-import be.baes.hanselMinutesPlayer.R;
 import com.google.inject.Singleton;
 
 import java.io.File;

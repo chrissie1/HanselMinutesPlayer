@@ -6,7 +6,6 @@ import android.util.Log;
 import android.widget.Toast;
 import be.baes.hanselMinutesPlayer.Constants;
 import be.baes.hanselMinutesPlayer.facade.PodCastList;
-import be.baes.hanselMinutesPlayer.facade.Settings;
 import be.baes.hanselMinutesPlayer.helpers.Network;
 import be.baes.hanselMinutesPlayer.resources.StringResources;
 import com.google.inject.Inject;
@@ -16,7 +15,6 @@ import com.google.inject.Inject;
 * User: christiaan
 * Date: 26/12/11
 * Time: 9:50
-* To change this template use File | Settings | File Templates.
 */
 class OnRefreshListClickListener implements DialogInterface.OnClickListener {
     @Inject Context context;

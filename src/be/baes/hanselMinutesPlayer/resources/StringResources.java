@@ -2,14 +2,11 @@ package be.baes.hanselMinutesPlayer.resources;
 
 import android.content.res.Resources;
 
-import java.io.File;
-
 /**
  * Created by IntelliJ IDEA.
  * User: christiaan
  * Date: 26/12/11
  * Time: 10:59
- * To change this template use File | Settings | File Templates.
  */
 public interface StringResources {
     void initialize(Resources resources);

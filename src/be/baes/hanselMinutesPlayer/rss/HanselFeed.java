@@ -1,7 +1,5 @@
 package be.baes.hanselMinutesPlayer.rss;
 
-import android.os.StrictMode;
-import be.baes.hanselMinutesPlayer.Constants;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
@@ -16,8 +14,6 @@ import java.net.URL;
 public class HanselFeed {
 
     public RSSFeed getFeed(String feed) throws IOException, SAXException, ParserConfigurationException {
-        //StrictMode.ThreadPolicy tp = StrictMode.ThreadPolicy.LAX;
-        //StrictMode.setThreadPolicy(tp);
         URL url = new URL(feed);
         SAXParserFactory factory = SAXParserFactory.newInstance();
         SAXParser parser = factory.newSAXParser();

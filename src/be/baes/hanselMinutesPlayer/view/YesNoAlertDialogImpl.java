@@ -9,7 +9,6 @@ import android.view.View;
  * User: christiaan
  * Date: 21/12/11
  * Time: 15:49
- * To change this template use File | Settings | File Templates.
  */
 public class YesNoAlertDialogImpl implements YesNoAlertDialog {
 

@@ -7,7 +7,6 @@ import android.content.Context;
  * User: christiaan
  * Date: 21/12/11
  * Time: 10:50
- * To change this template use File | Settings | File Templates.
  */
 public interface Network {
     boolean haveInternet(Context ctx);

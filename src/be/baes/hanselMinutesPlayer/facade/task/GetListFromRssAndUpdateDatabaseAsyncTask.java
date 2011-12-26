@@ -5,7 +5,6 @@ import android.util.Log;
 import be.baes.hanselMinutesPlayer.Constants;
 import be.baes.hanselMinutesPlayer.dal.PodCastAdapter;
 import be.baes.hanselMinutesPlayer.facade.PodCastList;
-import be.baes.hanselMinutesPlayer.facade.Settings;
 import be.baes.hanselMinutesPlayer.model.PodCast;
 import be.baes.hanselMinutesPlayer.resources.StringResources;
 import be.baes.hanselMinutesPlayer.rss.HanselFeed;

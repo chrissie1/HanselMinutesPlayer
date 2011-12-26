@@ -7,7 +7,6 @@ import junit.framework.TestCase;
  * User: christiaan
  * Date: 26/12/11
  * Time: 13:03
- * To change this template use File | Settings | File Templates.
  */
 public class ConstantsTest extends TestCase {
     public void testIfLogIdIsCorrect()

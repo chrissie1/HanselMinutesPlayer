@@ -5,14 +5,12 @@ import android.content.pm.ApplicationInfo;
 import android.content.res.Resources;
 import android.test.InstrumentationTestCase;
 import android.test.mock.MockContext;
-import be.baes.hanselMinutesPlayer.controllers.OnPodCastItemListClickListenerTest;
 
 /**
 * Created by IntelliJ IDEA.
 * User: christiaan
 * Date: 19/12/11
 * Time: 21:04
-* To change this template use File | Settings | File Templates.
 */
 public class MockContext2 extends MockContext {
 

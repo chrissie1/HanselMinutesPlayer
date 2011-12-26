@@ -2,7 +2,6 @@ package be.baes.hanselMinutesPlayer.controllers;
 
 import android.test.AndroidTestCase;
 import be.baes.hanselMinutesPlayer.facade.Player;
-import be.baes.hanselMinutesPlayer.facade.Settings;
 import be.baes.hanselMinutesPlayer.resources.StringResources;
 
 import static org.easymock.EasyMock.*;

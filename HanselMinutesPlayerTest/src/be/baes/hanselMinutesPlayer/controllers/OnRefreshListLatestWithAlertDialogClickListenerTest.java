@@ -2,7 +2,6 @@ package be.baes.hanselMinutesPlayer.controllers;
 
 import android.test.AndroidTestCase;
 import android.widget.Button;
-import be.baes.hanselMinutesPlayer.facade.Settings;
 import be.baes.hanselMinutesPlayer.resources.StringResources;
 import be.baes.hanselMinutesPlayer.view.YesNoAlertDialog;
 

@@ -7,7 +7,6 @@ import junit.framework.TestCase;
  * User: christiaan
  * Date: 12/12/11
  * Time: 9:22
- * To change this template use File | Settings | File Templates.
  */
 public class PositionTest extends TestCase {
     

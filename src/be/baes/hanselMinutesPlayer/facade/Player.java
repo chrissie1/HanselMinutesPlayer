@@ -1,9 +1,6 @@
 package be.baes.hanselMinutesPlayer.facade;
 
-import android.content.res.Resources;
 import be.baes.hanselMinutesPlayer.model.PodCast;
-
-import java.io.File;
 
 /**
  * Created by IntelliJ IDEA.
