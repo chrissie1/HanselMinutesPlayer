@@ -54,7 +54,7 @@ public class OnPodCastItemListClickListenerTest extends AndroidTestCase {
         expect(network.haveInternet(context)).andReturn(true);
         replay(network);
         player.setCurrentFile(podCast);
-        expect(player.hasCurrentPodCastDownloadedMp3()).andReturn(true);
+        expect(player.hasPodCastDownloadedMp3(podCast)).andReturn(true);
         replay(player);
         ListView adapterView = new ListView(context);
         PodCastAdapterImpl podCastAdapter = new PodCastAdapterImpl(context, R.layout.row, podCasts, settings, stringResources, colorResources);
@@ -71,7 +71,7 @@ public class OnPodCastItemListClickListenerTest extends AndroidTestCase {
         expect(network.haveInternet(context)).andReturn(false);
         replay(network);
         player.setCurrentFile(podCast);
-        expect(player.hasCurrentPodCastDownloadedMp3()).andReturn(true);
+        expect(player.hasPodCastDownloadedMp3(podCast)).andReturn(true);
         replay(player);
         ListView adapterView = new ListView(context);
         PodCastAdapterImpl podCastAdapter = new PodCastAdapterImpl(context, R.layout.row, podCasts, settings, stringResources, colorResources);
@@ -87,7 +87,7 @@ public class OnPodCastItemListClickListenerTest extends AndroidTestCase {
         podCasts.add(podCast);
         expect(network.haveInternet(context)).andReturn(false);
         replay(network);
-        expect(player.hasCurrentPodCastDownloadedMp3()).andReturn(false);
+        expect(player.hasPodCastDownloadedMp3(podCast)).andReturn(false);
         replay(player);
         expect(stringResources.NoInternetConnection()).andStubReturn("No internet connection.");
         replay(stringResources);

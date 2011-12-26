@@ -39,4 +39,6 @@ public interface Player {
     boolean hasCurrentPodCastDownloadedMp3();
 
     void deleteCurrentPodCastDownLoadedMp3();
+
+    boolean hasPodCastDownloadedMp3(PodCast podCast);
 }

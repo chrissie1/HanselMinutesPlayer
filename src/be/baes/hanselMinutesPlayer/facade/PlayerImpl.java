@@ -148,9 +148,7 @@ public class PlayerImpl implements Player {
 
     @Override
     public boolean hasCurrentPodCastDownloadedMp3() {
-        if(currentPodCast==null) return false;
-        File file = new File(settings.getCacheDirectory(),currentPodCast.getPodCastName());
-        return file.exists();
+        return hasPodCastDownloadedMp3(currentPodCast);
     }
 
     @Override
@@ -159,6 +157,13 @@ public class PlayerImpl implements Player {
         if(!hasCurrentPodCastDownloadedMp3()) return;
         File file = new File(settings.getCacheDirectory(),currentPodCast.getPodCastName());
         file.delete();
+    }
+
+    @Override
+    public boolean hasPodCastDownloadedMp3(PodCast podCast) {
+        if(podCast==null) return false;
+        File file = new File(settings.getCacheDirectory(),podCast.getPodCastName());
+        return file.exists();
     }
 
 
