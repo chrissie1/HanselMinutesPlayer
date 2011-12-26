@@ -1,0 +1,55 @@
+package be.baes.hanselMinutesPlayer.controllers;
+
+import android.test.AndroidTestCase;
+import android.widget.Button;
+import be.baes.hanselMinutesPlayer.facade.Settings;
+import be.baes.hanselMinutesPlayer.view.YesNoAlertDialog;
+
+import static org.easymock.EasyMock.*;
+
+/**
+ * Created by IntelliJ IDEA.
+ * User: christiaan
+ * Date: 12/12/11
+ * Time: 14:07
+ */
+public class OnDownloadPodcastWithAlertDialogClickListenerTest extends AndroidTestCase {
+
+    private YesNoAlertDialog yesNoAlertDialog;
+    private Settings settings;
+    private OnDownloadPodCastWithAlertDialogClickListener listener;
+
+    public void setUp()
+    {
+        yesNoAlertDialog = createMock(YesNoAlertDialog.class);
+        settings = createMock(Settings.class);
+        listener = new OnDownloadPodCastWithAlertDialogClickListener();
+        listener.settings = settings;
+        listener.yesNoAlertDialog = yesNoAlertDialog;
+   }
+
+    public void testIfYesNoAlertDialogIsCalledOnClick()
+    {
+        Button button = new Button(getContext());
+        expect(settings.getDownloadPodcastMessage()).andReturn("message").atLeastOnce();
+        expect(settings.getDownloadPodCastTitle()).andReturn("title").atLeastOnce();
+        replay(settings);
+        yesNoAlertDialog.show(button,settings.getDownloadPodCastTitle(), settings.getDownloadPodcastMessage(),null,null);
+        replay(yesNoAlertDialog);
+        listener.onClick(button);
+        verify(yesNoAlertDialog);
+    }
+
+    public void testIfSettingsAreCalledOnClick()
+    {
+        Button button = new Button(getContext());
+        expect(settings.getDownloadPodcastMessage()).andReturn("message").atLeastOnce();
+        expect(settings.getDownloadPodCastTitle()).andReturn("title").atLeastOnce();
+        replay(settings);
+        yesNoAlertDialog.show(button,settings.getDownloadPodCastTitle(), settings.getDownloadPodcastMessage(),null,null);
+        replay(yesNoAlertDialog);
+        listener.onClick(button);
+        verify(settings);
+    }
+
+}

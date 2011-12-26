@@ -13,29 +13,18 @@ import android.view.View;
  */
 public class YesNoAlertDialogImpl implements YesNoAlertDialog {
 
-    private boolean result = false;
-
     @Override
-    public boolean show(View view, String title, String message)
+    public void show(View view, String title, String message, DialogInterface.OnClickListener positiveClickListener, DialogInterface.OnClickListener negativeClickListener)
     {
         AlertDialog.Builder alert = new AlertDialog.Builder(view.getContext());
 
         alert.setTitle(title);
         alert.setMessage(message);
 
-        alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-                result = true;
-            }
-        });
+        alert.setPositiveButton("Yes",positiveClickListener);
 
-        alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-                result = false;
-            }
-        });
+        alert.setNegativeButton("No", negativeClickListener);
         alert.show();
-        return result;
     }
     
 }

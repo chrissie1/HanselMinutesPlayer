@@ -17,17 +17,19 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.util.List;
 
-public class GetListFromRssAndUpdateDatabaseAsyncTask extends AsyncTask<PodCastList,String,PodCastList> {
+public class GetListFromRssAndUpdateDatabaseAsyncTask extends AsyncTask<String,String,Void> {
     private be.baes.hanselMinutesPlayer.dal.PodCastAdapter podCastAdapter;
     private Settings settings;
     private HanselFeed hanselFeed;
     private ProgressReport progressReport;
+    private PodCastList podCastList;
 
-    public GetListFromRssAndUpdateDatabaseAsyncTask(PodCastAdapter podCastAdapter,HanselFeed hanselFeed, ProgressReport progressReport, Settings settings) {
+    public GetListFromRssAndUpdateDatabaseAsyncTask(PodCastAdapter podCastAdapter,HanselFeed hanselFeed, ProgressReport progressReport, Settings settings, PodCastList podCastList) {
         this.hanselFeed = hanselFeed;
         this.progressReport = progressReport;
         this.podCastAdapter = podCastAdapter;
         this.settings =  settings;
+        this.podCastList = podCastList;
     }
 
     @Override
@@ -37,10 +39,10 @@ public class GetListFromRssAndUpdateDatabaseAsyncTask extends AsyncTask<PodCastL
     }
 
     @Override
-    protected void onPostExecute(PodCastList result)
+    protected void onPostExecute(Void result)
     {
         progressReport.endProgress();
-        result.load(0);
+        podCastList.load(0);
     }
 
     @Override
@@ -55,10 +57,10 @@ public class GetListFromRssAndUpdateDatabaseAsyncTask extends AsyncTask<PodCastL
     }
 
     @Override
-    protected PodCastList doInBackground(PodCastList... podCastLists) {
+    protected Void doInBackground(String... feeds) {
         RSSFeed feed = null;
         try {
-            feed = hanselFeed.getFeed();
+            feed = hanselFeed.getFeed(feeds[0]);
         } catch (IOException e) {
             Log.e(Constants.LOG_ID, String.format("Error: %s", e.getMessage()),e);
             e.printStackTrace();
@@ -94,6 +96,6 @@ public class GetListFromRssAndUpdateDatabaseAsyncTask extends AsyncTask<PodCastL
                 }
             }
         }
-        return podCastLists[0];
+        return null;
     }
 }

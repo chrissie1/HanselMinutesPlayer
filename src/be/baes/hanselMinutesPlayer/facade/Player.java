@@ -35,4 +35,8 @@ public interface Player {
     void setDataSource(String path);
 
     void downloadMp3();
+
+    boolean hasCurrentPodCastDownloadedMp3();
+
+    void deleteCurrentPodCastDownLoadedMp3();
 }

@@ -7,6 +7,7 @@ public class FillListResult
     private List<PodCast> podCasts;
     private String numberOfPodCasts;
     private int position;
+    private int numberOfDownloadedPodCasts;
 
     public FillListResult(List<PodCast> podCasts, String numberOfPodCasts, int position) {
         this.podCasts = podCasts;
@@ -33,4 +34,14 @@ public class FillListResult
     public void setNumberOfPodCasts(String numberOfPodCasts) {
         this.numberOfPodCasts = numberOfPodCasts;
     }
+
+    public void setNumberOfDownloadedPodCasts(int numberOfDownloadedPodCasts) {
+        this.numberOfDownloadedPodCasts = numberOfDownloadedPodCasts;
+    }
+    
+    public int getNumberOfDownloadedPodCasts()
+    {
+        return numberOfDownloadedPodCasts;
+    }
+
 }

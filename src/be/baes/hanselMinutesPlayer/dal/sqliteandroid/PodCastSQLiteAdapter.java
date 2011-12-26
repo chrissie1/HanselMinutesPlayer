@@ -110,7 +110,7 @@ public class PodCastSQLiteAdapter implements PodCastAdapter {
         String limit = "";
         if(pageFrom!=null && pageTo!=null) 
             limit = pageFrom.toString() + ", " + pageTo.toString();
-        Cursor cursor = db.query(Constants.TABLE_PODCASTS, new String[]{Constants.PODCASTS_COLUMN_TITLE, Constants.PODCASTS_COLUMN_PUBDATE, Constants.PODCASTS_COLUMN_LINK, Constants.PODCASTS_COLUMN_MP3LINK}, null, null, null, null, "cast(substr(" + Constants.PODCASTS_COLUMN_LINK + ",49) as integer)" + " DESC",limit);
+        Cursor cursor = db.query(Constants.TABLE_PODCASTS, new String[]{Constants.PODCASTS_COLUMN_TITLE, Constants.PODCASTS_COLUMN_PUBDATE, Constants.PODCASTS_COLUMN_LINK, Constants.PODCASTS_COLUMN_MP3LINK}, null, null, null, null, "substr(" + Constants.PODCASTS_COLUMN_MP3LINK + ",-22) DESC",limit);
         if(cursor != null)
         {
             result = new ArrayList<PodCast>();

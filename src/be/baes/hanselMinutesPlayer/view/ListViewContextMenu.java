@@ -7,10 +7,8 @@ import android.view.View;
 import android.widget.ListView;
 import be.baes.hanselMinutesPlayer.Constants;
 import be.baes.hanselMinutesPlayer.R;
-import be.baes.hanselMinutesPlayer.controllers.OnDeleteAllClickListener;
-import be.baes.hanselMinutesPlayer.controllers.OnDeleteDownloadedPodCastClickListener;
-import be.baes.hanselMinutesPlayer.controllers.OnDownloadPodCastClickListener;
-import be.baes.hanselMinutesPlayer.controllers.OnRefreshListClickListener;
+import be.baes.hanselMinutesPlayer.controllers.OnDeleteDownloadedPodCastWithAlertDialogClickListener;
+import be.baes.hanselMinutesPlayer.controllers.OnDownloadPodCastWithAlertDialogClickListener;
 import be.baes.hanselMinutesPlayer.facade.Player;
 import be.baes.hanselMinutesPlayer.facade.Settings;
 import com.google.inject.Inject;
@@ -19,8 +17,10 @@ import roboguice.inject.InjectView;
 import java.io.File;
 
 public class ListViewContextMenu {
-    @Inject OnDownloadPodCastClickListener onDownloadPodCastClickListener;
-    @Inject OnDeleteDownloadedPodCastClickListener onDeleteDownloadedPodCastClickListener;
+    @Inject
+    OnDownloadPodCastWithAlertDialogClickListener onDownloadPodCastClickListener;
+    @Inject
+    OnDeleteDownloadedPodCastWithAlertDialogClickListener onDeleteDownloadedPodCastClickListener;
     @InjectView(R.id.podCastList) ListView listView;
     @Inject Player player;
     @Inject Settings settings;

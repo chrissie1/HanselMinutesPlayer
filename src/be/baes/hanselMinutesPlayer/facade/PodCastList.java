@@ -18,7 +18,7 @@ public interface PodCastList {
 
     void load(int page, int position);
 
-    void getListFromRssAndUpdateDatabase();
+    void getListFromRssAndUpdateDatabase(String feed);
 
     void updateList(FillListResult result);
 

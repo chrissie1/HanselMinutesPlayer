@@ -1,5 +1,6 @@
 package be.baes.hanselMinutesPlayer.view;
 
+import android.content.DialogInterface;
 import android.view.View;
 
 /**
@@ -10,5 +11,5 @@ import android.view.View;
  * To change this template use File | Settings | File Templates.
  */
 public interface YesNoAlertDialog {
-    boolean show(View view, String title, String message);
+    void show(View view, String title, String message, DialogInterface.OnClickListener positiveClickListener, DialogInterface.OnClickListener negativeClickListener);
 }

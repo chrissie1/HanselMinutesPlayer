@@ -1,5 +1,7 @@
 package be.baes.hanselMinutesPlayer.controllers;
 
+import android.content.Context;
+import android.test.AndroidTestCase;
 import android.test.InstrumentationTestCase;
 import android.widget.ListView;
 import be.baes.hanselMinutesPlayer.MockContext2;
@@ -23,14 +25,16 @@ import static org.easymock.EasyMock.*;
  * Date: 12/12/11
  * Time: 14:43
  */
-public class OnPodCastItemListClickListenerTest extends InstrumentationTestCase{
+public class OnPodCastItemListClickListenerTest extends AndroidTestCase {
     private Player player;
     private PodCastItemListClickListener listener;
     private Settings settings;
     private Network network;
+    private Context context;
 
     public void setUp()
     {
+        context = getContext();
         player = createMock(Player.class);
         settings = createMock(Settings.class);
         network = createMock(Network.class);
@@ -40,24 +44,56 @@ public class OnPodCastItemListClickListenerTest extends InstrumentationTestCase{
         listener.network = network;
     }
 
-    public void testIfPlayerSetCurrentFileIsCalledOnClick()
+    public void testIfPlayerSetCurrentFileIsCalledOnClickWhenHaveInternetAndDownloadedFile()
     {
-        MockContext2 context2 = new MockContext2(this);
         PodCast podCast = new PodCast("","","","aaaaaaaaaaaaaaaaaaaaaaaaa");
         List<PodCast> podCasts = new ArrayList<PodCast>();
         podCasts.add(podCast);
-        expect(network.haveInternet(context2)).andReturn(true);
+        expect(network.haveInternet(context)).andReturn(true);
         replay(network);
-        expect(settings.getCacheDirectory()).andStubReturn(new File("",""));
-        expect(settings.NoInternetConnection()).andStubReturn("No internet connection.");
-        replay(settings);
         player.setCurrentFile(podCast);
+        expect(player.hasCurrentPodCastDownloadedMp3()).andReturn(true);
         replay(player);
-        ListView adapterView = new ListView(context2);
-        PodCastAdapterImpl podCastAdapter = new PodCastAdapterImpl(context2, R.layout.row, podCasts, settings);
+        ListView adapterView = new ListView(context);
+        PodCastAdapterImpl podCastAdapter = new PodCastAdapterImpl(context, R.layout.row, podCasts, settings);
         adapterView.setAdapter(podCastAdapter);
         listener.onItemClick(adapterView, null, 0, 0);
         verify(player);
+    }
+
+    public void testIfPlayerSetCurrentFileIsCalledOnClickWhenHaveNoInternetAndHaveDownloadedFile()
+    {
+        PodCast podCast = new PodCast("","","","aaaaaaaaaaaaaaaaaaaaaaaaa");
+        List<PodCast> podCasts = new ArrayList<PodCast>();
+        podCasts.add(podCast);
+        expect(network.haveInternet(context)).andReturn(false);
+        replay(network);
+        player.setCurrentFile(podCast);
+        expect(player.hasCurrentPodCastDownloadedMp3()).andReturn(true);
+        replay(player);
+        ListView adapterView = new ListView(context);
+        PodCastAdapterImpl podCastAdapter = new PodCastAdapterImpl(context, R.layout.row, podCasts, settings);
+        adapterView.setAdapter(podCastAdapter);
+        listener.onItemClick(adapterView, null, 0, 0);
+        verify(player);
+    }
+
+    public void testIfSettingsNoInternetConnectionIsCalledWhenNoInternetAndNoDownloadedFile()
+    {
+        PodCast podCast = new PodCast("","","","aaaaaaaaaaaaaaaaaaaaaaaaa");
+        List<PodCast> podCasts = new ArrayList<PodCast>();
+        podCasts.add(podCast);
+        expect(network.haveInternet(context)).andReturn(false);
+        replay(network);
+        expect(player.hasCurrentPodCastDownloadedMp3()).andReturn(false);
+        replay(player);
+        expect(settings.NoInternetConnection()).andStubReturn("No internet connection.");
+        replay(settings);
+        ListView adapterView = new ListView(context);
+        PodCastAdapterImpl podCastAdapter = new PodCastAdapterImpl(context, R.layout.row, podCasts, settings);
+        adapterView.setAdapter(podCastAdapter);
+        listener.onItemClick(adapterView, null, 0, 0);
+        verify(settings);
     }
 
 }

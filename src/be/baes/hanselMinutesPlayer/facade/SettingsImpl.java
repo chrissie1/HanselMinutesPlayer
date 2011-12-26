@@ -150,4 +150,11 @@ public class SettingsImpl implements Settings {
     public String getRefreshListMessage() {
         return resources.getString(R.string.RefreshListMessage);
     }
+    
+    @Override
+    public String getTotalDownloadedFiles()
+    {
+        return resources.getString(R.string.totalDownloadedFiles);
+    }
+    
 }

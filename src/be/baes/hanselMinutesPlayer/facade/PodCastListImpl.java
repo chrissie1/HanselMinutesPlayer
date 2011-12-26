@@ -1,6 +1,5 @@
 package be.baes.hanselMinutesPlayer.facade;
 
-import be.baes.hanselMinutesPlayer.facade.task.DownloadMp3AsyncTask;
 import be.baes.hanselMinutesPlayer.facade.task.FillListAsyncTask;
 import be.baes.hanselMinutesPlayer.facade.task.GetListFromRssAndUpdateDatabaseAsyncTask;
 import be.baes.hanselMinutesPlayer.model.FillListResult;
@@ -9,6 +8,7 @@ import be.baes.hanselMinutesPlayer.view.ProgressReport;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
+import java.io.File;
 import java.util.Observable;
 
 @Singleton
@@ -46,22 +46,28 @@ public class PodCastListImpl extends Observable implements PodCastList {
     }
 
     @Override
-    public void getListFromRssAndUpdateDatabase()
+    public void getListFromRssAndUpdateDatabase(String feed)
     {
-        task = new GetListFromRssAndUpdateDatabaseAsyncTask(podCastAdapter,hanselFeed, progressReport, settings);
-        task.execute(this);
+        task = new GetListFromRssAndUpdateDatabaseAsyncTask(podCastAdapter,hanselFeed, progressReport, settings,this);
+        task.execute(feed);
     }
 
     @Override
     public void updateList(FillListResult result)
     {
         setChanged();
+        result.setNumberOfDownloadedPodCasts(numberOfDownloadedPodCasts());
         notifyObservers(result);
     }
 
     @Override
     public int getCurrentPage() {
         return currentPage;
+    }
+    
+    private int numberOfDownloadedPodCasts()
+    {
+        return new File(settings.getCacheDirectory().getPath()).list().length;
     }
 
 }

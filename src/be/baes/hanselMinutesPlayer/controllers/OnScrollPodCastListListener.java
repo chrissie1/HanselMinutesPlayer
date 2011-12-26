@@ -10,14 +10,14 @@ import com.google.inject.Inject;
 public class OnScrollPodCastListListener implements AbsListView.OnScrollListener {
     @Inject PodCastList podCastList;
     @Inject PodCastAdapter podCastAdapter;
-    private int currentPage = 0;
+
     public OnScrollPodCastListListener() {
 
     }
 
     @Override
     public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-        currentPage = podCastList.getCurrentPage();
+        int currentPage = podCastList.getCurrentPage();
         Log.d(Constants.LOG_ID, String.format("totalItemCount: %d", totalItemCount));
         Log.d(Constants.LOG_ID, String.format("currentPage: %s", currentPage));
         Log.d(Constants.LOG_ID, String.format("visibleItemCount: %d", visibleItemCount));

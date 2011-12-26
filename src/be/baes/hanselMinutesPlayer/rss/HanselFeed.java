@@ -15,10 +15,10 @@ import java.net.URL;
 
 public class HanselFeed {
 
-    public RSSFeed getFeed() throws IOException, SAXException, ParserConfigurationException {
-        StrictMode.ThreadPolicy tp = StrictMode.ThreadPolicy.LAX;
-        StrictMode.setThreadPolicy(tp);
-        URL url = new URL(Constants.urlToRssFeed);
+    public RSSFeed getFeed(String feed) throws IOException, SAXException, ParserConfigurationException {
+        //StrictMode.ThreadPolicy tp = StrictMode.ThreadPolicy.LAX;
+        //StrictMode.setThreadPolicy(tp);
+        URL url = new URL(feed);
         SAXParserFactory factory = SAXParserFactory.newInstance();
         SAXParser parser = factory.newSAXParser();
         XMLReader xmlreader = parser.getXMLReader();

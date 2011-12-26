@@ -10,14 +10,14 @@
     <string name="Loading">Loading...</string>
     <string name="ListViewTitleText" formatted="false">%d. %s</string>
     <string name="TotalLoaded" formatted="false">Total: %d Loaded: %d</string>
-    <string name="NoPodCasts">No podcasts, click refreshlist to download the list</string>
+    <string name="NoPodCasts">No podcasts, click refresh list to download the list</string>
     <string name="TimerWithTime" formatted="false">Timer: %s / %s</string>
     <string name="NoFileSelected">No file selected.</string>
     <string name="Playing" formatted="false">Playing: %s</string>
     <string name="Pausing" formatted="false">Pausing: %s</string>
     <string name="Stopped" formatted="false">Stopped: %s</string>
     <string name="Selected" formatted="false">Selected: %s</string>
-    <string name="RefreshList">Refresh list</string>
+    <string name="RefreshList">Refresh complete list</string>
     <string name="DeleteAll">Delete All</string>
     <string name="totalInDatabase">Total in database: </string>
     <string name="Close">Close</string>
@@ -32,4 +32,5 @@
     <string name="DownloadPodcastMessage">Are you sure you want to download the podcast?</string>
     <string name="RefreshListTitle">Refresh list</string>
     <string name="RefreshListMessage">Are you sure you want to refresh the list? This could take a while.</string>
+    <string name="RefreshListLatest">Find latest podcasts</string>
 </resources>

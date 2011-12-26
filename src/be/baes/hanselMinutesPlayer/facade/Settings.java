@@ -63,4 +63,6 @@ public interface Settings {
     String getRefreshListTitle();
 
     String getRefreshListMessage();
+
+    String getTotalDownloadedFiles();
 }

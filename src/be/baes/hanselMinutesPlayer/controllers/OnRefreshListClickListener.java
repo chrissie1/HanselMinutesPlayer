@@ -1,35 +1,38 @@
 package be.baes.hanselMinutesPlayer.controllers;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.util.Log;
 import android.widget.Toast;
 import be.baes.hanselMinutesPlayer.Constants;
-import be.baes.hanselMinutesPlayer.R;
 import be.baes.hanselMinutesPlayer.facade.PodCastList;
 import be.baes.hanselMinutesPlayer.facade.Settings;
 import be.baes.hanselMinutesPlayer.helpers.Network;
-import be.baes.hanselMinutesPlayer.view.YesNoAlertDialog;
 import com.google.inject.Inject;
-import android.view.View;
-import android.view.View.OnClickListener;
 
-public class OnRefreshListClickListener implements OnClickListener {
-	@Inject PodCastList podCastList;
+/**
+* Created by IntelliJ IDEA.
+* User: christiaan
+* Date: 26/12/11
+* Time: 9:50
+* To change this template use File | Settings | File Templates.
+*/
+class OnRefreshListClickListener implements DialogInterface.OnClickListener {
+    @Inject Context context;
+    @Inject PodCastList podCastList;
     @Inject Settings settings;
     @Inject Network network;
-    @Inject YesNoAlertDialog yesNoAlertDialog;
 
     @Override
-    public void onClick(View arg0) {
-        Log.i(Constants.LOG_ID, "Clicked refresh list");
-        if(!yesNoAlertDialog.show(arg0, settings.getRefreshListTitle(), settings.getRefreshListMessage())) return;
-        if(network.haveInternet(arg0.getContext()))
+    public void onClick(DialogInterface dialogInterface, int i) {
+        if(network.haveInternet(context))
         {
-		    podCastList.getListFromRssAndUpdateDatabase();
+            podCastList.getListFromRssAndUpdateDatabase(Constants.urlToRssFeedAll);
         }
         else
         {
             Log.i(Constants.LOG_ID, "No internet connection");
-            Toast.makeText(arg0.getContext(),settings.NoInternetConnection(), Toast.LENGTH_LONG).show();
+            Toast.makeText(context, settings.NoInternetConnection(), Toast.LENGTH_LONG).show();
         }
     }
 }

@@ -11,6 +11,7 @@ import com.google.inject.Singleton;
 
 import android.media.MediaPlayer;
 
+import java.io.File;
 import java.io.IOException;
 
 @Singleton
@@ -138,10 +139,25 @@ public class PlayerImpl implements Player {
 
     @Override
     public void downloadMp3() {
+        if(currentPodCast==null) return;
         DownloadMp3AsyncTask downloadMp3AsyncTask = new DownloadMp3AsyncTask(progressReport, currentPodCast, podCastList, settings);
         downloadMp3AsyncTask.execute(null,null,null);
     }
 
+    @Override
+    public boolean hasCurrentPodCastDownloadedMp3() {
+        if(currentPodCast==null) return false;
+        File file = new File(settings.getCacheDirectory(),currentPodCast.getPodCastName());
+        return file.exists();
+    }
+
+    @Override
+    public void deleteCurrentPodCastDownLoadedMp3() {
+        if(currentPodCast==null) return;
+        if(!hasCurrentPodCastDownloadedMp3()) return;
+        File file = new File(settings.getCacheDirectory(),currentPodCast.getPodCastName());
+        file.delete();
+    }
 
 
 }

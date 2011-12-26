@@ -21,7 +21,8 @@ public class Constants {
     public static final String DATABASE_CREATE = String.format("Create table %s(%s text primary key, %s text not null, %s text not null, %s text not null)", TABLE_PODCASTS, PODCASTS_COLUMN_LINK, PODCASTS_COLUMN_TITLE, PODCASTS_COLUMN_PUBDATE, PODCASTS_COLUMN_MP3LINK);
     public static final String DROP_TABLE = String.format("DROP TABLE IF EXISTS %s", TABLE_PODCASTS);
     public static final String PREFIX = "http://www.hanselminutes.com/default.aspx?ShowID=";
-    public static final String urlToRssFeed = "http://feeds.feedburner.com/HanselminutesCompleteMP3?format=xml";
+    public static final String urlToRssFeedAll = "http://feeds.feedburner.com/HanselminutesCompleteMP3?format=xml";
+    public static final String urlToRssFeedLatest = "http://feeds.feedburner.com/Hanselminutes?format=xml";
     public static final int DOWNLOAD_PODCAST_OPTION = 0;
     public static final int DELETE_DOWNLOADED_PODCAST_OPTION = 1;
     public static final String HASPODCAST = "HasPodCast";
