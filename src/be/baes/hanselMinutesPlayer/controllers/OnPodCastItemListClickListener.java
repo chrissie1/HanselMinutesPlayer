@@ -12,7 +12,7 @@ import com.google.inject.Inject;
 import android.view.View;
 import android.widget.AdapterView.OnItemClickListener;
 
-public class PodCastItemListClickListener implements OnItemClickListener {
+public class OnPodCastItemListClickListener implements OnItemClickListener {
 	@Inject Player player;
     @Inject StringResources stringResources;
     @Inject Network network;

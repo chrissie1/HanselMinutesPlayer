@@ -7,14 +7,21 @@ public class PodCast implements Serializable{
     private String pubDate;
     private String link;
     private String mP3Link;
-
-    public PodCast(String title, String pubDate, String link, String mP3Link) {
+    private String description;
+    
+    public PodCast(String title, String pubDate, String link, String mP3Link, String description) {
         this.title = title;
+        this.description = description;
         this.pubDate = pubDate;
         this.link = link;
         this.mP3Link = mP3Link;
     }
     
+    public String getDescription()
+    {
+        return description;
+    }
+
     public String getPodCastName()
     {
         return mP3Link.substring(mP3Link.length()-22);

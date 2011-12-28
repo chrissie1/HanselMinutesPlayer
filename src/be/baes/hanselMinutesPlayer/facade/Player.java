@@ -38,4 +38,6 @@ public interface Player {
     void deleteCurrentPodCastDownLoadedMp3();
 
     boolean hasPodCastDownloadedMp3(PodCast podCast);
+
+    String getCurrentDescription();
 }

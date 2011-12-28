@@ -25,7 +25,7 @@ import static org.easymock.EasyMock.*;
  */
 public class OnPodCastItemListClickListenerTest extends AndroidTestCase {
     private Player player;
-    private PodCastItemListClickListener listener;
+    private OnPodCastItemListClickListener listener;
     private StringResources stringResources;
     private Network network;
     private Context context;
@@ -40,7 +40,7 @@ public class OnPodCastItemListClickListenerTest extends AndroidTestCase {
         colorResources = createMock(ColorResources.class);
         stringResources = createMock(StringResources.class);
         network = createMock(Network.class);
-        listener = new PodCastItemListClickListener();
+        listener = new OnPodCastItemListClickListener();
         listener.player = player;
         listener.stringResources = stringResources;
         listener.network = network;
@@ -48,7 +48,7 @@ public class OnPodCastItemListClickListenerTest extends AndroidTestCase {
 
     public void testIfPlayerSetCurrentFileIsCalledOnClickWhenHaveInternetAndDownloadedFile()
     {
-        PodCast podCast = new PodCast("","","","aaaaaaaaaaaaaaaaaaaaaaaaa");
+        PodCast podCast = new PodCast("","","","aaaaaaaaaaaaaaaaaaaaaaaaa","");
         List<PodCast> podCasts = new ArrayList<PodCast>();
         podCasts.add(podCast);
         expect(network.haveInternet(context)).andReturn(true);
@@ -65,7 +65,7 @@ public class OnPodCastItemListClickListenerTest extends AndroidTestCase {
 
     public void testIfPlayerSetCurrentFileIsCalledOnClickWhenHaveNoInternetAndHaveDownloadedFile()
     {
-        PodCast podCast = new PodCast("","","","aaaaaaaaaaaaaaaaaaaaaaaaa");
+        PodCast podCast = new PodCast("","","","aaaaaaaaaaaaaaaaaaaaaaaaa","");
         List<PodCast> podCasts = new ArrayList<PodCast>();
         podCasts.add(podCast);
         expect(network.haveInternet(context)).andReturn(false);
@@ -82,7 +82,7 @@ public class OnPodCastItemListClickListenerTest extends AndroidTestCase {
 
     public void testIfSettingsNoInternetConnectionIsCalledWhenNoInternetAndNoDownloadedFile()
     {
-        PodCast podCast = new PodCast("","","","aaaaaaaaaaaaaaaaaaaaaaaaa");
+        PodCast podCast = new PodCast("","","","aaaaaaaaaaaaaaaaaaaaaaaaa","");
         List<PodCast> podCasts = new ArrayList<PodCast>();
         podCasts.add(podCast);
         expect(network.haveInternet(context)).andReturn(false);

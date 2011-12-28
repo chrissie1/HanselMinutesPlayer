@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:orientation="vertical"
+              android:layout_height="fill_parent">
+    <LinearLayout android:layout_width="fill_parent"
+                  android:id="@+id/linearLayout2"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical"
+            android:padding="5dp">
+        <TextView android:id="@+id/detailscurrentPodCast"
+                  android:focusable="true"
+                  android:focusableInTouchMode="true"
+                  android:layout_width="wrap_content"
+                  android:textAppearance="?android:attr/textAppearanceLarge"
+                  android:text="@string/NoFileSelected"
+                  android:layout_height="wrap_content"
+                  android:textColor="@color/white"/>
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:textAppearance="?android:attr/textAppearanceMedium"
+                  android:id="@+id/detailsDescription"
+                  android:text="Description"
+                  android:layout_weight="1"
+                  android:layout_marginBottom="10dp"/>
+        <TextView android:id="@+id/detailsTimer"
+                  android:layout_width="wrap_content"
+                  android:textAppearance="?android:attr/textAppearanceLarge"
+                  android:text="@string/timer"
+                  android:layout_height="wrap_content"
+        />
+        <SeekBar android:layout_width="fill_parent"
+                 android:id="@+id/detailsSeekBar"
+                 android:layout_height="wrap_content"
+                 android:layout_marginTop="20dp"
+                 android:layout_marginBottom="20dp"
+                 android:enabled="false"
+                 />
+    </LinearLayout>
+    <LinearLayout android:id="@+id/linearLayout1" android:layout_marginBottom="10dp" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <Button android:id="@+id/detailsPlayButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight=".25"
+                android:text="@string/play"
+                android:enabled="false"/>
+        <Button android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_weight=".25"
+                android:id="@+id/detailsPauseButton"
+                android:text="@string/pause"
+                android:enabled="false"/>
+        <Button android:id="@+id/detailsStopButton"
+                android:layout_width="wrap_content"
+                android:layout_weight=".25"
+                android:layout_height="wrap_content"
+                android:text="@string/stop"
+                android:enabled="false"/>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/linearLayout1" android:layout_marginBottom="10dp" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <Button android:id="@+id/detailsDeleteDownloadButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"
+                android:text="@string/DeleteDownloadTitle"
+                android:enabled="false"/>
+        <Button android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_weight=".5"
+                android:id="@+id/detailsDownloadButton"
+                android:text="@string/DownloadPodCastTitle"
+                android:enabled="false"/>
+    </LinearLayout>
+</LinearLayout>

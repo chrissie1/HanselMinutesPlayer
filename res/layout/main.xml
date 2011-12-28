@@ -61,20 +61,26 @@
     	<Button android:id="@+id/playButton" 
     	android:layout_width="wrap_content" 
     	android:layout_height="wrap_content" 
-    	android:layout_weight=".3"
+    	android:layout_weight=".25"
     	android:text="@string/play"
     	android:enabled="false"/>
     	<Button android:layout_height="wrap_content" 
     	android:layout_width="wrap_content" 
-    	android:layout_weight=".3"
+    	android:layout_weight=".25"
     	android:id="@+id/pauseButton" 
     	android:text="@string/pause"
     	android:enabled="false"/>
-    	<Button android:id="@+id/stopButton" 
-    	android:layout_width="wrap_content" 
-    	android:layout_weight=".3"
-    	android:layout_height="wrap_content" 
-    	android:text="@string/stop"
-    	android:enabled="false"/>
+        <Button android:id="@+id/stopButton"
+                android:layout_width="wrap_content"
+                android:layout_weight=".25"
+                android:layout_height="wrap_content"
+                android:text="@string/stop"
+                android:enabled="false"/>
+        <Button android:id="@+id/detailsButton"
+                android:layout_width="wrap_content"
+                android:layout_weight=".25"
+                android:layout_height="wrap_content"
+                android:text="@string/details"
+                android:enabled="false"/>
 	</LinearLayout>
 </LinearLayout>

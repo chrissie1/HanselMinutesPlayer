@@ -11,6 +11,7 @@ public class RSSHandler extends DefaultHandler
 	final int RSS_TITLE = 1;
 	final int RSS_LINK = 2;
 	final int RSS_PUBDATE = 5;
+    final int RSS_DESCRIPTION = 3;
 
 	int depth = 0;
 	int currentstate = 0;
@@ -72,6 +73,11 @@ public class RSSHandler extends DefaultHandler
 			currentstate = RSS_PUBDATE;
 			return;
 		}
+        if(qName.equals("itunes:summary"))
+        {
+            currentstate = RSS_DESCRIPTION;
+            return;
+        }
 		if (qName.equals("media:content"))
 		{
 			_item.setMp3Link(atts.getValue(0));
@@ -109,6 +115,10 @@ public class RSSHandler extends DefaultHandler
 				_item.setPubDate(theString);
 				currentstate = 0;
 				break;
+            case RSS_DESCRIPTION:
+                _item.setDescription(theString);
+                currentstate = 0;
+                break;
 		}
 		
 	}

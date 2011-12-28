@@ -49,6 +49,11 @@ public class ConstantsTest extends TestCase {
         assertEquals("mp3link", Constants.PODCASTS_COLUMN_MP3LINK);
     }
 
+    public void testIfPodCastsColumnDescriptionIsCorrect()
+    {
+        assertEquals("description", Constants.PODCASTS_COLUMN_DESCRIPTION);
+    }
+
     public void testIfTablePodCastsIsCorrect()
     {
         assertEquals("podcasts", Constants.TABLE_PODCASTS);
@@ -61,12 +66,12 @@ public class ConstantsTest extends TestCase {
 
     public void testIfDatabaseVersionIsCorrect()
     {
-        assertEquals(3, Constants.DATABASE_VERSION);
+        assertEquals(4, Constants.DATABASE_VERSION);
     }
 
     public void testIfDatabaseCreateIsCorrect()
     {
-        assertEquals(String.format("Create table %s(%s text primary key, %s text not null, %s text not null, %s text not null)", Constants.TABLE_PODCASTS, Constants.PODCASTS_COLUMN_LINK, Constants.PODCASTS_COLUMN_TITLE, Constants.PODCASTS_COLUMN_PUBDATE, Constants.PODCASTS_COLUMN_MP3LINK), Constants.DATABASE_CREATE);
+        assertEquals(String.format("Create table %s(%s text primary key, %s text not null, %s text not null, %s text not null, %s text not null)", Constants.TABLE_PODCASTS, Constants.PODCASTS_COLUMN_LINK, Constants.PODCASTS_COLUMN_TITLE, Constants.PODCASTS_COLUMN_PUBDATE, Constants.PODCASTS_COLUMN_MP3LINK,Constants.PODCASTS_COLUMN_DESCRIPTION), Constants.DATABASE_CREATE);
     }
 
     public void testIfDropTableIsCorrect()
@@ -122,6 +127,11 @@ public class ConstantsTest extends TestCase {
     public void testIfTimerIsCorrect()
     {
         assertEquals("Timer", Constants.TIMER);
+    }
+
+    public void testIfDescriptionIsCorrect()
+    {
+        assertEquals("Description", Constants.DESCRIPTION);
     }
 
 }

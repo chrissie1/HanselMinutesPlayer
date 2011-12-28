@@ -166,5 +166,10 @@ public class PlayerImpl implements Player {
         return file.exists();
     }
 
+    @Override
+    public String getCurrentDescription() {
+        if(currentPodCast==null) return "";
+        return currentPodCast.getDescription();
+    }
 
 }

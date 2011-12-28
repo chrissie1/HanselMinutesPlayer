@@ -6,11 +6,20 @@ public class RSSItem
 	private String link = null;
 	private String pubDate = null;
 	private String mp3Link = null;
-	
+	private String description = null;
+    
 	RSSItem()
 	{
 	}
 
+    public String getDescription()
+    {
+        return description;
+    }
+    public void setDescription(String description)
+    {
+        this.description = description;
+    }
 	public String getMp3Link() {
 		return mp3Link;
 	}

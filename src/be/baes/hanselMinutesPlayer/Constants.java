@@ -15,10 +15,11 @@ public class Constants {
     public static final String PODCASTS_COLUMN_TITLE = "title";
     public static final String PODCASTS_COLUMN_PUBDATE = "pubdate";
     public static final String PODCASTS_COLUMN_MP3LINK = "mp3link";
+    public static final String PODCASTS_COLUMN_DESCRIPTION = "description";
     public static final String TABLE_PODCASTS = "podcasts";
     public static final String DATABASE_NAME = "HanselMinutesPlayer";
-    public static final int DATABASE_VERSION = 3;
-    public static final String DATABASE_CREATE = String.format("Create table %s(%s text primary key, %s text not null, %s text not null, %s text not null)", TABLE_PODCASTS, PODCASTS_COLUMN_LINK, PODCASTS_COLUMN_TITLE, PODCASTS_COLUMN_PUBDATE, PODCASTS_COLUMN_MP3LINK);
+    public static final int DATABASE_VERSION = 4;
+    public static final String DATABASE_CREATE = String.format("Create table %s(%s text primary key, %s text not null, %s text not null, %s text not null, %s text not null)", TABLE_PODCASTS, PODCASTS_COLUMN_LINK, PODCASTS_COLUMN_TITLE, PODCASTS_COLUMN_PUBDATE, PODCASTS_COLUMN_MP3LINK, PODCASTS_COLUMN_DESCRIPTION);
     public static final String DROP_TABLE = String.format("DROP TABLE IF EXISTS %s", TABLE_PODCASTS);
     public static final String PREFIX = "http://www.hanselminutes.com/default.aspx?ShowID=";
     public static final String urlToRssFeedAll = "http://feeds.feedburner.com/HanselminutesCompleteMP3?format=xml";
@@ -30,4 +31,5 @@ public class Constants {
     public static final String PROGRESS = "Progress";
     public static final String MESSAGE = "Message";
     public static final String TIMER = "Timer";
+    public static final String DESCRIPTION = "Description";
 }

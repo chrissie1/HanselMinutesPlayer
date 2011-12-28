@@ -89,6 +89,15 @@ public class PositionUpdaterTest extends TestCase {
         assertFalse(position.getHasPodCast());
     }
 
+    public void testIfEmptyFileHasCorrectDescriptionInPosition()
+    {
+        expect(stringResources.getTimerWithTime()).andStubReturn("Timer: %s / %s");
+        expect(stringResources.getNoFileSelected()).andStubReturn("No file selected.");
+        replay(stringResources);
+        positionUpdater.emptyFile();
+        assertEquals("", position.getDescription());
+    }
+
     public void testIfStopPositionHasCorrectTimerInPosition()
     {
         expect(stringResources.getTimerWithTime()).andStubReturn("Timer: %s / %s");
@@ -96,6 +105,7 @@ public class PositionUpdaterTest extends TestCase {
         replay(stringResources);
         expect(player.getDuration()).andStubReturn(10000);
         expect(player.getCurrentTitle()).andStubReturn("");
+        expect(player.getCurrentDescription()).andStubReturn("description");
         replay(player);
         positionUpdater.stopPosition();
         assertEquals("Timer: 00:00 / 00:10", position.getTimer());
@@ -108,6 +118,7 @@ public class PositionUpdaterTest extends TestCase {
         replay(stringResources);
         expect(player.getDuration()).andStubReturn(10);
         expect(player.getCurrentTitle()).andStubReturn("file");
+        expect(player.getCurrentDescription()).andStubReturn("description");
         replay(player);
         positionUpdater.stopPosition();
         assertEquals("Stopped: file", position.getMessage());
@@ -120,6 +131,7 @@ public class PositionUpdaterTest extends TestCase {
         replay(stringResources);
         expect(player.getDuration()).andStubReturn(10);
         expect(player.getCurrentTitle()).andStubReturn("");
+        expect(player.getCurrentDescription()).andStubReturn("description");
         replay(player);
         positionUpdater.stopPosition();
         assertEquals(10, position.getMaxDuration());
@@ -132,6 +144,7 @@ public class PositionUpdaterTest extends TestCase {
         replay(stringResources);
         expect(player.getDuration()).andStubReturn(0);
         expect(player.getCurrentTitle()).andStubReturn("");
+        expect(player.getCurrentDescription()).andStubReturn("description");
         replay(player);
         positionUpdater.stopPosition();
         assertEquals(0, position.getProgress());
@@ -144,9 +157,23 @@ public class PositionUpdaterTest extends TestCase {
         replay(stringResources);
         expect(player.getDuration()).andStubReturn(0);
         expect(player.getCurrentTitle()).andStubReturn("");
+        expect(player.getCurrentDescription()).andStubReturn("description");
         replay(player);
         positionUpdater.stopPosition();
         assertTrue(position.getHasPodCast());
+    }
+
+    public void testIfStopPositionHasCorrectDescriptionInPosition()
+    {
+        expect(stringResources.getTimerWithTime()).andStubReturn("Timer: %s / %s");
+        expect(stringResources.getStopped()).andStubReturn("Stopped: %s");
+        replay(stringResources);
+        expect(player.getDuration()).andStubReturn(0);
+        expect(player.getCurrentTitle()).andStubReturn("");
+        expect(player.getCurrentDescription()).andStubReturn("description");
+        replay(player);
+        positionUpdater.stopPosition();
+        assertEquals("description",position.getDescription());
     }
 
     public void testIfPausePositionHasCorrectTimerInPosition()
@@ -157,6 +184,7 @@ public class PositionUpdaterTest extends TestCase {
         expect(player.getDuration()).andStubReturn(10000);
         expect(player.getCurrentTitle()).andStubReturn("");
         expect(player.getCurrentPosition()).andStubReturn(1000);
+        expect(player.getCurrentDescription()).andStubReturn("description");
         replay(player);
         positionUpdater.pausePosition();
         assertEquals("Timer: 00:01 / 00:10", position.getTimer());
@@ -170,6 +198,7 @@ public class PositionUpdaterTest extends TestCase {
         expect(player.getDuration()).andStubReturn(10);
         expect(player.getCurrentTitle()).andStubReturn("file");
         expect(player.getCurrentPosition()).andStubReturn(1000);
+        expect(player.getCurrentDescription()).andStubReturn("description");
         replay(player);
         positionUpdater.pausePosition();
         assertEquals("Pausing: file", position.getMessage());
@@ -181,6 +210,7 @@ public class PositionUpdaterTest extends TestCase {
         expect(stringResources.getPausing()).andStubReturn("Pausing: %s");
         replay(stringResources);
         expect(player.getDuration()).andStubReturn(10);
+        expect(player.getCurrentDescription()).andStubReturn("description");
         expect(player.getCurrentTitle()).andStubReturn("");
         expect(player.getCurrentPosition()).andStubReturn(1000);
         replay(player);
@@ -194,6 +224,7 @@ public class PositionUpdaterTest extends TestCase {
         expect(stringResources.getPausing()).andStubReturn("Pausing: %s");
         replay(stringResources);
         expect(player.getDuration()).andStubReturn(0);
+        expect(player.getCurrentDescription()).andStubReturn("description");
         expect(player.getCurrentTitle()).andStubReturn("");
         expect(player.getCurrentPosition()).andStubReturn(1000);
         replay(player);
@@ -207,11 +238,26 @@ public class PositionUpdaterTest extends TestCase {
         expect(stringResources.getPausing()).andStubReturn("Pausing: %s");
         replay(stringResources);
         expect(player.getDuration()).andStubReturn(0);
+        expect(player.getCurrentDescription()).andStubReturn("description");
         expect(player.getCurrentTitle()).andStubReturn("");
         expect(player.getCurrentPosition()).andStubReturn(1000);
         replay(player);
         positionUpdater.pausePosition();
         assertTrue(position.getHasPodCast());
+    }
+
+    public void testIfPausePositionHasCorrectHasDescriptionInPosition()
+    {
+        expect(stringResources.getTimerWithTime()).andStubReturn("Timer: %s / %s");
+        expect(stringResources.getPausing()).andStubReturn("Pausing: %s");
+        replay(stringResources);
+        expect(player.getDuration()).andStubReturn(0);
+        expect(player.getCurrentDescription()).andStubReturn("description");
+        expect(player.getCurrentTitle()).andStubReturn("");
+        expect(player.getCurrentPosition()).andStubReturn(1000);
+        replay(player);
+        positionUpdater.pausePosition();
+        assertEquals("description",position.getDescription());
     }
 
     public void testIfStartPositionHasCorrectTimerInPosition()
@@ -220,6 +266,7 @@ public class PositionUpdaterTest extends TestCase {
         expect(stringResources.getSelected()).andStubReturn("Selected: %s");
         replay(stringResources);
         expect(player.getDuration()).andStubReturn(10000);
+        expect(player.getCurrentDescription()).andStubReturn("description");
         expect(player.getCurrentTitle()).andStubReturn("");
         expect(player.getCurrentPosition()).andStubReturn(1000);
         replay(player);
@@ -233,6 +280,7 @@ public class PositionUpdaterTest extends TestCase {
         expect(stringResources.getSelected()).andStubReturn("Selected: %s");
         replay(stringResources);
         expect(player.getDuration()).andStubReturn(10);
+        expect(player.getCurrentDescription()).andStubReturn("description");
         expect(player.getCurrentTitle()).andStubReturn("file");
         expect(player.getCurrentPosition()).andStubReturn(1000);
         replay(player);
@@ -247,6 +295,7 @@ public class PositionUpdaterTest extends TestCase {
         replay(stringResources);
         expect(player.getDuration()).andStubReturn(10);
         expect(player.getCurrentTitle()).andStubReturn("");
+        expect(player.getCurrentDescription()).andStubReturn("description");
         expect(player.getCurrentPosition()).andStubReturn(1000);
         replay(player);
         positionUpdater.startPosition();
@@ -259,6 +308,7 @@ public class PositionUpdaterTest extends TestCase {
         expect(stringResources.getSelected()).andStubReturn("Selected: %s");
         replay(stringResources);
         expect(player.getDuration()).andStubReturn(0);
+        expect(player.getCurrentDescription()).andStubReturn("description");
         expect(player.getCurrentTitle()).andStubReturn("");
         expect(player.getCurrentPosition()).andStubReturn(1000);
         replay(player);
@@ -272,10 +322,24 @@ public class PositionUpdaterTest extends TestCase {
         expect(stringResources.getSelected()).andStubReturn("Selected: %s");
         replay(stringResources);
         expect(player.getDuration()).andStubReturn(0);
+        expect(player.getCurrentDescription()).andStubReturn("description");
         expect(player.getCurrentTitle()).andStubReturn("");
         replay(player);
         positionUpdater.startPosition();
         assertTrue(position.getHasPodCast());
+    }
+
+    public void testIfStartPositionHasCorrectDescriptionInPosition()
+    {
+        expect(stringResources.getTimerWithTime()).andStubReturn("Timer: %s / %s");
+        expect(stringResources.getSelected()).andStubReturn("Selected: %s");
+        replay(stringResources);
+        expect(player.getDuration()).andStubReturn(0);
+        expect(player.getCurrentDescription()).andStubReturn("description");
+        expect(player.getCurrentTitle()).andStubReturn("");
+        replay(player);
+        positionUpdater.startPosition();
+        assertEquals("description",position.getDescription());
     }
 
     public void testIfUpdatePositionHasCorrectTimerInPosition()
@@ -284,6 +348,7 @@ public class PositionUpdaterTest extends TestCase {
         expect(stringResources.getPlaying()).andStubReturn("Playing: %s");
         replay(stringResources);
         expect(player.getDuration()).andStubReturn(10000);
+        expect(player.getCurrentDescription()).andStubReturn("description");
         expect(player.getCurrentTitle()).andStubReturn("");
         expect(player.getCurrentPosition()).andStubReturn(1000);
         replay(player);
@@ -297,6 +362,7 @@ public class PositionUpdaterTest extends TestCase {
         expect(stringResources.getPlaying()).andStubReturn("Playing: %s");
         replay(stringResources);
         expect(player.getDuration()).andStubReturn(10);
+        expect(player.getCurrentDescription()).andStubReturn("description");
         expect(player.getCurrentTitle()).andStubReturn("file");
         expect(player.getCurrentPosition()).andStubReturn(1000);
         replay(player);
@@ -311,6 +377,7 @@ public class PositionUpdaterTest extends TestCase {
         replay(stringResources);
         expect(player.getDuration()).andStubReturn(10);
         expect(player.getCurrentTitle()).andStubReturn("");
+        expect(player.getCurrentDescription()).andStubReturn("description");
         expect(player.getCurrentPosition()).andStubReturn(1000);
         replay(player);
         positionUpdater.updatePosition();
@@ -324,6 +391,7 @@ public class PositionUpdaterTest extends TestCase {
         replay(stringResources);
         expect(player.getDuration()).andStubReturn(0);
         expect(player.getCurrentTitle()).andStubReturn("");
+        expect(player.getCurrentDescription()).andStubReturn("description");
         expect(player.getCurrentPosition()).andStubReturn(1000);
         replay(player);
         positionUpdater.updatePosition();
@@ -337,10 +405,25 @@ public class PositionUpdaterTest extends TestCase {
         replay(stringResources);
         expect(player.getDuration()).andStubReturn(0);
         expect(player.getCurrentTitle()).andStubReturn("");
+        expect(player.getCurrentDescription()).andStubReturn("description");
         expect(player.getCurrentPosition()).andStubReturn(1000);
         replay(player);
         positionUpdater.updatePosition();
         assertTrue(position.getHasPodCast());
+    }
+
+    public void testIfUpdatePositionHasCorrectDescriptionInPosition()
+    {
+        expect(stringResources.getTimerWithTime()).andStubReturn("Timer: %s / %s");
+        expect(stringResources.getPlaying()).andStubReturn("Playing: %s");
+        replay(stringResources);
+        expect(player.getDuration()).andStubReturn(0);
+        expect(player.getCurrentTitle()).andStubReturn("");
+        expect(player.getCurrentDescription()).andStubReturn("description");
+        expect(player.getCurrentPosition()).andStubReturn(1000);
+        replay(player);
+        positionUpdater.updatePosition();
+        assertEquals("description", position.getDescription());
     }
 
 }

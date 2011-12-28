@@ -81,7 +81,7 @@ public class GetListFromRssAndUpdateDatabaseAsyncTask extends AsyncTask<String,S
             List<RSSItem> rssItems = feed.getAllItems();
             List<PodCast> podCastItems = podCastAdapter.getAllItems();
             for (RSSItem rssItem : rssItems) {
-                PodCast podCast = new PodCast(rssItem.getTitle(), rssItem.getPubDate(), rssItem.getLink(), rssItem.getMp3Link());
+                PodCast podCast = new PodCast(rssItem.getTitle(), rssItem.getPubDate(), rssItem.getLink(), rssItem.getMp3Link(), rssItem.getDescription());
                 if (podCastItems.contains(podCast)) {
                     if(!podCast.getTitle().equals(podCastItems.get(podCastItems.indexOf(podCast)).getTitle())&&!podCast.getPubDate().equals(podCastItems.get(podCastItems.indexOf(podCast)).getPubDate()))
                     {

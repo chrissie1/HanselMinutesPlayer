@@ -21,7 +21,7 @@ public class PositionUpdater extends Observable {
 
     public PositionUpdater()
     {
-        position = new Position("","",0,0,false);        
+        position = new Position("","",0,0,false,"");
     }
 
     private final Runnable updatePositionRunnable = new Runnable() {
@@ -29,6 +29,11 @@ public class PositionUpdater extends Observable {
                     updatePosition();
             }
     };
+    
+    public Position getCurrentPosition()
+    {
+        return position;
+    }
 
     public void emptyFile()
     {
@@ -37,6 +42,7 @@ public class PositionUpdater extends Observable {
         position.setTimer(String.format(stringResources.getTimerWithTime(), toMinutes(0), toMinutes(0)));
         position.setMessage(stringResources.getNoFileSelected());
         position.setHasPodCast(false);
+        position.setDescription("");
         setChanged();
         notifyObservers(position);
     }
@@ -47,6 +53,7 @@ public class PositionUpdater extends Observable {
         position.setMaxDuration(player.getDuration());
         position.setTimer(String.format(stringResources.getTimerWithTime(), toMinutes(0), toMinutes(player.getDuration())));
         position.setMessage(String.format(stringResources.getSelected(), player.getCurrentTitle()));
+        position.setDescription(player.getCurrentDescription());
         position.setHasPodCast(true);
         setChanged();
         notifyObservers(position);
@@ -58,6 +65,7 @@ public class PositionUpdater extends Observable {
         position.setTimer(String.format(stringResources.getTimerWithTime(), toMinutes(0), toMinutes(player.getDuration())));
         position.setMessage(String.format(stringResources.getStopped(), player.getCurrentTitle()));
         position.setMaxDuration(player.getDuration());
+        position.setDescription(player.getCurrentDescription());
         position.setHasPodCast(true);
         position.setProgress(0);
         setChanged();
@@ -70,6 +78,7 @@ public class PositionUpdater extends Observable {
         position.setTimer(String.format(stringResources.getTimerWithTime(), toMinutes(player.getCurrentPosition()), toMinutes(player.getDuration())));
         position.setMessage(String.format(stringResources.getPausing(), player.getCurrentTitle()));
         position.setMaxDuration(player.getDuration());
+        position.setDescription(player.getCurrentDescription());
         position.setHasPodCast(true);
         handler.removeCallbacks(updatePositionRunnable);
         setChanged();
@@ -82,6 +91,7 @@ public class PositionUpdater extends Observable {
         position.setTimer(String.format(stringResources.getTimerWithTime(), toMinutes(player.getCurrentPosition()), toMinutes(player.getDuration())));
         position.setMessage(String.format(stringResources.getPlaying(), player.getCurrentTitle()));
         position.setMaxDuration(player.getDuration());
+        position.setDescription(player.getCurrentDescription());
         position.setHasPodCast(true);
         handler.postDelayed(updatePositionRunnable, 500);
         setChanged();

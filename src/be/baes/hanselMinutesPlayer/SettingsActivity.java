@@ -31,9 +31,9 @@ public class SettingsActivity extends RoboActivity implements Observer{
     @InjectView(R.id.totalDowloadedFiles) TextView totalDownloadedFiles;
     @InjectView(R.id.closeButton) Button closeButton;
     @InjectView(R.id.refreshListLatestButton) Button refreshListLatestButton;
-    @Inject OnRefreshListLatestWithAlertDialogClickListener onRefreshListLatestClickListener;
-    @Inject OnRefreshListWithAlertDialogClickListener onRefreshListClickListener;
-    @Inject OnDeleteAllWithAlertDialogClickListener onDeleteAllClickListener;
+    @Inject OnRefreshListLatestWithAlertDialogClickListener onRefreshListLatestWithAlertDialogClickListener;
+    @Inject OnRefreshListWithAlertDialogClickListener onRefreshListWithAlertDialogClickListener;
+    @Inject OnDeleteAllWithAlertDialogClickListener onDeleteAllWithAlertDialogClickListener;
     @Inject OnPlayerClickListener onPlayerClickListener;
     @Inject PodCastList podCastList;
     @Inject ProgressReport progressReport;
@@ -44,12 +44,20 @@ public class SettingsActivity extends RoboActivity implements Observer{
         setContentView(R.layout.settings);
 
         progressReport.setActivity(this);
-        podCastList.addObserver(this);
-        refreshListLatestButton.setOnClickListener(onRefreshListLatestClickListener);
-        refreshListButton.setOnClickListener(onRefreshListClickListener);
-        deleteAllButton.setOnClickListener(onDeleteAllClickListener);
-        closeButton.setOnClickListener(onPlayerClickListener);
+        setObservers();
+        setListeners();
         podCastList.load(0);
+    }
+
+    private void setObservers() {
+        podCastList.addObserver(this);
+    }
+
+    private void setListeners() {
+        refreshListLatestButton.setOnClickListener(onRefreshListLatestWithAlertDialogClickListener);
+        refreshListButton.setOnClickListener(onRefreshListWithAlertDialogClickListener);
+        deleteAllButton.setOnClickListener(onDeleteAllWithAlertDialogClickListener);
+        closeButton.setOnClickListener(onPlayerClickListener);
     }
 
     @Override
@@ -57,6 +65,13 @@ public class SettingsActivity extends RoboActivity implements Observer{
     {
         super.onResume();
         progressReport.setActivity(this);
+    }
+
+    @Override
+    public void onDestroy()
+    {
+        super.onDestroy();
+        podCastList.deleteObserver(this);
     }
 
     @Override

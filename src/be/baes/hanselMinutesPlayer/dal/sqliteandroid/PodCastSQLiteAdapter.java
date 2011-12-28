@@ -110,13 +110,13 @@ public class PodCastSQLiteAdapter implements PodCastAdapter {
         String limit = "";
         if(pageFrom!=null && pageTo!=null) 
             limit = pageFrom.toString() + ", " + pageTo.toString();
-        Cursor cursor = db.query(Constants.TABLE_PODCASTS, new String[]{Constants.PODCASTS_COLUMN_TITLE, Constants.PODCASTS_COLUMN_PUBDATE, Constants.PODCASTS_COLUMN_LINK, Constants.PODCASTS_COLUMN_MP3LINK}, null, null, null, null, "substr(" + Constants.PODCASTS_COLUMN_MP3LINK + ",-22) DESC",limit);
+        Cursor cursor = db.query(Constants.TABLE_PODCASTS, new String[]{Constants.PODCASTS_COLUMN_TITLE, Constants.PODCASTS_COLUMN_PUBDATE, Constants.PODCASTS_COLUMN_LINK, Constants.PODCASTS_COLUMN_MP3LINK, Constants.PODCASTS_COLUMN_DESCRIPTION}, null, null, null, null, "substr(" + Constants.PODCASTS_COLUMN_MP3LINK + ",-22) DESC",limit);
         if(cursor != null)
         {
             result = new ArrayList<PodCast>();
             while (cursor.moveToNext())
             {
-                PodCast podCast = new PodCast(cursor.getString(0),cursor.getString(1),cursor.getString(2), cursor.getString(3));
+                PodCast podCast = new PodCast(cursor.getString(0),cursor.getString(1),cursor.getString(2), cursor.getString(3), cursor.getString(4));
                 result.add(podCast);
             }
             cursor.close();
@@ -131,6 +131,7 @@ public class PodCastSQLiteAdapter implements PodCastAdapter {
         values.put(Constants.PODCASTS_COLUMN_LINK, podCast.getLink());
         values.put(Constants.PODCASTS_COLUMN_MP3LINK, podCast.getMP3Link());
         values.put(Constants.PODCASTS_COLUMN_PUBDATE, podCast.getPubDate());
+        values.put(Constants.PODCASTS_COLUMN_DESCRIPTION, podCast.getDescription());
         return values;
     }
 }

@@ -8,13 +8,15 @@ public class Position implements Serializable {
     private int progress;
     private int maxDuration;
     private boolean hasPodCast;
+    private String description;
 
-    public Position(String timer, String message, int progress, int maxDuration, boolean hasPodCast) {
+    public Position(String timer, String message, int progress, int maxDuration, boolean hasPodCast, String description) {
         this.timer = timer;
         this.message = message;
         this.progress = progress;
         this.maxDuration = maxDuration;
         this.hasPodCast = hasPodCast;
+        this.description = description;
     }
 
     public boolean getHasPodCast() {
@@ -55,5 +57,14 @@ public class Position implements Serializable {
 
     public void setTimer(String timer) {
         this.timer = timer;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+    
+    public void setDescription(String description)
+    {
+        this.description = description;
     }
 }

@@ -33,4 +33,5 @@
     <string name="RefreshListTitle">Refresh list</string>
     <string name="RefreshListMessage">Are you sure you want to refresh the list? This could take a while.</string>
     <string name="RefreshListLatest">Find latest podcasts</string>
+    <string name="details">Details</string>
 </resources>
