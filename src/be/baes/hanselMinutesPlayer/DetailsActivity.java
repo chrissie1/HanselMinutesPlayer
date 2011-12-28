@@ -6,8 +6,8 @@ import android.widget.*;
 import be.baes.hanselMinutesPlayer.controllers.*;
 import be.baes.hanselMinutesPlayer.facade.Player;
 import be.baes.hanselMinutesPlayer.facade.PositionUpdater;
-import be.baes.hanselMinutesPlayer.facade.Settings;
 import be.baes.hanselMinutesPlayer.model.Position;
+import be.baes.hanselMinutesPlayer.view.ProgressReport;
 import com.google.inject.Inject;
 import roboguice.activity.RoboActivity;
 import roboguice.inject.InjectView;
@@ -36,13 +36,17 @@ public class DetailsActivity extends RoboActivity implements Observer{
     @Inject OnPauseClickListener onPauseClickListener;
     @Inject OnSeekChangeListener onSeekChangeListener;
     @Inject PositionUpdater positionUpdater;
+    @Inject OnDeleteDownloadedPodCastWithAlertDialogClickListener onDeleteDownloadedPodCastWithAlertDialogClickListener;
+    @Inject OnDownloadPodCastWithAlertDialogClickListener onDownloadPodCastWithAlertDialogClickListener;
     @Inject Player player;
+    @Inject ProgressReport progressReport;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.details);
 
+        progressReport.setActivity(this);
         setListeners();
         setObservers();
         if(player.getCurrentPodCast()!=null && savedInstanceState==null)
@@ -81,6 +85,8 @@ public class DetailsActivity extends RoboActivity implements Observer{
         stopButton.setOnClickListener(onStopClickListener);
         pauseButton.setOnClickListener(onPauseClickListener);
         seekbar.setOnSeekBarChangeListener(onSeekChangeListener);
+        deleteDownloadButton.setOnClickListener(onDeleteDownloadedPodCastWithAlertDialogClickListener);
+        downloadButton.setOnClickListener(onDownloadPodCastWithAlertDialogClickListener);
     }
 
     @Override
