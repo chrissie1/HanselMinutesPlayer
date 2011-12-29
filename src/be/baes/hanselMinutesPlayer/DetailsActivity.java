@@ -2,6 +2,9 @@ package be.baes.hanselMinutesPlayer;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.*;
 import be.baes.hanselMinutesPlayer.controllers.*;
 import be.baes.hanselMinutesPlayer.facade.Player;
@@ -31,6 +34,7 @@ public class DetailsActivity extends RoboActivity implements Observer{
     @InjectView(R.id.detailsTimer) TextView timer;
     @InjectView(R.id.detailscurrentPodCast) TextView currentPodCast;
     @InjectView(R.id.detailsDescription) TextView description;
+    @InjectView(R.id.detailsView) View mainView;
     @Inject OnPlayClickListener onPlayClickListener;
     @Inject OnStopClickListener onStopClickListener;
     @Inject OnPauseClickListener onPauseClickListener;
@@ -40,6 +44,7 @@ public class DetailsActivity extends RoboActivity implements Observer{
     @Inject OnDownloadPodCastWithAlertDialogClickListener onDownloadPodCastWithAlertDialogClickListener;
     @Inject Player player;
     @Inject ProgressReport progressReport;
+    @Inject OnFlingDetailsOnTouchListener onFlingDetailsOnTouchListener;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -87,6 +92,7 @@ public class DetailsActivity extends RoboActivity implements Observer{
         seekbar.setOnSeekBarChangeListener(onSeekChangeListener);
         deleteDownloadButton.setOnClickListener(onDeleteDownloadedPodCastWithAlertDialogClickListener);
         downloadButton.setOnClickListener(onDownloadPodCastWithAlertDialogClickListener);
+        mainView.setOnTouchListener(onFlingDetailsOnTouchListener);
     }
 
     @Override

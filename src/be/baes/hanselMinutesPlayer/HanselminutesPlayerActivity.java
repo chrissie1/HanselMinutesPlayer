@@ -33,6 +33,7 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
     @InjectView(R.id.settingsButton) ImageButton settingsButton;
 	@InjectView(R.id.podCastList) ListView podCastListView;
     @InjectView(R.id.numberofpodcasts) TextView numberOfPodCasts;
+    @InjectView(R.id.mainView) View mainView;
     @Inject ProgressReport progressReport;
 	@Inject OnPlayClickListener onPlayClickListener;
 	@Inject OnStopClickListener onStopClickListener;
@@ -49,6 +50,7 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
     Position position;
     SharedPreferences sharedPreferences;
     @Inject OnDetailsClickListener onDetailsClickListener;
+    @Inject OnFlingMainOnTouchListener onFlingMainOnTouchListener;
 
     /** Called when the activity is first created. */
     @Override
@@ -85,6 +87,12 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
                 setPosition((Position) savedInstanceState.getSerializable(Constants.POSITION));
             }
         }
+    }
+
+    private void setGestureDetector()
+    {
+        podCastListView.setOnTouchListener(onFlingMainOnTouchListener);
+        mainView.setOnTouchListener(onFlingMainOnTouchListener);
     }
 
     private void SetObservers() {
@@ -184,6 +192,8 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
     }
 
     private void setPosition(Position position) {
+        if(position.getHasPodCast()) setGestureDetector();
+        if(!position.getHasPodCast()) unsetGestureDetector();
         detailsButton.setEnabled(position.getHasPodCast());
         playButton.setEnabled(position.getHasPodCast());
         stopButton.setEnabled(position.getHasPodCast());
@@ -194,5 +204,11 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
         timer.setText(position.getTimer());
         currentPodCast.setText(position.getMessage());
         this.position = position;
+    }
+
+    private void unsetGestureDetector() {
+        View mainview = findViewById(R.id.mainView);
+        mainview.setOnTouchListener(null);
+        podCastListView.setOnTouchListener(null);
     }
 }
