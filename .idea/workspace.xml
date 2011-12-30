@@ -10,42 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3d1909c7-17d6-46f5-8426-ed1ebc68a21b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout-large/details.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout-large/main.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout-large/row.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout-large/settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout-xlarge/details.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout-xlarge/main.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/view/Navigation.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/view/NavigationImpl.java" />
-      <change type="DELETED" beforePath="F:\MyDocuments\Eclipse\eclipse-jee-indigo-win32\workspace\HanselMinutesPlayer\HanselMinutesPlayerFor20\src\be\baes\hanselminutesplayer\view\ListViewContextMenu.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HanselMinutesPlayer.iml" afterPath="$PROJECT_DIR$/HanselMinutesPlayer.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/controllers/OnDeleteAllWithAlertDialogClickListenerTest.java" afterPath="$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/controllers/OnDeleteAllWithAlertDialogClickListenerTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/controllers/OnDeleteDownloadedPodcastWithAlertDialogClickListenerTest.java" afterPath="$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/controllers/OnDeleteDownloadedPodcastWithAlertDialogClickListenerTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/controllers/OnDownloadPodcastWithAlertDialogClickListenerTest.java" afterPath="$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/controllers/OnDownloadPodcastWithAlertDialogClickListenerTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/controllers/OnPodCastItemListClickListenerTest.java" afterPath="$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/controllers/OnPodCastItemListClickListenerTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/controllers/OnRefreshListLatestWithAlertDialogClickListenerTest.java" afterPath="$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/controllers/OnRefreshListLatestWithAlertDialogClickListenerTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/controllers/OnRefreshListWithAlertDialogClickListenerTest.java" afterPath="$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/controllers/OnRefreshListWithAlertDialogClickListenerTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/details.xml" afterPath="$PROJECT_DIR$/res/layout/details.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/main.xml" afterPath="$PROJECT_DIR$/res/layout/main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/row.xml" afterPath="$PROJECT_DIR$/res/layout/row.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/settings.xml" afterPath="$PROJECT_DIR$/res/layout/settings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/DetailsActivity.java" afterPath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/DetailsActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/HanselminutesPlayerActivity.java" afterPath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/HanselminutesPlayerActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/SettingsActivity.java" afterPath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/SettingsActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/OnDeleteDownloadedPodCastWithAlertDialogClickListener.java" afterPath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/OnDeleteDownloadedPodCastWithAlertDialogClickListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/OnDetailsClickListener.java" afterPath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/OnDetailsClickListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/OnFlingDetailsListener.java" afterPath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/OnFlingDetailsListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/OnFlingMainListener.java" afterPath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/OnFlingMainListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/task/DownloadMp3AsyncTask.java" afterPath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/task/DownloadMp3AsyncTask.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/task/OpeningPodCastAsyncTask.java" afterPath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/task/OpeningPodCastAsyncTask.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/ioc/HanselMinutesPlayerModule.java" afterPath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/ioc/HanselMinutesPlayerModule.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/view/adapters/PodCastAdapterImpl.java" afterPath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/view/adapters/PodCastAdapterImpl.java" />
-      <change type="MOVED" beforePath="F:\MyDocuments\Eclipse\eclipse-jee-indigo-win32\workspace\HanselMinutesPlayer\res\layout\row.xml" afterPath="$PROJECT_DIR$/res/layout-xlarge/row.xml" />
-      <change type="MOVED" beforePath="F:\MyDocuments\Eclipse\eclipse-jee-indigo-win32\workspace\HanselMinutesPlayer\res\layout\settings.xml" afterPath="$PROJECT_DIR$/res/layout-xlarge/settings.xml" />
-      <change type="MOVED" beforePath="F:\MyDocuments\Eclipse\eclipse-jee-indigo-win32\workspace\HanselMinutesPlayer\src\be\baes\hanselMinutesPlayer\controllers\onSettingsClickListener.java" afterPath="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/OnSettingsClickListener.java" />
     </list>
     <ignored path="HanselMinutesPlayer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -115,7 +81,7 @@
       <file leaf-file-name="AndroidManifest.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="34" selection-start="224" selection-end="224" vertical-scroll-proportion="0.14750542">
+            <state line="4" column="36" selection-start="226" selection-end="226" vertical-scroll-proportion="0.14945056">
               <folding />
             </state>
           </provider>
@@ -682,13 +648,13 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32737276" sideWeight="0.49775785" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3287483" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3287483" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3287483" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22346786" sideWeight="0.6712517" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33700138" sideWeight="0.49402094" order="11" side_tool="false" content_ui="tabs" x="458" y="71" width="471" height="727" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22346786" sideWeight="0.6629986" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33700138" sideWeight="0.49402094" order="11" side_tool="false" content_ui="tabs" x="458" y="71" width="471" height="727" />
       <window_info id="Android Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32737276" sideWeight="0.49701047" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -731,7 +697,7 @@
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Now for android 2.2 and above" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed the read_phone_state seems it isn't needed." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -760,6 +726,7 @@
     <MESSAGE value="now with flingsupport." />
     <MESSAGE value="new version number" />
     <MESSAGE value="Now for android 2.2 and above" />
+    <MESSAGE value="Removed the read_phone_state seems it isn't needed." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -831,7 +798,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="34" selection-start="224" selection-end="224" vertical-scroll-proportion="0.14750542">
+        <state line="4" column="36" selection-start="226" selection-end="226" vertical-scroll-proportion="0.14945056">
           <folding />
         </state>
       </provider>
