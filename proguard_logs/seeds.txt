@@ -1,0 +1,75 @@
+be.baes.hanselminutesplayer.HanselminutesPlayerActivity
+be.baes.hanselminutesplayer.DetailsActivity
+be.baes.hanselminutesplayer.SettingsActivity
+roboguice.config.DefaultRoboModule
+be.baes.hanselMinutesPlayer.ioc.HanselMinutesPlayerModule
+be.baes.hanselMinutesPlayer.facade.PodCastListImpl
+be.baes.hanselMinutesPlayer.helpers.NetworkImpl
+be.baes.hanselMinutesPlayer.resources.StringResourcesImpl
+be.baes.hanselminutesplayer.ProgressReportAndroid
+be.baes.hanselMinutesPlayer.facade.PlayerImpl
+be.baes.hanselMinutesPlayer.resources.ColorResourcesImpl
+be.baes.hanselminutesplayer.YesNoAlertDialogImpl
+be.baes.hanselMinutesPlayer.dal.sqliteandroid.PodCastSQLiteAdapter
+be.baes.hanselMinutesPlayer.facade.SettingsImpl
+android.support.v4.view.ViewPager
+android.support.v4.view.ViewPager: ViewPager(android.content.Context,android.util.AttributeSet)
+com.google.inject.internal.util.$AbstractIterator$State: com.google.inject.internal.util.$AbstractIterator$State[] values()
+com.google.inject.internal.util.$AbstractIterator$State: com.google.inject.internal.util.$AbstractIterator$State valueOf(java.lang.String)
+com.google.inject.spi.InjectionPoint$Position: com.google.inject.spi.InjectionPoint$Position[] values()
+com.google.inject.spi.InjectionPoint$Position: com.google.inject.spi.InjectionPoint$Position valueOf(java.lang.String)
+com.google.inject.internal.BytecodeGen$Visibility: com.google.inject.internal.BytecodeGen$Visibility[] values()
+com.google.inject.internal.BytecodeGen$Visibility: com.google.inject.internal.BytecodeGen$Visibility valueOf(java.lang.String)
+roboguice.event.EventThread: roboguice.event.EventThread[] values()
+roboguice.event.EventThread: roboguice.event.EventThread valueOf(java.lang.String)
+com.google.inject.Stage: com.google.inject.Stage[] values()
+com.google.inject.Stage: com.google.inject.Stage valueOf(java.lang.String)
+com.google.inject.internal.util.$MapMaker$Strength: com.google.inject.internal.util.$MapMaker$Strength[] values()
+com.google.inject.internal.util.$MapMaker$Strength: com.google.inject.internal.util.$MapMaker$Strength valueOf(java.lang.String)
+com.google.inject.internal.util.$MapMaker$Strength: com.google.inject.internal.util.$MapMaker$Strength[] values()
+com.google.inject.internal.util.$MapMaker$Strength: com.google.inject.internal.util.$MapMaker$Strength valueOf(java.lang.String)
+com.google.inject.internal.util.$MapMaker$Strength: com.google.inject.internal.util.$MapMaker$Strength[] values()
+com.google.inject.internal.util.$MapMaker$Strength: com.google.inject.internal.util.$MapMaker$Strength valueOf(java.lang.String)
+com.google.inject.internal.util.$MapMaker$Strength: com.google.inject.internal.util.$MapMaker$Strength[] values()
+com.google.inject.internal.util.$MapMaker$Strength: com.google.inject.internal.util.$MapMaker$Strength valueOf(java.lang.String)
+com.google.inject.internal.InjectorImpl$JitLimitation: com.google.inject.internal.InjectorImpl$JitLimitation[] values()
+com.google.inject.internal.InjectorImpl$JitLimitation: com.google.inject.internal.InjectorImpl$JitLimitation valueOf(java.lang.String)
+com.google.inject.internal.BytecodeGen$Visibility: com.google.inject.internal.BytecodeGen$Visibility[] values()
+com.google.inject.internal.BytecodeGen$Visibility: com.google.inject.internal.BytecodeGen$Visibility valueOf(java.lang.String)
+com.google.inject.internal.BytecodeGen$Visibility: com.google.inject.internal.BytecodeGen$Visibility[] values()
+com.google.inject.internal.BytecodeGen$Visibility: com.google.inject.internal.BytecodeGen$Visibility valueOf(java.lang.String)
+com.google.inject.Key$NullAnnotationStrategy: com.google.inject.Key$NullAnnotationStrategy[] values()
+com.google.inject.Key$NullAnnotationStrategy: com.google.inject.Key$NullAnnotationStrategy valueOf(java.lang.String)
+roboguice.activity.RoboActivity
+be.baes.hanselminutesplayer.HanselminutesPlayerActivity
+be.baes.hanselminutesplayer.DetailsActivity
+be.baes.hanselminutesplayer.SettingsActivity
+roboguice.activity.RoboSplashActivity
+android.support.v4.app.FragmentActivity
+roboguice.activity.RoboFragmentActivity
+roboguice.activity.RoboExpandableListActivity
+roboguice.activity.RoboActivityGroup
+roboguice.activity.RoboTabActivity
+roboguice.activity.RoboListActivity
+roboguice.activity.RoboLauncherActivity
+roboguice.activity.RoboPreferenceActivity
+roboguice.activity.RoboAccountAuthenticatorActivity
+roboguice.service.RoboService
+roboguice.service.RoboIntentService
+roboguice.receiver.RoboBroadcastReceiver
+roboguice.content.RoboContentProvider
+be.baes.hanselMinutesPlayer.dal.sqliteandroid.SQLiteHelper
+be.baes.hanselMinutesPlayer.facade.task.GetListFromRssAndUpdateDatabaseAsyncTask
+be.baes.hanselMinutesPlayer.facade.task.OpeningPodCastAsyncTask
+be.baes.hanselMinutesPlayer.facade.task.DownloadMp3AsyncTask
+be.baes.hanselMinutesPlayer.facade.task.FillListAsyncTask
+android.support.v4.app.FragmentState
+android.support.v4.app.FragmentState: android.os.Parcelable$Creator CREATOR
+android.support.v4.app.BackStackState
+android.support.v4.app.BackStackState: android.os.Parcelable$Creator CREATOR
+android.support.v4.app.Fragment$SavedState
+android.support.v4.app.Fragment$SavedState: android.os.Parcelable$Creator CREATOR
+android.support.v4.app.FragmentManagerState
+android.support.v4.app.FragmentManagerState: android.os.Parcelable$Creator CREATOR
+android.support.v4.view.ViewPager$SavedState
+android.support.v4.view.ViewPager$SavedState: android.os.Parcelable$Creator CREATOR

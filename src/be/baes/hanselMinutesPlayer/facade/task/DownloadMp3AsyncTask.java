@@ -77,7 +77,6 @@ public class DownloadMp3AsyncTask extends AsyncTask<Void,String,Void> {
             output.flush();
             output.close();
             input.close();
-            Log.i(Constants.LOG_ID, String.format("temp file size:%d", settings.getCacheDirectory().getTotalSpace()));
         } catch (Exception e) {
             Log.e(Constants.LOG_ID, String.format("Error: %s", e.getMessage()),e);
             e.printStackTrace();

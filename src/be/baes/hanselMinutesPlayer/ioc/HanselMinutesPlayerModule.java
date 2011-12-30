@@ -9,10 +9,7 @@ import be.baes.hanselMinutesPlayer.resources.ColorResources;
 import be.baes.hanselMinutesPlayer.resources.ColorResourcesImpl;
 import be.baes.hanselMinutesPlayer.resources.StringResources;
 import be.baes.hanselMinutesPlayer.resources.StringResourcesImpl;
-import be.baes.hanselMinutesPlayer.view.ProgressReport;
-import be.baes.hanselMinutesPlayer.view.ProgressReportAndroid;
-import be.baes.hanselMinutesPlayer.view.YesNoAlertDialog;
-import be.baes.hanselMinutesPlayer.view.YesNoAlertDialogImpl;
+import be.baes.hanselMinutesPlayer.view.*;
 import com.google.inject.AbstractModule;
 
 public class HanselMinutesPlayerModule extends AbstractModule {
@@ -28,5 +25,6 @@ public class HanselMinutesPlayerModule extends AbstractModule {
         bind(YesNoAlertDialog.class).to(YesNoAlertDialogImpl.class);
         bind(StringResources.class).to(StringResourcesImpl.class);
         bind(ColorResources.class).to(ColorResourcesImpl.class);
+        bind(Navigation.class).to(NavigationImpl.class);
     }
 }

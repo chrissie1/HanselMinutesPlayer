@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="be.baes.hanselMinutesPlayer"
-      android:versionCode="4"
-      android:versionName="1.03">
-    <uses-sdk android:minSdkVersion="13" />
+          package="be.baes.hanselMinutesPlayer"
+          android:versionCode="5"
+          android:versionName="1.1">
+    <uses-sdk android:minSdkVersion="8"/>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
@@ -17,7 +17,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SettingsActivity"/>
-        <activity android:name=".DetailsActivity"/>
+        <activity android:name="be.baes.hanselMinutesPlayer.SettingsActivity"/>
+        <activity android:name="be.baes.hanselMinutesPlayer.DetailsActivity"/>
     </application>
 </manifest>

@@ -1,12 +1,8 @@
 package be.baes.hanselMinutesPlayer.controllers;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
-import be.baes.hanselMinutesPlayer.DetailsActivity;
-import be.baes.hanselMinutesPlayer.HanselminutesPlayerActivity;
-import be.baes.hanselMinutesPlayer.R;
+import be.baes.hanselMinutesPlayer.view.Navigation;
 import com.google.inject.Inject;
 
 /**
@@ -16,13 +12,11 @@ import com.google.inject.Inject;
  * Time: 21:39
  */
 public class OnFlingDetailsListener extends GestureDetector.SimpleOnGestureListener {
-    @Inject Activity activity;
+    @Inject Navigation navigation;
     
     @Override
     public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-        Intent myIntent = new Intent(activity, HanselminutesPlayerActivity.class);
-        activity.startActivity(myIntent);
-        activity.overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
+        navigation.openMainWithFlingAnimation();
         return false;
     }
 

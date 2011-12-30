@@ -1,28 +1,29 @@
 package be.baes.hanselMinutesPlayer;
 
+import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.*;
-import be.baes.hanselMinutesPlayer.resources.ColorResources;
-import be.baes.hanselMinutesPlayer.resources.StringResources;
-import be.baes.hanselMinutesPlayer.view.ProgressReport;
-import be.baes.hanselMinutesPlayer.view.adapters.PodCastAdapterImpl;
 import be.baes.hanselMinutesPlayer.controllers.*;
 import be.baes.hanselMinutesPlayer.facade.*;
 import be.baes.hanselMinutesPlayer.model.FillListResult;
 import be.baes.hanselMinutesPlayer.model.Position;
+import be.baes.hanselMinutesPlayer.resources.ColorResources;
+import be.baes.hanselMinutesPlayer.resources.StringResources;
+import be.baes.hanselMinutesPlayer.view.ProgressReport;
+import be.baes.hanselMinutesPlayer.view.adapters.PodCastAdapterImpl;
 import com.google.inject.Inject;
-
 import roboguice.activity.RoboActivity;
 import roboguice.inject.InjectView;
-import android.os.Bundle;
 
 import java.util.Observable;
 import java.util.Observer;
 
 public class HanselminutesPlayerActivity extends RoboActivity implements Observer{
-    @Inject Settings settings;
+    @Inject
+    Settings settings;
     @InjectView(R.id.detailsButton) Button detailsButton;
     @InjectView(R.id.playButton) Button playButton;
 	@InjectView(R.id.stopButton) Button stopButton;
@@ -58,7 +59,7 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        sharedPreferences = getPreferences(MODE_PRIVATE);
+        sharedPreferences = getPreferences(Context.MODE_PRIVATE);
         progressReport.setActivity(this);
         settings.initialize(getExternalCacheDir());
         colorResources.initialize(getResources());

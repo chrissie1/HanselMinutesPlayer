@@ -10,7 +10,7 @@ import be.baes.hanselMinutesPlayer.helpers.Network;
 import be.baes.hanselMinutesPlayer.model.PodCast;
 import be.baes.hanselMinutesPlayer.resources.ColorResources;
 import be.baes.hanselMinutesPlayer.resources.StringResources;
-import be.baes.hanselMinutesPlayer.view.adapters.PodCastAdapterImpl;
+import be.baes.hanselminutesplayer.view.adapters.PodCastAdapterImpl;
 
 import java.util.ArrayList;
 import java.util.List;

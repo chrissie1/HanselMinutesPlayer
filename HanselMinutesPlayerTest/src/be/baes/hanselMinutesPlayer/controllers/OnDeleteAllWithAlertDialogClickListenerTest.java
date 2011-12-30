@@ -3,7 +3,7 @@ package be.baes.hanselMinutesPlayer.controllers;
 import android.test.AndroidTestCase;
 import android.widget.Button;
 import be.baes.hanselMinutesPlayer.resources.StringResources;
-import be.baes.hanselMinutesPlayer.view.YesNoAlertDialog;
+import be.baes.hanselminutesplayer.view.YesNoAlertDialog;
 
 import static org.easymock.EasyMock.*;
 

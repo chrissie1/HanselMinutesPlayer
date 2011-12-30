@@ -57,7 +57,6 @@ public class OpeningPodCastAsyncTask extends AsyncTask<File,String,Void>{
             File downloadedFile = new File(voids[0] , currentPodCast.getPodCastName());
             if (downloadedFile.exists()) {
                 Log.i(Constants.LOG_ID, String.format("Playing local file: %s", downloadedFile.getPath()));
-                Log.i(Constants.LOG_ID, String.format("mp3 size: %d", downloadedFile.getTotalSpace()));
                 player.setDataSource(downloadedFile.getPath());
             }
             else

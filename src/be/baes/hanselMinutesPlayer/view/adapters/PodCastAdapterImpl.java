@@ -1,12 +1,5 @@
 package be.baes.hanselMinutesPlayer.view.adapters;
 
-import java.io.File;
-import java.util.List;
-
-import be.baes.hanselMinutesPlayer.R;
-import be.baes.hanselMinutesPlayer.facade.Settings;
-import be.baes.hanselMinutesPlayer.model.PodCast;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,8 +7,14 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import be.baes.hanselMinutesPlayer.R;
+import be.baes.hanselMinutesPlayer.facade.Settings;
+import be.baes.hanselMinutesPlayer.model.PodCast;
 import be.baes.hanselMinutesPlayer.resources.ColorResources;
 import be.baes.hanselMinutesPlayer.resources.StringResources;
+
+import java.io.File;
+import java.util.List;
 
 public class PodCastAdapterImpl extends ArrayAdapter<PodCast>
 {

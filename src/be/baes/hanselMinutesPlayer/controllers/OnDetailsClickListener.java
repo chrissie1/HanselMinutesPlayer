@@ -1,10 +1,7 @@
 package be.baes.hanselMinutesPlayer.controllers;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.view.View;
-import be.baes.hanselMinutesPlayer.DetailsActivity;
-import be.baes.hanselMinutesPlayer.SettingsActivity;
+import be.baes.hanselMinutesPlayer.view.Navigation;
 import com.google.inject.Inject;
 
 /**
@@ -14,10 +11,11 @@ import com.google.inject.Inject;
  * Time: 10:14
  */
 public class OnDetailsClickListener implements View.OnClickListener {
-    @Inject Activity activity;
+    @Inject
+    Navigation navigation;
 
     @Override
     public void onClick(View view) {
-        Intent myIntent = new Intent(activity, DetailsActivity.class);
-        activity.startActivity(myIntent);    }
+        navigation.openDetails();
+    }
 }
