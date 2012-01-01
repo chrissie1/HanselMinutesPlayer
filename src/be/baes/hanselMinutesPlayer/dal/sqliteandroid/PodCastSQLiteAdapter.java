@@ -126,13 +126,23 @@ public class PodCastSQLiteAdapter implements PodCastAdapter {
     }
 
     @Override
-    public List<PodCast> findItems(String s) {
+    public List<PodCast> findItems(String query) {
         List<PodCast> result = null;
         Log.i(Constants.LOG_ID,"Fetching certain podcasts");
         open();
         String limit = "0, 20";
-        String[] whereArgs = {"%" + s + "%"};
-        Cursor cursor = db.query(Constants.TABLE_PODCASTS, new String[]{Constants.PODCASTS_COLUMN_TITLE, Constants.PODCASTS_COLUMN_PUBDATE, Constants.PODCASTS_COLUMN_LINK, Constants.PODCASTS_COLUMN_MP3LINK, Constants.PODCASTS_COLUMN_DESCRIPTION}, Constants.PODCASTS_COLUMN_TITLE +  " like ?", whereArgs, null, null, "substr(" + Constants.PODCASTS_COLUMN_MP3LINK + ",-22) DESC",limit);
+        ArrayList<String> args = new ArrayList<String>();
+        String whereString = "";
+        String andString = "";
+        for(String arg:query.split(" "))
+        {
+            args.add(String.format("%%%s%%", arg));
+            whereString += String.format("%s%s like ?", andString, Constants.PODCASTS_COLUMN_TITLE);
+            andString = " and ";
+        }
+        String[] whereArgs = new String[query.split(" ").length];
+        whereArgs = args.toArray(whereArgs);
+        Cursor cursor = db.query(Constants.TABLE_PODCASTS, new String[]{Constants.PODCASTS_COLUMN_TITLE, Constants.PODCASTS_COLUMN_PUBDATE, Constants.PODCASTS_COLUMN_LINK, Constants.PODCASTS_COLUMN_MP3LINK, Constants.PODCASTS_COLUMN_DESCRIPTION}, whereString, whereArgs, null, null, "substr(" + Constants.PODCASTS_COLUMN_MP3LINK + ",-22) DESC",limit);
         if(cursor != null)
         {
             result = new ArrayList<PodCast>();
