@@ -9,10 +9,10 @@ import com.google.inject.Inject;
  * Date: 29/12/11
  * Time: 13:19
  */
-public class OnFlingDetailsGestureDetector extends GestureDetector{
+public class OnFlingDetailsOpenMainGestureDetector extends GestureDetector{
 
     @Inject
-    public OnFlingDetailsGestureDetector(OnFlingDetailsListener listener) {
+    public OnFlingDetailsOpenMainGestureDetector(OnFlingDetailsOpenMainListener listener) {
         super(listener);
     }
 }

@@ -17,4 +17,6 @@ public interface PodCastAdapter {
     int numberOfPodcasts();
     
     List<PodCast> getAllItems(Integer pageFrom, Integer pageTo);
+
+    List<PodCast> findItems(String s);
 }

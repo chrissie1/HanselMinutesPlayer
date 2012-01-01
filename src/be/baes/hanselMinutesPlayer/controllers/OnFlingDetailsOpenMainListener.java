@@ -11,7 +11,7 @@ import com.google.inject.Inject;
  * Date: 28/12/11
  * Time: 21:39
  */
-public class OnFlingDetailsListener extends GestureDetector.SimpleOnGestureListener {
+public class OnFlingDetailsOpenMainListener extends GestureDetector.SimpleOnGestureListener {
     @Inject Navigation navigation;
     
     @Override

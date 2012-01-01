@@ -7,15 +7,15 @@ import com.google.inject.Inject;
 /**
  * Created by IntelliJ IDEA.
  * User: christiaan
- * Date: 27/12/11
- * Time: 10:14
+ * Date: 30/12/11
+ * Time: 20:36
+ * To change this template use File | Settings | File Templates.
  */
-public class OnDetailsClickListener implements View.OnClickListener {
-    @Inject
-    Navigation navigation;
+public class OnSearchClickListener implements View.OnClickListener {
+    @Inject Navigation navigation;
 
     @Override
     public void onClick(View view) {
-        navigation.openDetails();
+        navigation.openSearch();
     }
 }

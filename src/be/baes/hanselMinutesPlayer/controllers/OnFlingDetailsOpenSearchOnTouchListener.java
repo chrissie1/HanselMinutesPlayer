@@ -10,8 +10,9 @@ import com.google.inject.Inject;
  * Date: 29/12/11
  * Time: 13:24
  */
-public class OnFlingDetailsOnTouchListener implements View.OnTouchListener{
-    @Inject OnFlingDetailsGestureDetector onFlingDetailsGestureDetector;
+public class OnFlingDetailsOpenSearchOnTouchListener implements View.OnTouchListener{
+    @Inject
+    OnFlingDetailsOpenSearchGestureDetector onFlingDetailsGestureDetector;
 
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {

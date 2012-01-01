@@ -26,5 +26,6 @@ public class HanselMinutesPlayerModule extends AbstractModule {
         bind(StringResources.class).to(StringResourcesImpl.class);
         bind(ColorResources.class).to(ColorResourcesImpl.class);
         bind(Navigation.class).to(NavigationImpl.class);
+        bind(SearchList.class).to(SearchListImpl.class);
     }
 }

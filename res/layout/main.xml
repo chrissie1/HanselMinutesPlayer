@@ -11,7 +11,12 @@
         <ImageButton  android:src="@drawable/gearenabled"
                       android:scaleType="fitCenter"
                       android:id="@+id/settingsButton"
-                      android:layout_width="55dp"
+                      android:layout_width="40dp"
+                      android:layout_height="40dp"/>
+        <ImageButton  android:src="@drawable/magnify"
+                      android:scaleType="fitCenter"
+                      android:id="@+id/searchButton"
+                      android:layout_width="40dp"
                       android:layout_height="40dp"/>
         <TextView android:text="@string/NoPodCasts"
                   android:layout_height="wrap_content"

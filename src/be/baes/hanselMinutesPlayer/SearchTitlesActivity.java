@@ -2,10 +2,12 @@ package be.baes.hanselMinutesPlayer;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.*;
+import android.app.SearchManager;
+import android.content.Intent;
+import android.os.Bundle;
 import be.baes.hanselMinutesPlayer.controllers.*;
 import be.baes.hanselMinutesPlayer.facade.*;
 import be.baes.hanselMinutesPlayer.model.FillListResult;
@@ -21,62 +23,70 @@ import roboguice.inject.InjectView;
 import java.util.Observable;
 import java.util.Observer;
 
-public class HanselminutesPlayerActivity extends RoboActivity implements Observer{
-    @Inject Settings settings;
-    @InjectView(R.id.detailsButton) Button detailsButton;
-    @InjectView(R.id.playButton) Button playButton;
-	@InjectView(R.id.stopButton) Button stopButton;
-	@InjectView(R.id.pauseButton) Button pauseButton;
-	@InjectView(R.id.seekBar) SeekBar seekbar;
-    @InjectView(R.id.timer) TextView timer;
-    @InjectView(R.id.currentPodCast) TextView currentPodCast;
-    @InjectView(R.id.settingsButton) ImageButton settingsButton;
-	@InjectView(R.id.podCastList) ListView podCastListView;
-    @InjectView(R.id.numberofpodcasts) TextView numberOfPodCasts;
-    @InjectView(R.id.mainView) View mainView;
-    @InjectView(R.id.searchButton) ImageButton searchButton;
-    @Inject ProgressReport progressReport;
-	@Inject OnPlayClickListener onPlayClickListener;
-	@Inject OnStopClickListener onStopClickListener;
-	@Inject OnPauseClickListener onPauseClickListener;
-	@Inject OnSettingsClickListener onSettingsClickListener;
-	@Inject OnPodCastItemListClickListener rssItemListClickListener;
-	@Inject OnSeekChangeListener onSeekChangeListener;
-	@Inject PositionUpdater positionUpdater;
-    @Inject PodCastList podCastList;
-    @Inject OnScrollPodCastListListener onScrollPodCastListListener;
-    @Inject Player player;
+/**
+ * Created by IntelliJ IDEA.
+ * User: christiaan
+ * Date: 30/12/11
+ * Time: 20:11
+ */
+public class SearchTitlesActivity extends RoboActivity implements Observer{
+    @InjectView(R.id.searchedText) TextView searchedText;
+    @InjectView(R.id.searchDetailsButton) Button detailsButton;
+    @InjectView(R.id.searchPlayButton) Button playButton;
+    @InjectView(R.id.searchStopButton) Button stopButton;
+    @InjectView(R.id.searchPauseButton) Button pauseButton;
+    @InjectView(R.id.searchSeekBar) SeekBar seekbar;
+    @InjectView(R.id.searchTimer) TextView timer;
+    @InjectView(R.id.searchSearchButton) ImageButton searchButton;
+    @InjectView(R.id.searchCurrentPodCast) TextView currentPodCast;
+    @InjectView(R.id.searchList) ListView searchList;
+    @InjectView(R.id.searchMainView) View mainView;
+    @InjectView(R.id.foundText) TextView foundText;
+    @Inject OnPodCastItemListClickListener onPodCastItemListClickListener;
+    @Inject OnPlayClickListener onPlayClickListener;
+    @Inject OnStopClickListener onStopClickListener;
+    @Inject OnPauseClickListener onPauseClickListener;
+    @Inject OnDetailsFromSearchClickListener onDetailsClickListener;
+    @Inject OnSeekChangeListener onSeekChangeListener;
+    @Inject OnSearchClickListener onSearchClickListener;
+    @Inject PositionUpdater positionUpdater;
+    @Inject SearchList searchListFacade;
     @Inject StringResources stringResources;
     @Inject ColorResources colorResources;
-    Position position;
-    SharedPreferences sharedPreferences;
-    @Inject
-    OnDetailsFromMainClickListener onDetailsClickListener;
-    @Inject OnFlingMainOnTouchListener onFlingMainOnTouchListener;
-    @Inject OnSearchClickListener onSearchClickListener;
-
-    /** Called when the activity is first created. */
+    @Inject Settings settings;
+    @Inject ProgressReport progressReport;
+    private Position position;
+    private SharedPreferences sharedPreferences;
+    @Inject OnFlingSearchOnTouchListener onFlingSearchOnTouchListener;
+    @Inject Player player;
+    private String query;
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.search);
 
         sharedPreferences = getPreferences(Context.MODE_PRIVATE);
         progressReport.setActivity(this);
         settings.initialize(getExternalCacheDir());
         colorResources.initialize(getResources());
         stringResources.initialize(getResources());
-        SetObservers();
-        SetListeners();
-        if(savedInstanceState==null && player.getCurrentPodCast()==null)
-        {
-            Log.i(Constants.LOG_ID, "OnCreate no saved instance state");
-            podCastList.load(0);
+
+        setGestureDetector();
+        setObservers();
+        setListeners();
+        // Get the intent, verify the action and get the query
+        Intent intent = getIntent();
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            query = intent.getStringExtra(SearchManager.QUERY);
+            searchedText.setText("Searched for: " + query);
+            searchListFacade.search(query);
         }
         else if(player.getCurrentPodCast()!=null && sharedPreferences.getAll().size()>0 && savedInstanceState==null)
         {
             Log.i(Constants.LOG_ID, "OnResume with saved instance state");
-            podCastList.load(sharedPreferences.getInt(Constants.CURRENT_PAGE, 0), sharedPreferences.getInt(Constants.LIST_VIEW_POSITION, 0));
+            searchListFacade.search(sharedPreferences.getString(Constants.SEARCH_TEXT, ""),sharedPreferences.getInt(Constants.LIST_VIEW_POSITION,0));
+            query =  sharedPreferences.getString(Constants.SEARCH_TEXT, "");
             setPosition(new Position(sharedPreferences.getString(Constants.TIMER,""),sharedPreferences.getString(Constants.MESSAGE,""),sharedPreferences.getInt(Constants.PROGRESS,0),sharedPreferences.getInt(Constants.MAX_DURATION,0),sharedPreferences.getBoolean(Constants.HASPODCAST,false), sharedPreferences.getString(Constants.DESCRIPTION, "")));
         }
         else if(savedInstanceState!=null)
@@ -84,7 +94,8 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
             Log.i(Constants.LOG_ID, "OnCreate with saved instance state");
             Log.i(Constants.LOG_ID, String.format("CurrentPage: %d", savedInstanceState.getInt(Constants.CURRENT_PAGE)));
             Log.i(Constants.LOG_ID, String.format("Previous item visible was: %d", savedInstanceState.getInt(Constants.LIST_VIEW_POSITION)));
-            podCastList.load(savedInstanceState.getInt(Constants.CURRENT_PAGE), savedInstanceState.getInt(Constants.LIST_VIEW_POSITION));
+            searchListFacade.search(savedInstanceState.getString(Constants.SEARCH_TEXT),savedInstanceState.getInt(Constants.LIST_VIEW_POSITION));
+            query = savedInstanceState.getString(Constants.SEARCH_TEXT);
             if(savedInstanceState.getSerializable(Constants.POSITION)!= null)
             {
                 setPosition((Position) savedInstanceState.getSerializable(Constants.POSITION));
@@ -94,25 +105,8 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
 
     private void setGestureDetector()
     {
-        podCastListView.setOnTouchListener(onFlingMainOnTouchListener);
-        mainView.setOnTouchListener(onFlingMainOnTouchListener);
-    }
-
-    private void SetObservers() {
-        positionUpdater.addObserver(this);
-        podCastList.addObserver(this);
-    }
-
-    private void SetListeners() {
-        detailsButton.setOnClickListener(onDetailsClickListener);
-        settingsButton.setOnClickListener(onSettingsClickListener);
-        playButton.setOnClickListener(onPlayClickListener);
-        stopButton.setOnClickListener(onStopClickListener);
-        pauseButton.setOnClickListener(onPauseClickListener);
-        podCastListView.setOnItemClickListener(rssItemListClickListener);
-        podCastListView.setOnScrollListener(onScrollPodCastListListener);
-        seekbar.setOnSeekBarChangeListener(onSeekChangeListener);
-        searchButton.setOnClickListener(onSearchClickListener);
+        searchList.setOnTouchListener(onFlingSearchOnTouchListener);
+        mainView.setOnTouchListener(onFlingSearchOnTouchListener);
     }
 
     @Override
@@ -136,8 +130,8 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
             ed.putInt(Constants.PROGRESS, position.getProgress());
             ed.putString(Constants.MESSAGE, position.getMessage());
             ed.putString(Constants.TIMER, position.getTimer());
-            ed.putInt(Constants.CURRENT_PAGE, podCastList.getCurrentPage());
-            ed.putInt(Constants.LIST_VIEW_POSITION, podCastListView.getFirstVisiblePosition());
+            ed.putInt(Constants.LIST_VIEW_POSITION, searchList.getFirstVisiblePosition());
+            ed.putString(Constants.SEARCH_TEXT, query);
             ed.putString(Constants.DESCRIPTION, position.getDescription());
             ed.commit();
         }
@@ -151,31 +145,50 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
     }
 
     @Override
-    public void onDestroy()
-    {
-        Log.i(Constants.LOG_ID, "Destroying activity");
-        super.onDestroy();
-        positionUpdater.deleteObserver(this);
-        podCastList.deleteObserver(this);
-    }
-
-    @Override
     public void onSaveInstanceState(Bundle bundle)
     {
         Log.i(Constants.LOG_ID, "Saving instance state");
-        bundle.putInt(Constants.CURRENT_PAGE, podCastList.getCurrentPage());
-        bundle.putInt(Constants.LIST_VIEW_POSITION, podCastListView.getFirstVisiblePosition());
+        bundle.putInt(Constants.LIST_VIEW_POSITION, searchList.getFirstVisiblePosition());
+        bundle.putString(Constants.SEARCH_TEXT, query);
         bundle.putSerializable(Constants.POSITION, position);
         super.onSaveInstanceState(bundle);
     }
-    
+
+    private void unsetGestureDetector() {
+        mainView.setOnTouchListener(null);
+        searchList.setOnTouchListener(null);
+    }
+
+    @Override
+    public void onDestroy()
+    {
+        super.onDestroy();
+        searchListFacade.deleteObserver(this);
+        unsetGestureDetector();
+    }
+
+    private void setObservers() {
+        positionUpdater.addObserver(this);
+        searchListFacade.addObserver(this);
+    }
+
+    private void setListeners() {
+        detailsButton.setOnClickListener(onDetailsClickListener);
+        playButton.setOnClickListener(onPlayClickListener);
+        stopButton.setOnClickListener(onStopClickListener);
+        pauseButton.setOnClickListener(onPauseClickListener);
+        searchList.setOnItemClickListener(onPodCastItemListClickListener);
+        seekbar.setOnSeekBarChangeListener(onSeekChangeListener);
+        searchButton.setOnClickListener(onSearchClickListener);
+    }
+
     @Override
     public void update(Observable observable, Object o) {
         if(observable.getClass().equals(PositionUpdater.class))
         {
             setPosition((Position) o);
         }
-        if(observable.getClass().equals(PodCastListImpl.class))
+        if(observable.getClass().equals(SearchListImpl.class))
         {
             setList((FillListResult) o);
         }
@@ -185,19 +198,19 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
         if(fillListResult.getPodCasts()!=null)
         {
             PodCastAdapterImpl adapter = new PodCastAdapterImpl(this, R.layout.row, fillListResult.getPodCasts(), settings, stringResources, colorResources);
-            podCastListView.setAdapter(adapter);
-            podCastListView.setSelection(fillListResult.getPosition());
+            searchList.setAdapter(adapter);
+            searchList.setSelection(fillListResult.getPosition());
         } else
         {
-            podCastListView.setAdapter(null);
+            searchList.setAdapter(null);
         }
-        podCastListView.setEnabled(true);
-        numberOfPodCasts.setText(fillListResult.getNumberOfPodCasts());
+        searchList.setEnabled(true);
+        foundText.setText(fillListResult.getNumberOfPodCasts());
+        searchedText.setText("Searched for: " + query);
     }
 
     private void setPosition(Position position) {
-        if(position.getHasPodCast()) setGestureDetector();
-        if(!position.getHasPodCast()) unsetGestureDetector();
+        onFlingSearchOnTouchListener.setDoDetail(position.getHasPodCast());
         detailsButton.setEnabled(position.getHasPodCast());
         playButton.setEnabled(position.getHasPodCast());
         stopButton.setEnabled(position.getHasPodCast());
@@ -208,10 +221,5 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
         timer.setText(position.getTimer());
         currentPodCast.setText(position.getMessage());
         this.position = position;
-    }
-
-    private void unsetGestureDetector() {
-        mainView.setOnTouchListener(null);
-        podCastListView.setOnTouchListener(null);
     }
 }

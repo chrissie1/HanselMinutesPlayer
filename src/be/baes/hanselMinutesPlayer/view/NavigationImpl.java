@@ -2,10 +2,7 @@ package be.baes.hanselMinutesPlayer.view;
 
 import android.app.Activity;
 import android.content.Intent;
-import be.baes.hanselMinutesPlayer.DetailsActivity;
-import be.baes.hanselMinutesPlayer.HanselminutesPlayerActivity;
-import be.baes.hanselMinutesPlayer.R;
-import be.baes.hanselMinutesPlayer.SettingsActivity;
+import be.baes.hanselMinutesPlayer.*;
 import com.google.inject.Inject;
 
 /**
@@ -24,9 +21,15 @@ public class NavigationImpl implements Navigation{
     }
 
     @Override
-    public void openDetails() {
+    public void openDetails(String parent) {
         Intent myIntent = new Intent(activity, DetailsActivity.class);
+        myIntent.putExtra("parent", parent);
         activity.startActivity(myIntent);
+    }
+
+    @Override
+    public void openSearch() {
+        activity.onSearchRequested();
     }
 
     @Override
@@ -36,8 +39,9 @@ public class NavigationImpl implements Navigation{
     }
 
     @Override
-    public void openDetailsWitFlingAnimation() {
+    public void openDetailsWitFlingAnimation(String parent) {
         Intent myIntent = new Intent(activity, DetailsActivity.class);
+        myIntent.putExtra(Constants.PARENT, parent);
         activity.startActivity(myIntent);
         activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
     }
@@ -45,6 +49,13 @@ public class NavigationImpl implements Navigation{
     @Override
     public void openMainWithFlingAnimation() {
         Intent myIntent = new Intent(activity, HanselminutesPlayerActivity.class);
+        activity.startActivity(myIntent);
+        activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
+    }
+
+    @Override
+    public void openSearchWithFlingAnimation() {
+        Intent myIntent = new Intent(activity, SearchTitlesActivity.class);
         activity.startActivity(myIntent);
         activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
     }

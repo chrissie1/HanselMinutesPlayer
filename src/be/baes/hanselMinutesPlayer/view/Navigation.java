@@ -9,9 +9,10 @@ package be.baes.hanselMinutesPlayer.view;
  */
 public interface Navigation {
     void openSettings();
-    void openDetails();
+    void openDetails(String parent);
+    void openSearch();
     void openMain();
-    void openDetailsWitFlingAnimation();
+    void openDetailsWitFlingAnimation(String parent);
     void openMainWithFlingAnimation();
-
+    void openSearchWithFlingAnimation();
 }

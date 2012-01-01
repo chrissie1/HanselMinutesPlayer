@@ -35,6 +35,7 @@ public class DetailsActivity extends RoboActivity implements Observer{
     @InjectView(R.id.detailscurrentPodCast) TextView currentPodCast;
     @InjectView(R.id.detailsDescription) TextView description;
     @InjectView(R.id.detailsView) View mainView;
+    @InjectView(R.id.detailsPubDate) TextView pubDate;
     @Inject OnPlayClickListener onPlayClickListener;
     @Inject OnStopClickListener onStopClickListener;
     @Inject OnPauseClickListener onPauseClickListener;
@@ -44,7 +45,8 @@ public class DetailsActivity extends RoboActivity implements Observer{
     @Inject OnDownloadPodCastWithAlertDialogClickListener onDownloadPodCastWithAlertDialogClickListener;
     @Inject Player player;
     @Inject ProgressReport progressReport;
-    @Inject OnFlingDetailsOnTouchListener onFlingDetailsOnTouchListener;
+    @Inject OnFlingDetailsOpenMainOnTouchListener onFlingDetailsOpenMainOnTouchListener;
+    @Inject OnFlingDetailsOpenSearchOnTouchListener onFlingDetailsOpenSearchOnTouchListener;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -92,7 +94,14 @@ public class DetailsActivity extends RoboActivity implements Observer{
         seekbar.setOnSeekBarChangeListener(onSeekChangeListener);
         deleteDownloadButton.setOnClickListener(onDeleteDownloadedPodCastWithAlertDialogClickListener);
         downloadButton.setOnClickListener(onDownloadPodCastWithAlertDialogClickListener);
-        mainView.setOnTouchListener(onFlingDetailsOnTouchListener);
+        if(getIntent().getExtras().getString(Constants.PARENT).equals(Constants.SEARCH_ACTIVITY))
+        {
+            mainView.setOnTouchListener(onFlingDetailsOpenSearchOnTouchListener);
+        }
+        else
+        {
+            mainView.setOnTouchListener(onFlingDetailsOpenMainOnTouchListener);
+        }
     }
 
     @Override
@@ -113,6 +122,7 @@ public class DetailsActivity extends RoboActivity implements Observer{
         seekbar.setMax(position.getMaxDuration());
         seekbar.setProgress(position.getProgress());
         timer.setText(position.getTimer());
+        if(player.getCurrentPodCast()!=null) pubDate.setText(player.getCurrentPodCast().getPubDate());
         description.setText(position.getDescription());
         currentPodCast.setText(position.getMessage());
     }

@@ -125,6 +125,28 @@ public class PodCastSQLiteAdapter implements PodCastAdapter {
         return result;
     }
 
+    @Override
+    public List<PodCast> findItems(String s) {
+        List<PodCast> result = null;
+        Log.i(Constants.LOG_ID,"Fetching certain podcasts");
+        open();
+        String limit = "0, 20";
+        String[] whereArgs = {"%" + s + "%"};
+        Cursor cursor = db.query(Constants.TABLE_PODCASTS, new String[]{Constants.PODCASTS_COLUMN_TITLE, Constants.PODCASTS_COLUMN_PUBDATE, Constants.PODCASTS_COLUMN_LINK, Constants.PODCASTS_COLUMN_MP3LINK, Constants.PODCASTS_COLUMN_DESCRIPTION}, Constants.PODCASTS_COLUMN_TITLE +  " like ?", whereArgs, null, null, "substr(" + Constants.PODCASTS_COLUMN_MP3LINK + ",-22) DESC",limit);
+        if(cursor != null)
+        {
+            result = new ArrayList<PodCast>();
+            while (cursor.moveToNext())
+            {
+                PodCast podCast = new PodCast(cursor.getString(0),cursor.getString(1),cursor.getString(2), cursor.getString(3), cursor.getString(4));
+                result.add(podCast);
+            }
+            cursor.close();
+        }
+        dbHelper.close();
+        return result;
+    }
+
     private ContentValues createContentValues(PodCast podCast) {
         ContentValues values = new ContentValues();
         values.put(Constants.PODCASTS_COLUMN_TITLE, podCast.getTitle());

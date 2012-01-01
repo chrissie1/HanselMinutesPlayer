@@ -32,4 +32,8 @@ public class Constants {
     public static final String MESSAGE = "Message";
     public static final String TIMER = "Timer";
     public static final String DESCRIPTION = "Description";
+    public static final String SEARCH_TEXT = "SearchText";
+    public static final String PARENT = "parent";
+    public static final String SEARCH_ACTIVITY = "SearchActivity";
+    public static final String HANSELMINUTESPLAYER_ACTIVITY = "HanselMinutesPlayerActivity";
 }
