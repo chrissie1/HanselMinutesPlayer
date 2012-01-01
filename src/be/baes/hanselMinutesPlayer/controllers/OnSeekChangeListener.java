@@ -28,6 +28,7 @@ public class OnSeekChangeListener implements OnSeekBarChangeListener {
 
 	@Override
 	public void onProgressChanged(SeekBar seekBar, int progress,boolean fromUser) {
+        if(!fromUser) return;
         Log.i(Constants.LOG_ID, "Progress changed");
 		if(isMovingSeekBar)
 		{

@@ -83,7 +83,7 @@ public class GetListFromRssAndUpdateDatabaseAsyncTask extends AsyncTask<String,S
             for (RSSItem rssItem : rssItems) {
                 PodCast podCast = new PodCast(rssItem.getTitle(), rssItem.getPubDate(), rssItem.getLink(), rssItem.getMp3Link(), rssItem.getDescription());
                 if (podCastItems.contains(podCast)) {
-                    if(!podCast.getTitle().equals(podCastItems.get(podCastItems.indexOf(podCast)).getTitle())&&!podCast.getPubDate().equals(podCastItems.get(podCastItems.indexOf(podCast)).getPubDate()))
+                    if(!podCast.getTitle().equals(podCastItems.get(podCastItems.indexOf(podCast)).getTitle())||!podCast.getPubDate().equals(podCastItems.get(podCastItems.indexOf(podCast)).getPubDate())||!podCast.getDescription().equals(podCastItems.get(podCastItems.indexOf(podCast)).getDescription()))
                     {
                         Log.i(Constants.LOG_ID, String.format("Updating podcast: %s", podCast.getLink()));
                         if(podCast.getLink().startsWith(Constants.PREFIX))

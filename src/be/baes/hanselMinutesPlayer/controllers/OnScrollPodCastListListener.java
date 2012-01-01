@@ -17,17 +17,20 @@ public class OnScrollPodCastListListener implements AbsListView.OnScrollListener
 
     @Override
     public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-        int currentPage = podCastList.getCurrentPage();
-        Log.d(Constants.LOG_ID, String.format("totalItemCount: %d", totalItemCount));
-        Log.d(Constants.LOG_ID, String.format("currentPage: %s", currentPage));
-        Log.d(Constants.LOG_ID, String.format("visibleItemCount: %d", visibleItemCount));
-        Log.d(Constants.LOG_ID, String.format("firstVisibleItem: %d", firstVisibleItem));
-        if (view.isEnabled() && totalItemCount> 0 && totalItemCount < podCastAdapter.numberOfPodcasts() && (firstVisibleItem + visibleItemCount) == totalItemCount)
+        if (view.isEnabled() && totalItemCount> 0 && (firstVisibleItem + visibleItemCount) == totalItemCount)
         {
-            Log.i(Constants.LOG_ID, "Loading podcasts on scroll");
-            currentPage++;
-            view.setEnabled(false);
-            podCastList.load(currentPage);
+            if(totalItemCount < podCastAdapter.numberOfPodcasts())
+            {
+                int currentPage = podCastList.getCurrentPage();
+                Log.d(Constants.LOG_ID, String.format("totalItemCount: %d", totalItemCount));
+                Log.d(Constants.LOG_ID, String.format("currentPage: %s", currentPage));
+                Log.d(Constants.LOG_ID, String.format("visibleItemCount: %d", visibleItemCount));
+                Log.d(Constants.LOG_ID, String.format("firstVisibleItem: %d", firstVisibleItem));
+                Log.i(Constants.LOG_ID, "Loading podcasts on scroll");
+                currentPage++;
+                view.setEnabled(false);
+                podCastList.load(currentPage);
+            }
         }
     }
 

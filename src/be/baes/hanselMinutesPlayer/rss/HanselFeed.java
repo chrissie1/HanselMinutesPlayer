@@ -20,7 +20,7 @@ public class HanselFeed {
         XMLReader xmlreader = parser.getXMLReader();
         RSSHandler theRssHandler = new RSSHandler();
         xmlreader.setContentHandler(theRssHandler);
-        InputSource is = new InputSource(new BufferedInputStream(url.openStream()));
+        InputSource is = new InputSource(new BufferedInputStream(url.openStream(),4096));
         xmlreader.parse(is);
         return theRssHandler.getFeed();
     }
