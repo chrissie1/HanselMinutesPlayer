@@ -10,7 +10,6 @@ import com.google.inject.Inject;
  * User: christiaan
  * Date: 1/01/12
  * Time: 14:37
- * To change this template use File | Settings | File Templates.
  */
 public class OnViewInBrowserOnClickListener implements View.OnClickListener {
     @Inject Navigation navigation;

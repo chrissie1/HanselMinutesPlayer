@@ -100,6 +100,7 @@ public class DetailsActivity extends RoboActivity implements Observer{
         seekbar.setOnSeekBarChangeListener(onSeekChangeListener);
         deleteDownloadButton.setOnClickListener(onDeleteDownloadedPodCastWithAlertDialogClickListener);
         downloadButton.setOnClickListener(onDownloadPodCastWithAlertDialogClickListener);
+        vieInBrowser.setOnClickListener(onViewInBrowserOnClickListener);
         if(getIntent().getExtras().getString(Constants.PARENT).equals(Constants.SEARCH_ACTIVITY))
         {
             mainView.setOnTouchListener(onFlingDetailsOpenSearchOnTouchListener);
