@@ -31,14 +31,14 @@ import java.util.Observer;
  */
 public class SearchTitlesActivity extends RoboActivity implements Observer{
     @InjectView(R.id.searchedText) TextView searchedText;
-    @InjectView(R.id.searchDetailsButton) Button detailsButton;
-    @InjectView(R.id.searchPlayButton) Button playButton;
-    @InjectView(R.id.searchStopButton) Button stopButton;
-    @InjectView(R.id.searchPauseButton) Button pauseButton;
-    @InjectView(R.id.searchSeekBar) SeekBar seekbar;
-    @InjectView(R.id.searchTimer) TextView timer;
+    @InjectView(R.id.detailsButton) Button detailsButton;
+    @InjectView(R.id.playButton) Button playButton;
+    @InjectView(R.id.stopButton) Button stopButton;
+    @InjectView(R.id.pauseButton) Button pauseButton;
+    @InjectView(R.id.seekBar) SeekBar seekbar;
+    @InjectView(R.id.timer) TextView timer;
     @InjectView(R.id.searchSearchButton) ImageButton searchButton;
-    @InjectView(R.id.searchCurrentPodCast) TextView currentPodCast;
+    @InjectView(R.id.currentPodCast) TextView currentPodCast;
     @InjectView(R.id.searchList) ListView searchList;
     @InjectView(R.id.searchMainView) View mainView;
     @InjectView(R.id.foundText) TextView foundText;
@@ -81,6 +81,11 @@ public class SearchTitlesActivity extends RoboActivity implements Observer{
             query = intent.getStringExtra(SearchManager.QUERY);
             searchedText.setText("Searched for: " + query);
             searchListFacade.search(query);
+            if(player.getCurrentPodCast()!=null)
+            {
+                Log.i(Constants.LOG_ID, "Loading current podcast");
+                setPosition(positionUpdater.getCurrentPosition());
+            }
         }
         else if(player.getCurrentPodCast()!=null && sharedPreferences.getAll().size()>0 && savedInstanceState==null)
         {

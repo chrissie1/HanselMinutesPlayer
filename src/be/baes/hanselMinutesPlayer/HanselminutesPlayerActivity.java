@@ -73,6 +73,12 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
             Log.i(Constants.LOG_ID, "OnCreate no saved instance state");
             podCastList.load(0);
         }
+        else if(savedInstanceState ==null && player.getCurrentPodCast()!=null)
+        {
+            Log.i(Constants.LOG_ID, "OnResume with current podcast");
+            podCastList.load(0);
+            setPosition(positionUpdater.getCurrentPosition());
+        }
         else if(player.getCurrentPodCast()!=null && sharedPreferences.getAll().size()>0 && savedInstanceState==null)
         {
             Log.i(Constants.LOG_ID, "OnResume with saved instance state");

@@ -25,14 +25,16 @@ import java.util.Observer;
  * Time: 10:16
  */
 public class DetailsActivity extends RoboActivity implements Observer{
-    @InjectView(R.id.detailsPlayButton) Button playButton;
-    @InjectView(R.id.detailsStopButton) Button stopButton;
-    @InjectView(R.id.detailsPauseButton) Button pauseButton;
+    @InjectView(R.id.detailsButton) Button detailsButton;
+    @InjectView(R.id.currentPodCast) TextView currentPodCast;
+    @InjectView(R.id.playButton) Button playButton;
+    @InjectView(R.id.stopButton) Button stopButton;
+    @InjectView(R.id.pauseButton) Button pauseButton;
     @InjectView(R.id.detailsDeleteDownloadButton) Button deleteDownloadButton;
     @InjectView(R.id.detailsDownloadButton) Button downloadButton;
-    @InjectView(R.id.detailsSeekBar) SeekBar seekbar;
-    @InjectView(R.id.detailsTimer) TextView timer;
-    @InjectView(R.id.detailscurrentPodCast) TextView currentPodCast;
+    @InjectView(R.id.seekBar) SeekBar seekbar;
+    @InjectView(R.id.timer) TextView timer;
+    @InjectView(R.id.detailscurrentPodCast) TextView detailsCurrentPodCast;
     @InjectView(R.id.detailsDescription) TextView description;
     @InjectView(R.id.detailsView) View mainView;
     @InjectView(R.id.detailsPubDate) TextView pubDate;
@@ -53,6 +55,8 @@ public class DetailsActivity extends RoboActivity implements Observer{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.details);
 
+        currentPodCast.setVisibility(TextView.GONE);
+        detailsButton.setVisibility(Button.GONE);
         progressReport.setActivity(this);
         setListeners();
         setObservers();
@@ -124,6 +128,6 @@ public class DetailsActivity extends RoboActivity implements Observer{
         timer.setText(position.getTimer());
         if(player.getCurrentPodCast()!=null) pubDate.setText(player.getCurrentPodCast().getPubDate());
         description.setText(position.getDescription());
-        currentPodCast.setText(position.getMessage());
+        detailsCurrentPodCast.setText(position.getMessage());
     }
 }
