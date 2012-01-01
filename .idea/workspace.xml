@@ -21,7 +21,13 @@
   <component name="ChangeListManager">
     <list default="true" id="3d1909c7-17d6-46f5-8426-ed1ebc68a21b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HanselMinutesPlayerTest/HanselMinutesPlayerTest.iml" afterPath="$PROJECT_DIR$/HanselMinutesPlayerTest/HanselMinutesPlayerTest.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/controllers/OnDeleteAllWithAlertDialogClickListenerTest.java" afterPath="$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/controllers/OnDeleteAllWithAlertDialogClickListenerTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/controllers/OnDeleteDownloadedPodcastWithAlertDialogClickListenerTest.java" afterPath="$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/controllers/OnDeleteDownloadedPodcastWithAlertDialogClickListenerTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/controllers/OnDownloadPodcastWithAlertDialogClickListenerTest.java" afterPath="$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/controllers/OnDownloadPodcastWithAlertDialogClickListenerTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/controllers/OnPodCastItemListClickListenerTest.java" afterPath="$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/controllers/OnPodCastItemListClickListenerTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/controllers/OnRefreshListLatestWithAlertDialogClickListenerTest.java" afterPath="$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/controllers/OnRefreshListLatestWithAlertDialogClickListenerTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/controllers/OnRefreshListWithAlertDialogClickListenerTest.java" afterPath="$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/controllers/OnRefreshListWithAlertDialogClickListenerTest.java" />
     </list>
     <ignored path="HanselMinutesPlayer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -79,93 +85,91 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="SearchTitlesActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/SearchTitlesActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="83" column="15" selection-start="3431" selection-end="3431" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="HanselminutesPlayerActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/HanselminutesPlayerActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="81" column="8" selection-start="3219" selection-end="3484" vertical-scroll-proportion="0.0">
+            <state line="197" column="16" selection-start="8526" selection-end="8526" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="details.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/layout/details.xml">
+      <file leaf-file-name="OnScrollPodCastListListener.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/OnScrollPodCastListListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="51" selection-start="1866" selection-end="1879" vertical-scroll-proportion="0.0">
+            <state line="32" column="16" selection-start="1483" selection-end="1483" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="strings.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
+      <file leaf-file-name="PodCastAdapterImpl.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/view/adapters/PodCastAdapterImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="48" selection-start="2598" selection-end="2598" vertical-scroll-proportion="0.0">
+            <state line="50" column="21" selection-start="1616" selection-end="1616" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DetailsActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/DetailsActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="104" column="28" selection-start="4329" selection-end="4329" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HanselMinutesPlayer.iml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HanselMinutesPlayer.iml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="36" selection-start="226" selection-end="226" vertical-scroll-proportion="0.15704387">
+            <state line="3" column="32" selection-start="188" selection-end="188" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OnViewInBrowserOnClickListener.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/OnViewInBrowserOnClickListener.java">
+      <file leaf-file-name="OnDeleteAllWithAlertDialogClickListenerTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/controllers/OnDeleteAllWithAlertDialogClickListenerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="0" selection-start="297" selection-end="297" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Navigation.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/view/Navigation.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="24" selection-start="434" selection-end="434" vertical-scroll-proportion="0.0">
+            <state line="5" column="34" selection-start="213" selection-end="213" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NavigationImpl.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/view/NavigationImpl.java">
+      <file leaf-file-name="OnDeleteDownloadedPodcastWithAlertDialogClickListenerTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/controllers/OnDeleteDownloadedPodcastWithAlertDialogClickListenerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="68" column="72" selection-start="2135" selection-end="2135" vertical-scroll-proportion="0.0">
+            <state line="5" column="34" selection-start="213" selection-end="213" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OnDownloadPodcastWithAlertDialogClickListenerTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/controllers/OnDownloadPodcastWithAlertDialogClickListenerTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="34" selection-start="213" selection-end="213" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OnPodCastItemListClickListenerTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/controllers/OnPodCastItemListClickListenerTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="34" selection-start="550" selection-end="550" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OnRefreshListLatestWithAlertDialogClickListenerTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/controllers/OnRefreshListLatestWithAlertDialogClickListenerTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="34" selection-start="213" selection-end="213" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OnRefreshListWithAlertDialogClickListenerTest.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/controllers/OnRefreshListWithAlertDialogClickListenerTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="34" selection-start="213" selection-end="213" vertical-scroll-proportion="0.218509">
               <folding />
             </state>
           </provider>
@@ -186,22 +190,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/OnFlingSearchGestureDetector.java" />
-        <option value="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/OnFlingSearchOnTouchListener.java" />
-        <option value="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/OnFlingSearchListener.java" />
-        <option value="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/dal/sqliteandroid/PodCastSQLiteAdapter.java" />
-        <option value="$PROJECT_DIR$/res/layout/player.xml" />
-        <option value="$PROJECT_DIR$/res/layout/main.xml" />
-        <option value="$PROJECT_DIR$/res/layout/search.xml" />
-        <option value="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/HanselminutesPlayerActivity.java" />
-        <option value="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/SearchTitlesActivity.java" />
-        <option value="$PROJECT_DIR$/res/layout/details.xml" />
-        <option value="$PROJECT_DIR$/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/view/NavigationImpl.java" />
         <option value="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/view/Navigation.java" />
         <option value="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/OnViewInBrowserOnClickListener.java" />
         <option value="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/DetailsActivity.java" />
+        <option value="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/rss/HanselFeed.java" />
+        <option value="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/task/GetListFromRssAndUpdateDatabaseAsyncTask.java" />
+        <option value="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/OnSeekChangeListener.java" />
+        <option value="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/OnScrollPodCastListListener.java" />
+        <option value="$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/view/adapters/PodCastAdapterImpl.java" />
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/controllers/OnDeleteAllWithAlertDialogClickListenerTest.java" />
+        <option value="$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/controllers/OnDeleteDownloadedPodcastWithAlertDialogClickListenerTest.java" />
+        <option value="$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/controllers/OnDownloadPodcastWithAlertDialogClickListenerTest.java" />
+        <option value="$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/controllers/OnPodCastItemListClickListenerTest.java" />
+        <option value="$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/controllers/OnRefreshListLatestWithAlertDialogClickListenerTest.java" />
+        <option value="$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/controllers/OnRefreshListWithAlertDialogClickListenerTest.java" />
       </list>
     </option>
   </component>
@@ -327,6 +331,54 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HanselMinutesPlayer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HanselMinutesPlayer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hanselMinutesPlayer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adapters" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HanselMinutesPlayer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HanselMinutesPlayer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hanselMinutesPlayer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rss" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -570,6 +622,68 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="HanselMinutesPlayerTest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HanselMinutesPlayer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HanselMinutesPlayer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HanselMinutesPlayerTest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hanselMinutesPlayer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HanselMinutesPlayer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HanselMinutesPlayer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HanselMinutesPlayerTest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hanselMinutesPlayer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HanselMinutesPlayer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HanselMinutesPlayer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="gen" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -635,7 +749,7 @@
       <recent name="be.baes.hanselMinutesPlayer" />
     </key>
   </component>
-  <component name="RunManager" selected="Android Application.HanselMinutesPlayerFor32">
+  <component name="RunManager" selected="Android Tests.1. all tests">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
@@ -836,8 +950,8 @@
       <option name="METHOD_NAME" value="" />
       <option name="CLASS_NAME" value="" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="TARGET_SELECTION_MODE" value="USB_DEVICE" />
-      <option name="PREFERRED_AVD" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="PREFERRED_AVD" value="Android22" />
       <option name="COMMAND_LINE" value="" />
       <option name="WIPE_USER_DATA" value="false" />
       <option name="DISABLE_BOOT_ANIMATION" value="false" />
@@ -961,7 +1075,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1403" height="886" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3287483" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36248133" sideWeight="0.6629986" order="3" side_tool="false" content_ui="tabs" />
@@ -977,9 +1091,9 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22346786" sideWeight="0.6629986" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22346786" sideWeight="0.6629986" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33700138" sideWeight="0.49103138" order="11" side_tool="false" content_ui="tabs" x="458" y="71" width="471" height="727" />
-      <window_info id="Android Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32599726" sideWeight="0.49402094" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.48555708" sideWeight="0.49402094" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24962631" sideWeight="0.650619" order="2" side_tool="false" content_ui="combo" />
@@ -1020,7 +1134,7 @@
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="And now even hooked up the button." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed coloring in listview." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1055,6 +1169,8 @@
     <MESSAGE value="now with included player layout to repeat less code" />
     <MESSAGE value="Added view in browser&#10;" />
     <MESSAGE value="And now even hooked up the button." />
+    <MESSAGE value="New version number." />
+    <MESSAGE value="Fixed coloring in listview." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1064,118 +1180,114 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/OnFlingSearchOnTouchListener.java">
+    <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/rss/RSSHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="58" selection-start="654" selection-end="654" vertical-scroll-proportion="0.0">
+        <state line="5" column="13" selection-start="121" selection-end="121" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/OnFlingSearchListener.java">
+    <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/rss/HanselFeed.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="56" selection-start="1459" selection-end="1459" vertical-scroll-proportion="0.0">
+        <state line="15" column="33" selection-start="418" selection-end="418" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/dal/sqliteandroid/PodCastSQLiteAdapter.java">
+    <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/task/GetListFromRssAndUpdateDatabaseAsyncTask.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="138" column="21" selection-start="4662" selection-end="4662" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#4514#4522#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/player.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="19" selection-start="3065" selection-end="3065" vertical-scroll-proportion="0.0">
+        <state line="86" column="25" selection-start="3615" selection-end="3615" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
+    <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/PositionUpdater.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="38" selection-start="1648" selection-end="1682" vertical-scroll-proportion="0.0">
+        <state line="14" column="13" selection-start="371" selection-end="371" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/search.xml">
+    <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/facade/PlayerImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="6" selection-start="454" selection-end="454" vertical-scroll-proportion="0.0">
+        <state line="35" column="38" selection-start="1034" selection-end="1048" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/OnSeekChangeListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="29" selection-start="876" selection-end="876" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/HanselminutesPlayerActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="8" selection-start="3219" selection-end="3484" vertical-scroll-proportion="0.0">
+        <state line="197" column="16" selection-start="8526" selection-end="8526" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/SearchTitlesActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/OnScrollPodCastListListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="15" selection-start="3431" selection-end="3431" vertical-scroll-proportion="0.0">
+        <state line="32" column="16" selection-start="1483" selection-end="1483" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
+    <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/view/adapters/PodCastAdapterImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="48" selection-start="2598" selection-end="2598" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/details.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="51" selection-start="1866" selection-end="1879" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/view/Navigation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="24" selection-start="434" selection-end="434" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/view/NavigationImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="72" selection-start="2135" selection-end="2135" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/controllers/OnViewInBrowserOnClickListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="297" selection-end="297" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/be/baes/hanselMinutesPlayer/DetailsActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="104" column="28" selection-start="4329" selection-end="4329" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HanselMinutesPlayer.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="50" column="21" selection-start="1616" selection-end="1616" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="36" selection-start="226" selection-end="226" vertical-scroll-proportion="0.15704387">
+        <state line="3" column="32" selection-start="188" selection-end="188" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/controllers/OnDeleteAllWithAlertDialogClickListenerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="34" selection-start="213" selection-end="213" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/controllers/OnDeleteDownloadedPodcastWithAlertDialogClickListenerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="34" selection-start="213" selection-end="213" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/controllers/OnDownloadPodcastWithAlertDialogClickListenerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="34" selection-start="213" selection-end="213" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/controllers/OnPodCastItemListClickListenerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="34" selection-start="550" selection-end="550" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/controllers/OnRefreshListLatestWithAlertDialogClickListenerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="34" selection-start="213" selection-end="213" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HanselMinutesPlayerTest/src/be/baes/hanselMinutesPlayer/controllers/OnRefreshListWithAlertDialogClickListenerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="34" selection-start="213" selection-end="213" vertical-scroll-proportion="0.218509">
           <folding />
         </state>
       </provider>
@@ -1232,7 +1344,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>HanselMinutesPlayer</last-edited>
+          <last-edited>HanselMinutesPlayerTest</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
