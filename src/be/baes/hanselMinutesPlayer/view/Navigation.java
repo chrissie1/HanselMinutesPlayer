@@ -1,5 +1,7 @@
 package be.baes.hanselMinutesPlayer.view;
 
+import java.net.URI;
+
 /**
  * Created by IntelliJ IDEA.
  * User: christiaan
@@ -15,4 +17,5 @@ public interface Navigation {
     void openDetailsWitFlingAnimation(String parent);
     void openMainWithFlingAnimation();
     void openSearchWithFlingAnimation();
+    void openBrowser(String url);
 }

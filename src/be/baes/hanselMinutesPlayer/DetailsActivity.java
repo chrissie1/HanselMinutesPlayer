@@ -38,7 +38,8 @@ public class DetailsActivity extends RoboActivity implements Observer{
     @InjectView(R.id.detailsDescription) TextView description;
     @InjectView(R.id.detailsView) View mainView;
     @InjectView(R.id.detailsPubDate) TextView pubDate;
-    @Inject OnPlayClickListener onPlayClickListener;
+    @InjectView(R.id.viewInBrowserButton) Button vieInBrowser;
+    @Inject OnPlayClickListener onPlayClickListener;          
     @Inject OnStopClickListener onStopClickListener;
     @Inject OnPauseClickListener onPauseClickListener;
     @Inject OnSeekChangeListener onSeekChangeListener;
@@ -49,6 +50,7 @@ public class DetailsActivity extends RoboActivity implements Observer{
     @Inject ProgressReport progressReport;
     @Inject OnFlingDetailsOpenMainOnTouchListener onFlingDetailsOpenMainOnTouchListener;
     @Inject OnFlingDetailsOpenSearchOnTouchListener onFlingDetailsOpenSearchOnTouchListener;
+    @Inject OnViewInBrowserOnClickListener onViewInBrowserOnClickListener;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

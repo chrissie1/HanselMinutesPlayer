@@ -2,8 +2,11 @@ package be.baes.hanselMinutesPlayer.view;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import be.baes.hanselMinutesPlayer.*;
 import com.google.inject.Inject;
+
+import java.net.URI;
 
 /**
  * Created by IntelliJ IDEA.
@@ -58,5 +61,11 @@ public class NavigationImpl implements Navigation{
         Intent myIntent = new Intent(activity, SearchTitlesActivity.class);
         activity.startActivity(myIntent);
         activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
+    }
+
+    @Override
+    public void openBrowser(String url) {
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        activity.startActivity(browserIntent);
     }
 }
