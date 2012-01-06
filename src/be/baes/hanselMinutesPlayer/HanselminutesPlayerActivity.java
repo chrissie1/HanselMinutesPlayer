@@ -233,9 +233,9 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
         MenuItem settingsMenu = menu.findItem(R.id.settingsMenu);
-        //MenuItem searchMenu = (MenuItem)this.findViewById(R.id.searchmenu);
+        MenuItem searchMenu = menu.findItem(R.id.searchmenu);
         settingsMenu.setOnMenuItemClickListener(onSettingsClickListener);
-        //searchMenu.setOnMenuItemClickListener(onSearchClickListener);
+        searchMenu.setOnMenuItemClickListener(onSearchClickListener);
         return true ;
     }
 }

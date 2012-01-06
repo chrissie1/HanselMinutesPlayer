@@ -233,8 +233,8 @@ public class SearchTitlesActivity extends RoboActivity implements Observer{
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
-        MenuItem settingsMenu = (MenuItem)this.findViewById(R.id.settingsMenu);
-        MenuItem searchMenu = (MenuItem)this.findViewById(R.id.searchmenu);
+        MenuItem settingsMenu = menu.findItem(R.id.settingsMenu);
+        MenuItem searchMenu = menu.findItem(R.id.searchmenu);
         settingsMenu.setOnMenuItemClickListener(onSettingsClickListener);
         searchMenu.setOnMenuItemClickListener(onSearchClickListener);
         return true ;
