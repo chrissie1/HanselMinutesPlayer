@@ -15,10 +15,8 @@
                  android:layout_height="wrap_content"/>
         <TextView android:text="@string/NoPodCasts"
                   android:layout_height="wrap_content"
-                  android:textAppearance="?android:attr/textAppearanceMedium"
                   android:layout_width="fill_parent"
-                  android:id="@+id/numberofpodcasts"
-                  android:layout_marginLeft="10dp"/>
+                  android:id="@+id/numberofpodcasts"/>
     </LinearLayout>
     <ListView android:id="@+id/podCastList"
     	      android:layout_width="fill_parent"
