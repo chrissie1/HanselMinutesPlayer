@@ -12,7 +12,8 @@ public class RSSHandler extends DefaultHandler
 	final int RSS_LINK = 2;
 	final int RSS_PUBDATE = 5;
     final int RSS_DESCRIPTION = 3;
-
+    StringBuffer buffer = new StringBuffer();
+    
 	int depth = 0;
 	int currentstate = 0;
 	/*
@@ -90,6 +91,26 @@ public class RSSHandler extends DefaultHandler
 	
 	public void endElement(String namespaceURI, String localName, String qName) throws SAXException
 	{
+        switch (currentstate)
+        {
+            case RSS_TITLE:
+                _item.setTitle(buffer.toString());
+                currentstate = 0;
+                break;
+            case RSS_LINK:
+                _item.setLink(buffer.toString());
+                currentstate = 0;
+                break;
+            case RSS_PUBDATE:
+                _item.setPubDate(buffer.toString());
+                currentstate = 0;
+                break;
+            case RSS_DESCRIPTION:
+                _item.setDescription(buffer.toString());
+                currentstate = 0;
+                break;
+        }
+        buffer = new StringBuffer();
 		depth--;
 		if (localName.equals("item"))
 		{
@@ -99,27 +120,6 @@ public class RSSHandler extends DefaultHandler
 	 
 	public void characters(char ch[], int start, int length)
 	{
-		String theString = new String(ch,start,length);
-		
-		switch (currentstate)
-		{
-			case RSS_TITLE:
-				_item.setTitle(theString);
-				currentstate = 0;
-				break;
-			case RSS_LINK:
-				_item.setLink(theString);
-				currentstate = 0;
-				break;
-			case RSS_PUBDATE:
-				_item.setPubDate(theString);
-				currentstate = 0;
-				break;
-            case RSS_DESCRIPTION:
-                _item.setDescription(theString);
-                currentstate = 0;
-                break;
-		}
-		
+		buffer.append(new String(ch,start,length));
 	}
 }
