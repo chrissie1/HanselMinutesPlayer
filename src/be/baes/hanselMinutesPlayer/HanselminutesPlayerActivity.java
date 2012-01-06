@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 import be.baes.hanselMinutesPlayer.controllers.*;
@@ -30,11 +33,10 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
 	@InjectView(R.id.seekBar) SeekBar seekbar;
     @InjectView(R.id.timer) TextView timer;
     @InjectView(R.id.currentPodCast) TextView currentPodCast;
-    @InjectView(R.id.settingsButton) ImageButton settingsButton;
-	@InjectView(R.id.podCastList) ListView podCastListView;
+    @InjectView(R.id.podCastList) ListView podCastListView;
     @InjectView(R.id.numberofpodcasts) TextView numberOfPodCasts;
     @InjectView(R.id.mainView) View mainView;
-    @InjectView(R.id.searchButton) ImageButton searchButton;
+    @InjectView(R.id.mainRefreshListButton) Button mainRefreshListButton;
     @Inject ProgressReport progressReport;
 	@Inject OnPlayClickListener onPlayClickListener;
 	@Inject OnStopClickListener onStopClickListener;
@@ -50,10 +52,10 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
     @Inject ColorResources colorResources;
     Position position;
     SharedPreferences sharedPreferences;
-    @Inject
-    OnDetailsFromMainClickListener onDetailsClickListener;
+    @Inject OnDetailsFromMainClickListener onDetailsClickListener;
     @Inject OnFlingMainOnTouchListener onFlingMainOnTouchListener;
     @Inject OnSearchClickListener onSearchClickListener;
+    @Inject OnRefreshListWithAlertDialogClickListener onRefreshListWithAlertDialogClickListener;
 
     /** Called when the activity is first created. */
     @Override
@@ -111,14 +113,13 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
 
     private void SetListeners() {
         detailsButton.setOnClickListener(onDetailsClickListener);
-        settingsButton.setOnClickListener(onSettingsClickListener);
         playButton.setOnClickListener(onPlayClickListener);
         stopButton.setOnClickListener(onStopClickListener);
         pauseButton.setOnClickListener(onPauseClickListener);
         podCastListView.setOnItemClickListener(rssItemListClickListener);
         podCastListView.setOnScrollListener(onScrollPodCastListListener);
         seekbar.setOnSeekBarChangeListener(onSeekChangeListener);
-        searchButton.setOnClickListener(onSearchClickListener);
+        mainRefreshListButton.setOnClickListener(onRefreshListWithAlertDialogClickListener);
     }
 
     @Override
@@ -193,17 +194,24 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
             PodCastAdapterImpl adapter = new PodCastAdapterImpl(this, R.layout.row, fillListResult.getPodCasts(), settings, stringResources, colorResources);
             podCastListView.setAdapter(adapter);
             podCastListView.setSelection(fillListResult.getPosition());
+            mainRefreshListButton.setVisibility(Button.GONE);
         } else
         {
             podCastListView.setAdapter(null);
+            mainRefreshListButton.setVisibility(Button.VISIBLE);
         }
         podCastListView.setEnabled(true);
         numberOfPodCasts.setText(fillListResult.getNumberOfPodCasts());
     }
 
     private void setPosition(Position position) {
-        if(position.getHasPodCast()) setGestureDetector();
-        if(!position.getHasPodCast()) unsetGestureDetector();
+        if(position.getHasPodCast()) 
+        {
+            setGestureDetector();
+        }
+        if(!position.getHasPodCast()){
+            unsetGestureDetector();
+        }
         detailsButton.setEnabled(position.getHasPodCast());
         playButton.setEnabled(position.getHasPodCast());
         stopButton.setEnabled(position.getHasPodCast());
@@ -219,5 +227,15 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
     private void unsetGestureDetector() {
         mainView.setOnTouchListener(null);
         podCastListView.setOnTouchListener(null);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        MenuItem settingsMenu = menu.findItem(R.id.settingsMenu);
+        //MenuItem searchMenu = (MenuItem)this.findViewById(R.id.searchmenu);
+        settingsMenu.setOnMenuItemClickListener(onSettingsClickListener);
+        //searchMenu.setOnMenuItemClickListener(onSearchClickListener);
+        return true ;
     }
 }

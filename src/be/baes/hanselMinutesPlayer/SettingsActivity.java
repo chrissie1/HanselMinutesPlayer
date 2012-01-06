@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 import be.baes.hanselMinutesPlayer.controllers.OnDeleteAllWithAlertDialogClickListener;
-import be.baes.hanselMinutesPlayer.controllers.OnPlayerClickListener;
 import be.baes.hanselMinutesPlayer.controllers.OnRefreshListLatestWithAlertDialogClickListener;
 import be.baes.hanselMinutesPlayer.controllers.OnRefreshListWithAlertDialogClickListener;
 import be.baes.hanselMinutesPlayer.facade.PodCastList;
@@ -29,12 +28,10 @@ public class SettingsActivity extends RoboActivity implements Observer{
     @InjectView(R.id.deleteAllButton) Button deleteAllButton;
     @InjectView(R.id.totalInDatabase) TextView totalInDatabase;
     @InjectView(R.id.totalDowloadedFiles) TextView totalDownloadedFiles;
-    @InjectView(R.id.closeButton) Button closeButton;
     @InjectView(R.id.refreshListLatestButton) Button refreshListLatestButton;
     @Inject OnRefreshListLatestWithAlertDialogClickListener onRefreshListLatestWithAlertDialogClickListener;
     @Inject OnRefreshListWithAlertDialogClickListener onRefreshListWithAlertDialogClickListener;
     @Inject OnDeleteAllWithAlertDialogClickListener onDeleteAllWithAlertDialogClickListener;
-    @Inject OnPlayerClickListener onPlayerClickListener;
     @Inject PodCastList podCastList;
     @Inject ProgressReport progressReport;
     @Inject StringResources stringResources;
@@ -57,7 +54,6 @@ public class SettingsActivity extends RoboActivity implements Observer{
         refreshListLatestButton.setOnClickListener(onRefreshListLatestWithAlertDialogClickListener);
         refreshListButton.setOnClickListener(onRefreshListWithAlertDialogClickListener);
         deleteAllButton.setOnClickListener(onDeleteAllWithAlertDialogClickListener);
-        closeButton.setOnClickListener(onPlayerClickListener);
     }
 
     @Override

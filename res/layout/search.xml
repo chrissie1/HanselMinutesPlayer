@@ -7,15 +7,7 @@
               android:id="@+id/searchMainView">
     <LinearLayout android:layout_height="wrap_content"
                   android:layout_width="fill_parent"
-                  android:orientation="horizontal">
-        <ImageButton  android:src="@drawable/magnify"
-                      android:scaleType="fitCenter"
-                      android:id="@+id/searchSearchButton"
-                      android:layout_width="40dp"
-                      android:layout_height="40dp"/>
-        <LinearLayout android:layout_height="wrap_content"
-                      android:layout_width="fill_parent"
-                      android:orientation="vertical">
+                  android:orientation="vertical">
             <TextView android:layout_height="wrap_content"
                       android:layout_width="fill_parent"
                       android:text="searchtext"
@@ -24,7 +16,6 @@
                       android:layout_width="fill_parent"
                       android:text="foundtext"
                       android:id="@+id/foundText"/>
-        </LinearLayout>
     </LinearLayout>
     <ListView android:id="@+id/searchList"
               android:layout_width="fill_parent"

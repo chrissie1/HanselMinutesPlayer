@@ -3,6 +3,9 @@ package be.baes.hanselMinutesPlayer;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 import android.app.SearchManager;
@@ -37,7 +40,6 @@ public class SearchTitlesActivity extends RoboActivity implements Observer{
     @InjectView(R.id.pauseButton) Button pauseButton;
     @InjectView(R.id.seekBar) SeekBar seekbar;
     @InjectView(R.id.timer) TextView timer;
-    @InjectView(R.id.searchSearchButton) ImageButton searchButton;
     @InjectView(R.id.currentPodCast) TextView currentPodCast;
     @InjectView(R.id.searchList) ListView searchList;
     @InjectView(R.id.searchMainView) View mainView;
@@ -49,6 +51,7 @@ public class SearchTitlesActivity extends RoboActivity implements Observer{
     @Inject OnDetailsFromSearchClickListener onDetailsClickListener;
     @Inject OnSeekChangeListener onSeekChangeListener;
     @Inject OnSearchClickListener onSearchClickListener;
+    @Inject OnSettingsClickListener onSettingsClickListener;
     @Inject PositionUpdater positionUpdater;
     @Inject SearchList searchListFacade;
     @Inject StringResources stringResources;
@@ -184,7 +187,6 @@ public class SearchTitlesActivity extends RoboActivity implements Observer{
         pauseButton.setOnClickListener(onPauseClickListener);
         searchList.setOnItemClickListener(onPodCastItemListClickListener);
         seekbar.setOnSeekBarChangeListener(onSeekChangeListener);
-        searchButton.setOnClickListener(onSearchClickListener);
     }
 
     @Override
@@ -226,5 +228,15 @@ public class SearchTitlesActivity extends RoboActivity implements Observer{
         timer.setText(position.getTimer());
         currentPodCast.setText(position.getMessage());
         this.position = position;
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        MenuItem settingsMenu = (MenuItem)this.findViewById(R.id.settingsMenu);
+        MenuItem searchMenu = (MenuItem)this.findViewById(R.id.searchmenu);
+        settingsMenu.setOnMenuItemClickListener(onSettingsClickListener);
+        searchMenu.setOnMenuItemClickListener(onSearchClickListener);
+        return true ;
     }
 }
