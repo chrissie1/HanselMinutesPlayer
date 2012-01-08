@@ -3,6 +3,7 @@ package be.baes.hanselMinutesPlayer;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -65,7 +66,7 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
 
         sharedPreferences = getPreferences(Context.MODE_PRIVATE);
         progressReport.setActivity(this);
-        settings.initialize(getExternalCacheDir());
+        settings.initialize(getExternalFilesDir(Environment.DIRECTORY_PODCASTS));
         colorResources.initialize(getResources());
         stringResources.initialize(getResources());
         SetObservers();

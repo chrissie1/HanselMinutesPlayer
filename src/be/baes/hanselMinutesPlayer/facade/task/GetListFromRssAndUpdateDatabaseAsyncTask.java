@@ -49,11 +49,6 @@ public class GetListFromRssAndUpdateDatabaseAsyncTask extends AsyncTask<String,S
     protected void onProgressUpdate(String... messages)
     {
         progressReport.updateProgess(messages[0]);
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
     @Override
@@ -80,6 +75,8 @@ public class GetListFromRssAndUpdateDatabaseAsyncTask extends AsyncTask<String,S
         } else {
             List<RSSItem> rssItems = feed.getAllItems();
             List<PodCast> podCastItems = podCastAdapter.getAllItems();
+            int count = 0;
+            int total = rssItems.size();
             for (RSSItem rssItem : rssItems) {
                 PodCast podCast = new PodCast(rssItem.getTitle(), rssItem.getPubDate(), rssItem.getLink(), rssItem.getMp3Link(), rssItem.getDescription());
                 if (podCastItems.contains(podCast)) {
@@ -87,12 +84,19 @@ public class GetListFromRssAndUpdateDatabaseAsyncTask extends AsyncTask<String,S
                     {
                         Log.i(Constants.LOG_ID, String.format("Updating podcast: %s", podCast.getLink()));
                         if(podCast.getLink().startsWith(Constants.PREFIX))
-                        podCastAdapter.updatePodCast(podCast);
+                        {
+                            podCastAdapter.updatePodCast(podCast);
+                            this.publishProgress("Updating podcast: " + count + " of " + total);
+                        }
+
                     }
                 } else {
                     Log.i(Constants.LOG_ID, String.format("Inserting podcast: %s", podCast.getLink()));
                     if(podCast.getLink().startsWith(Constants.PREFIX))
+                    {
                         podCastAdapter.insertPodCast(podCast);
+                        this.publishProgress("Inserting podcast: " + count + " of " + total);
+                    }
                 }
             }
         }
