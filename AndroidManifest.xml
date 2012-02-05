@@ -20,6 +20,7 @@
         </activity>
         <activity android:name="be.baes.hanselMinutesPlayer.SettingsActivity"/>
         <activity android:name="be.baes.hanselMinutesPlayer.DetailsActivity"/>
+        <activity android:name="be.baes.hanselMinutesPlayer.AboutActivity"/>
         <activity android:name=".SearchTitlesActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />

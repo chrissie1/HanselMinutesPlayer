@@ -42,6 +42,12 @@ public class NavigationImpl implements Navigation{
     }
 
     @Override
+    public void openAbout() {
+        Intent myIntent = new Intent(activity, AboutActivity.class);
+        activity.startActivity(myIntent);
+    }
+
+    @Override
     public void openDetailsWitFlingAnimation(String parent) {
         Intent myIntent = new Intent(activity, DetailsActivity.class);
         myIntent.putExtra(Constants.PARENT, parent);

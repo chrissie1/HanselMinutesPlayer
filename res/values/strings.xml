@@ -39,4 +39,5 @@
     <string name="DeleteDownload">Delete download</string>
     <string name="DownloadPodCast">Download podcast</string>
     <string name="ViewInBrowser">View in browser</string>
+    <string name="about">HanselminutesPlayer was written by Christiaan Baes. This program is opensource and the code can be found on github.</string>
 </resources>

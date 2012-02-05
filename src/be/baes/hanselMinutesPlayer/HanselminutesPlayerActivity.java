@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.*;
 import be.baes.hanselMinutesPlayer.controllers.*;
 import be.baes.hanselMinutesPlayer.facade.*;
@@ -41,7 +40,6 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
 	@Inject OnPlayClickListener onPlayClickListener;
 	@Inject OnStopClickListener onStopClickListener;
 	@Inject OnPauseClickListener onPauseClickListener;
-	@Inject OnSettingsClickListener onSettingsClickListener;
 	@Inject OnPodCastItemListClickListener rssItemListClickListener;
 	@Inject OnSeekChangeListener onSeekChangeListener;
 	@Inject PositionUpdater positionUpdater;
@@ -53,8 +51,8 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
     Position position;
     SharedPreferences sharedPreferences;
     @Inject OnDetailsFromMainClickListener onDetailsClickListener;
-    @Inject OnSearchClickListener onSearchClickListener;
     @Inject OnRefreshListWithAlertDialogClickListener onRefreshListWithAlertDialogClickListener;
+    @Inject OnCreateOptionsMenu onCreateOptionsMenu;
 
     /** Called when the activity is first created. */
     @Override
@@ -211,12 +209,6 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu, menu);
-        MenuItem settingsMenu = menu.findItem(R.id.settingsMenu);
-        MenuItem searchMenu = menu.findItem(R.id.searchmenu);
-        settingsMenu.setOnMenuItemClickListener(onSettingsClickListener);
-        searchMenu.setOnMenuItemClickListener(onSearchClickListener);
-        return true ;
+        return onCreateOptionsMenu.onCreateOptionsMenu(menu, getMenuInflater()) ;
     }
 }

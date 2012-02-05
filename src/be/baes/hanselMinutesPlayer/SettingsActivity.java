@@ -1,8 +1,10 @@
 package be.baes.hanselMinutesPlayer;
 
 import android.os.Bundle;
+import android.view.Menu;
 import android.widget.Button;
 import android.widget.TextView;
+import be.baes.hanselMinutesPlayer.controllers.OnCreateOptionsMenu;
 import be.baes.hanselMinutesPlayer.controllers.OnDeleteAllWithAlertDialogClickListener;
 import be.baes.hanselMinutesPlayer.controllers.OnRefreshListLatestWithAlertDialogClickListener;
 import be.baes.hanselMinutesPlayer.controllers.OnRefreshListWithAlertDialogClickListener;
@@ -35,6 +37,7 @@ public class SettingsActivity extends RoboActivity implements Observer{
     @Inject PodCastList podCastList;
     @Inject ProgressReport progressReport;
     @Inject StringResources stringResources;
+    @Inject OnCreateOptionsMenu onCreateOptionsMenu;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,5 +77,9 @@ public class SettingsActivity extends RoboActivity implements Observer{
     public void update(Observable observable, Object o) {
         totalInDatabase.setText(((FillListResult)o).getNumberOfPodCasts());
         totalDownloadedFiles.setText(stringResources.getTotalDownloadedFiles() + " " + ((FillListResult) o).getNumberOfDownloadedPodCasts());
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu){
+        return onCreateOptionsMenu.onCreateOptionsMenu(menu, getMenuInflater()) ;
     }
 }

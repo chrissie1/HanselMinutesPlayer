@@ -18,4 +18,5 @@ public interface Navigation {
     void openMainWithFlingAnimation();
     void openSearchWithFlingAnimation();
     void openBrowser(String url);
+    void openAbout();
 }

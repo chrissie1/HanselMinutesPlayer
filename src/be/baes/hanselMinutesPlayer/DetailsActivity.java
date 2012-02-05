@@ -2,6 +2,7 @@ package be.baes.hanselMinutesPlayer;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
@@ -51,6 +52,7 @@ public class DetailsActivity extends RoboActivity implements Observer{
     @Inject OnFlingDetailsOpenMainOnTouchListener onFlingDetailsOpenMainOnTouchListener;
     @Inject OnFlingDetailsOpenSearchOnTouchListener onFlingDetailsOpenSearchOnTouchListener;
     @Inject OnViewInBrowserOnClickListener onViewInBrowserOnClickListener;
+    @Inject OnCreateOptionsMenu onCreateOptionsMenu;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -132,5 +134,9 @@ public class DetailsActivity extends RoboActivity implements Observer{
         if(player.getCurrentPodCast()!=null) pubDate.setText(player.getCurrentPodCast().getPubDate());
         description.setText(position.getDescription());
         detailsCurrentPodCast.setText(position.getMessage());
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu){
+        return onCreateOptionsMenu.onCreateOptionsMenu(menu, getMenuInflater()) ;
     }
 }

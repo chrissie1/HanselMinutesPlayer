@@ -5,8 +5,6 @@ import android.content.SharedPreferences;
 import android.os.Environment;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 import android.app.SearchManager;
@@ -51,8 +49,6 @@ public class SearchTitlesActivity extends RoboActivity implements Observer{
     @Inject OnPauseClickListener onPauseClickListener;
     @Inject OnDetailsFromSearchClickListener onDetailsClickListener;
     @Inject OnSeekChangeListener onSeekChangeListener;
-    @Inject OnSearchClickListener onSearchClickListener;
-    @Inject OnSettingsClickListener onSettingsClickListener;
     @Inject PositionUpdater positionUpdater;
     @Inject SearchList searchListFacade;
     @Inject StringResources stringResources;
@@ -64,7 +60,8 @@ public class SearchTitlesActivity extends RoboActivity implements Observer{
     @Inject OnFlingSearchOnTouchListener onFlingSearchOnTouchListener;
     @Inject Player player;
     private String query;
-    
+    @Inject OnCreateOptionsMenu onCreateOptionsMenu;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -232,12 +229,6 @@ public class SearchTitlesActivity extends RoboActivity implements Observer{
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu, menu);
-        MenuItem settingsMenu = menu.findItem(R.id.settingsMenu);
-        MenuItem searchMenu = menu.findItem(R.id.searchmenu);
-        settingsMenu.setOnMenuItemClickListener(onSettingsClickListener);
-        searchMenu.setOnMenuItemClickListener(onSearchClickListener);
-        return true ;
+        return onCreateOptionsMenu.onCreateOptionsMenu(menu, getMenuInflater()) ;
     }
 }
