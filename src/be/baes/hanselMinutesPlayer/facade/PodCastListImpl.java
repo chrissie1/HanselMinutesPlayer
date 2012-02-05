@@ -68,7 +68,14 @@ public class PodCastListImpl extends Observable implements PodCastList {
     
     private int numberOfDownloadedPodCasts()
     {
-        return new File(settings.getCacheDirectory().getPath()).list().length;
+        try
+        {
+            return new File(settings.getCacheDirectory().getPath()).list().length;
+        }
+        catch (Exception ex)
+        {
+            return 0;
+        }
     }
 
 }

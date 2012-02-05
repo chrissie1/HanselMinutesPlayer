@@ -36,7 +36,6 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
     @InjectView(R.id.currentPodCast) TextView currentPodCast;
     @InjectView(R.id.podCastList) ListView podCastListView;
     @InjectView(R.id.numberofpodcasts) TextView numberOfPodCasts;
-    @InjectView(R.id.mainView) View mainView;
     @InjectView(R.id.mainRefreshListButton) Button mainRefreshListButton;
     @Inject ProgressReport progressReport;
 	@Inject OnPlayClickListener onPlayClickListener;
@@ -54,7 +53,6 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
     Position position;
     SharedPreferences sharedPreferences;
     @Inject OnDetailsFromMainClickListener onDetailsClickListener;
-    @Inject OnFlingMainOnTouchListener onFlingMainOnTouchListener;
     @Inject OnSearchClickListener onSearchClickListener;
     @Inject OnRefreshListWithAlertDialogClickListener onRefreshListWithAlertDialogClickListener;
 
@@ -99,12 +97,6 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
                 setPosition((Position) savedInstanceState.getSerializable(Constants.POSITION));
             }
         }
-    }
-
-    private void setGestureDetector()
-    {
-        podCastListView.setOnTouchListener(onFlingMainOnTouchListener);
-        mainView.setOnTouchListener(onFlingMainOnTouchListener);
     }
 
     private void SetObservers() {
@@ -206,13 +198,6 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
     }
 
     private void setPosition(Position position) {
-        if(position.getHasPodCast()) 
-        {
-            setGestureDetector();
-        }
-        if(!position.getHasPodCast()){
-            unsetGestureDetector();
-        }
         detailsButton.setEnabled(position.getHasPodCast());
         playButton.setEnabled(position.getHasPodCast());
         stopButton.setEnabled(position.getHasPodCast());
@@ -223,11 +208,6 @@ public class HanselminutesPlayerActivity extends RoboActivity implements Observe
         timer.setText(position.getTimer());
         currentPodCast.setText(position.getMessage());
         this.position = position;
-    }
-
-    private void unsetGestureDetector() {
-        mainView.setOnTouchListener(null);
-        podCastListView.setOnTouchListener(null);
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
