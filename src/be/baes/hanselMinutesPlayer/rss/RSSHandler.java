@@ -81,7 +81,7 @@ public class RSSHandler extends DefaultHandler
         }
 		if (qName.equals("media:content"))
 		{
-			_item.setMp3Link(atts.getValue(0));
+			_item.setMp3Link(atts.getValue(0).trim());
 			return;
 		}
 		// if we don't explicitly handle the element, make sure we don't wind up erroneously 
@@ -94,19 +94,19 @@ public class RSSHandler extends DefaultHandler
         switch (currentstate)
         {
             case RSS_TITLE:
-                _item.setTitle(buffer.toString());
+                _item.setTitle(buffer.toString().trim());
                 currentstate = 0;
                 break;
             case RSS_LINK:
-                _item.setLink(buffer.toString());
+                _item.setLink(buffer.toString().trim());
                 currentstate = 0;
                 break;
             case RSS_PUBDATE:
-                _item.setPubDate(buffer.toString());
+                _item.setPubDate(buffer.toString().trim());
                 currentstate = 0;
                 break;
             case RSS_DESCRIPTION:
-                _item.setDescription(buffer.toString());
+                _item.setDescription(buffer.toString().trim());
                 currentstate = 0;
                 break;
         }

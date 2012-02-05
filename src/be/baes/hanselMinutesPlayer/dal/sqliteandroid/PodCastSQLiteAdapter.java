@@ -110,9 +110,11 @@ public class PodCastSQLiteAdapter implements PodCastAdapter {
         String limit = "";
         if(pageFrom!=null && pageTo!=null) 
             limit = pageFrom.toString() + ", " + pageTo.toString();
+        Log.i(Constants.LOG_ID, "Limit = " + limit);
         Cursor cursor = db.query(Constants.TABLE_PODCASTS, new String[]{Constants.PODCASTS_COLUMN_TITLE, Constants.PODCASTS_COLUMN_PUBDATE, Constants.PODCASTS_COLUMN_LINK, Constants.PODCASTS_COLUMN_MP3LINK, Constants.PODCASTS_COLUMN_DESCRIPTION}, null, null, null, null, "substr(" + Constants.PODCASTS_COLUMN_MP3LINK + ",-22) DESC",limit);
         if(cursor != null)
         {
+            Log.i(Constants.LOG_ID, "cursor is not null");
             result = new ArrayList<PodCast>();
             while (cursor.moveToNext())
             {
@@ -121,7 +123,12 @@ public class PodCastSQLiteAdapter implements PodCastAdapter {
             }
             cursor.close();
         }
+        else
+        {
+            Log.i(Constants.LOG_ID, "cursor = null");
+        }
         dbHelper.close();
+        Log.i(Constants.LOG_ID, "returning " + result.size() + "podcsts");
         return result;
     }
 

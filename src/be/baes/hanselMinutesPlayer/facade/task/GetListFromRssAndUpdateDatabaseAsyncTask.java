@@ -92,12 +92,15 @@ public class GetListFromRssAndUpdateDatabaseAsyncTask extends AsyncTask<String,S
                     }
                 } else {
                     Log.i(Constants.LOG_ID, String.format("Inserting podcast: %s", podCast.getLink()));
-                    if(podCast.getLink().startsWith(Constants.PREFIX))
+                    Log.i(Constants.LOG_ID, String.valueOf(podCast.getLink().contains(Constants.PREFIX)));
+                    if(podCast.getLink().contains(Constants.PREFIX))
                     {
+                        Log.i(Constants.LOG_ID, "Has correct link, so inserting");
                         podCastAdapter.insertPodCast(podCast);
                         this.publishProgress("Inserting podcast: " + count + " of " + total);
                     }
                 }
+                count++;
             }
         }
         return null;
