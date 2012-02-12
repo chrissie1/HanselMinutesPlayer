@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 import be.baes.hanselMinutesPlayer.Constants;
 import be.baes.hanselMinutesPlayer.facade.PodCastList;
+import be.baes.hanselMinutesPlayer.facade.PositionUpdater;
 import be.baes.hanselMinutesPlayer.facade.Settings;
 import be.baes.hanselMinutesPlayer.model.PodCast;
 import be.baes.hanselMinutesPlayer.resources.StringResources;
@@ -25,10 +26,12 @@ public class DownloadMp3AsyncTask extends AsyncTask<Void,String,Void> {
     private ProgressReport progressReport;
     private StringResources stringResources;
     private Settings settings;
-    
-    public DownloadMp3AsyncTask(ProgressReport progressReport, PodCast currentPodCast, PodCastList podCastList, StringResources stringResources1, Settings settings1)
+    private PositionUpdater positionUpdater;
+
+    public DownloadMp3AsyncTask(ProgressReport progressReport, PodCast currentPodCast, PodCastList podCastList, StringResources stringResources1, Settings settings1, PositionUpdater positionUpdater)
     {
         this.stringResources = stringResources1;
+        this.positionUpdater = positionUpdater;
         this.progressReport = progressReport;
         this.currentPodCast = currentPodCast;
         this.podCastList = podCastList;
@@ -46,6 +49,7 @@ public class DownloadMp3AsyncTask extends AsyncTask<Void,String,Void> {
     {
         progressReport.endProgress();
         podCastList.load(0);
+        positionUpdater.updatePosition();
     }
 
     @Override

@@ -142,7 +142,7 @@ public class PlayerImpl implements Player {
     @Override
     public void downloadMp3() {
         if(currentPodCast==null) return;
-        DownloadMp3AsyncTask downloadMp3AsyncTask = new DownloadMp3AsyncTask(progressReport, currentPodCast, podCastList, stringResources, settings);
+        DownloadMp3AsyncTask downloadMp3AsyncTask = new DownloadMp3AsyncTask(progressReport, currentPodCast, podCastList, stringResources, settings,positionUpdater);
         downloadMp3AsyncTask.execute(null,null,null);
     }
 
