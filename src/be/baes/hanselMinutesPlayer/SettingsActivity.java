@@ -44,6 +44,7 @@ public class SettingsActivity extends RoboActivity implements Observer{
         setContentView(R.layout.settings);
 
         progressReport.setActivity(this);
+        if(progressReport.IsInProgress()) progressReport.startProgress("Continuing");
         setObservers();
         setListeners();
         podCastList.load(0);

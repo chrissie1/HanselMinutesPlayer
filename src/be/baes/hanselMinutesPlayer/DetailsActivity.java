@@ -62,6 +62,7 @@ public class DetailsActivity extends RoboActivity implements Observer{
         currentPodCast.setVisibility(TextView.GONE);
         detailsButton.setVisibility(Button.GONE);
         progressReport.setActivity(this);
+        if(progressReport.IsInProgress()) progressReport.startProgress("Continuing");
         setListeners();
         setObservers();
         if(player.getCurrentPodCast()!=null && savedInstanceState==null)

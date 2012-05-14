@@ -69,6 +69,7 @@ public class SearchTitlesActivity extends RoboActivity implements Observer{
 
         sharedPreferences = getPreferences(Context.MODE_PRIVATE);
         progressReport.setActivity(this);
+        if(progressReport.IsInProgress()) progressReport.startProgress("Continuing");
         settings.initialize(getExternalFilesDir(Environment.DIRECTORY_PODCASTS));
         colorResources.initialize(getResources());
         stringResources.initialize(getResources());

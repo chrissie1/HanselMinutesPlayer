@@ -16,4 +16,6 @@ public interface ProgressReport {
     void endProgress();
 
     void updateProgess(String message);
+
+    boolean IsInProgress();
 }
