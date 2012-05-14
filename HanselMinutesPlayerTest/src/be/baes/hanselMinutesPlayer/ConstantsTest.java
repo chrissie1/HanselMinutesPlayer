@@ -71,12 +71,12 @@ public class ConstantsTest extends TestCase {
 
     public void testIfDatabaseCreateIsCorrect()
     {
-        assertEquals(String.format("Create table %s(%s text primary key, %s text not null, %s text not null, %s text not null, %s text not null)", Constants.TABLE_PODCASTS, Constants.PODCASTS_COLUMN_LINK, Constants.PODCASTS_COLUMN_TITLE, Constants.PODCASTS_COLUMN_PUBDATE, Constants.PODCASTS_COLUMN_MP3LINK,Constants.PODCASTS_COLUMN_DESCRIPTION), Constants.DATABASE_CREATE);
+        assertEquals(String.format("Create table %s(%s text primary key, %s text not null, %s text not null, %s text not null, %s text not null)", Constants.TABLE_PODCASTS, Constants.PODCASTS_COLUMN_LINK, Constants.PODCASTS_COLUMN_TITLE, Constants.PODCASTS_COLUMN_PUBDATE, Constants.PODCASTS_COLUMN_MP3LINK,Constants.PODCASTS_COLUMN_DESCRIPTION), Constants.CREATE_TABLE_PODCASTS);
     }
 
     public void testIfDropTableIsCorrect()
     {
-        assertEquals(String.format("DROP TABLE IF EXISTS %s", Constants.TABLE_PODCASTS),Constants.DROP_TABLE);
+        assertEquals(String.format("DROP TABLE IF EXISTS %s", Constants.TABLE_PODCASTS),Constants.DROP_TABLE_PODCASTS);
     }
 
     public void testIfPrefixIsCorrect()

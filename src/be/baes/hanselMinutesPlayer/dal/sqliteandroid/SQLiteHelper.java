@@ -18,7 +18,8 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         Log.i(Constants.LOG_ID, "Creating database");
-        db.execSQL(Constants.DATABASE_CREATE);
+        db.execSQL(Constants.CREATE_TABLE_PODCASTS);
+        db.execSQL(Constants.CREATE_TABLE_SETTINGS);
     }
 
     /* (non-Javadoc)
@@ -27,8 +28,17 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         Log.i(Constants.LOG_ID,"upgrading database");
-        db.execSQL(Constants.DROP_TABLE);
-        onCreate(db);
+        if(oldVersion <= 3)
+        {
+            db.execSQL(Constants.DROP_TABLE_PODCASTS);
+            db.execSQL(Constants.CREATE_TABLE_PODCASTS);
+        }
+        if(oldVersion <= 5)
+        {
+            db.execSQL(Constants.DROP_TABLE_SETTINGS);
+            db.execSQL(Constants.CREATE_TABLE_SETTINGS);
+            db.execSQL(Constants.INSERT_SETTINGS);
+        }
     }
 
     public SQLiteDatabase getWritableDatabase()

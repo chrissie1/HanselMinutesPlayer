@@ -17,10 +17,14 @@ public class Constants {
     public static final String PODCASTS_COLUMN_MP3LINK = "mp3link";
     public static final String PODCASTS_COLUMN_DESCRIPTION = "description";
     public static final String TABLE_PODCASTS = "podcasts";
+    public static final String TABLE_SETTINGS = "Settings";
+    public static final String SETTINGS_COLUMN_ONROAMING = "onroaming";
     public static final String DATABASE_NAME = "HanselMinutesPlayer";
-    public static final int DATABASE_VERSION = 4;
-    public static final String DATABASE_CREATE = String.format("Create table %s(%s text primary key, %s text not null, %s text not null, %s text not null, %s text not null)", TABLE_PODCASTS, PODCASTS_COLUMN_LINK, PODCASTS_COLUMN_TITLE, PODCASTS_COLUMN_PUBDATE, PODCASTS_COLUMN_MP3LINK, PODCASTS_COLUMN_DESCRIPTION);
-    public static final String DROP_TABLE = String.format("DROP TABLE IF EXISTS %s", TABLE_PODCASTS);
+    public static final int DATABASE_VERSION = 6;
+    public static final String CREATE_TABLE_PODCASTS = String.format("Create table %s(%s text primary key, %s text not null, %s text not null, %s text not null, %s text not null)", TABLE_PODCASTS, PODCASTS_COLUMN_LINK, PODCASTS_COLUMN_TITLE, PODCASTS_COLUMN_PUBDATE, PODCASTS_COLUMN_MP3LINK, PODCASTS_COLUMN_DESCRIPTION);
+    public static final String DROP_TABLE_PODCASTS = String.format("DROP TABLE IF EXISTS %s", TABLE_PODCASTS);
+    public static final String CREATE_TABLE_SETTINGS = String.format("Create table %s(%s text not null)", TABLE_SETTINGS, SETTINGS_COLUMN_ONROAMING);
+    public static final String DROP_TABLE_SETTINGS = String.format("DROP TABLE IF EXISTS %s", TABLE_SETTINGS);
     public static final String PREFIX = "http://www.hanselminutes.com/default.aspx?ShowID=";
     public static final String urlToRssFeedAll = "http://feeds.feedburner.com/HanselminutesCompleteMP3?format=xml";
     public static final String urlToRssFeedLatest = "http://feeds.feedburner.com/Hanselminutes?format=xml";
@@ -36,4 +40,5 @@ public class Constants {
     public static final String PARENT = "parent";
     public static final String SEARCH_ACTIVITY = "SearchActivity";
     public static final String HANSELMINUTESPLAYER_ACTIVITY = "HanselMinutesPlayerActivity";
+    public static final String INSERT_SETTINGS = String.format("INSERT INTO %s (%s) VALUES ('false')",TABLE_SETTINGS, SETTINGS_COLUMN_ONROAMING);
 }

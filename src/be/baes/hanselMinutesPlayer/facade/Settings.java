@@ -1,6 +1,7 @@
 package be.baes.hanselMinutesPlayer.facade;
 
 import java.io.File;
+import java.util.Observer;
 
 /**
  * Created by IntelliJ IDEA.
@@ -12,4 +13,13 @@ public interface Settings {
     void initialize(File cacheDirectory);
 
     File getCacheDirectory();
+
+    void UpdateOrInsertSettings(be.baes.hanselMinutesPlayer.model.Settings settings);
+
+    void getSettings();
+
+    void addObserver(Observer observer);
+
+    void deleteObserver(Observer observer);
+
 }

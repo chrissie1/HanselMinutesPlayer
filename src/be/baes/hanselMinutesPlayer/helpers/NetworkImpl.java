@@ -3,6 +3,8 @@ package be.baes.hanselMinutesPlayer.helpers;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import be.baes.hanselMinutesPlayer.dal.SettingsAdapter;
+import com.google.inject.Inject;
 
 /**
  * Created by IntelliJ IDEA.
@@ -11,6 +13,7 @@ import android.net.NetworkInfo;
  * Time: 17:53
  */
 public class NetworkImpl implements Network {
+    @Inject SettingsAdapter settingsAdapter;
 
     @Override
     public boolean haveInternet(Context ctx) {
@@ -22,9 +25,7 @@ public class NetworkImpl implements Network {
             return false;
         }
         if (info.isRoaming()) {
-            // here is the roaming option you can change it if you want to
-            // disable internet while roaming, just return false
-            return false;
+            return settingsAdapter.getSettings().getOnRoaming();
         }
         return true;
     }

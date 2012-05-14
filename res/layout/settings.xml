@@ -28,4 +28,9 @@
               android:layout_height="wrap_content"
               android:text="@string/totalDownloadedFiles"
               android:textAppearance="?android:attr/textAppearanceMedium"/>
+    <CheckBox android:id="@+id/onRoaming"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:text="@string/onRoaming"
+              android:textAppearance="?android:attr/textAppearanceMedium"/>
 </LinearLayout>

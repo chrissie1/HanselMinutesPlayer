@@ -3,12 +3,12 @@ package be.baes.hanselMinutesPlayer;
 import android.os.Bundle;
 import android.view.Menu;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
-import be.baes.hanselMinutesPlayer.controllers.OnCreateOptionsMenu;
-import be.baes.hanselMinutesPlayer.controllers.OnDeleteAllWithAlertDialogClickListener;
-import be.baes.hanselMinutesPlayer.controllers.OnRefreshListLatestWithAlertDialogClickListener;
-import be.baes.hanselMinutesPlayer.controllers.OnRefreshListWithAlertDialogClickListener;
+import be.baes.hanselMinutesPlayer.controllers.*;
 import be.baes.hanselMinutesPlayer.facade.PodCastList;
+import be.baes.hanselMinutesPlayer.facade.Settings;
 import be.baes.hanselMinutesPlayer.model.FillListResult;
 import be.baes.hanselMinutesPlayer.resources.StringResources;
 import be.baes.hanselMinutesPlayer.view.ProgressReport;
@@ -31,6 +31,7 @@ public class SettingsActivity extends RoboActivity implements Observer{
     @InjectView(R.id.totalInDatabase) TextView totalInDatabase;
     @InjectView(R.id.totalDowloadedFiles) TextView totalDownloadedFiles;
     @InjectView(R.id.refreshListLatestButton) Button refreshListLatestButton;
+    @InjectView(R.id.onRoaming) CheckBox onRoaming;
     @Inject OnRefreshListLatestWithAlertDialogClickListener onRefreshListLatestWithAlertDialogClickListener;
     @Inject OnRefreshListWithAlertDialogClickListener onRefreshListWithAlertDialogClickListener;
     @Inject OnDeleteAllWithAlertDialogClickListener onDeleteAllWithAlertDialogClickListener;
@@ -38,6 +39,9 @@ public class SettingsActivity extends RoboActivity implements Observer{
     @Inject ProgressReport progressReport;
     @Inject StringResources stringResources;
     @Inject OnCreateOptionsMenu onCreateOptionsMenu;
+    @Inject Settings settings;
+    @Inject
+    OnRoamingCheckChangeListener onRoamingCheckedChangeListener;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,16 +52,19 @@ public class SettingsActivity extends RoboActivity implements Observer{
         setObservers();
         setListeners();
         podCastList.load(0);
+        settings.getSettings();
     }
 
     private void setObservers() {
         podCastList.addObserver(this);
+        settings.addObserver(this);
     }
 
     private void setListeners() {
         refreshListLatestButton.setOnClickListener(onRefreshListLatestWithAlertDialogClickListener);
         refreshListButton.setOnClickListener(onRefreshListWithAlertDialogClickListener);
         deleteAllButton.setOnClickListener(onDeleteAllWithAlertDialogClickListener);
+        onRoaming.setOnCheckedChangeListener(onRoamingCheckedChangeListener);
     }
 
     @Override
@@ -72,12 +79,20 @@ public class SettingsActivity extends RoboActivity implements Observer{
     {
         super.onDestroy();
         podCastList.deleteObserver(this);
+        settings.deleteObserver(this);
     }
 
     @Override
     public void update(Observable observable, Object o) {
-        totalInDatabase.setText(((FillListResult)o).getNumberOfPodCasts());
-        totalDownloadedFiles.setText(stringResources.getTotalDownloadedFiles() + " " + ((FillListResult) o).getNumberOfDownloadedPodCasts());
+        if(o.getClass().equals(be.baes.hanselMinutesPlayer.model.Settings.class))
+        {
+            onRoaming.setChecked(((be.baes.hanselMinutesPlayer.model.Settings)o).getOnRoaming());
+        }
+        else
+        {
+            totalInDatabase.setText(((FillListResult)o).getNumberOfPodCasts());
+            totalDownloadedFiles.setText(stringResources.getTotalDownloadedFiles() + " " + ((FillListResult) o).getNumberOfDownloadedPodCasts());
+        }
     }
 
     public boolean onCreateOptionsMenu(Menu menu){

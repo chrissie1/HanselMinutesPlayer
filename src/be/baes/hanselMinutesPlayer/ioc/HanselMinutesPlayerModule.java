@@ -1,7 +1,9 @@
 package be.baes.hanselMinutesPlayer.ioc;
 
 import be.baes.hanselMinutesPlayer.dal.PodCastAdapter;
+import be.baes.hanselMinutesPlayer.dal.SettingsAdapter;
 import be.baes.hanselMinutesPlayer.dal.sqliteandroid.PodCastSQLiteAdapter;
+import be.baes.hanselMinutesPlayer.dal.sqliteandroid.SettingsSQLiteAdapter;
 import be.baes.hanselMinutesPlayer.facade.*;
 import be.baes.hanselMinutesPlayer.helpers.Network;
 import be.baes.hanselMinutesPlayer.helpers.NetworkImpl;
@@ -27,5 +29,6 @@ public class HanselMinutesPlayerModule extends AbstractModule {
         bind(ColorResources.class).to(ColorResourcesImpl.class);
         bind(Navigation.class).to(NavigationImpl.class);
         bind(SearchList.class).to(SearchListImpl.class);
+        bind(SettingsAdapter.class).to(SettingsSQLiteAdapter.class);
     }
 }

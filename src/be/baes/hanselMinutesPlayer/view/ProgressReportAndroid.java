@@ -10,6 +10,11 @@ public class ProgressReportAndroid implements ProgressReport {
     private ProgressDialog progressDialog;
     private Boolean inProgress;
 
+    public ProgressReportAndroid()
+    {
+        inProgress = false;
+    }
+
     @Override
     public void setActivity(Activity activity) {
         this.activity = activity;
